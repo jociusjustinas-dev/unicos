@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { SfArrowRight, SfMenu, SfX } from '@/components/icons/feather';
+import { SfArrowLeft, SfMenu, SfX } from '@/components/icons/feather';
 import { CtaLink } from '@/components/ui/CtaLink';
 
 // ---------------------------------------------------------------------------
@@ -105,6 +105,7 @@ function ColumnLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="inline-flex items-center px-2 py-1 self-start bg-[rgba(100,21,31,0.08)]">
       <span
+        className="break-words [overflow-wrap:anywhere]"
         style={{
           ...NAV_FONT,
           fontSize: '10px',
@@ -365,9 +366,9 @@ function MobileMenu({ open }: { open: boolean }) {
             <span
               aria-hidden
               className="inline-flex items-center justify-center text-[#64151F] transition-transform duration-300"
-              style={{ transform: openGroup === 'sprendimai' ? 'rotate(90deg)' : 'rotate(0deg)' }}
+              style={{ transform: openGroup === 'sprendimai' ? 'rotate(-90deg)' : 'rotate(180deg)' }}
             >
-              <SfArrowRight size={14} className="text-current" />
+              <SfArrowLeft size={14} className="text-current" />
             </span>
           </button>
 
@@ -382,7 +383,7 @@ function MobileMenu({ open }: { open: boolean }) {
                   <a
                     key={segment.title}
                     href={segment.href}
-                    className="no-underline py-2 pl-3"
+                    className="no-underline py-2 pl-3 pr-2 [overflow-wrap:anywhere]"
                     style={{ ...NAV_FONT, fontSize: '14px', fontWeight: 400, color: 'rgba(26,16,16,0.72)' }}
                   >
                     {segment.title}
@@ -404,7 +405,7 @@ function MobileMenu({ open }: { open: boolean }) {
           <a
             key={item.label}
             href={item.href}
-            className="no-underline py-3 border-b border-[rgba(26,16,16,0.07)] hover:opacity-60 transition-opacity duration-200"
+            className="no-underline py-3 pr-2 border-b border-[rgba(26,16,16,0.07)] hover:opacity-60 transition-opacity duration-200 [overflow-wrap:anywhere]"
             style={{ ...NAV_FONT, fontSize: '15px', fontWeight: 500, color: '#1A1010' }}
           >
             {item.label}
