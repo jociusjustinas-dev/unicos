@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { SfMenu, SfX } from '@/components/icons/feather';
+import { SfArrowRight, SfMenu, SfX } from '@/components/icons/feather';
 import { CtaLink } from '@/components/ui/CtaLink';
 
 // ---------------------------------------------------------------------------
@@ -364,10 +364,10 @@ function MobileMenu({ open }: { open: boolean }) {
             <span>Sprendimai</span>
             <span
               aria-hidden
-              className="inline-block transition-transform duration-300"
-              style={{ transform: openGroup === 'sprendimai' ? 'rotate(180deg)' : 'rotate(0deg)' }}
+              className="inline-flex items-center justify-center text-[#64151F] transition-transform duration-300"
+              style={{ transform: openGroup === 'sprendimai' ? 'rotate(90deg)' : 'rotate(0deg)' }}
             >
-              ˅
+              <SfArrowRight size={14} className="text-current" />
             </span>
           </button>
 
