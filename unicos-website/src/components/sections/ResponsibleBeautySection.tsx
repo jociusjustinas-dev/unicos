@@ -197,7 +197,7 @@ export function ResponsibleBeautySection() {
             </div>
 
             <div
-              className={`max-w-[min(20rem,100%)] shrink text-center sm:text-left ${guidanceEase} delay-[80ms] ${guidanceHidden}`}
+              className={`max-w-[min(20rem,100%)] shrink text-left ${guidanceEase} delay-[80ms] ${guidanceHidden}`}
             >
               <div className="text-sm font-medium leading-5 text-[#1A1010]" style={BODY}>
                 Reikia konsultacijos?

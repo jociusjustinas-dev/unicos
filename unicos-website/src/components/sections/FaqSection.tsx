@@ -117,7 +117,7 @@ export function FaqSection() {
                 </div>
               </div>
 
-              <div className="max-w-[min(20rem,100%)] shrink text-left">
+              <div className="max-w-[min(20rem,100%)] shrink text-left max-[767px]:text-left">
                 <div className="text-sm font-medium leading-5 text-[#1A1010]" style={BODY}>
                   Reikia konsultacijos?
                 </div>
