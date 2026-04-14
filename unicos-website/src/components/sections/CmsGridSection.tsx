@@ -294,11 +294,24 @@ function EventCardReveal({ card }: { card: EventCardData }) {
     threshold: 0.08,
     rootMargin: '0px 0px -10% 0px',
   });
+  const [isMobileViewport, setIsMobileViewport] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobileViewport(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const shouldRevealNow = isMobileViewport || visible;
 
   const style: React.CSSProperties = {
-    opacity: visible ? 1 : 0,
-    filter: visible ? 'blur(0px)' : 'blur(10px)',
-    transform: visible ? 'translateY(0)' : 'translateY(24px)',
+    opacity: shouldRevealNow ? 1 : 0,
+    filter: shouldRevealNow ? 'blur(0px)' : 'blur(10px)',
+    transform: shouldRevealNow ? 'translateY(0)' : 'translateY(24px)',
     transition: `opacity 0.7s ${revealEase}, filter 0.7s ${revealEase}, transform 0.7s ${revealEase}`,
   };
 
