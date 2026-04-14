@@ -1,0 +1,125 @@
+/* Quiche Sans — local font faces */
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-ThinItalic.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-ExtraBoldItalic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quiche Sans';
+  src: url('/fonts/QuicheSans-BlackItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --color-maroon: #64151F;
+  --color-maroon-hover: #4a0f17;
+  --color-nougat: #F1E8DA;
+  --color-green: #3B443A;
+  --color-green-hover: rgba(59, 68, 58, 0.88);
+  --color-white: #ffffff;
+  --color-text: #1a1010;
+  --font-heading: 'Quiche Sans', 'Georgia', serif;
+  --font-body: 'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Mygtukai / CTA — vienas stilius visur */
+  --btn-height: 44px;
+  --btn-padding-x: 24px;
+  --btn-radius: 0;
+  --btn-font-size: 13px;
+  --btn-font-weight: 500; /* naudojama slide etiketėje */
+  --btn-label-track-height: 20px;
+  --btn-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  /* Sentence case etiketės */
+  --btn-letter-spacing: 0.02em;
+  /* Statinis CTA režimas (retai) */
+  --btn-static-font-size: clamp(12px, 0.95vw, 15px);
+  --btn-static-line-height: 1.25;
+}

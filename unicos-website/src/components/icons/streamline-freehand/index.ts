@@ -1,0 +1,22 @@
+export type { StreamlineFreehandIconProps } from './types';
+export {
+  SfActivity,
+  SfArrowCounterclockwise,
+  SfArrowLeft,
+  SfArrowRight,
+  SfAward,
+  SfChatScience,
+  SfCheckboxCheck,
+  SfClock,
+  SfFaceSmile,
+  SfLeaf,
+  SfLayers,
+  SfMapPin,
+  SfMenu,
+  SfMonitor,
+  SfQualityRibbon,
+  SfShield,
+  SfSparkles,
+  SfTruck,
+  SfX,
+} from './icons';
