@@ -525,26 +525,28 @@ export function NavigationBarSection() {
               )}
             </button>
 
-            <a href="/" className="no-underline flex items-center">
-              <img
-                src="/unicos-logo.svg"
-                alt="Unicos"
-                className="h-16 w-auto max-[767px]:h-11 transition duration-300"
-                style={{
-                  filter: useLightNavSurface
-                    ? 'invert(12%) sepia(43%) saturate(1442%) hue-rotate(321deg) brightness(95%) contrast(95%)'
-                    : 'brightness(0) invert(1)',
-                }}
-              />
-            </a>
-            <span
-              className={`uppercase tracking-[0.08em] transition-colors duration-300 ${
-                useLightNavSurface ? 'text-[#1A1010]' : 'text-[#EFE8DB]'
-              }`}
-              style={{ ...NAV_FONT, fontSize: '12px', lineHeight: 1, fontWeight: 500 }}
-            >
-              Sugihara Pro
-            </span>
+            <div className="flex flex-col items-start gap-1">
+              <a href="/" className="no-underline flex items-center">
+                <img
+                  src="/unicos-logo.svg"
+                  alt="Unicos"
+                  className="h-16 w-auto max-[767px]:h-11 transition duration-300"
+                  style={{
+                    filter: useLightNavSurface
+                      ? 'invert(12%) sepia(43%) saturate(1442%) hue-rotate(321deg) brightness(95%) contrast(95%)'
+                      : 'brightness(0) invert(1)',
+                  }}
+                />
+              </a>
+              <span
+                className={`uppercase tracking-[0.08em] transition-colors duration-300 ${
+                  useLightNavSurface ? 'text-[#1A1010]' : 'text-[#EFE8DB]'
+                }`}
+                style={{ ...NAV_FONT, fontSize: '10px', lineHeight: 1, fontWeight: 500 }}
+              >
+                Buvusi Sugihara Pro
+              </span>
+            </div>
           </div>
 
           {/* CENTER — nav links (desktop only) */}
