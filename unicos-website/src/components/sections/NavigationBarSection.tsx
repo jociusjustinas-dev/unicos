@@ -537,6 +537,14 @@ export function NavigationBarSection() {
                 }}
               />
             </a>
+            <span
+              className={`uppercase tracking-[0.08em] transition-colors duration-300 max-[479px]:hidden ${
+                useLightNavSurface ? 'text-[#1A1010]' : 'text-[#EFE8DB]'
+              }`}
+              style={{ ...NAV_FONT, fontSize: '12px', lineHeight: 1, fontWeight: 500 }}
+            >
+              Sugihara Pro
+            </span>
           </div>
 
           {/* CENTER — nav links (desktop only) */}
