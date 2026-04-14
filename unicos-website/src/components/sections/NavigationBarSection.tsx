@@ -340,6 +340,12 @@ function ResursaiPanel({
 // ---------------------------------------------------------------------------
 
 function MobileMenu({ open }: { open: boolean }) {
+  const [openGroup, setOpenGroup] = React.useState<string | null>(null);
+
+  const toggleGroup = (group: string) => {
+    setOpenGroup((prev) => (prev === group ? null : group));
+  };
+
   return (
     <div
       className={`absolute left-0 right-0 z-[40] bg-[#EFE8DB] border-b border-[rgba(26,16,16,0.08)] overflow-hidden transition-all duration-300 ${
@@ -348,8 +354,46 @@ function MobileMenu({ open }: { open: boolean }) {
       style={{ top: '72px' }}
     >
       <div className="px-6 py-6 flex flex-col gap-1 max-[479px]:px-4">
+        <div className="border-b border-[rgba(26,16,16,0.07)]">
+          <button
+            type="button"
+            onClick={() => toggleGroup('sprendimai')}
+            className="flex w-full items-center justify-between border-0 bg-transparent py-3 text-left cursor-pointer"
+            style={{ ...NAV_FONT, fontSize: '15px', fontWeight: 500, color: '#1A1010' }}
+          >
+            <span>Sprendimai</span>
+            <span
+              aria-hidden
+              className="inline-block transition-transform duration-300"
+              style={{ transform: openGroup === 'sprendimai' ? 'rotate(180deg)' : 'rotate(0deg)' }}
+            >
+              ˅
+            </span>
+          </button>
+
+          <div
+            className={`grid transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              openGroup === 'sprendimai' ? 'grid-rows-[1fr] pb-2' : 'grid-rows-[0fr]'
+            }`}
+          >
+            <div className="overflow-hidden">
+              <div className="flex flex-col pb-1">
+                {SPRENDIMAI_SEGMENTS.map((segment) => (
+                  <a
+                    key={segment.title}
+                    href={segment.href}
+                    className="no-underline py-2 pl-3"
+                    style={{ ...NAV_FONT, fontSize: '14px', fontWeight: 400, color: 'rgba(26,16,16,0.72)' }}
+                  >
+                    {segment.title}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {[
-          { label: 'Sprendimai', href: '#' },
           { label: 'Prekių ženklai', href: '#' },
           { label: 'Akademija', href: '#' },
           { label: 'Partnerystė', href: '#' },
