@@ -539,7 +539,7 @@ export function NavigationBarSection() {
                 />
               </a>
               <span
-                className={`m-0 ml-[12px] block self-start text-left uppercase tracking-[0.08em] transition-colors duration-300 max-[767px]:ml-[8px] ${
+                className={`m-0 ml-[18px] block self-start text-left uppercase tracking-[0.08em] transition-colors duration-300 max-[767px]:ml-[12px] ${
                   useLightNavSurface ? 'text-[#1A1010]' : 'text-[#EFE8DB]'
                 }`}
                 style={{ ...NAV_FONT, fontSize: '10px', lineHeight: 1, fontWeight: 500 }}
