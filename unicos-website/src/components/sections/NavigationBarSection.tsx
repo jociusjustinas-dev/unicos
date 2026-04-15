@@ -525,12 +525,12 @@ export function NavigationBarSection() {
               )}
             </button>
 
-            <div className="inline-flex flex-col items-start gap-0.5">
-              <a href="/" className="no-underline flex items-center">
+            <div className="inline-flex flex-col items-start gap-[16px]">
+              <a href="/" className="no-underline flex items-start self-start">
                 <img
                   src="/unicos-logo.svg"
                   alt="Unicos"
-                  className="h-16 w-auto max-[767px]:h-11 transition duration-300"
+                  className="block h-16 w-auto max-[767px]:h-11 transition duration-300"
                   style={{
                     filter: useLightNavSurface
                       ? 'invert(12%) sepia(43%) saturate(1442%) hue-rotate(321deg) brightness(95%) contrast(95%)'
@@ -539,7 +539,7 @@ export function NavigationBarSection() {
                 />
               </a>
               <span
-                className={`m-0 ml-[14px] block pl-0 text-left uppercase tracking-[0.08em] transition-colors duration-300 max-[767px]:ml-[9px] ${
+                className={`m-0 block self-start text-left uppercase tracking-[0.08em] transition-colors duration-300 ${
                   useLightNavSurface ? 'text-[#1A1010]' : 'text-[#EFE8DB]'
                 }`}
                 style={{ ...NAV_FONT, fontSize: '10px', lineHeight: 1, fontWeight: 500 }}
