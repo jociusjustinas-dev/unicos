@@ -525,7 +525,7 @@ export function NavigationBarSection() {
               )}
             </button>
 
-            <div className="inline-flex flex-col items-start gap-[16px]">
+            <div className="inline-flex flex-col items-start gap-0">
               <a href="/" className="no-underline flex items-start self-start">
                 <img
                   src="/unicos-logo.svg"
@@ -539,7 +539,7 @@ export function NavigationBarSection() {
                 />
               </a>
               <span
-                className={`m-0 block self-start text-left uppercase tracking-[0.08em] transition-colors duration-300 ${
+                className={`m-0 ml-[12px] block self-start text-left uppercase tracking-[0.08em] transition-colors duration-300 max-[767px]:ml-[8px] ${
                   useLightNavSurface ? 'text-[#1A1010]' : 'text-[#EFE8DB]'
                 }`}
                 style={{ ...NAV_FONT, fontSize: '10px', lineHeight: 1, fontWeight: 500 }}
