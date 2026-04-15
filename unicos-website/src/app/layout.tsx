@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { Preloader } from "@/components/Preloader";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
@@ -26,7 +27,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <head>
+        <link rel="stylesheet" href="https://widget.meetvolley.com/static/css/widget.css" />
+      </head>
       <body className="min-h-dvh">
+        <Script
+          src="https://widget.meetvolley.com/widget.js"
+          strategy="beforeInteractive"
+          data-widget="https://api.meetvolley.com/api/widgets/public/912791fc-6310-4ce4-aa83-4e5a8733d225"
+        />
         <SmoothScroll />
         <Preloader />
         {children}
