@@ -75,7 +75,7 @@ export function KontaktaiCtaSection() {
               <div>
                 <a
                   href="#"
-                  className="group relative inline-flex min-h-[44px] items-center justify-center overflow-hidden border border-[#EFE8DB]/22 bg-[#EFE8DB] px-5 py-3 no-underline text-[#1A1010] transition-[background-color,border-color,color,transform,opacity] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-[#E6DDD0] active:translate-y-px"
+                  className="group relative inline-flex min-h-[40px] items-center justify-center overflow-hidden border border-[#EFE8DB]/22 bg-[#EFE8DB] px-4 py-2 no-underline text-[#1A1010] transition-[background-color,border-color,color,transform,opacity] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-[#E6DDD0] active:translate-y-px"
                   style={{ ...BODY, borderRadius: '0px' }}
                 >
                   <span className="pointer-events-none relative z-[1] h-[1.5em] overflow-hidden">
@@ -142,7 +142,7 @@ export function KontaktaiCtaSection() {
           >
             <div className="flex flex-col gap-2">
               <h3
-                className="m-0 text-[#1A1010] tracking-[-0.02em]"
+                className="m-0 text-[#3B443A] tracking-[-0.02em]"
                 style={{
                   fontFamily: "'Quiche Sans', Georgia, serif",
                   fontSize: 'clamp(1.45rem, 2.5vw, 2rem)',
