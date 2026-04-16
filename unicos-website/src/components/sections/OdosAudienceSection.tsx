@@ -185,7 +185,7 @@ export function OdosAudienceSection() {
                 <div className="text-[#1A1010]/90" style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 500 }}>
                   Reikia konsultacijos?
                 </div>
-                <div className="text-[#1A1010]/64" style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}>
+                <div className="text-[#1A1010]/64" style={{ ...BODY, fontSize: '14px', lineHeight: '20px', fontWeight: 400 }}>
                   Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.
                 </div>
               </div>
