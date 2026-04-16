@@ -37,7 +37,7 @@ export function ApieUnicosHeroSection() {
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headlineRef}
-          className="mx-auto mb-14 flex w-full max-w-[912px] flex-col gap-6 max-[767px]:mb-10 max-[767px]:gap-4"
+          className="mb-14 flex w-full max-w-[912px] flex-col gap-6 max-[767px]:mb-10 max-[767px]:gap-4"
           style={{
             opacity: headlineVisible ? 1 : 0,
             filter: headlineVisible ? 'blur(0px)' : 'blur(12px)',
@@ -53,7 +53,7 @@ export function ApieUnicosHeroSection() {
           </div>
 
           <h1
-            className="m-0 max-w-[16ch] text-[#3B443A] tracking-[-0.03em]"
+            className="m-0 max-w-[16ch] text-[#64151F] tracking-[-0.03em]"
             style={{
               fontFamily: "'Quiche Sans', Georgia, serif",
               fontSize: 'clamp(2.4rem, 5.2vw, 4.6rem)',
@@ -61,7 +61,8 @@ export function ApieUnicosHeroSection() {
               fontWeight: 300,
             }}
           >
-            25 metai šalia profesionalų.
+            <span className="font-medium">25 metai šalia </span>
+            <span className="font-light">profesionalų.</span>
           </h1>
 
           <p className="m-0 max-w-[68ch] text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>
@@ -79,7 +80,7 @@ export function ApieUnicosHeroSection() {
             </div>
 
             <div className="flex flex-1 flex-col items-start gap-2.5">
-              <CtaLink href="#kontaktai" variant="glass" className="!w-full max-w-[320px] justify-center sm:!max-w-none">
+              <CtaLink href="#kontaktai" variant="outline" className="!w-full max-w-[320px] justify-center sm:!max-w-none">
                 Susisiekti
               </CtaLink>
               <span className="px-1 uppercase text-[#1A1010]/62" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}>
