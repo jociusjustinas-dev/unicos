@@ -73,7 +73,7 @@ export function KontaktaiCtaSection() {
                 </p>
               </div>
               <div>
-                <CtaLink href="#" variant="glass">
+                <CtaLink href="#" variant="secondary">
                   Pildyti paraišką →
                 </CtaLink>
               </div>
@@ -111,7 +111,7 @@ export function KontaktaiCtaSection() {
                 </p>
               </div>
               <div className="relative z-[1]">
-                <CtaLink href="#" variant="glass">
+                <CtaLink href="#" variant="primary">
                   Registruotis konsultacijai →
                 </CtaLink>
               </div>
