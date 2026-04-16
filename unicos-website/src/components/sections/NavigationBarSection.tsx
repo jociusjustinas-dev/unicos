@@ -419,7 +419,7 @@ function MobileMenu({ open }: { open: boolean }) {
           >
             Prisijungti
           </a>
-          <CtaLink href="#" variant="secondary" className="self-center">
+          <CtaLink href="/tapkite-partneriu" variant="secondary" className="self-center">
             Tapti partneriu
           </CtaLink>
         </div>
@@ -432,7 +432,13 @@ function MobileMenu({ open }: { open: boolean }) {
 // Main component
 // ---------------------------------------------------------------------------
 
-export function NavigationBarSection({ forceLightSurface = false }: { forceLightSurface?: boolean }) {
+export function NavigationBarSection({
+  forceLightSurface = false,
+  logoOnly = false,
+}: {
+  forceLightSurface?: boolean;
+  logoOnly?: boolean;
+}) {
   const [openDropdown, setOpenDropdown] = React.useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [navVisible, setNavVisible] = React.useState(true);
@@ -440,7 +446,7 @@ export function NavigationBarSection({ forceLightSurface = false }: { forceLight
   const lastScrollYRef = React.useRef(0);
   const closeTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const isMegaOpen = openDropdown !== null;
-  const useLightNavSurface = forceLightSurface || isMegaOpen || mobileOpen || hasScrolled;
+  const useLightNavSurface = forceLightSurface || logoOnly || isMegaOpen || mobileOpen || hasScrolled;
 
   const clearCloseTimeout = React.useCallback(() => {
     if (closeTimeoutRef.current) {
@@ -513,19 +519,7 @@ export function NavigationBarSection({ forceLightSurface = false }: { forceLight
 
           {/* LEFT — hamburger + logo */}
           <div className="flex items-center gap-3">
-            <button
-              className="hidden h-10 w-10 flex-none items-center justify-center overflow-visible border border-[rgba(239,232,219,0.35)] bg-[rgba(26,16,16,0.25)] p-1.5 text-[#EFE8DB] max-[991px]:flex"
-              onClick={() => setMobileOpen((v) => !v)}
-              aria-label="Atidaryti meniu"
-            >
-              {mobileOpen ? (
-                <SfX size={20} strokeWidth={1.5} className="text-current" aria-hidden />
-              ) : (
-                <SfMenu size={20} strokeWidth={1.5} className="text-current" aria-hidden />
-              )}
-            </button>
-
-            <div className="inline-flex flex-col items-start gap-0">
+            {logoOnly ? (
               <a href="/" className="no-underline flex items-start self-start">
                 <img
                   src="/unicos-logo.svg"
@@ -538,19 +532,49 @@ export function NavigationBarSection({ forceLightSurface = false }: { forceLight
                   }}
                 />
               </a>
-              <span
-                className={`-mt-[5px] m-0 ml-[18px] block self-start text-left uppercase tracking-[0.08em] leading-none transition-colors duration-300 max-[767px]:ml-[12px] ${
-                  useLightNavSurface ? 'text-[#1A1010]' : 'text-[#EFE8DB]'
-                }`}
-                style={{ ...NAV_FONT, fontSize: '10px', lineHeight: 1, fontWeight: 500 }}
-              >
-                Buvusi Sugihara Pro
-              </span>
-            </div>
+            ) : (
+              <>
+                <button
+                  className="hidden h-10 w-10 flex-none items-center justify-center overflow-visible border border-[rgba(239,232,219,0.35)] bg-[rgba(26,16,16,0.25)] p-1.5 text-[#EFE8DB] max-[991px]:flex"
+                  onClick={() => setMobileOpen((v) => !v)}
+                  aria-label="Atidaryti meniu"
+                >
+                  {mobileOpen ? (
+                    <SfX size={20} strokeWidth={1.5} className="text-current" aria-hidden />
+                  ) : (
+                    <SfMenu size={20} strokeWidth={1.5} className="text-current" aria-hidden />
+                  )}
+                </button>
+
+                <div className="inline-flex flex-col items-start gap-0">
+                  <a href="/" className="no-underline flex items-start self-start">
+                    <img
+                      src="/unicos-logo.svg"
+                      alt="Unicos"
+                      className="block h-16 w-auto max-[767px]:h-11 transition duration-300"
+                      style={{
+                        filter: useLightNavSurface
+                          ? 'invert(12%) sepia(43%) saturate(1442%) hue-rotate(321deg) brightness(95%) contrast(95%)'
+                          : 'brightness(0) invert(1)',
+                      }}
+                    />
+                  </a>
+                  <span
+                    className={`-mt-[5px] m-0 ml-[18px] block self-start text-left uppercase tracking-[0.08em] leading-none transition-colors duration-300 max-[767px]:ml-[12px] ${
+                      useLightNavSurface ? 'text-[#1A1010]' : 'text-[#EFE8DB]'
+                    }`}
+                    style={{ ...NAV_FONT, fontSize: '10px', lineHeight: 1, fontWeight: 500 }}
+                  >
+                    Buvusi Sugihara Pro
+                  </span>
+                </div>
+              </>
+            )}
           </div>
 
           {/* CENTER — nav links (desktop only) */}
-          <nav className="flex items-center gap-0.5 max-[991px]:hidden">
+          {logoOnly ? null : (
+            <nav className="flex items-center gap-0.5 max-[991px]:hidden">
 
             {/* Sprendimai — with dropdown */}
             <div
@@ -640,10 +664,12 @@ export function NavigationBarSection({ forceLightSurface = false }: { forceLight
             >
               Kontaktai
             </a>
-          </nav>
+            </nav>
+          )}
 
           {/* RIGHT — auth + CTA */}
-          <div className="flex items-center gap-4">
+          {logoOnly ? null : (
+            <div className="flex items-center gap-4">
             {/* Prisijungti — text slide */}
             <a href="#" className="group relative no-underline overflow-hidden max-[767px]:hidden">
               <div
@@ -660,37 +686,42 @@ export function NavigationBarSection({ forceLightSurface = false }: { forceLight
               </div>
             </a>
 
-            <CtaLink href="#" variant="secondary" className="whitespace-nowrap">
+            <CtaLink href="/tapkite-partneriu" variant="secondary" className="whitespace-nowrap">
               Tapti partneriu
             </CtaLink>
-          </div>
+            </div>
+          )}
 
         </div>
       </div>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* Mega-dropdown panels                                                 */}
-      {/* ------------------------------------------------------------------ */}
-      <SprendimaiPanel
-        open={openDropdown === 'sprendimai'}
-        onMouseEnter={() => handleEnter('sprendimai')}
-        onMouseLeave={handleLeave}
-      />
-      <PrekesZenklaiPanel
-        open={openDropdown === 'prekes'}
-        onMouseEnter={() => handleEnter('prekes')}
-        onMouseLeave={handleLeave}
-      />
-      <ResursaiPanel
-        open={openDropdown === 'resursai'}
-        onMouseEnter={() => handleEnter('resursai')}
-        onMouseLeave={handleLeave}
-      />
+      {logoOnly ? null : (
+        <>
+          {/* ------------------------------------------------------------------ */}
+          {/* Mega-dropdown panels                                                 */}
+          {/* ------------------------------------------------------------------ */}
+          <SprendimaiPanel
+            open={openDropdown === 'sprendimai'}
+            onMouseEnter={() => handleEnter('sprendimai')}
+            onMouseLeave={handleLeave}
+          />
+          <PrekesZenklaiPanel
+            open={openDropdown === 'prekes'}
+            onMouseEnter={() => handleEnter('prekes')}
+            onMouseLeave={handleLeave}
+          />
+          <ResursaiPanel
+            open={openDropdown === 'resursai'}
+            onMouseEnter={() => handleEnter('resursai')}
+            onMouseLeave={handleLeave}
+          />
 
-      {/* ------------------------------------------------------------------ */}
-      {/* Mobile menu                                                           */}
-      {/* ------------------------------------------------------------------ */}
-      <MobileMenu open={mobileOpen} />
+          {/* ------------------------------------------------------------------ */}
+          {/* Mobile menu                                                           */}
+          {/* ------------------------------------------------------------------ */}
+          <MobileMenu open={mobileOpen} />
+        </>
+      )}
 
     </div>
   );
