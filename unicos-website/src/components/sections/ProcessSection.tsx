@@ -222,7 +222,7 @@ export function ProcessSection({
 
         {resolvedCtaLabel ? (
           <div ref={ctaRef} className="mt-16 flex justify-center max-[767px]:mt-14 max-[479px]:mt-12" style={reveal(ctaVisible, 80)}>
-            <CtaLink href={ctaHref} variant="secondary" className="min-w-[min(100%,280px)] justify-center">
+            <CtaLink href={ctaHref} variant="secondary">
               {resolvedCtaLabel}
             </CtaLink>
           </div>

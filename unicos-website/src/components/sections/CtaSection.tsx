@@ -98,7 +98,6 @@ export function CtaSection() {
                 <CtaLink
                   href="#kontaktai"
                   variant="primary"
-                  className="!w-full max-w-[320px] justify-center sm:!max-w-none"
                 >
                   Pildyti partnerio paraišką
                 </CtaLink>
@@ -113,7 +112,6 @@ export function CtaSection() {
                 <CtaLink
                   href="#kontaktai"
                   variant="glass"
-                  className="!w-full max-w-[320px] justify-center sm:!max-w-none"
                 >
                   Gauti konsultaciją
                 </CtaLink>

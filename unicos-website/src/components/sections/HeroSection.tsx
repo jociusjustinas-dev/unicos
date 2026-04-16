@@ -130,7 +130,7 @@ export function HeroSection() {
             <CtaLink href="#" variant="primary">
               Pildyti partnerio paraišką
             </CtaLink>
-            <CtaLink href="#" variant="glass">
+            <CtaLink href="#" variant="outline">
               Gauti konsultaciją
             </CtaLink>
           </div>

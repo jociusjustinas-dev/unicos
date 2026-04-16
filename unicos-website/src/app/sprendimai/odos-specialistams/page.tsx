@@ -110,7 +110,6 @@ export default function OdosSpecialistamsPage() {
                   <CtaLink
                     href="/tapkite-partneriu"
                     variant="primary"
-                    className="!w-full max-w-[320px] justify-center sm:!max-w-none"
                   >
                     Tapti partneriu
                   </CtaLink>
@@ -126,7 +125,6 @@ export default function OdosSpecialistamsPage() {
                   <CtaLink
                     href="/kontaktai"
                     variant="outline"
-                    className="!w-full max-w-[320px] justify-center sm:!max-w-none"
                   >
                     Gauti konsultaciją
                   </CtaLink>
