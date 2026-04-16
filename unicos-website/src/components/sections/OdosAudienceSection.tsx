@@ -10,25 +10,25 @@ const BODY: React.CSSProperties = {
 const cards = [
   {
     id: 'first',
-    bg: 'https://byqsupply-components.netlify.app/nothing/images/FeatureImageHome.webp',
+    bg: '/mega-menu/1.jpeg',
     heading: 'Kosmetologijos kabinetams',
     body: 'Patikimi profesionalūs produktai kasdienėms procedūroms ir namų priežiūros rekomendacijoms.',
   },
   {
     id: 'second',
-    bg: 'https://byqsupply-components.netlify.app/nothing/images/FeatureImageHome-1.webp',
+    bg: '/mega-menu/2.jpeg',
     heading: 'Grožio salonams su odos paslaugomis',
     body: 'Norite papildyti portfelį kokybiška odos priežiūra ir išsiskirti tarp konkurentų.',
   },
   {
     id: 'third',
-    bg: 'https://byqsupply-components.netlify.app/nothing/images/FeatureImageHome-2.webp',
+    bg: '/mega-menu/3.jpeg',
     heading: 'SPA ir viešbučių SPA centrams',
     body: 'Premium prekių ženklai, atitinkantys svečių lūkesčius ir standartus.',
   },
   {
     id: 'fourth',
-    bg: 'https://byqsupply-components.netlify.app/nothing/images/FeatureImageHome.webp',
+    bg: '/mega-menu/4.jpeg',
     heading: 'Pradedantiems specialistams',
     body: 'Kuriate kabinetą ir norite tvirto pagrindo nuo pirmos dienos be brangių klaidų.',
   },
@@ -169,7 +169,7 @@ export function OdosAudienceSection() {
           }`}
         >
           <div
-            className="flex w-full items-center justify-between gap-6 border border-[#1A1010]/12 bg-[#EFE8DB] p-4 max-[767px]:gap-4 max-[767px]:p-3 max-[479px]:flex-wrap"
+            className="flex w-fit max-w-full items-center justify-between gap-6 bg-transparent p-0 max-[767px]:gap-4 max-[479px]:flex-wrap"
             style={{ borderRadius: '0px' }}
           >
             <div className="flex items-center justify-start gap-6 max-[767px]:gap-4">
