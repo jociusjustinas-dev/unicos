@@ -5,6 +5,7 @@ import { NavigationBarSection } from '@/components/sections/NavigationBarSection
 import { FooterSection } from '@/components/sections/FooterSection';
 import { SfEnvelope, SfMapPin, SfPhone } from '@/components/icons/feather';
 import { KontaktaiFormSection } from '@/components/sections/KontaktaiFormSection';
+import { KontaktaiCtaSection } from '@/components/sections/KontaktaiCtaSection';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -112,6 +113,7 @@ export default function KontaktaiPage() {
       </section>
 
       <KontaktaiFormSection />
+      <KontaktaiCtaSection />
 
       <FooterSection />
     </main>
