@@ -3,6 +3,7 @@
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
 import { ApieUnicosHeroSection } from '@/components/sections/ApieUnicosHeroSection';
 import { UnicosWhySection } from '@/components/sections/UnicosWhySection';
+import { ApieTimelineSection } from '@/components/sections/ApieTimelineSection';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { FooterSection } from '@/components/sections/FooterSection';
 
@@ -16,6 +17,7 @@ export default function ApieUnicosPage() {
         subheading="Trys principai, kuriais grindžiame kiekvieną sprendimą."
         showHighlights={false}
       />
+      <ApieTimelineSection />
       <CtaSection />
       <FooterSection />
     </main>
