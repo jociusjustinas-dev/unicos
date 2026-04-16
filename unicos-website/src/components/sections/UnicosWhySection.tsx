@@ -30,7 +30,22 @@ function useRevealOnce<T extends HTMLElement>(options?: IntersectionObserverInit
   return [ref, visible] as const;
 }
 
-export function UnicosWhySection() {
+type UnicosWhySectionProps = {
+  heading?: React.ReactNode;
+  subheading?: string;
+  showHighlights?: boolean;
+};
+
+export function UnicosWhySection({
+  heading = (
+    <>
+      <span className="font-light">Kodėl </span>
+      <span className="font-medium">Unicos?</span>
+    </>
+  ),
+  subheading = '„Sugihara Pro“ tapo Unicos, kad būtume dar arčiau Jūsų. Mūsų tikslas – ne tik pristatyti užsakymus, bet ir būti Jūsų kokybės filtru bei ramybės garantu.',
+  showHighlights = true,
+}: UnicosWhySectionProps = {}) {
   const [headlineRef, headlineVisible] = useRevealOnce<HTMLDivElement>();
   const [gridRef, gridVisible] = useRevealOnce<HTMLDivElement>({ threshold: 0.3, rootMargin: '0px 0px -18% 0px' });
   const [hoveredBubble, setHoveredBubble] = React.useState<number | null>(null);
@@ -121,31 +136,32 @@ export function UnicosWhySection() {
             className="m-0 text-[#64151F] text-center tracking-[-2px] text-[clamp(36px,4vw,48px)] leading-[1.08] max-[767px]:tracking-[-1.5px]"
             style={{ fontFamily: "'Quiche Sans', Georgia, serif" }}
           >
-            <span className="font-light">Kodėl </span>
-            <span className="font-medium">Unicos?</span>
+            {heading}
           </h2>
 
           <p
             className="m-0 text-base leading-[1.55] text-[#1A1010]/75 max-[767px]:text-[15px]"
             style={BODY}
           >
-            „Sugihara Pro“ tapo Unicos, kad būtume dar arčiau Jūsų. Mūsų tikslas – ne tik pristatyti užsakymus, bet ir būti Jūsų kokybės filtru bei ramybės garantu.
+            {subheading}
           </p>
 
-          <div className="flex w-full max-w-[920px] flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-1 max-[479px]:gap-x-6">
-            {highlights.map(({ Icon, label }) => (
-              <span
-                key={label}
-                className="inline-flex items-center gap-3 text-[#64151F]"
-                style={BODY}
-              >
-                <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center">
-                  <Icon size={18} strokeWidth={1.75} className="block shrink-0 overflow-visible text-[#64151F]" aria-hidden />
+          {showHighlights ? (
+            <div className="flex w-full max-w-[920px] flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-1 max-[479px]:gap-x-6">
+              {highlights.map(({ Icon, label }) => (
+                <span
+                  key={label}
+                  className="inline-flex items-center gap-3 text-[#64151F]"
+                  style={BODY}
+                >
+                  <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center">
+                    <Icon size={18} strokeWidth={1.75} className="block shrink-0 overflow-visible text-[#64151F]" aria-hidden />
+                  </span>
+                  <span className="text-[13px] font-medium leading-snug normal-case sm:text-[14px]">{label}</span>
                 </span>
-                <span className="text-[13px] font-medium leading-snug normal-case sm:text-[14px]">{label}</span>
-              </span>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : null}
 
           <div className="w-full max-w-[200px] h-px bg-[#1A1010]/15 mt-2" role="separator" aria-hidden />
         </div>

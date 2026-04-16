@@ -52,7 +52,7 @@ export function ApieUnicosHeroSection() {
   const marqueeVisible = marqueeLoaded || marqueeInView;
 
   return (
-    <section className="relative z-[2] overflow-x-clip bg-[#ECE2D3] pt-36 pb-16 max-[767px]:pt-28 max-[767px]:pb-12">
+    <section className="relative z-[2] overflow-x-clip bg-[#ECE2D3] pt-44 pb-16 max-[767px]:pt-32 max-[767px]:pb-12">
       <div className="pointer-events-none absolute inset-0 bg-[#3B443A]/[0.05]" aria-hidden />
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
