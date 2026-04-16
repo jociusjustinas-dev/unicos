@@ -49,7 +49,7 @@ export function FooterSection({
     return (
       <footer
         id="kontaktai"
-        className="relative z-[1] overflow-x-hidden bg-[#EFE8DB] text-[#3B443A] pt-10 pb-8 max-[479px]:pt-8 max-[479px]:pb-6"
+        className="relative z-[1] overflow-x-hidden bg-white text-[#3B443A] pt-10 pb-8 max-[479px]:pt-8 max-[479px]:pb-6 border-t border-[#1A1010]/12"
       >
         <div className="relative z-[2] w-full max-w-[1800px] mx-auto px-16 max-[767px]:px-6 max-[479px]:px-4">
           <div className="flex items-center justify-between gap-10">

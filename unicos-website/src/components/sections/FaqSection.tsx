@@ -61,7 +61,7 @@ export function FaqSection() {
   };
 
   return (
-    <section id="duk" className="relative z-[2] overflow-x-clip bg-[#EFE8DB] py-20 max-[991px]:py-16 max-[479px]:py-12">
+    <section id="duk" className="relative z-[2] overflow-x-clip bg-white py-20 max-[991px]:py-16 max-[479px]:py-12">
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={wrapRef}
