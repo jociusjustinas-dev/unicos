@@ -6,7 +6,7 @@ import { FooterSection } from '@/components/sections/FooterSection';
 import { CmsGridSection } from '@/components/sections/CmsGridSection';
 import { FaqSection } from '@/components/sections/FaqSection';
 import { CtaSection } from '@/components/sections/CtaSection';
-import { OdosChallengesSection } from '@/components/sections/OdosChallengesSection';
+import { OdosAudienceSection } from '@/components/sections/OdosAudienceSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 
 const BODY: React.CSSProperties = {
@@ -152,7 +152,7 @@ export default function OdosSpecialistamsPage() {
         </div>
       </section>
 
-      <OdosChallengesSection />
+      <OdosAudienceSection />
       <CmsGridSection />
       <FaqSection backgroundClassName="bg-[#EFE8DB]" />
       <CtaSection />
