@@ -7,6 +7,7 @@ import { CmsGridSection } from '@/components/sections/CmsGridSection';
 import { FaqSection } from '@/components/sections/FaqSection';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { OdosAudienceSection } from '@/components/sections/OdosAudienceSection';
+import { OdosChallengesSection } from '@/components/sections/OdosChallengesSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 
 const BODY: React.CSSProperties = {
@@ -153,6 +154,7 @@ export default function OdosSpecialistamsPage() {
       </section>
 
       <OdosAudienceSection />
+      <OdosChallengesSection />
       <CmsGridSection />
       <FaqSection backgroundClassName="bg-[#EFE8DB]" />
       <CtaSection />
