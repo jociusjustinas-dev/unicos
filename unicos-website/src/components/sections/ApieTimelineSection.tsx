@@ -50,7 +50,7 @@ export function ApieTimelineSection() {
   };
 
   return (
-    <section className="relative z-[2] overflow-x-clip bg-white py-[clamp(5rem,12vw,7rem)] text-[#1A1010] max-[479px]:py-20">
+    <section className="relative z-[2] overflow-x-clip bg-[#EFE8DB] py-[clamp(5rem,12vw,7rem)] text-[#1A1010] max-[479px]:py-20">
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headingRef}
