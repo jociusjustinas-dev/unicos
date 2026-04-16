@@ -14,7 +14,7 @@ export default function KontaktaiPage() {
     <main className="bg-[#ECE2D3]">
       <NavigationBarSection forceLightSurface />
 
-      <section className="relative z-[2] overflow-x-clip border-b border-[#1A1010]/10 pt-32 pb-20 max-[767px]:pt-24 max-[767px]:pb-14">
+      <section className="relative z-[2] overflow-x-clip border-b border-[#1A1010]/10 pt-40 pb-20 max-[767px]:pt-28 max-[767px]:pb-14">
         <div className="mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
           <div className="flex flex-col gap-12 max-[767px]:gap-10">
             <div className="mx-auto flex w-full max-w-[980px] flex-col items-center gap-7 text-center max-[767px]:items-start max-[767px]:text-left">
@@ -47,7 +47,7 @@ export default function KontaktaiPage() {
 
             <div className="grid grid-cols-1 gap-4 min-[992px]:grid-cols-3">
               <article className="border border-[#1A1010]/12 bg-[#EFE8DB] p-7" style={{ borderRadius: '0px' }}>
-                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center border border-[#1A1010]/16 text-[#64151F]" style={{ borderRadius: '0px' }}>
+                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center border border-[#3B443A]/20 bg-[rgba(59,68,58,0.08)] text-[#3B443A]" style={{ borderRadius: '0px' }}>
                   <SfPhone size={17} className="text-current" aria-hidden />
                 </div>
                 <p className="m-0 uppercase text-[#64151F]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
@@ -66,7 +66,7 @@ export default function KontaktaiPage() {
               </article>
 
               <article className="border border-[#1A1010]/12 bg-[#EFE8DB] p-7" style={{ borderRadius: '0px' }}>
-                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center border border-[#1A1010]/16 text-[#64151F]" style={{ borderRadius: '0px' }}>
+                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center border border-[#3B443A]/20 bg-[rgba(59,68,58,0.08)] text-[#3B443A]" style={{ borderRadius: '0px' }}>
                   <SfEnvelope size={17} className="text-current" aria-hidden />
                 </div>
                 <p className="m-0 uppercase text-[#64151F]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
@@ -85,7 +85,7 @@ export default function KontaktaiPage() {
               </article>
 
               <article className="border border-[#1A1010]/12 bg-[#EFE8DB] p-7" style={{ borderRadius: '0px' }}>
-                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center border border-[#1A1010]/16 text-[#64151F]" style={{ borderRadius: '0px' }}>
+                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center border border-[#3B443A]/20 bg-[rgba(59,68,58,0.08)] text-[#3B443A]" style={{ borderRadius: '0px' }}>
                   <SfMapPin size={17} className="text-current" aria-hidden />
                 </div>
                 <p className="m-0 uppercase text-[#64151F]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
