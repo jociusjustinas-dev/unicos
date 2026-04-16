@@ -27,7 +27,12 @@ type BeautyFeature = {
   Icon: React.ComponentType<StreamlineFreehandIconProps>;
 };
 
-const features: BeautyFeature[] = [
+type BeautyCard = {
+  title: string;
+  description: string;
+};
+
+const defaultFeatures: BeautyFeature[] = [
   { title: 'Švari sudėtis', description: 'Produktai be parabenų, sulfatų ir tik agresyvių priedų.', Icon: SfSparkles },
   { title: 'Mokslu pagrįsta', description: 'Efektyvumas, įrodytas realiais klinikiniais tyrimais.', Icon: SfChatScience },
   { title: 'Tvarumas', description: 'Rūpinamės gamta: perdirbamos pakuotės ir atsakinga logistika.', Icon: SfLeaf },
@@ -59,7 +64,17 @@ function useInView(threshold = 0.1, rootMargin = '0px 0px -6% 0px') {
 
 const EASE_HALDEN = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
-export function ResponsibleBeautySection() {
+export function ResponsibleBeautySection({
+  eyebrowLabel,
+  heading,
+  subheading,
+  cards,
+}: {
+  eyebrowLabel?: string | null;
+  heading?: React.ReactNode;
+  subheading?: string | null;
+  cards?: BeautyCard[];
+}) {
   const gridRef = React.useRef<HTMLDivElement>(null);
   const [gridVisible, setGridVisible] = React.useState(false);
 
@@ -95,6 +110,25 @@ export function ResponsibleBeautySection() {
     ? 'opacity-100 translate-y-0'
     : 'opacity-0 translate-y-4 motion-reduce:opacity-100 motion-reduce:translate-y-0';
 
+  const resolvedEyebrow = eyebrowLabel === null ? null : eyebrowLabel ?? 'Mūsų standartas';
+  const resolvedHeading =
+    heading ??
+    <>
+      <span className="font-medium">Atsakingas</span>
+      <span className="font-light"> grožis</span>
+    </>;
+  const resolvedSubheading = subheading === null ? null : subheading ?? 'Mums svarbu ne tik galutinis rezultatas, bet ir kelias, kuriuo jis pasiekiamas. Renkamės partnerius, kuriems, kaip ir mums, rūpi tvarumas, etika ir atsakingas požiūris į aplinką.';
+
+  const resolvedFeatures: BeautyFeature[] = React.useMemo(() => {
+    const src = cards && cards.length ? cards : defaultFeatures.map(({ title, description }) => ({ title, description }));
+    const normalized: BeautyCard[] = new Array(6).fill(null).map((_, i) => src[i] ?? defaultFeatures[i] ?? { title: '', description: '' });
+    return normalized.map((c, i) => ({
+      title: c.title,
+      description: c.description,
+      Icon: defaultFeatures[i]?.Icon ?? SfSparkles,
+    }));
+  }, [cards]);
+
   return (
     <section className="relative z-[2] bg-white py-20 max-[767px]:py-14 text-[#1A1010]">
       <div className="relative z-[2] w-full max-w-[1800px] mx-auto px-16 max-[767px]:px-6 max-[479px]:px-4">
@@ -103,41 +137,43 @@ export function ResponsibleBeautySection() {
             ref={headerRef}
             className={`flex flex-col items-center text-center gap-5 max-[767px]:gap-4 transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0 ${headerReveal}`}
           >
-            <div className="flex items-center justify-center gap-2">
-              <div className="w-2 h-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
-              <span
-                className="text-[#3B443A] uppercase text-center"
-                style={{
-                  fontSize: '11px',
-                  fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
-                  fontWeight: 500,
-                  letterSpacing: '0.12em',
-                }}
-              >
-                Mūsų standartas
-              </span>
-            </div>
+            {resolvedEyebrow ? (
+              <div className="flex items-center justify-center gap-2">
+                <div className="w-2 h-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
+                <span
+                  className="text-[#3B443A] uppercase text-center"
+                  style={{
+                    fontSize: '11px',
+                    fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
+                    fontWeight: 500,
+                    letterSpacing: '0.12em',
+                  }}
+                >
+                  {resolvedEyebrow}
+                </span>
+              </div>
+            ) : null}
             <h2
               className="m-0 text-[#3B443A] text-center tracking-[-2px] text-[clamp(32px,3.8vw,48px)] leading-[1.08] max-[767px]:tracking-[-1.5px]"
               style={{ fontFamily: "'Quiche Sans', Georgia, serif" }}
             >
-              <span className="font-medium">Atsakingas</span>
-              <span className="font-light"> grožis</span>
+              {resolvedHeading}
             </h2>
-            <p
-              className="m-0 max-w-[720px] text-base leading-[1.55] text-[#1A1010] max-[767px]:text-[15px]"
-              style={BODY}
-            >
-              Mums svarbu ne tik galutinis rezultatas, bet ir kelias, kuriuo jis pasiekiamas. Renkamės partnerius,
-              kuriems, kaip ir mums, rūpi tvarumas, etika ir atsakingas požiūris į aplinką.
-            </p>
+            {resolvedSubheading ? (
+              <p
+                className="m-0 max-w-[720px] text-base leading-[1.55] text-[#1A1010] max-[767px]:text-[15px]"
+                style={BODY}
+              >
+                {resolvedSubheading}
+              </p>
+            ) : null}
           </div>
 
           <div
             ref={gridRef}
             className="grid grid-cols-3 gap-4 max-[991px]:grid-cols-2 max-[479px]:grid-cols-1 max-[767px]:gap-3"
           >
-            {features.map((feature, i) => {
+            {resolvedFeatures.map((feature, i) => {
               /* Halden reference: 700ms, ~100ms stagger kortelėms */
               const entranceDelay = `${i * 100}ms`;
               const cardTransition = [

@@ -15,6 +15,20 @@ type Step = {
   bullets: string[];
 };
 
+type ProcessStepInput = {
+  number: string;
+  title: string;
+  description: string;
+};
+
+type Props = {
+  heading?: React.ReactNode;
+  introText?: string | null;
+  steps?: ProcessStepInput[];
+  ctaLabel?: string | null;
+  ctaHref?: string;
+};
+
 const steps: Step[] = [
   {
     number: '1',
@@ -49,7 +63,13 @@ const reveal = (visible: boolean, delayMs = 0) =>
     transition: `opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) ${delayMs}ms, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) ${delayMs}ms`,
   }) satisfies React.CSSProperties;
 
-export function ProcessSection() {
+export function ProcessSection({
+  heading,
+  introText,
+  steps: inputSteps,
+  ctaLabel,
+  ctaHref = '#kontaktai',
+}: Props) {
   const [headingRef, headingVisible] = useInViewOnce<HTMLDivElement>();
   const [processRef, processVisible] = useInViewOnce<HTMLDivElement>();
   const [lineRef, lineVisible] = useInViewOnce<HTMLDivElement>();
@@ -65,6 +85,29 @@ export function ProcessSection() {
     [step2Ref, step2Visible],
     [step3Ref, step3Visible],
   ] as const;
+
+  const resolvedHeading =
+    heading ??
+    <>
+      <span className="font-medium text-[#3B443A]">Kaip tapti </span>
+      <span className="font-light text-[#3B443A]">partneriu?</span>
+    </>;
+
+  const resolvedIntro = introText === null ? null : introText ?? 'Paprastas ir aiškus kelias partnerystės link.';
+
+  const resolvedSteps: Step[] = React.useMemo(() => {
+    if (!inputSteps?.length) return steps;
+
+    const normalized = new Array(4).fill(null).map((_, i) => inputSteps[i] ?? inputSteps[0] ?? { number: String(i + 1), title: '', description: '' });
+    return normalized.map((s) => ({
+      number: s.number,
+      title: s.title,
+      intro: s.description,
+      bullets: [],
+    }));
+  }, [inputSteps]);
+
+  const resolvedCtaLabel = ctaLabel === null ? null : ctaLabel ?? 'Pradėti registraciją';
 
   return (
     <section
@@ -85,12 +128,16 @@ export function ProcessSection() {
               fontWeight: 300,
             }}
           >
-            <span className="font-medium text-[#3B443A]">Kaip tapti </span>
-            <span className="font-light text-[#3B443A]">partneriu?</span>
+            {resolvedHeading}
           </h2>
-          <p className="m-0 max-w-[40ch] text-[#1A1010]/80" style={{ ...BODY, fontSize: 'clamp(16px, 1.5vw, 18px)', lineHeight: 1.55, fontWeight: 400 }}>
-            Paprastas ir aiškus kelias partnerystės link.
-          </p>
+          {resolvedIntro ? (
+            <p
+              className="m-0 max-w-[40ch] text-[#1A1010]/80"
+              style={{ ...BODY, fontSize: 'clamp(16px, 1.5vw, 18px)', lineHeight: 1.55, fontWeight: 400 }}
+            >
+              {resolvedIntro}
+            </p>
+          ) : null}
         </div>
 
         <div ref={processRef} className="relative" style={reveal(processVisible, 40)}>
@@ -106,7 +153,7 @@ export function ProcessSection() {
           />
 
           <div className="relative z-[1] grid grid-cols-1 gap-16 min-[640px]:grid-cols-2 min-[1024px]:grid-cols-4 min-[640px]:gap-x-10 min-[640px]:gap-y-16 min-[1024px]:gap-x-6 min-[1024px]:gap-y-0">
-            {steps.map((step, i) => {
+            {resolvedSteps.map((step, i) => {
               const [ref, vis] = stepRefs[i];
               return (
                 <div
@@ -148,19 +195,24 @@ export function ProcessSection() {
                     <p className="m-0 text-[#1A1010]/88" style={{ ...BODY, fontSize: '15px', lineHeight: 1.55, fontWeight: 400 }}>
                       {step.intro}
                     </p>
-                    <ul className="m-0 flex list-none flex-col gap-2 p-0 text-[#1A1010]/78" style={{ ...BODY, fontSize: '14px', lineHeight: 1.5 }}>
-                      {step.bullets.map((b) => (
-                        <li key={b} className="inline-flex items-center justify-center gap-1 text-center">
-                          <span className="inline-block text-[#3B443A] text-[8px] leading-none" aria-hidden>
-                            ■{' '}
-                          </span>
-                          {b}
-                          <span className="inline-block text-[#3B443A] text-[8px] leading-none" aria-hidden>
-                            {' '}■
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                    {step.bullets.length ? (
+                      <ul
+                        className="m-0 flex list-none flex-col gap-2 p-0 text-[#1A1010]/78"
+                        style={{ ...BODY, fontSize: '14px', lineHeight: 1.5 }}
+                      >
+                        {step.bullets.map((b) => (
+                          <li key={b} className="inline-flex items-center justify-center gap-1 text-center">
+                            <span className="inline-block text-[#3B443A] text-[8px] leading-none" aria-hidden>
+                              ■{' '}
+                            </span>
+                            {b}
+                            <span className="inline-block text-[#3B443A] text-[8px] leading-none" aria-hidden>
+                              {' '}■
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                   </div>
                 </div>
               );
@@ -168,11 +220,13 @@ export function ProcessSection() {
           </div>
         </div>
 
-        <div ref={ctaRef} className="mt-16 flex justify-center max-[767px]:mt-14 max-[479px]:mt-12" style={reveal(ctaVisible, 80)}>
-          <CtaLink href="#kontaktai" variant="secondary" className="min-w-[min(100%,280px)] justify-center">
-            Pradėti registraciją
-          </CtaLink>
-        </div>
+        {resolvedCtaLabel ? (
+          <div ref={ctaRef} className="mt-16 flex justify-center max-[767px]:mt-14 max-[479px]:mt-12" style={reveal(ctaVisible, 80)}>
+            <CtaLink href={ctaHref} variant="secondary" className="min-w-[min(100%,280px)] justify-center">
+              {resolvedCtaLabel}
+            </CtaLink>
+          </div>
+        ) : null}
       </div>
     </section>
   );
