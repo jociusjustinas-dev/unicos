@@ -28,8 +28,28 @@ function MarqueeSet() {
 }
 
 export function ApieUnicosHeroSection() {
-  const [headlineRef, headlineVisible] = useInViewOnce<HTMLDivElement>({ threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
-  const [marqueeRef, marqueeVisible] = useInViewOnce<HTMLDivElement>({ threshold: 0.05, rootMargin: '0px 0px -2% 0px' });
+  const [headlineRef, headlineInView] = useInViewOnce<HTMLDivElement>({ threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+  const [marqueeRef, marqueeInView] = useInViewOnce<HTMLDivElement>({ threshold: 0.05, rootMargin: '0px 0px -2% 0px' });
+  const [headlineLoaded, setHeadlineLoaded] = React.useState(false);
+  const [marqueeLoaded, setMarqueeLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    const timers: Array<ReturnType<typeof setTimeout>> = [];
+    const runEntrance = () => {
+      timers.push(setTimeout(() => setHeadlineLoaded(true), 80));
+      timers.push(setTimeout(() => setMarqueeLoaded(true), 260));
+    };
+
+    const onPreloaderDone = () => runEntrance();
+    window.addEventListener('preloader:done', onPreloaderDone);
+    return () => {
+      window.removeEventListener('preloader:done', onPreloaderDone);
+      timers.forEach((t) => clearTimeout(t));
+    };
+  }, []);
+
+  const headlineVisible = headlineLoaded || headlineInView;
+  const marqueeVisible = marqueeLoaded || marqueeInView;
 
   return (
     <section className="relative z-[2] overflow-x-clip bg-[#ECE2D3] pt-36 pb-16 max-[767px]:pt-28 max-[767px]:pb-12">
