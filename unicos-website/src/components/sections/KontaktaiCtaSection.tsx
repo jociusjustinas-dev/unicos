@@ -73,9 +73,20 @@ export function KontaktaiCtaSection() {
                 </p>
               </div>
               <div>
-                <CtaLink href="#" variant="secondary">
-                  Pildyti paraišką →
-                </CtaLink>
+                <a
+                  href="#"
+                  className="group relative inline-flex min-h-[44px] items-center justify-center overflow-hidden border border-[#EFE8DB]/22 bg-[#EFE8DB] px-5 py-3 no-underline text-[#1A1010] transition-[background-color,border-color,color,transform,opacity] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-[#E6DDD0] active:translate-y-px"
+                  style={{ ...BODY, borderRadius: '0px' }}
+                >
+                  <span className="pointer-events-none relative z-[1] h-[1.5em] overflow-hidden">
+                    <span
+                      className="block text-[14px] font-medium leading-[1.5em] transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:-translate-y-[1.5em]"
+                      style={{ ...BODY, textShadow: '0 1.5em 0 #1A1010' }}
+                    >
+                      Pildyti paraišką
+                    </span>
+                  </span>
+                </a>
               </div>
             </article>
 
@@ -111,8 +122,8 @@ export function KontaktaiCtaSection() {
                 </p>
               </div>
               <div className="relative z-[1]">
-                <CtaLink href="#" variant="primary">
-                  Registruotis konsultacijai →
+                <CtaLink href="#" variant="glass">
+                  Registruotis konsultacijai
                 </CtaLink>
               </div>
             </article>
@@ -145,8 +156,8 @@ export function KontaktaiCtaSection() {
                 Artimiausi seminarai ir registracija.
               </p>
             </div>
-            <CtaLink href="#" variant="primary">
-              Akademija →
+            <CtaLink href="#" variant="secondary">
+              Akademija
             </CtaLink>
           </article>
         </div>
