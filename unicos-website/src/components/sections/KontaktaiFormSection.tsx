@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { SfEnvelope, SfMapPin, SfPhone } from '@/components/icons/feather';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
 
 const BODY: React.CSSProperties = {
@@ -44,8 +43,6 @@ const INITIAL_VALUES: FormValues = {
 export function KontaktaiFormSection() {
   const [headlineRef, headlineVisible] = useInViewOnce<HTMLDivElement>();
   const [formRef, formVisible] = useInViewOnce<HTMLDivElement>();
-  const [cardsRef, cardsVisible] = useInViewOnce<HTMLDivElement>();
-  const [logosRef, logosVisible] = useInViewOnce<HTMLDivElement>();
 
   const [values, setValues] = React.useState<FormValues>(INITIAL_VALUES);
   const [errors, setErrors] = React.useState<FormErrors>({});
@@ -165,7 +162,7 @@ export function KontaktaiFormSection() {
     'h-12 w-full border bg-[rgba(239,232,219,0.08)] px-4 text-[#EFE8DB] placeholder:text-[#EFE8DB]/48 outline-none transition-[border-color,color] duration-200 focus:border-[#EFE8DB]/65';
 
   return (
-    <section className="relative z-[2] overflow-x-clip bg-[#ECE2D3] py-20 max-[767px]:py-14" aria-labelledby="kontaktai-form-heading">
+    <section className="relative z-[2] overflow-x-clip bg-[#3B443A] py-20 max-[767px]:py-14" aria-labelledby="kontaktai-form-heading">
       <div className="mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div className="mx-auto w-full max-w-[912px]">
           <div
@@ -179,26 +176,26 @@ export function KontaktaiFormSection() {
             }}
           >
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
-              <span className="uppercase text-[#64151F]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
+              <span className="h-2 w-2 shrink-0 bg-[#EFE8DB]" style={{ borderRadius: '0px' }} aria-hidden />
+              <span className="uppercase text-[#EFE8DB]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
                 Kontaktai
               </span>
             </div>
             <h2
               id="kontaktai-form-heading"
-              className="m-0 max-w-[15ch] text-[#64151F] tracking-[-0.03em]"
+              className="m-0 max-w-[15ch] text-[#EFE8DB] tracking-[-0.03em]"
               style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: 'clamp(2.2rem,5vw,4rem)', lineHeight: 1.05, fontWeight: 300 }}
             >
               Parašykite mums
             </h2>
-            <p className="m-0 max-w-[62ch] text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>
+            <p className="m-0 max-w-[62ch] text-[#EFE8DB]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>
               Užpildykite formą ir atsakysime per 24 valandas darbo dienomis.
             </p>
           </div>
 
           <div
             ref={formRef}
-            className="border border-[#3B443A]/24 bg-[#3B443A] p-8 max-[767px]:p-6"
+            className="border border-[#EFE8DB]/20 bg-[#3B443A] p-8 max-[767px]:p-6"
             style={{
               borderRadius: '0px',
               opacity: formVisible ? 1 : 0,
@@ -402,7 +399,7 @@ export function KontaktaiFormSection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="border border-[#EFE8DB]/22 bg-[#EFE8DB] px-5 py-3 text-[#1A1010] transition-opacity duration-200 hover:opacity-85 disabled:cursor-not-allowed disabled:opacity-65"
+                    className="border border-[#64151F] bg-[#64151F] px-5 py-3 text-[#EFE8DB] transition-[background-color,border-color,color,transform] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#4A0F17] hover:bg-[#4A0F17] hover:text-[#EFE8DB] active:translate-y-px disabled:cursor-not-allowed disabled:opacity-65"
                     style={{ ...BODY, borderRadius: '0px', fontSize: '14px', lineHeight: 1, fontWeight: 500 }}
                   >
                     {isSubmitting ? 'Siunčiama…' : 'Siųsti žinutę'}
@@ -412,108 +409,8 @@ export function KontaktaiFormSection() {
             )}
           </div>
 
-          <div ref={cardsRef} className="mt-6 grid grid-cols-1 gap-4 min-[992px]:grid-cols-3">
-            {[
-              {
-                icon: <SfEnvelope size={17} className="text-current" aria-hidden />,
-                title: 'info@unicos.lt',
-                desc: 'Atsakome per 24 valandas darbo dienomis.',
-                href: 'mailto:info@unicos.lt',
-              },
-              {
-                icon: <SfPhone size={17} className="text-current" aria-hidden />,
-                title: '(+370 5) 270 57 12',
-                desc: 'B2B linija, darbo dienomis 8:00-17:00.',
-                href: 'tel:+37052705712',
-              },
-              {
-                icon: <SfMapPin size={17} className="text-current" aria-hidden />,
-                title: 'Metalo g. 13a, LT - 02190, Vilnius',
-                desc: 'Aplankymas tik iš anksto susitarus su vadybininku.',
-                href: 'https://maps.google.com/?q=Metalo+g.+13a,+Vilnius',
-              },
-            ].map((card, index) => (
-              <article
-                key={card.title}
-                className="border border-[#3B443A]/24 bg-[#3B443A] p-7 text-[#EFE8DB]"
-                style={{
-                  borderRadius: '0px',
-                  opacity: cardsVisible ? 1 : 0,
-                  transform: cardsVisible ? 'translateY(0)' : 'translateY(18px)',
-                  transition: `opacity 0.65s ease-out ${index * 90}ms, transform 0.65s ease-out ${index * 90}ms`,
-                }}
-              >
-                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center border border-[#EFE8DB]/20 bg-[rgba(239,232,219,0.08)] text-[#EFE8DB]" style={{ borderRadius: '0px' }}>
-                  {card.icon}
-                </div>
-                <a
-                  href={card.href}
-                  target={card.href.startsWith('http') ? '_blank' : undefined}
-                  rel={card.href.startsWith('http') ? 'noreferrer' : undefined}
-                  className="m-0 block no-underline text-[#EFE8DB] transition-opacity duration-200 hover:opacity-70"
-                  style={{ ...BODY, fontSize: '19px', lineHeight: 1.25, fontWeight: 500 }}
-                >
-                  {card.title}
-                </a>
-                <p className="mt-3 mb-0 text-[#EFE8DB]/68" style={{ ...BODY, fontSize: '14px', lineHeight: 1.5, fontWeight: 400 }}>
-                  {card.desc}
-                </p>
-              </article>
-            ))}
-          </div>
-
-          <div
-            ref={logosRef}
-            className="mt-12 overflow-hidden border-y border-[#1A1010]/12 py-5"
-            style={{
-              opacity: logosVisible ? 1 : 0,
-              filter: logosVisible ? 'blur(0px)' : 'blur(12px)',
-              transition: 'opacity 0.7s ease-out, filter 0.7s ease-out',
-            }}
-          >
-            <div className="mb-4 flex items-center justify-center max-[767px]:justify-start">
-              <span className="uppercase text-[#1A1010]/66" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
-                Partneriai
-              </span>
-            </div>
-            <div className="relative">
-              <div className="pointer-events-none absolute inset-y-0 left-0 z-[2] w-14 bg-gradient-to-r from-[#ECE2D3] to-transparent" aria-hidden />
-              <div className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-14 bg-gradient-to-l from-[#ECE2D3] to-transparent" aria-hidden />
-              <div className="kontaktai-logo-marquee flex w-max items-center gap-12 text-[#1A1010]/56 max-[767px]:gap-8">
-                {Array.from({ length: 3 }).map((_, groupIndex) => (
-                  <div key={`logos-${groupIndex}`} className="flex items-center gap-12 max-[767px]:gap-8">
-                    {['/comfort zone.svg', '/Guinot logo.svg', '/Mary Cohr logo.svg'].map((logo) => (
-                      <img
-                        key={`${groupIndex}-${logo}`}
-                        src={logo}
-                        alt=""
-                        aria-hidden
-                        className="h-7 w-auto opacity-75 max-[767px]:h-6"
-                      />
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-      <style jsx>{`
-        .kontaktai-logo-marquee {
-          animation: kontaktai-marquee 30s linear infinite;
-        }
-        .kontaktai-logo-marquee:hover {
-          animation-play-state: paused;
-        }
-        @keyframes kontaktai-marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-33.333%);
-          }
-        }
-      `}</style>
     </section>
   );
 }
