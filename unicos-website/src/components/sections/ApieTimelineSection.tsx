@@ -50,8 +50,8 @@ export function ApieTimelineSection() {
   };
 
   return (
-    <section className="relative z-[2] overflow-x-clip bg-white py-[clamp(5rem,12vw,7rem)] text-[#1A1010] max-[479px]:py-20" style={{ backgroundColor: '#FFFFFF' }}>
-      <div className="relative z-[2] mx-auto w-full max-w-[1800px] bg-white px-16 max-[767px]:px-6 max-[479px]:px-4" style={{ backgroundColor: '#FFFFFF' }}>
+    <section className="relative z-[2] overflow-x-clip bg-white py-[clamp(5rem,12vw,7rem)] text-[#1A1010] max-[479px]:py-20">
+      <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headingRef}
           className="mb-12 flex items-center justify-between gap-4 max-[767px]:mb-10"
@@ -105,13 +105,12 @@ export function ApieTimelineSection() {
             transition: 'opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1)',
           }}
         >
-          <div className="relative bg-white" style={{ backgroundColor: '#FFFFFF' }}>
+          <div className="relative">
             <div className="pointer-events-none absolute left-0 right-0 top-[39px] z-[0] h-px bg-[#1A1010]/18" aria-hidden />
 
             <div
               ref={trackRef}
-              className="relative z-[1] flex snap-x snap-mandatory gap-14 overflow-x-auto bg-white pb-2 pr-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden max-[767px]:gap-10"
-              style={{ backgroundColor: '#FFFFFF' }}
+              className="relative z-[1] flex snap-x snap-mandatory gap-14 overflow-x-auto pb-2 pr-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden max-[767px]:gap-10"
             >
               {milestones.map((item, index) => (
                 <article
