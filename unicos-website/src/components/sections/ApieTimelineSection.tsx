@@ -40,6 +40,7 @@ export function ApieTimelineSection() {
   const [headingRef, headingVisible] = useInViewOnce<HTMLDivElement>();
   const [timelineRef, timelineVisible] = useInViewOnce<HTMLDivElement>({ threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
   const trackRef = React.useRef<HTMLDivElement | null>(null);
+  const [hoveredYear, setHoveredYear] = React.useState<string | null>(null);
 
   const scrollTrack = (direction: 'prev' | 'next') => {
     const el = trackRef.current;
@@ -114,9 +115,11 @@ export function ApieTimelineSection() {
               {milestones.map((item, index) => (
                 <article
                   key={item.year}
-                  className="flex min-w-[280px] max-w-[280px] snap-start flex-col gap-6 max-[767px]:min-w-[240px] max-[767px]:max-w-[240px]"
+                  className="flex min-w-[280px] max-w-[280px] snap-start flex-col gap-6 transition-opacity duration-300 max-[767px]:min-w-[240px] max-[767px]:max-w-[240px]"
+                  onMouseEnter={() => setHoveredYear(item.year)}
+                  onMouseLeave={() => setHoveredYear(null)}
                   style={{
-                    opacity: timelineVisible ? 1 : 0,
+                    opacity: timelineVisible ? (hoveredYear && hoveredYear !== item.year ? 0.46 : 1) : 0,
                     transform: timelineVisible ? 'translateY(0)' : 'translateY(18px)',
                     transition: `opacity 0.65s cubic-bezier(0.22,1,0.36,1) ${index * 80}ms, transform 0.65s cubic-bezier(0.22,1,0.36,1) ${index * 80}ms`,
                   }}
@@ -124,7 +127,7 @@ export function ApieTimelineSection() {
                   <div className="relative z-[2] flex h-20 w-20 items-center justify-center border border-[#1A1010]/12 bg-[#3B443A]" style={{ borderRadius: '0px' }}>
                     <span
                       className="text-[#EFE8DB]"
-                      style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: '30px', lineHeight: 1, fontWeight: 300 }}
+                      style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: '26px', lineHeight: 1, fontWeight: 300 }}
                     >
                       {item.year}
                     </span>
