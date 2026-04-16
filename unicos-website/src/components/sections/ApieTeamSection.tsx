@@ -19,25 +19,25 @@ const teamMembers: TeamMember[] = [
     name: 'Aistė Kazlauskaitė',
     role: 'Įkūrėja ir vadovė',
     description: '25 metai profesionalios kosmetikos rinkoje.',
-    image: '/mega-menu/1.jpeg',
+    image: '/Professional Woman Indoors.png',
   },
   {
     name: 'Mantas Jankauskas',
     role: 'Vadybos komandos vadovas',
     description: 'Rūpinasi, kad kiekvienas partneris jaustųsi palaikomas.',
-    image: '/mega-menu/2.jpeg',
+    image: '/Professional Woman Indoors.png',
   },
   {
     name: 'Rūta Vaitkutė',
     role: 'Akademijos vadovė',
     description: 'Organizuoja mokymus ir kuria edukacinį turinį.',
-    image: '/mega-menu/3.jpeg',
+    image: '/Professional Woman Indoors.png',
   },
   {
     name: 'Tomas Petrauskas',
     role: 'Logistikos vadovas',
     description: 'Užtikrina, kad prekės pasiektų Jus per 24 h.',
-    image: '/mega-menu/4.jpeg',
+    image: '/Professional Woman Indoors.png',
   },
 ];
 
