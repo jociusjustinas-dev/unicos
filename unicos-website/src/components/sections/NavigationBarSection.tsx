@@ -19,7 +19,7 @@ interface DropdownColumn {
 const SPRENDIMAI_SEGMENTS = [
   {
     title: 'Odos priežiūros specialistams',
-    href: '/sprendimai/odos-specialistams',
+    href: '#',
     image: '/mega-menu/1.jpeg',
     accent: '#64151F',
   },
@@ -419,7 +419,7 @@ function MobileMenu({ open }: { open: boolean }) {
           >
             Prisijungti
           </a>
-          <CtaLink href="/tapkite-partneriu" variant="secondary" className="self-center">
+          <CtaLink href="#" variant="secondary" className="self-center">
             Tapti partneriu
           </CtaLink>
         </div>
@@ -686,7 +686,7 @@ export function NavigationBarSection({
               </div>
             </a>
 
-            <CtaLink href="/tapkite-partneriu" variant="secondary" className="whitespace-nowrap">
+            <CtaLink href="#" variant="secondary" className="whitespace-nowrap">
               Tapti partneriu
             </CtaLink>
             </div>
