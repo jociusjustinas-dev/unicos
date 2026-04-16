@@ -62,6 +62,7 @@ export function FooterSection({
             <a href="/" className="inline-block h-6 max-[479px]:h-[18px] w-fit">
               <span
                 aria-hidden
+                className="block"
                 style={{
                   width: '176px',
                   height: '24px',
