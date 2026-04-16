@@ -62,15 +62,15 @@ export function FooterSection({
             <a href="/" className="inline-block h-6 max-[479px]:h-[18px] w-fit">
               <span
                 aria-hidden
-                className="block bg-[#3B443A]"
                 style={{
                   width: '176px',
                   height: '24px',
-                  WebkitMaskImage: 'url("/Group%201.svg")',
+                  backgroundColor: '#3B443A',
+                  WebkitMaskImage: 'url("/Group 1.svg")',
                   WebkitMaskRepeat: 'no-repeat',
                   WebkitMaskPosition: 'center',
                   WebkitMaskSize: 'contain',
-                  maskImage: 'url("/Group%201.svg")',
+                  maskImage: 'url("/Group 1.svg")',
                   maskRepeat: 'no-repeat',
                   maskPosition: 'center',
                   maskSize: 'contain',

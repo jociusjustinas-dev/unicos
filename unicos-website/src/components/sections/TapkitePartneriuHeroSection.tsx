@@ -18,7 +18,7 @@ const LABEL: React.CSSProperties = {
 };
 
 const INPUT_BASE_CLASS =
-  'w-full appearance-none border border-[rgba(26,16,16,0.12)] bg-[rgba(26,16,16,0.05)] px-4 py-3 text-base leading-6 font-normal text-[#1A1010] placeholder:text-[#1A1010]/48 outline-none transition-[border-color,color] duration-200 focus:border-[#64151F]/40 focus:text-[#1A1010] max-[767px]:text-sm max-[767px]:leading-5 max-[767px]:py-[10px] max-[767px]:px-3';
+  'w-full appearance-none rounded-none border border-[rgba(239,232,219,0.08)] bg-[rgba(239,232,219,0.08)] px-4 py-3 text-base leading-6 font-normal text-[rgba(239,232,219,0.48)] placeholder:text-[rgba(239,232,219,0.48)] outline-none transition-[border-color,color] duration-200 focus:border-[rgba(239,232,219,0.48)] focus:text-[#EFE8DB] max-[767px]:text-sm max-[767px]:leading-5 max-[767px]:py-[10px] max-[767px]:px-3';
 
 function ChevronDownIcon({ className = '' }: { className?: string }) {
   return (
@@ -351,21 +351,21 @@ export function TapkitePartneriuHeroSection() {
             <div
               className="mb-0 p-8 max-[767px]:p-6"
               style={{
-                backgroundColor: '#EFE8DB',
-                color: 'rgba(26,16,16,0.88)',
+                backgroundColor: '#1A1010',
+                color: 'rgba(239,232,219,0.88)',
                 borderRadius: '0px',
-                border: '1px solid rgba(26,16,16,0.12)',
+                border: '1px solid rgba(239,232,219,0.08)',
               }}
             >
               {isSubmitted ? (
                 <div className="flex flex-col gap-6">
                   <h3
-                    className="m-0 text-[#1A1010]"
+                    className="m-0 text-[#EFE8DB]"
                     style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: 'clamp(2rem,3vw,2.4rem)', lineHeight: 1.1, fontWeight: 300 }}
                   >
                     Ačiū! Parašymas išsiųstas.
                   </h3>
-                  <p className="m-0 text-[#1A1010]/86" style={{ ...BODY, fontSize: '16px', lineHeight: '1.55', fontWeight: 400 }}>
+                  <p className="m-0 text-[#EFE8DB]/86" style={{ ...BODY, fontSize: '16px', lineHeight: '1.55', fontWeight: 400 }}>
                     Jūsų duomenys saugūs. Atsakysime per 24 val. darbo dienomis.
                   </p>
                   <button
@@ -374,7 +374,7 @@ export function TapkitePartneriuHeroSection() {
                       setIsSubmitted(false);
                       setErrors({});
                     }}
-                    className="border border-[#1A1010]/32 bg-transparent px-4 py-3 text-[#1A1010] transition-opacity duration-200 hover:opacity-75"
+                    className="border border-[#EFE8DB]/32 bg-transparent px-4 py-3 text-[#EFE8DB] transition-opacity duration-200 hover:opacity-75"
                     style={{ ...BODY, borderRadius: '0px', fontSize: '14px', fontWeight: 500 }}
                   >
                     Pildyti dar kartą
@@ -384,7 +384,7 @@ export function TapkitePartneriuHeroSection() {
                 <form onSubmit={onSubmit} noValidate className="flex flex-col gap-12 w-full max-[767px]:gap-8">
                   {errors.form ? (
                     <div
-                      className="border border-[#64151F]/40 bg-[rgba(100,21,31,0.16)] px-4 py-3 text-[#64151F]"
+                      className="border border-[#64151F]/40 bg-[rgba(100,21,31,0.22)] px-4 py-3 text-[#EFE8DB]"
                       role="alert"
                       style={{ ...BODY, borderRadius: '0px', fontSize: '14px', lineHeight: 1.45 }}
                     >
@@ -396,7 +396,7 @@ export function TapkitePartneriuHeroSection() {
                     {/* Row 1 */}
                     <div className="grid grid-cols-2 gap-4 max-[767px]:gap-3 max-[479px]:grid-cols-1">
                       <div className="flex flex-col gap-2 w-full">
-                        <label htmlFor="partner-full-name" className="uppercase" style={{ ...LABEL, color: 'rgba(100,21,31,0.72)', fontSize: '12px' }}>
+                        <label htmlFor="partner-full-name" className="uppercase" style={{ ...LABEL, color: 'rgba(239,232,219,0.64)', fontSize: '12px' }}>
                           Vardas, pavardė *
                         </label>
                         <input
@@ -408,14 +408,18 @@ export function TapkitePartneriuHeroSection() {
                           placeholder="Vardenis Pavardenis"
                           required
                           disabled={isSubmitting}
-                          className={`${INPUT_BASE_CLASS} ${errors.fullName ? 'border-[#64151F]' : ''}`}
+                          className={`${INPUT_BASE_CLASS} ${errors.fullName ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
                           style={{ ...BODY, borderRadius: '0px', fontSize: '15px', lineHeight: 1.45 }}
                         />
-                          {errors.fullName ? <p className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>{errors.fullName}</p> : null}
+                          {errors.fullName ? (
+                            <p className="m-0 text-[#F3C8CE]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>
+                              {errors.fullName}
+                            </p>
+                          ) : null}
                       </div>
 
                       <div className="flex flex-col gap-2 w-full">
-                        <label htmlFor="partner-email" className="uppercase" style={{ ...LABEL, color: 'rgba(100,21,31,0.72)', fontSize: '12px' }}>
+                        <label htmlFor="partner-email" className="uppercase" style={{ ...LABEL, color: 'rgba(239,232,219,0.64)', fontSize: '12px' }}>
                           El. paštas *
                         </label>
                         <input
@@ -428,17 +432,21 @@ export function TapkitePartneriuHeroSection() {
                           placeholder="vardas@imone.lt"
                           required
                           disabled={isSubmitting}
-                          className={`${INPUT_BASE_CLASS} ${errors.email ? 'border-[#64151F]' : ''}`}
+                          className={`${INPUT_BASE_CLASS} ${errors.email ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
                           style={{ ...BODY, borderRadius: '0px', fontSize: '15px', lineHeight: 1.45 }}
                         />
-                          {errors.email ? <p className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>{errors.email}</p> : null}
+                          {errors.email ? (
+                            <p className="m-0 text-[#F3C8CE]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>
+                              {errors.email}
+                            </p>
+                          ) : null}
                       </div>
                     </div>
 
                     {/* Row 2 */}
                     <div className="grid grid-cols-2 gap-4 max-[767px]:gap-3 max-[479px]:grid-cols-1">
                       <div className="flex flex-col gap-2 w-full">
-                        <label htmlFor="partner-phone" className="uppercase" style={{ ...LABEL, color: 'rgba(100,21,31,0.72)', fontSize: '12px' }}>
+                        <label htmlFor="partner-phone" className="uppercase" style={{ ...LABEL, color: 'rgba(239,232,219,0.64)', fontSize: '12px' }}>
                           Telefonas *
                         </label>
                         <input
@@ -450,14 +458,18 @@ export function TapkitePartneriuHeroSection() {
                           placeholder="+370 600 00000"
                           required
                           disabled={isSubmitting}
-                          className={`${INPUT_BASE_CLASS} ${errors.phone ? 'border-[#64151F]' : ''}`}
+                          className={`${INPUT_BASE_CLASS} ${errors.phone ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
                           style={{ ...BODY, borderRadius: '0px', fontSize: '15px', lineHeight: 1.45 }}
                         />
-                          {errors.phone ? <p className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>{errors.phone}</p> : null}
+                          {errors.phone ? (
+                            <p className="m-0 text-[#F3C8CE]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>
+                              {errors.phone}
+                            </p>
+                          ) : null}
                       </div>
 
                       <div className="flex flex-col gap-2 w-full">
-                        <label htmlFor="partner-company-name" className="uppercase" style={{ ...LABEL, color: 'rgba(100,21,31,0.72)', fontSize: '12px' }}>
+                        <label htmlFor="partner-company-name" className="uppercase" style={{ ...LABEL, color: 'rgba(239,232,219,0.64)', fontSize: '12px' }}>
                           Įmonės pavadinimas arba IV *
                         </label>
                         <input
@@ -469,11 +481,11 @@ export function TapkitePartneriuHeroSection() {
                           placeholder="UAB Grožis"
                           required
                           disabled={isSubmitting}
-                          className={`${INPUT_BASE_CLASS} ${errors.companyNameOrIv ? 'border-[#64151F]' : ''}`}
+                          className={`${INPUT_BASE_CLASS} ${errors.companyNameOrIv ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
                           style={{ ...BODY, borderRadius: '0px', fontSize: '15px', lineHeight: 1.45 }}
                         />
                           {errors.companyNameOrIv ? (
-                            <p className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>
+                            <p className="m-0 text-[#F3C8CE]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>
                             {errors.companyNameOrIv}
                           </p>
                         ) : null}
@@ -483,7 +495,7 @@ export function TapkitePartneriuHeroSection() {
                     {/* Row 3 */}
                     <div className="grid grid-cols-2 gap-4 max-[767px]:gap-3 max-[479px]:grid-cols-1">
                       <div className="flex flex-col gap-2 w-full">
-                        <label htmlFor="partner-company-code" className="uppercase" style={{ ...LABEL, color: 'rgba(100,21,31,0.72)', fontSize: '12px' }}>
+                        <label htmlFor="partner-company-code" className="uppercase" style={{ ...LABEL, color: 'rgba(239,232,219,0.64)', fontSize: '12px' }}>
                           Įmonės kodas / IV pažymos nr. *
                         </label>
                         <input
@@ -495,18 +507,18 @@ export function TapkitePartneriuHeroSection() {
                           placeholder="123456789"
                           required
                           disabled={isSubmitting}
-                          className={`${INPUT_BASE_CLASS} ${errors.companyCodeOrIv ? 'border-[#64151F]' : ''}`}
+                          className={`${INPUT_BASE_CLASS} ${errors.companyCodeOrIv ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
                           style={{ ...BODY, borderRadius: '0px', fontSize: '15px', lineHeight: 1.45 }}
                         />
                         {errors.companyCodeOrIv ? (
-                          <p className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>
+                          <p className="m-0 text-[#F3C8CE]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>
                             {errors.companyCodeOrIv}
                           </p>
                         ) : null}
                       </div>
 
                       <div className="flex flex-col gap-2 w-full">
-                        <label htmlFor="partner-activity" className="uppercase" style={{ ...LABEL, color: 'rgba(100,21,31,0.72)', fontSize: '12px' }}>
+                        <label htmlFor="partner-activity" className="uppercase" style={{ ...LABEL, color: 'rgba(239,232,219,0.64)', fontSize: '12px' }}>
                           Jūsų veiklos sritis
                         </label>
                         <div className="relative w-full">
@@ -518,7 +530,7 @@ export function TapkitePartneriuHeroSection() {
                             onChange={(e) => handleFieldChange('activity', e.target.value)}
                             required
                             disabled={isSubmitting}
-                            className={`${INPUT_BASE_CLASS} ${errors.activity ? 'border-[#64151F]' : ''}`}
+                            className={`${INPUT_BASE_CLASS} ${errors.activity ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
                             style={{ ...BODY, borderRadius: '0px', fontSize: '15px', lineHeight: 1.45 }}
                           >
                             <option value="">Jūsų veiklos sritis</option>
@@ -528,18 +540,18 @@ export function TapkitePartneriuHeroSection() {
                               </option>
                             ))}
                           </select>
-                          <div className="pointer-events-none absolute inset-y-0 flex items-center justify-end pr-4 max-[767px]:pr-3" style={{ color: '#1A1010' }}>
+                          <div className="pointer-events-none absolute inset-y-0 flex items-center justify-end pr-4 max-[767px]:pr-3" style={{ color: '#EFE8DB' }}>
                             <ChevronDownIcon className="h-4 w-4" />
                           </div>
                         </div>
-                        {errors.activity ? <p className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>{errors.activity}</p> : null}
+                        {errors.activity ? <p className="m-0 text-[#F3C8CE]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>{errors.activity}</p> : null}
                       </div>
                     </div>
 
                     {/* Row 4 */}
                     <div className="grid grid-cols-2 gap-4 max-[767px]:gap-3 max-[479px]:grid-cols-1">
                       <div className="flex flex-col gap-2 w-full">
-                        <label htmlFor="partner-city" className="uppercase" style={{ ...LABEL, color: 'rgba(100,21,31,0.72)', fontSize: '12px' }}>
+                        <label htmlFor="partner-city" className="uppercase" style={{ ...LABEL, color: 'rgba(239,232,219,0.64)', fontSize: '12px' }}>
                           Miestas *
                         </label>
                         <input
@@ -551,14 +563,14 @@ export function TapkitePartneriuHeroSection() {
                           placeholder="Vilnius"
                           required
                           disabled={isSubmitting}
-                          className={`${INPUT_BASE_CLASS} ${errors.city ? 'border-[#64151F]' : ''}`}
+                          className={`${INPUT_BASE_CLASS} ${errors.city ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
                           style={{ ...BODY, borderRadius: '0px', fontSize: '15px', lineHeight: 1.45 }}
                         />
-                        {errors.city ? <p className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>{errors.city}</p> : null}
+                        {errors.city ? <p className="m-0 text-[#F3C8CE]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>{errors.city}</p> : null}
                       </div>
 
                       <div className="flex flex-col gap-2 w-full">
-                        <label htmlFor="partner-source" className="uppercase" style={{ ...LABEL, color: 'rgba(100,21,31,0.72)', fontSize: '12px' }}>
+                        <label htmlFor="partner-source" className="uppercase" style={{ ...LABEL, color: 'rgba(239,232,219,0.64)', fontSize: '12px' }}>
                           Kaip apie mus sužinojote?
                         </label>
                         <div className="relative w-full">
@@ -570,7 +582,7 @@ export function TapkitePartneriuHeroSection() {
                             onChange={(e) => handleFieldChange('source', e.target.value)}
                             required
                             disabled={isSubmitting}
-                            className={`${INPUT_BASE_CLASS} ${errors.source ? 'border-[#64151F]' : ''}`}
+                            className={`${INPUT_BASE_CLASS} ${errors.source ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
                             style={{ ...BODY, borderRadius: '0px', fontSize: '15px', lineHeight: 1.45 }}
                           >
                             <option value="">Kaip apie mus sužinojote?</option>
@@ -580,12 +592,12 @@ export function TapkitePartneriuHeroSection() {
                               </option>
                             ))}
                           </select>
-                          <div className="pointer-events-none absolute inset-y-0 flex items-center justify-end pr-4 max-[767px]:pr-3" style={{ color: '#1A1010' }}>
+                          <div className="pointer-events-none absolute inset-y-0 flex items-center justify-end pr-4 max-[767px]:pr-3" style={{ color: '#EFE8DB' }}>
                             <ChevronDownIcon className="h-4 w-4" />
                           </div>
                         </div>
                         {errors.source ? (
-                          <p className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>
+                          <p className="m-0 text-[#F3C8CE]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>
                             {errors.source}
                           </p>
                         ) : null}
@@ -596,7 +608,7 @@ export function TapkitePartneriuHeroSection() {
                     <label
                       className="flex items-start gap-3 cursor-pointer max-[767px]:gap-[10px]"
                       htmlFor="partner-consent"
-                      style={{ ...BODY, color: 'rgba(26,16,16,0.78)', fontSize: '14px', lineHeight: '20px', fontWeight: 400 }}
+                      style={{ ...BODY, color: '#EFE8DB', fontSize: '14px', lineHeight: '20px', fontWeight: 400 }}
                     >
                       <span className="relative mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center">
                         <input
@@ -608,8 +620,8 @@ export function TapkitePartneriuHeroSection() {
                           required
                           disabled={isSubmitting}
                           className={`h-4 w-4 appearance-none border bg-[rgba(26,16,16,0.05)] transition-[background-color,border-color] duration-200 ${
-                            errors.consent ? 'border-[#64151F]' : 'border-[rgba(26,16,16,0.14)]'
-                          } ${values.consent ? '!border-[#3B443A] !bg-[#EFE8DB]' : ''}`}
+                            errors.consent ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'
+                          } ${values.consent ? '!border-[#EFE8DB] !bg-[#EFE8DB]' : ''}`}
                           style={{ borderRadius: '0px' }}
                           aria-invalid={Boolean(errors.consent)}
                         />
@@ -621,12 +633,12 @@ export function TapkitePartneriuHeroSection() {
                       </span>
                       <span>
                         Sutinku, kad UNICOS tvarkytų mano duomenis partnerystės paraiškos tikslais.{' '}
-                        <a href="#" className="underline underline-offset-2 transition-opacity hover:opacity-75" style={{ color: '#64151F' }}>
+                        <a href="#" className="underline underline-offset-2 transition-opacity hover:opacity-75" style={{ color: '#EFE8DB' }}>
                           Privatumo politika.
                         </a>
                       </span>
                     </label>
-                    {errors.consent ? <p className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>{errors.consent}</p> : null}
+                    {errors.consent ? <p className="m-0 text-[#F3C8CE]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>{errors.consent}</p> : null}
                   </div>
 
                   {/* Submit */}
@@ -647,7 +659,7 @@ export function TapkitePartneriuHeroSection() {
                       </span>
                     </button>
 
-                    <p className="m-0 text-[#1A1010]/64" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45, fontWeight: 400 }}>
+                    <p className="m-0 text-[#EFE8DB]/64" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45, fontWeight: 400 }}>
                       Jūsų duomenys saugūs. Atsakysime per 24 val.
                     </p>
                   </div>

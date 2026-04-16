@@ -19,7 +19,7 @@ interface DropdownColumn {
 const SPRENDIMAI_SEGMENTS = [
   {
     title: 'Odos priežiūros specialistams',
-    href: '#',
+    href: '/sprendimai/odos-specialistams',
     image: '/mega-menu/1.jpeg',
     accent: '#64151F',
   },
