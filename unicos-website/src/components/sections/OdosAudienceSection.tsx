@@ -92,7 +92,6 @@ export function OdosAudienceSection() {
   const card2InView = useInView(0.1);
   const card3InView = useInView(0.1);
   const cardRefs = [card0InView, card1InView, card2InView, card3InView];
-  const [btnHovered, setBtnHovered] = React.useState(false);
 
   return (
     <section className="relative z-[2] overflow-hidden bg-[#EFE8DB] pt-[160px] pb-[120px] max-[767px]:pt-24 max-[767px]:pb-16">
@@ -117,13 +116,15 @@ export function OdosAudienceSection() {
           </h2>
         </div>
 
-        <div className="mb-20 grid grid-cols-3 gap-4 max-[991px]:grid-cols-2 max-[767px]:mb-14 max-[767px]:grid-cols-1 max-[767px]:gap-3">
+        <div className="mb-20 overflow-x-auto max-[767px]:mb-14">
+          <div className="flex min-w-[1120px] flex-nowrap gap-4 max-[767px]:min-w-[980px] max-[767px]:gap-3">
           {cards.map((card, i) => (
             <div
               key={card.id}
               ref={cardRefs[i].ref}
               className="relative w-full overflow-hidden border border-[#1A1010]/12 transition-all duration-700 ease-out"
               style={{
+                flex: '0 0 calc((100% - 48px) / 4)',
                 borderRadius: '0px',
                 transitionDelay: `${i * 120}ms`,
                 opacity: cardRefs[i].visible ? 1 : 0,
@@ -158,6 +159,7 @@ export function OdosAudienceSection() {
               />
             </div>
           ))}
+          </div>
         </div>
 
         <div
@@ -167,16 +169,21 @@ export function OdosAudienceSection() {
           }`}
         >
           <div
-            className="flex w-full max-w-[620px] items-center justify-between gap-8 border border-[#1A1010]/12 bg-[rgba(26,16,16,0.08)] p-4 max-[767px]:gap-6 max-[767px]:p-3 max-[479px]:flex-wrap"
-            style={{ borderRadius: '0px', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}
+            className="flex w-full items-center justify-between gap-6 border border-[#1A1010]/12 bg-[#EFE8DB] p-4 max-[767px]:gap-4 max-[767px]:p-3 max-[479px]:flex-wrap"
+            style={{ borderRadius: '0px' }}
           >
             <div className="flex items-center justify-start gap-6 max-[767px]:gap-4">
-              <div className="hidden flex-none items-center justify-center bg-[#EFE8DB] p-3 max-[479px]:hidden" style={{ borderRadius: '0px' }}>
-                <span className="block h-5 w-5 bg-[#1A1010]" />
+              <div className="h-12 w-12 shrink-0 overflow-hidden max-[479px]:h-10 max-[479px]:w-10" style={{ borderRadius: '0px' }}>
+                <img
+                  src="https://byqsupply-components.netlify.app/haldenmiller/images/ContactAvatar-3.webp"
+                  loading="lazy"
+                  alt="Konsultantė"
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div className="flex flex-col items-start">
                 <div className="text-[#1A1010]/90" style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 500 }}>
-                  Reikia pagalbos pasirinkti?
+                  Reikia konsultacijos?
                 </div>
                 <div className="text-[#1A1010]/64" style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}>
                   Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.
@@ -184,13 +191,7 @@ export function OdosAudienceSection() {
               </div>
             </div>
 
-            <CtaLink
-              href="/kontaktai"
-              variant="primary"
-              onMouseEnter={() => setBtnHovered(true)}
-              onMouseLeave={() => setBtnHovered(false)}
-              className={btnHovered ? 'opacity-95' : ''}
-            >
+            <CtaLink href="/kontaktai" variant="primary">
               Gauti konsultaciją
             </CtaLink>
           </div>
