@@ -2,10 +2,12 @@
 
 import * as React from 'react';
 
-function MarqueeSep() {
+function MarqueeSep({ greenText = false }: { greenText?: boolean }) {
   return (
     <span
-      className="h-3 w-3 shrink-0 rounded-full bg-[#64151F]/35 max-[767px]:h-2.5 max-[767px]:w-2.5"
+      className={`h-3 w-3 shrink-0 rounded-full max-[767px]:h-2.5 max-[767px]:w-2.5 ${
+        greenText ? 'bg-[#3B443A]/35' : 'bg-[#64151F]/35'
+      }`}
       aria-hidden
     />
   );
@@ -23,26 +25,36 @@ function MarqueeUnit({ greenText = false }: { greenText?: boolean }) {
       <span className={itemClass} style={font}>
         500+ partnerių
       </span>
-      <MarqueeSep />
+      <MarqueeSep greenText={greenText} />
       <span className={itemClass} style={font}>
         12 prekių ženklų
       </span>
-      <MarqueeSep />
+      <MarqueeSep greenText={greenText} />
       <span className={itemClass} style={font}>
         25+ m. patirties
       </span>
-      <MarqueeSep />
+      <MarqueeSep greenText={greenText} />
     </div>
   );
 }
 
 export function IntroTextSection({ greenText = false }: { greenText?: boolean }) {
+  const bgColor = greenText ? '#FFFFFF' : '#EFE8DB';
   return (
-    <div className="bg-[#EFE8DB]">
-      <section className="relative z-[2] bg-[#EFE8DB] pt-16 pb-20 max-[767px]:pt-12 max-[767px]:pb-14 md:pt-20 overflow-hidden">
+    <div style={{ backgroundColor: bgColor }}>
+      <section
+        className="relative z-[2] pt-16 pb-20 max-[767px]:pt-12 max-[767px]:pb-14 md:pt-20 overflow-hidden"
+        style={{ backgroundColor: bgColor }}
+      >
         <div className="relative">
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 z-[2] bg-gradient-to-r from-[#EFE8DB] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 z-[2] bg-gradient-to-l from-[#EFE8DB] to-transparent" />
+          <div
+            className="pointer-events-none absolute inset-y-0 left-0 w-16 z-[2]"
+            style={{ background: `linear-gradient(to right, ${bgColor}, transparent)` }}
+          />
+          <div
+            className="pointer-events-none absolute inset-y-0 right-0 w-16 z-[2]"
+            style={{ background: `linear-gradient(to left, ${bgColor}, transparent)` }}
+          />
 
           <div className="intro-marquee-track flex w-max items-center py-8 max-[767px]:py-7">
             <MarqueeUnit greenText={greenText} />
