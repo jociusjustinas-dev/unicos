@@ -129,10 +129,10 @@ export default function OdosSpecialistamsPage() {
                     Gauti konsultaciją
                   </CtaLink>
                   <span
-                    className="text-[#1A1010]/62"
+                    className="uppercase text-[#1A1010]/62"
                     style={{ fontSize: '10px', lineHeight: '1.1', letterSpacing: '0.12em', ...BODY, fontWeight: 500 }}
                   >
-                    Padėsime sudėlioti asortimentą.
+                    PADĖSIME SUDĖLIOTI ASORTIMENTĄ.
                   </span>
                 </div>
               </div>

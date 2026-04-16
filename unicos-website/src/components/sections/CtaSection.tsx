@@ -93,8 +93,8 @@ export function CtaSection() {
               palaikymas.
             </p>
 
-            <div className="flex w-full max-w-[640px] flex-col items-stretch justify-center gap-8 sm:flex-row sm:items-start sm:gap-10">
-              <div className="flex flex-1 flex-col items-center gap-2.5 sm:items-center">
+            <div className="flex w-full max-w-[640px] flex-col items-stretch justify-center gap-6 sm:flex-row sm:items-start sm:justify-center sm:gap-8">
+              <div className="flex flex-col items-center gap-2.5 sm:items-center">
                 <CtaLink
                   href="#kontaktai"
                   variant="primary"
@@ -105,10 +105,10 @@ export function CtaSection() {
                   className="text-center uppercase text-[#EFE8DB]/55"
                   style={{ fontSize: '10px', letterSpacing: '0.12em', ...BODY, fontWeight: 500 }}
                 >
-                  Patvirtinimas per 24 val.
+                  PATVIRTINIMAS PER 24 VAL.
                 </span>
               </div>
-              <div className="flex flex-1 flex-col items-center gap-2.5 sm:items-center">
+              <div className="flex flex-col items-center gap-2.5 sm:items-center">
                 <CtaLink
                   href="#kontaktai"
                   variant="glass"
@@ -119,7 +119,7 @@ export function CtaSection() {
                   className="text-center uppercase text-[#EFE8DB]/55"
                   style={{ fontSize: '10px', letterSpacing: '0.12em', ...BODY, fontWeight: 500 }}
                 >
-                  15 min. poreikių analizė
+                  15 MIN. POREIKIŲ ANALIZĖ
                 </span>
               </div>
             </div>
