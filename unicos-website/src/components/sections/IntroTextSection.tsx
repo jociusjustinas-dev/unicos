@@ -11,13 +11,15 @@ function MarqueeSep() {
   );
 }
 
-function MarqueeUnit() {
+function MarqueeUnit({ greenText = false }: { greenText?: boolean }) {
   const itemClass =
-    'whitespace-nowrap font-light tracking-[-0.035em] leading-[1.05] text-[clamp(2.25rem,6.5vw,4.5rem)] text-[#64151F]';
+    `whitespace-nowrap font-light tracking-[-0.035em] leading-[1.05] text-[clamp(2.25rem,6.5vw,4.5rem)] ${
+      greenText ? 'text-[#3B443A]' : 'text-[#64151F]'
+    }`;
   const font = { fontFamily: "'Quiche Sans', Georgia, serif" };
 
   return (
-    <div className="flex items-center gap-10 md:gap-14 lg:gap-16 flex-none text-[#64151F] pr-10 md:pr-16">
+    <div className={`flex items-center gap-10 md:gap-14 lg:gap-16 flex-none pr-10 md:pr-16 ${greenText ? 'text-[#3B443A]' : 'text-[#64151F]'}`}>
       <span className={itemClass} style={font}>
         500+ partnerių
       </span>
@@ -34,7 +36,7 @@ function MarqueeUnit() {
   );
 }
 
-export function IntroTextSection() {
+export function IntroTextSection({ greenText = false }: { greenText?: boolean }) {
   return (
     <div className="bg-[#EFE8DB]">
       <section className="relative z-[2] bg-[#EFE8DB] pt-16 pb-20 max-[767px]:pt-12 max-[767px]:pb-14 md:pt-20 overflow-hidden">
@@ -43,9 +45,9 @@ export function IntroTextSection() {
           <div className="pointer-events-none absolute inset-y-0 right-0 w-16 z-[2] bg-gradient-to-l from-[#EFE8DB] to-transparent" />
 
           <div className="intro-marquee-track flex w-max items-center py-8 max-[767px]:py-7">
-            <MarqueeUnit />
-            <MarqueeUnit />
-            <MarqueeUnit />
+            <MarqueeUnit greenText={greenText} />
+            <MarqueeUnit greenText={greenText} />
+            <MarqueeUnit greenText={greenText} />
           </div>
         </div>
       </section>

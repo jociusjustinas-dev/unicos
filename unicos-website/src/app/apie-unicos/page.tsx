@@ -6,7 +6,7 @@ import { UnicosWhySection } from '@/components/sections/UnicosWhySection';
 import { ApieTimelineSection } from '@/components/sections/ApieTimelineSection';
 import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
 import { ApieTeamSection } from '@/components/sections/ApieTeamSection';
-import { LogoCarouselSection } from '@/components/sections/LogoCarouselSection';
+import { IntroTextSection } from '@/components/sections/IntroTextSection';
 import { CmsGridSection } from '@/components/sections/CmsGridSection';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { FooterSection } from '@/components/sections/FooterSection';
@@ -24,7 +24,7 @@ export default function ApieUnicosPage() {
       <ApieTimelineSection />
       <ResponsibleBeautySection />
       <ApieTeamSection />
-      <LogoCarouselSection greenText />
+      <IntroTextSection greenText />
       <CmsGridSection />
       <CtaSection />
       <FooterSection />
