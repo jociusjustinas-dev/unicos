@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { SfCheckboxCheck } from '@/components/icons/feather';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
 
 const BODY: React.CSSProperties = {
@@ -364,18 +365,28 @@ export function KontaktaiFormSection() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="kontaktai-consent" className="inline-flex items-start gap-3 text-[#EFE8DB]/86" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45 }}>
-                    <input
-                      id="kontaktai-consent"
-                      ref={consentRef}
-                      type="checkbox"
-                      checked={values.consent}
-                      onChange={(e) => handleFieldChange('consent', e.target.checked)}
-                      disabled={isSubmitting}
-                      className={`mt-0.5 h-4 w-4 rounded-none border bg-transparent accent-[#64151F] ${errors.consent ? 'border-[#64151F]' : 'border-[#EFE8DB]/34'}`}
-                      aria-invalid={Boolean(errors.consent)}
-                      aria-describedby="kontaktai-consent-error"
-                    />
+                  <label htmlFor="kontaktai-consent" className="inline-flex items-start gap-2 text-[#EFE8DB]/86" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45 }}>
+                    <span className="relative mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center">
+                      <input
+                        id="kontaktai-consent"
+                        ref={consentRef}
+                        type="checkbox"
+                        checked={values.consent}
+                        onChange={(e) => handleFieldChange('consent', e.target.checked)}
+                        disabled={isSubmitting}
+                        className={`h-4 w-4 appearance-none border bg-[rgba(239,232,219,0.08)] transition-[background-color,border-color] duration-200 ${
+                          errors.consent ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'
+                        } ${values.consent ? '!border-[#EFE8DB] !bg-[#EFE8DB]' : ''}`}
+                        style={{ borderRadius: '0px' }}
+                        aria-invalid={Boolean(errors.consent)}
+                        aria-describedby="kontaktai-consent-error"
+                      />
+                      {values.consent ? (
+                        <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[#3B443A]">
+                          <SfCheckboxCheck size={12} className="text-current" aria-hidden />
+                        </span>
+                      ) : null}
+                    </span>
                     <span>
                       Sutinku, kad mano pateikti duomenys būtų naudojami atsakyti į mano užklausą. Sužinokite daugiau{' '}
                       <a href="#" className="text-[#EFE8DB] underline underline-offset-2 transition-opacity duration-200 hover:opacity-75">
