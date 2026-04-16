@@ -37,6 +37,8 @@ export const SfActivity = (p: IconProps) => <MqIcon {...p} icon="marketeq:chart-
 export const SfLayers = (p: IconProps) => <MqIcon {...p} icon="marketeq:browse" />;
 export const SfArrowRight = (p: IconProps) => <MqIcon {...p} icon="marketeq:right-sign" />;
 export const SfArrowLeft = (p: IconProps) => <MqIcon {...p} icon="marketeq:left-sign" />;
+export const SfPhone = (p: IconProps) => <MqIcon {...p} icon="marketeq:phone" />;
+export const SfEnvelope = (p: IconProps) => <MqIcon {...p} icon="marketeq:envelope" />;
 export const SfX = (p: IconProps) => <MqIcon {...p} icon="marketeq:cross-circle" />;
 export const SfMenu = (p: IconProps) => <MqIcon {...p} icon="marketeq:menu" />;
 export const SfSparkles = (p: IconProps) => <MqIcon {...p} icon="marketeq:atom" />;

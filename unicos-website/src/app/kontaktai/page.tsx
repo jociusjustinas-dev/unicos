@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
 import { FooterSection } from '@/components/sections/FooterSection';
+import { SfEnvelope, SfMapPin, SfPhone } from '@/components/icons/feather';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -46,13 +47,16 @@ export default function KontaktaiPage() {
 
             <div className="grid grid-cols-1 gap-4 min-[992px]:grid-cols-3">
               <article className="border border-[#1A1010]/12 bg-[#EFE8DB] p-7" style={{ borderRadius: '0px' }}>
+                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center border border-[#1A1010]/16 text-[#64151F]" style={{ borderRadius: '0px' }}>
+                  <SfPhone size={17} className="text-current" aria-hidden />
+                </div>
                 <p className="m-0 uppercase text-[#64151F]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
                   Telefonas
                 </p>
                 <a
                   href="tel:+37052705712"
-                  className="mt-3 inline-flex border border-[#1A1010]/16 px-3 py-2 no-underline text-[#1A1010] transition-colors duration-200 hover:border-[#64151F] hover:bg-[#64151F] hover:text-[#EFE8DB] active:translate-y-px"
-                  style={{ ...BODY, fontSize: '20px', lineHeight: 1.2, fontWeight: 500, borderRadius: '0px' }}
+                  className="mt-3 inline-flex no-underline text-[#1A1010] transition-opacity duration-200 hover:opacity-60"
+                  style={{ ...BODY, fontSize: '20px', lineHeight: 1.2, fontWeight: 500 }}
                 >
                   (+370 5) 270 57 12
                 </a>
@@ -62,13 +66,16 @@ export default function KontaktaiPage() {
               </article>
 
               <article className="border border-[#1A1010]/12 bg-[#EFE8DB] p-7" style={{ borderRadius: '0px' }}>
+                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center border border-[#1A1010]/16 text-[#64151F]" style={{ borderRadius: '0px' }}>
+                  <SfEnvelope size={17} className="text-current" aria-hidden />
+                </div>
                 <p className="m-0 uppercase text-[#64151F]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
                   El. paštas
                 </p>
                 <a
                   href="mailto:info@unicos.lt"
-                  className="mt-3 inline-flex border border-[#1A1010]/16 px-3 py-2 no-underline text-[#1A1010] transition-colors duration-200 hover:border-[#64151F] hover:bg-[#64151F] hover:text-[#EFE8DB] active:translate-y-px"
-                  style={{ ...BODY, fontSize: '20px', lineHeight: 1.2, fontWeight: 500, borderRadius: '0px' }}
+                  className="mt-3 inline-flex no-underline text-[#1A1010] transition-opacity duration-200 hover:opacity-60"
+                  style={{ ...BODY, fontSize: '20px', lineHeight: 1.2, fontWeight: 500 }}
                 >
                   info@unicos.lt
                 </a>
@@ -78,6 +85,9 @@ export default function KontaktaiPage() {
               </article>
 
               <article className="border border-[#1A1010]/12 bg-[#EFE8DB] p-7" style={{ borderRadius: '0px' }}>
+                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center border border-[#1A1010]/16 text-[#64151F]" style={{ borderRadius: '0px' }}>
+                  <SfMapPin size={17} className="text-current" aria-hidden />
+                </div>
                 <p className="m-0 uppercase text-[#64151F]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
                   Adresas
                 </p>
@@ -85,8 +95,8 @@ export default function KontaktaiPage() {
                   href="https://maps.google.com/?q=Metalo+g.+13a,+Vilnius"
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-3 inline-flex border border-[#1A1010]/16 px-3 py-2 no-underline text-[#1A1010] transition-colors duration-200 hover:border-[#64151F] hover:bg-[#64151F] hover:text-[#EFE8DB] active:translate-y-px"
-                  style={{ ...BODY, fontSize: '20px', lineHeight: 1.2, fontWeight: 500, borderRadius: '0px' }}
+                  className="mt-3 inline-flex no-underline text-[#1A1010] transition-opacity duration-200 hover:opacity-60"
+                  style={{ ...BODY, fontSize: '20px', lineHeight: 1.2, fontWeight: 500 }}
                 >
                   Metalo g. 13a, LT - 02190, Vilnius
                 </a>
