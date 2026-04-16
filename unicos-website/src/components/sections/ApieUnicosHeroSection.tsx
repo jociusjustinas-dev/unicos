@@ -1,0 +1,126 @@
+'use client';
+
+import * as React from 'react';
+import { CtaLink } from '@/components/ui/CtaLink';
+import { useInViewOnce } from '@/hooks/useInViewOnce';
+
+const BODY: React.CSSProperties = {
+  fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
+};
+
+const MARQUEE_ITEMS = [
+  { src: '/mega-menu/1.jpeg', alt: 'Profesionali konsultacija', className: 'w-[620px] max-[767px]:w-[300px]' },
+  { src: '/mega-menu/2.jpeg', alt: 'Mokymai ir praktika', className: 'w-[420px] max-[767px]:w-[220px]' },
+  { src: '/mega-menu/3.jpeg', alt: 'Komandos susitikimas', className: 'w-[520px] max-[767px]:w-[250px]' },
+  { src: '/mega-menu/4.jpeg', alt: 'Produktų demonstracija', className: 'w-[620px] max-[767px]:w-[300px]' },
+] as const;
+
+function MarqueeSet() {
+  return (
+    <div className="flex flex-none items-stretch gap-4 max-[767px]:gap-3">
+      {MARQUEE_ITEMS.map((item) => (
+        <div key={`${item.src}-${item.alt}`} className={`relative h-[420px] overflow-hidden border border-[#1A1010]/12 max-[767px]:h-[260px] ${item.className}`} style={{ borderRadius: '0px' }}>
+          <img src={item.src} alt={item.alt} className="h-full w-full object-cover" loading="lazy" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function ApieUnicosHeroSection() {
+  const [headlineRef, headlineVisible] = useInViewOnce<HTMLDivElement>({ threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+  const [marqueeRef, marqueeVisible] = useInViewOnce<HTMLDivElement>({ threshold: 0.05, rootMargin: '0px 0px -2% 0px' });
+
+  return (
+    <section className="relative z-[2] overflow-x-clip bg-[#ECE2D3] pt-36 pb-16 max-[767px]:pt-28 max-[767px]:pb-12">
+      <div className="pointer-events-none absolute inset-0 bg-[#3B443A]/[0.05]" aria-hidden />
+      <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
+        <div
+          ref={headlineRef}
+          className="mx-auto mb-14 flex w-full max-w-[912px] flex-col gap-6 max-[767px]:mb-10 max-[767px]:gap-4"
+          style={{
+            opacity: headlineVisible ? 1 : 0,
+            filter: headlineVisible ? 'blur(0px)' : 'blur(12px)',
+            transform: headlineVisible ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'opacity 0.7s ease-out, filter 0.7s ease-out, transform 0.7s ease-out',
+          }}
+        >
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
+            <span className="uppercase text-[#64151F]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
+              Apie
+            </span>
+          </div>
+
+          <h1
+            className="m-0 max-w-[16ch] text-[#3B443A] tracking-[-0.03em]"
+            style={{
+              fontFamily: "'Quiche Sans', Georgia, serif",
+              fontSize: 'clamp(2.4rem, 5.2vw, 4.6rem)',
+              lineHeight: 1.05,
+              fontWeight: 300,
+            }}
+          >
+            25 metai šalia profesionalų.
+          </h1>
+
+          <p className="m-0 max-w-[68ch] text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>
+            Buvome Sugihara Pro — tapome UNICOS, kad būtume dar arčiau Jūsų. Mūsų misija nepasikeitė: suteikti profesionalams aiškumą, kokybę ir ramybę.
+          </p>
+
+          <div className="flex w-full max-w-[640px] flex-col items-stretch gap-8 sm:flex-row sm:items-start sm:gap-10">
+            <div className="flex flex-1 flex-col items-start gap-2.5">
+              <CtaLink href="#kontaktai" variant="primary" className="!w-full max-w-[320px] justify-center sm:!max-w-none">
+                Tapti partneriu
+              </CtaLink>
+              <span className="px-1 uppercase text-[#1A1010]/62" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}>
+                Patvirtinimas per 24 val.
+              </span>
+            </div>
+
+            <div className="flex flex-1 flex-col items-start gap-2.5">
+              <CtaLink href="#kontaktai" variant="glass" className="!w-full max-w-[320px] justify-center sm:!max-w-none">
+                Susisiekti
+              </CtaLink>
+              <span className="px-1 uppercase text-[#1A1010]/62" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}>
+                Atsakome per 24 val.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        ref={marqueeRef}
+        className="relative z-[2] overflow-hidden"
+        style={{
+          opacity: marqueeVisible ? 1 : 0,
+          filter: marqueeVisible ? 'blur(0px)' : 'blur(12px)',
+          transition: 'opacity 0.7s ease-out 120ms, filter 0.7s ease-out 120ms',
+        }}
+      >
+        <div className="apie-unicos-marquee-track flex w-max items-stretch gap-4 max-[767px]:gap-3">
+          <MarqueeSet />
+          <MarqueeSet />
+          <MarqueeSet />
+        </div>
+      </div>
+
+      <style jsx>{`
+        .apie-unicos-marquee-track {
+          animation: apie-unicos-marquee 40s linear infinite;
+        }
+        @keyframes apie-unicos-marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-33.333%);
+          }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+export default ApieUnicosHeroSection;
