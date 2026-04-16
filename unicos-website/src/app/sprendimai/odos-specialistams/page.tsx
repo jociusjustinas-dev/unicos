@@ -3,6 +3,9 @@
 import * as React from 'react';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
 import { FooterSection } from '@/components/sections/FooterSection';
+import { CmsGridSection } from '@/components/sections/CmsGridSection';
+import { FaqSection } from '@/components/sections/FaqSection';
+import { CtaSection } from '@/components/sections/CtaSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 
 const BODY: React.CSSProperties = {
@@ -148,6 +151,9 @@ export default function OdosSpecialistamsPage() {
         </div>
       </section>
 
+      <CmsGridSection />
+      <FaqSection />
+      <CtaSection />
       <FooterSection />
     </main>
   );
