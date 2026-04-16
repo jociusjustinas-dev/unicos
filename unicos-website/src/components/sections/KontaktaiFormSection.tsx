@@ -162,7 +162,8 @@ export function KontaktaiFormSection() {
     'h-12 w-full border bg-[rgba(239,232,219,0.08)] px-4 text-[#EFE8DB] placeholder:text-[#EFE8DB]/48 outline-none transition-[border-color,color] duration-200 focus:border-[#EFE8DB]/65';
 
   return (
-    <section className="relative z-[2] overflow-x-clip bg-[#3B443A] py-20 max-[767px]:py-14" aria-labelledby="kontaktai-form-heading">
+    <section className="relative z-[2] overflow-x-clip bg-[#ECE2D3] py-20 max-[767px]:py-14" aria-labelledby="kontaktai-form-heading">
+      <div className="pointer-events-none absolute inset-0 bg-[#3B443A]/[0.06]" aria-hidden />
       <div className="mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div className="mx-auto w-full max-w-[912px]">
           <div
@@ -176,19 +177,19 @@ export function KontaktaiFormSection() {
             }}
           >
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 shrink-0 bg-[#EFE8DB]" style={{ borderRadius: '0px' }} aria-hidden />
-              <span className="uppercase text-[#EFE8DB]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
+              <span className="h-2 w-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
+              <span className="uppercase text-[#3B443A]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
                 Kontaktai
               </span>
             </div>
             <h2
               id="kontaktai-form-heading"
-              className="m-0 max-w-[15ch] text-[#EFE8DB] tracking-[-0.03em]"
+              className="m-0 max-w-[15ch] text-[#3B443A] tracking-[-0.03em]"
               style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: 'clamp(2.2rem,5vw,4rem)', lineHeight: 1.05, fontWeight: 300 }}
             >
               Parašykite mums
             </h2>
-            <p className="m-0 max-w-[62ch] text-[#EFE8DB]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>
+            <p className="m-0 max-w-[62ch] text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>
               Užpildykite formą ir atsakysime per 24 valandas darbo dienomis.
             </p>
           </div>
@@ -225,15 +226,6 @@ export function KontaktaiFormSection() {
               </div>
             ) : (
               <form onSubmit={onSubmit} noValidate className="flex flex-col gap-6">
-                <div className="flex flex-col gap-2">
-                  <h3 className="m-0 text-[#EFE8DB]" style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: 'clamp(1.8rem,3vw,2.4rem)', lineHeight: 1.1, fontWeight: 300 }}>
-                    Parašykite mums
-                  </h3>
-                  <p className="m-0 text-[#EFE8DB]/82" style={{ ...BODY, fontSize: '15px', lineHeight: 1.5, fontWeight: 400 }}>
-                    Užpildykite formą ir atsakysime per 24 valandas darbo dienomis.
-                  </p>
-                </div>
-
                 {errors.form ? (
                   <div className="border border-[#64151F]/40 bg-[rgba(100,21,31,0.22)] px-4 py-3 text-[#EFE8DB]" role="alert" style={{ ...BODY, borderRadius: '0px', fontSize: '14px', lineHeight: 1.45 }}>
                     {errors.form}
