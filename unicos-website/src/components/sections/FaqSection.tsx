@@ -45,7 +45,7 @@ const contactAvatar = {
   alt: 'Konsultantė',
 } as const;
 
-export function FaqSection() {
+export function FaqSection({ backgroundClassName = 'bg-white' }: { backgroundClassName?: string }) {
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);
   const [wrapRef, visible] = useInViewOnce<HTMLDivElement>({ threshold: 0.08, rootMargin: '0px 0px -10% 0px' });
 
@@ -61,7 +61,10 @@ export function FaqSection() {
   };
 
   return (
-    <section id="duk" className="relative z-[2] overflow-x-clip bg-white py-20 max-[991px]:py-16 max-[479px]:py-12">
+    <section
+      id="duk"
+      className={`relative z-[2] overflow-x-clip py-20 max-[991px]:py-16 max-[479px]:py-12 ${backgroundClassName}`}
+    >
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={wrapRef}
