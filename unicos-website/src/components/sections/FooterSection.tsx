@@ -36,10 +36,45 @@ function FooterColumn({
   );
 }
 
-export function FooterSection() {
+export function FooterSection({
+  variant = 'default',
+}: {
+  variant?: 'default' | 'greenCompact';
+}) {
   const onNewsletterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
+
+  if (variant === 'greenCompact') {
+    return (
+      <footer
+        id="kontaktai"
+        className="relative z-[1] overflow-x-hidden bg-[#EFE8DB] text-[#3B443A] pt-10 pb-8 max-[479px]:pt-8 max-[479px]:pb-6"
+      >
+        <div className="relative z-[2] w-full max-w-[1800px] mx-auto px-16 max-[767px]:px-6 max-[479px]:px-4">
+          <div className="flex items-center justify-between gap-10">
+            <p
+              className="m-0 text-sm font-medium leading-[142%] tracking-[-0.01em] text-[#3B443A] max-[479px]:text-xs"
+              style={BODY}
+            >
+              © {new Date().getFullYear()} Unicos. Visos teisės saugomos.
+            </p>
+            <a href="/" className="inline-block h-6 max-[479px]:h-[18px] w-fit">
+              <img
+                src="/Group%201.svg"
+                alt="Unicos"
+                className="h-full w-auto opacity-90"
+                loading="lazy"
+                width={3183}
+                height={433}
+                style={{ borderRadius: '0px' }}
+              />
+            </a>
+          </div>
+        </div>
+      </footer>
+    );
+  }
 
   return (
     <footer

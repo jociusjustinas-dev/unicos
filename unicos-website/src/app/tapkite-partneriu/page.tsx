@@ -81,10 +81,11 @@ export default function TapkitePartneriuPage() {
         }
         introText={null}
         steps={[...steps]}
+        ctaLabel={null}
       />
       <TestimonialsSection />
       <FaqSection />
-      <FooterSection />
+      <FooterSection variant="greenCompact" />
     </main>
   );
 }

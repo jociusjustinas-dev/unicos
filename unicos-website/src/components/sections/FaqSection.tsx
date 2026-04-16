@@ -72,9 +72,9 @@ export function FaqSection() {
           <div className="max-w-[480px] min-[992px]:max-w-none">
             <div className="flex flex-col gap-6 max-[767px]:gap-5">
               <div className="flex items-center gap-2">
-                <div className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
+                <div className="h-2 w-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
                 <span
-                  className="uppercase text-[#64151F]"
+                  className="uppercase text-[#3B443A]"
                   style={{
                     ...BODY,
                     fontSize: '11px',
@@ -87,7 +87,7 @@ export function FaqSection() {
               </div>
 
               <h2
-                className="m-0 tracking-[-0.03em] text-[#64151F]"
+                className="m-0 tracking-[-0.03em] text-[#3B443A]"
                 style={{
                   fontFamily: "'Quiche Sans', Georgia, serif",
                   fontSize: 'clamp(2rem, 4vw, 3rem)',
@@ -127,7 +127,7 @@ export function FaqSection() {
               </div>
 
               <div className="shrink-0">
-                <CtaLink href="#kontaktai" variant="primary">
+                <CtaLink href="#kontaktai" variant="secondary">
                   Susisiekite
                 </CtaLink>
               </div>
@@ -165,7 +165,7 @@ export function FaqSection() {
                   >
                     <span
                       className={`min-w-0 flex-1 transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                        isOpen ? 'text-[#64151F]' : 'text-[#1A1010] group-hover:text-[#64151F]'
+                      isOpen ? 'text-[#3B443A]' : 'text-[#1A1010] group-hover:text-[#3B443A]'
                       }`}
                       style={{
                         ...BODY,
