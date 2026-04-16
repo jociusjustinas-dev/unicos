@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 const baseLogoClass =
-  'group flex-none flex h-[46px] w-[210px] items-center justify-center text-[rgba(26,16,16,0.55)] transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:text-[#64151F]';
+  'group flex-none flex h-[46px] w-[210px] items-center justify-center transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]';
 
 function MaskLogo({ src, width, height }: { src: string; width: number; height: number }) {
   return (
@@ -27,23 +27,25 @@ function MaskLogo({ src, width, height }: { src: string; width: number; height: 
   );
 }
 
-function LogoSet() {
+function LogoSet({ logoClassName }: { logoClassName: string }) {
   return (
     <>
-      <div className={baseLogoClass}><MaskLogo src="/comfort zone.svg" width={172} height={24} /></div>
-      <div className={baseLogoClass}><MaskLogo src="/Guinot logo.svg" width={172} height={42} /></div>
-      <div className={baseLogoClass}><MaskLogo src="/Mary Cohr logo.svg" width={172} height={35} /></div>
-      <div className={baseLogoClass}><MaskLogo src="/comfort zone.svg" width={172} height={24} /></div>
-      <div className={baseLogoClass}><MaskLogo src="/Guinot logo.svg" width={172} height={42} /></div>
-      <div className={baseLogoClass}><MaskLogo src="/Mary Cohr logo.svg" width={172} height={35} /></div>
+      <div className={`${baseLogoClass} ${logoClassName}`}><MaskLogo src="/comfort zone.svg" width={172} height={24} /></div>
+      <div className={`${baseLogoClass} ${logoClassName}`}><MaskLogo src="/Guinot logo.svg" width={172} height={42} /></div>
+      <div className={`${baseLogoClass} ${logoClassName}`}><MaskLogo src="/Mary Cohr logo.svg" width={172} height={35} /></div>
+      <div className={`${baseLogoClass} ${logoClassName}`}><MaskLogo src="/comfort zone.svg" width={172} height={24} /></div>
+      <div className={`${baseLogoClass} ${logoClassName}`}><MaskLogo src="/Guinot logo.svg" width={172} height={42} /></div>
+      <div className={`${baseLogoClass} ${logoClassName}`}><MaskLogo src="/Mary Cohr logo.svg" width={172} height={35} /></div>
     </>
   );
 }
 
-export function LogoCarouselSection() {
+export function LogoCarouselSection({ greenText = false }: { greenText?: boolean }) {
   const sectionRef = React.useRef<HTMLElement>(null);
   const marqueeParallaxRef = React.useRef<HTMLDivElement>(null);
   const [visible, setVisible] = React.useState(false);
+  const headingColor = greenText ? '#3B443A' : '#1A1010';
+  const logoToneClass = greenText ? 'text-[#3B443A]/65 hover:text-[#3B443A]' : 'text-[rgba(26,16,16,0.55)] hover:text-[#64151F]';
 
   React.useEffect(() => {
     const el = sectionRef.current;
@@ -102,7 +104,7 @@ export function LogoCarouselSection() {
         <h5
           className="text-center mb-6 max-[767px]:mb-4"
           style={{
-            color: '#1A1010',
+            color: headingColor,
             fontSize: '12px',
             lineHeight: '14px',
             fontWeight: 500,
@@ -119,9 +121,9 @@ export function LogoCarouselSection() {
 
           <div ref={marqueeParallaxRef} className="will-change-transform">
             <div className="logo-marquee-track flex items-center gap-14 max-[767px]:gap-10">
-              <LogoSet />
-              <LogoSet />
-              <LogoSet />
+              <LogoSet logoClassName={logoToneClass} />
+              <LogoSet logoClassName={logoToneClass} />
+              <LogoSet logoClassName={logoToneClass} />
             </div>
           </div>
         </div>
