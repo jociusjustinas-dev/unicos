@@ -60,14 +60,21 @@ export function FooterSection({
               © {new Date().getFullYear()} Unicos. Visos teisės saugomos.
             </p>
             <a href="/" className="inline-block h-6 max-[479px]:h-[18px] w-fit">
-              <img
-                src="/Group%201.svg"
-                alt="Unicos"
-                className="h-full w-auto opacity-90"
-                loading="lazy"
-                width={3183}
-                height={433}
-                style={{ borderRadius: '0px' }}
+              <span
+                aria-hidden
+                className="block bg-[#3B443A]"
+                style={{
+                  width: '176px',
+                  height: '24px',
+                  WebkitMaskImage: 'url("/Group%201.svg")',
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskPosition: 'center',
+                  WebkitMaskSize: 'contain',
+                  maskImage: 'url("/Group%201.svg")',
+                  maskRepeat: 'no-repeat',
+                  maskPosition: 'center',
+                  maskSize: 'contain',
+                }}
               />
             </a>
           </div>
