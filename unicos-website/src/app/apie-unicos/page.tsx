@@ -9,7 +9,7 @@ import { FooterSection } from '@/components/sections/FooterSection';
 
 export default function ApieUnicosPage() {
   return (
-    <main className="bg-[#ECE2D3]">
+    <main className="bg-[#EFE8DB]">
       <NavigationBarSection forceLightSurface />
       <ApieUnicosHeroSection />
       <UnicosWhySection
