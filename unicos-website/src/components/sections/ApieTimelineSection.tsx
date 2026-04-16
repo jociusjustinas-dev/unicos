@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { SfArrowLeft, SfArrowRight } from '@/components/icons/feather';
+import { ChevronLeftIcon, ChevronRightIcon } from '@/components/ui/ChevronArrows';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
 
 const BODY: React.CSSProperties = {
@@ -53,7 +53,7 @@ export function ApieTimelineSection() {
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headingRef}
-          className="mx-auto mb-12 flex max-w-[52rem] flex-col items-center gap-4 text-center max-[767px]:mb-10"
+          className="mb-12 flex items-center justify-between gap-4 max-[767px]:mb-10"
           style={{
             opacity: headingVisible ? 1 : 0,
             filter: headingVisible ? 'blur(0px)' : 'blur(12px)',
@@ -62,7 +62,7 @@ export function ApieTimelineSection() {
           }}
         >
           <h2
-            className="m-0 leading-[1.12] tracking-[-0.02em]"
+            className="m-0 leading-[1.12] tracking-[-0.02em] text-center max-[767px]:text-left"
             style={{
               fontFamily: "'Quiche Sans', Georgia, serif",
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
@@ -72,6 +72,27 @@ export function ApieTimelineSection() {
           >
             <span className="font-medium">Mūsų kelias.</span>
           </h2>
+
+          <div className="flex shrink-0 items-center gap-2">
+            <button
+              type="button"
+              onClick={() => scrollTrack('prev')}
+              className="group flex h-12 w-12 items-center justify-center overflow-visible border border-[#1A1010]/18 bg-transparent p-0 text-[#1A1010] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#3B443A] hover:text-[#EFE8DB]"
+              style={{ borderRadius: '0px' }}
+              aria-label="Ankstesni metai"
+            >
+              <ChevronLeftIcon className="h-[22px] w-[22px] text-current" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollTrack('next')}
+              className="group flex h-12 w-12 items-center justify-center overflow-visible border border-[#1A1010]/18 bg-transparent p-0 text-[#1A1010] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#3B443A] hover:text-[#EFE8DB]"
+              style={{ borderRadius: '0px' }}
+              aria-label="Kiti metai"
+            >
+              <ChevronRightIcon className="h-[22px] w-[22px] text-current" />
+            </button>
+          </div>
         </div>
 
         <div
@@ -83,41 +104,17 @@ export function ApieTimelineSection() {
             transition: 'opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1)',
           }}
         >
-          <div className="mb-4 flex items-center justify-between gap-4">
-            <div className="h-px w-full bg-[#1A1010]/18" aria-hidden />
-            <div className="flex shrink-0 items-center gap-2">
-              <button
-                type="button"
-                onClick={() => scrollTrack('prev')}
-                className="group flex h-11 w-11 items-center justify-center border border-[#1A1010]/18 bg-transparent p-0 text-[#1A1010] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#3B443A] hover:text-[#EFE8DB]"
-                style={{ borderRadius: '0px' }}
-                aria-label="Ankstesni metai"
-              >
-                <SfArrowLeft size={18} className="text-current" />
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollTrack('next')}
-                className="group flex h-11 w-11 items-center justify-center border border-[#1A1010]/18 bg-transparent p-0 text-[#1A1010] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#3B443A] hover:text-[#EFE8DB]"
-                style={{ borderRadius: '0px' }}
-                aria-label="Kiti metai"
-              >
-                <SfArrowRight size={18} className="text-current" />
-              </button>
-            </div>
-          </div>
-
           <div className="relative">
             <div className="pointer-events-none absolute left-0 right-0 top-[39px] z-[0] h-px bg-[#1A1010]/18" aria-hidden />
 
             <div
               ref={trackRef}
-              className="relative z-[1] flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 pr-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="relative z-[1] flex snap-x snap-mandatory gap-14 overflow-x-auto pb-2 pr-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden max-[767px]:gap-10"
             >
               {milestones.map((item, index) => (
                 <article
                   key={item.year}
-                  className="flex min-w-[250px] max-w-[250px] snap-start flex-col gap-6"
+                  className="flex min-w-[280px] max-w-[280px] snap-start flex-col gap-6 max-[767px]:min-w-[240px] max-[767px]:max-w-[240px]"
                   style={{
                     opacity: timelineVisible ? 1 : 0,
                     transform: timelineVisible ? 'translateY(0)' : 'translateY(18px)',
