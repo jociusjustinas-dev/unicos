@@ -432,7 +432,7 @@ function MobileMenu({ open }: { open: boolean }) {
 // Main component
 // ---------------------------------------------------------------------------
 
-export function NavigationBarSection() {
+export function NavigationBarSection({ forceLightSurface = false }: { forceLightSurface?: boolean }) {
   const [openDropdown, setOpenDropdown] = React.useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [navVisible, setNavVisible] = React.useState(true);
@@ -440,7 +440,7 @@ export function NavigationBarSection() {
   const lastScrollYRef = React.useRef(0);
   const closeTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const isMegaOpen = openDropdown !== null;
-  const useLightNavSurface = isMegaOpen || mobileOpen || hasScrolled;
+  const useLightNavSurface = forceLightSurface || isMegaOpen || mobileOpen || hasScrolled;
 
   const clearCloseTimeout = React.useCallback(() => {
     if (closeTimeoutRef.current) {
