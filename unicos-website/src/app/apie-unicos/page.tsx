@@ -5,6 +5,7 @@ import { ApieUnicosHeroSection } from '@/components/sections/ApieUnicosHeroSecti
 import { UnicosWhySection } from '@/components/sections/UnicosWhySection';
 import { ApieTimelineSection } from '@/components/sections/ApieTimelineSection';
 import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
+import { ApieTeamSection } from '@/components/sections/ApieTeamSection';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { FooterSection } from '@/components/sections/FooterSection';
 
@@ -20,6 +21,7 @@ export default function ApieUnicosPage() {
       />
       <ApieTimelineSection />
       <ResponsibleBeautySection />
+      <ApieTeamSection />
       <CtaSection />
       <FooterSection />
     </main>
