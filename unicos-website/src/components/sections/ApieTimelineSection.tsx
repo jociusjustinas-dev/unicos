@@ -49,7 +49,7 @@ export function ApieTimelineSection() {
   };
 
   return (
-    <section className="relative z-[2] overflow-x-clip bg-[#E8EDE9] py-[clamp(5rem,12vw,7rem)] text-[#1A1010] max-[479px]:py-20">
+    <section className="relative z-[2] overflow-x-clip bg-[#EFE8DB] py-[clamp(5rem,12vw,7rem)] text-[#1A1010] max-[479px]:py-20">
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headingRef}
@@ -83,57 +83,62 @@ export function ApieTimelineSection() {
             transition: 'opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1)',
           }}
         >
-          <div className="mb-4 flex justify-end gap-2">
-            <button
-              type="button"
-              onClick={() => scrollTrack('prev')}
-              className="flex h-11 w-11 items-center justify-center border border-[#1A1010]/16 bg-transparent text-[#1A1010] transition-[background-color,color,border-color] duration-300 hover:border-[#3B443A] hover:bg-[#3B443A] hover:text-[#EFE8DB]"
-              style={{ borderRadius: '0px' }}
-              aria-label="Ankstesni metai"
-            >
-              <SfArrowLeft size={18} className="text-current" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollTrack('next')}
-              className="flex h-11 w-11 items-center justify-center border border-[#1A1010]/16 bg-transparent text-[#1A1010] transition-[background-color,color,border-color] duration-300 hover:border-[#3B443A] hover:bg-[#3B443A] hover:text-[#EFE8DB]"
-              style={{ borderRadius: '0px' }}
-              aria-label="Kiti metai"
-            >
-              <SfArrowRight size={18} className="text-current" />
-            </button>
+          <div className="mb-4 flex items-center justify-between gap-4">
+            <div className="h-px w-full bg-[#1A1010]/18" aria-hidden />
+            <div className="flex shrink-0 items-center gap-2">
+              <button
+                type="button"
+                onClick={() => scrollTrack('prev')}
+                className="group flex h-11 w-11 items-center justify-center border border-[#1A1010]/18 bg-transparent p-0 text-[#1A1010] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#3B443A] hover:text-[#EFE8DB]"
+                style={{ borderRadius: '0px' }}
+                aria-label="Ankstesni metai"
+              >
+                <SfArrowLeft size={18} className="text-current" />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollTrack('next')}
+                className="group flex h-11 w-11 items-center justify-center border border-[#1A1010]/18 bg-transparent p-0 text-[#1A1010] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#3B443A] hover:text-[#EFE8DB]"
+                style={{ borderRadius: '0px' }}
+                aria-label="Kiti metai"
+              >
+                <SfArrowRight size={18} className="text-current" />
+              </button>
+            </div>
           </div>
 
-          <div className="pointer-events-none absolute left-0 right-0 top-[39px] z-[0] h-px bg-[#1A1010]/18" aria-hidden />
+          <div className="relative">
+            <div className="pointer-events-none absolute left-0 right-0 top-[39px] z-[0] h-px bg-[#1A1010]/18" aria-hidden />
 
-          <div
-            ref={trackRef}
-            className="relative z-[1] flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 pr-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          >
-            {milestones.map((item, index) => (
-              <article
-                key={item.year}
-                className="flex min-w-[250px] max-w-[250px] snap-start flex-col gap-6"
-                style={{
-                  opacity: timelineVisible ? 1 : 0,
-                  transform: timelineVisible ? 'translateY(0)' : 'translateY(18px)',
-                  transition: `opacity 0.65s cubic-bezier(0.22,1,0.36,1) ${index * 80}ms, transform 0.65s cubic-bezier(0.22,1,0.36,1) ${index * 80}ms`,
-                }}
-              >
-                <div className="relative z-[2] flex h-20 w-20 items-center justify-center border border-[#1A1010]/12 bg-[#3B443A]" style={{ borderRadius: '0px' }}>
-                  <span
-                    className="text-[#EFE8DB]"
-                    style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: '30px', lineHeight: 1, fontWeight: 300 }}
-                  >
-                    {item.year}
-                  </span>
-                </div>
+            <div
+              ref={trackRef}
+              className="relative z-[1] flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 pr-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {milestones.map((item, index) => (
+                <article
+                  key={item.year}
+                  className="flex min-w-[250px] max-w-[250px] snap-start flex-col gap-6"
+                  style={{
+                    opacity: timelineVisible ? 1 : 0,
+                    transform: timelineVisible ? 'translateY(0)' : 'translateY(18px)',
+                    transition: `opacity 0.65s cubic-bezier(0.22,1,0.36,1) ${index * 80}ms, transform 0.65s cubic-bezier(0.22,1,0.36,1) ${index * 80}ms`,
+                  }}
+                >
+                  <div className="relative z-[2] flex h-20 w-20 items-center justify-center border border-[#1A1010]/12 bg-[#3B443A]" style={{ borderRadius: '0px' }}>
+                    <span
+                      className="text-[#EFE8DB]"
+                      style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: '30px', lineHeight: 1, fontWeight: 300 }}
+                    >
+                      {item.year}
+                    </span>
+                  </div>
 
-                <p className="m-0 text-[#1A1010]/88" style={{ ...BODY, fontSize: '15px', lineHeight: 1.55, fontWeight: 400 }}>
-                  {item.description}
-                </p>
-              </article>
-            ))}
+                  <p className="m-0 text-[#1A1010]/88" style={{ ...BODY, fontSize: '15px', lineHeight: 1.55, fontWeight: 400 }}>
+                    {item.description}
+                  </p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </div>
