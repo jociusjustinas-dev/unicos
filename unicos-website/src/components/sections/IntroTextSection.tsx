@@ -6,7 +6,7 @@ function MarqueeSep({ greenText = false }: { greenText?: boolean }) {
   return (
     <span
       className={`h-3 w-3 shrink-0 rounded-full max-[767px]:h-2.5 max-[767px]:w-2.5 ${
-        greenText ? 'bg-[#3B443A]/35' : 'bg-[#64151F]/35'
+        greenText ? 'bg-[#3B443A]/55' : 'bg-[#64151F]/35'
       }`}
       aria-hidden
     />
@@ -38,8 +38,14 @@ function MarqueeUnit({ greenText = false }: { greenText?: boolean }) {
   );
 }
 
-export function IntroTextSection({ greenText = false }: { greenText?: boolean }) {
-  const bgColor = greenText ? '#FFFFFF' : '#EFE8DB';
+export function IntroTextSection({
+  greenText = false,
+  backgroundColor,
+}: {
+  greenText?: boolean;
+  backgroundColor?: string;
+}) {
+  const bgColor = backgroundColor ?? (greenText ? '#FFFFFF' : '#EFE8DB');
   return (
     <div style={{ backgroundColor: bgColor }}>
       <section

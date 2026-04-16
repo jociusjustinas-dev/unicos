@@ -24,7 +24,7 @@ export default function ApieUnicosPage() {
       <ApieTimelineSection />
       <ResponsibleBeautySection />
       <ApieTeamSection />
-      <IntroTextSection greenText />
+      <IntroTextSection greenText backgroundColor="#FFFFFF" />
       <CmsGridSection />
       <CtaSection />
       <FooterSection />
