@@ -9,6 +9,7 @@ import { CtaSection } from '@/components/sections/CtaSection';
 import { OdosAudienceSection } from '@/components/sections/OdosAudienceSection';
 import { OdosChallengesSection } from '@/components/sections/OdosChallengesSection';
 import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
+import { OdosBrandsSection } from '@/components/sections/OdosBrandsSection';
 import { OdosStarterCalloutSection } from '@/components/sections/OdosStarterCalloutSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 
@@ -187,6 +188,7 @@ export default function OdosSpecialistamsPage() {
         subheading="Gausite ne tik produktus, bet ir aplinką profesionaliam augimui."
         cards={[...solutionCards]}
       />
+      <OdosBrandsSection />
       <OdosStarterCalloutSection />
       <CmsGridSection />
       <FaqSection backgroundClassName="bg-[#EFE8DB]" accent="maroon" />
