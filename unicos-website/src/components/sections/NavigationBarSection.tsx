@@ -349,7 +349,7 @@ function MobileMenu({ open }: { open: boolean }) {
 
   return (
     <div
-      className={`absolute left-0 right-0 z-[40] bg-[#EFE8DB] border-b border-[rgba(26,16,16,0.08)] overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+      className={`absolute left-0 right-0 z-[40] bg-[#EFE8DB] border-b border-[rgba(26,16,16,0.08)] overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         open ? 'opacity-100 pointer-events-auto max-h-[640px]' : 'opacity-0 pointer-events-none max-h-0'
       }`}
       style={{ top: '72px' }}
@@ -365,7 +365,7 @@ function MobileMenu({ open }: { open: boolean }) {
             <span>Sprendimai</span>
             <span
               aria-hidden
-              className="inline-flex items-center justify-center text-[#64151F] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              className="inline-flex items-center justify-center text-[#64151F] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
               style={{ transform: openGroup === 'sprendimai' ? 'rotate(-90deg)' : 'rotate(180deg)' }}
             >
               <SfArrowLeft size={14} className="text-current" />
@@ -373,7 +373,7 @@ function MobileMenu({ open }: { open: boolean }) {
           </button>
 
           <div
-            className={`grid transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            className={`grid transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
               openGroup === 'sprendimai' ? 'grid-rows-[1fr] pb-2' : 'grid-rows-[0fr]'
             }`}
           >

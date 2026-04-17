@@ -183,7 +183,7 @@ export function FaqSection({ backgroundClassName = 'bg-white' }: { backgroundCla
                     <span className="relative mt-1 flex h-3 w-3 shrink-0 items-center justify-center" aria-hidden>
                       <span className="absolute h-px w-3 bg-[#1A1010]" style={{ top: '50%', marginTop: '-0.5px' }} />
                       <span
-                        className="absolute h-3 w-px bg-[#1A1010] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                        className="absolute h-3 w-px bg-[#1A1010] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                         style={{
                           left: '50%',
                           marginLeft: '-0.5px',
@@ -197,7 +197,7 @@ export function FaqSection({ backgroundClassName = 'bg-white' }: { backgroundCla
                     id={panelId}
                     role="region"
                     aria-labelledby={buttonId}
-                    className={`overflow-hidden transition-[max-height,opacity,transform] duration-650 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    className={`overflow-hidden transition-[max-height,opacity,transform] duration-900 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                       isOpen ? 'max-h-[min(900px,82vh)] opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-1'
                     }`}
                   >
