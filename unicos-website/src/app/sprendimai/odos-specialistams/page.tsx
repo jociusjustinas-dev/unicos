@@ -52,35 +52,35 @@ export default function OdosSpecialistamsPage() {
         style={{ backgroundColor: '#EFE8DB', borderBottom: '1px solid rgba(26,16,16,0.10)' }}
       >
         <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
-          {/* Breadcrumb */}
-          <nav className="mb-0" aria-label="Breadcrumb">
-            <div className="flex items-center gap-3">
-              <span
-                className="uppercase text-[#64151F]"
-                style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
-              >
-                Sprendimai
-              </span>
-              <span className="text-[#1A1010]/45" style={{ ...BODY, fontSize: '11px', fontWeight: 400 }}>
-                /
-              </span>
-              <span
-                className="uppercase text-[#64151F]"
-                style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
-              >
-                Odos priežiūros specialistsams
-              </span>
-            </div>
-          </nav>
-
-          <div
-            className="mb-14 mt-4 h-px w-full bg-[#1A1010]/10 max-[767px]:mb-10 max-[767px]:mt-3"
-            aria-hidden
-          />
-
-          <div className="flex w-full flex-row gap-16 max-[991px]:flex-col max-[991px]:gap-12">
+          <div className="flex w-full flex-row items-stretch gap-16 max-[991px]:flex-col max-[991px]:gap-12">
             {/* LEFT: TEXT + CTAs */}
-            <div className="flex flex-col flex-1 min-w-0">
+            <div className="flex min-w-0 flex-1 flex-col pb-8 max-[991px]:pb-0">
+              {/* Breadcrumb */}
+              <nav className="mb-0" aria-label="Breadcrumb">
+                <div className="flex items-center gap-3">
+                  <span
+                    className="uppercase text-[#64151F]"
+                    style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
+                  >
+                    Sprendimai
+                  </span>
+                  <span className="text-[#1A1010]/45" style={{ ...BODY, fontSize: '11px', fontWeight: 400 }}>
+                    /
+                  </span>
+                  <span
+                    className="uppercase text-[#64151F]"
+                    style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
+                  >
+                    Odos priežiūros specialistsams
+                  </span>
+                </div>
+              </nav>
+
+              <div
+                className="mb-14 mt-4 h-px w-full bg-[#1A1010]/10 max-[767px]:mb-10 max-[767px]:mt-3"
+                aria-hidden
+              />
+
               <h1
                 className="m-0 max-w-[18ch] text-[#64151F] tracking-[-0.03em]"
                 style={{
@@ -133,8 +133,8 @@ export default function OdosSpecialistamsPage() {
               <div className="my-8 h-px w-full bg-[#1A1010]/10 max-[767px]:my-7" aria-hidden />
 
               {/* CTA block */}
-              <div className="flex w-full flex-col items-stretch gap-8 sm:flex-row sm:items-start sm:gap-10">
-                <div className="flex flex-1 flex-col items-start gap-2.5">
+              <div className="flex w-full flex-col items-stretch gap-8 sm:flex-row sm:items-start sm:gap-8">
+                <div className="flex flex-col items-start gap-2.5">
                   <CtaLink
                     href="/tapkite-partneriu"
                     variant="primary"
@@ -149,7 +149,7 @@ export default function OdosSpecialistamsPage() {
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col items-start gap-2.5">
+                <div className="flex flex-col items-start gap-2.5">
                   <CtaLink
                     href="/kontaktai"
                     variant="outline"
@@ -167,7 +167,7 @@ export default function OdosSpecialistamsPage() {
             </div>
 
             {/* RIGHT: PHOTO */}
-            <div className="relative flex-1 min-w-0 overflow-hidden h-[520px] max-[991px]:h-[430px] max-[767px]:h-[320px] border border-[#1A1010]/10">
+            <div className="relative min-w-0 flex-1 self-stretch overflow-hidden border border-[#1A1010]/10 min-[992px]:min-h-[620px] max-[991px]:h-[430px] max-[767px]:h-[320px]">
               <img src="/odos.jpg" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
               <div
                 className="absolute inset-0"
