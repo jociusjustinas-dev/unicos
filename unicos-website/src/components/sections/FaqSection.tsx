@@ -197,18 +197,20 @@ export function FaqSection({ backgroundClassName = 'bg-white' }: { backgroundCla
                     id={panelId}
                     role="region"
                     aria-labelledby={buttonId}
-                    className={`overflow-hidden transition-[max-height] duration-900 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                      isOpen ? 'max-h-[min(900px,82vh)]' : 'max-h-0'
+                    className={`grid transition-[grid-template-rows] duration-900 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
                     }`}
                   >
-                    <p
-                      className={`m-0 max-w-[52ch] pb-7 pr-2 pt-1 text-[#1A1010]/82 max-[479px]:pb-6 transition-opacity duration-900 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                        isOpen ? 'opacity-100' : 'opacity-0'
-                      }`}
-                      style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}
-                    >
-                      {faq.answer}
-                    </p>
+                    <div className="overflow-hidden">
+                      <p
+                        className={`m-0 max-w-[52ch] pb-7 pr-2 pt-1 text-[#1A1010]/82 max-[479px]:pb-6 transition-opacity duration-900 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                          isOpen ? 'opacity-100' : 'opacity-0'
+                        }`}
+                        style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}
+                      >
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
                 </div>
               );
