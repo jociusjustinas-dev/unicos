@@ -60,11 +60,11 @@ export function OdosChallengesSection() {
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 py-20 max-[991px]:py-16 max-[767px]:px-6 max-[767px]:py-12 max-[479px]:px-4">
         <div
           ref={cardRef}
-          className={`grid w-full grid-cols-[minmax(0,1fr)_minmax(360px,0.75fr)] items-stretch gap-12 text-[#EFE8DB] max-[991px]:grid-cols-1 max-[767px]:gap-8 transition-all duration-700 ease-out ${
+          className={`grid w-full grid-cols-[minmax(0,1fr)_minmax(360px,0.75fr)] items-stretch gap-[150px] text-[#EFE8DB] max-[991px]:grid-cols-1 max-[991px]:gap-12 max-[767px]:gap-8 transition-all duration-700 ease-out ${
             cardVisible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]'
           }`}
         >
-          <div className="flex min-w-0 flex-col items-start">
+          <div className="flex min-h-[620px] min-w-0 flex-col items-start justify-between max-[991px]:min-h-0">
             <h2
               className="m-0 text-[#EFE8DB]"
               style={{
@@ -78,7 +78,7 @@ export function OdosChallengesSection() {
               Pažįstama situacija?
             </h2>
 
-            <div className="mt-[100px] flex w-full max-w-[760px] flex-col gap-4 max-[767px]:mt-12 max-[767px]:gap-3">
+            <div className="flex w-full max-w-[760px] flex-col gap-4 max-[767px]:gap-3">
               {items.map((item, i) => {
                 const isOpen = openIndex === i;
                 return (
