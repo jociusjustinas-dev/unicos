@@ -4,12 +4,28 @@ import * as React from 'react';
 import { gsap } from 'gsap';
 
 export function Preloader() {
-  const [visible, setVisible] = React.useState(true);
+  const [visible, setVisible] = React.useState(false);
   const loaderRef = React.useRef<HTMLDivElement>(null);
   const logoRef = React.useRef<HTMLDivElement>(null);
   const starRef = React.useRef<SVGPathElement>(null);
 
   React.useEffect(() => {
+    const key = 'unicos-preloader-seen';
+    const hasSeen = window.sessionStorage.getItem(key) === '1';
+
+    if (hasSeen) {
+      window.dispatchEvent(new Event('preloader:done'));
+      setVisible(false);
+      return;
+    }
+
+    window.sessionStorage.setItem(key, '1');
+    setVisible(true);
+  }, []);
+
+  React.useEffect(() => {
+    if (!visible) return;
+
     const loader = loaderRef.current;
     const logo = logoRef.current;
     const star = starRef.current;
@@ -57,7 +73,7 @@ export function Preloader() {
       timeline.kill();
       document.body.style.overflow = originalOverflow || '';
     };
-  }, []);
+  }, [visible]);
 
   if (!visible) return null;
 
