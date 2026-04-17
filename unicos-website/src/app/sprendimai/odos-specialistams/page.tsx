@@ -8,6 +8,7 @@ import { FaqSection } from '@/components/sections/FaqSection';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { OdosAudienceSection } from '@/components/sections/OdosAudienceSection';
 import { OdosChallengesSection } from '@/components/sections/OdosChallengesSection';
+import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
 import { CtaLink } from '@/components/ui/CtaLink';
 
 const BODY: React.CSSProperties = {
@@ -15,6 +16,33 @@ const BODY: React.CSSProperties = {
 };
 
 export default function OdosSpecialistamsPage() {
+  const solutionCards = [
+    {
+      title: 'Atrinkti prekių ženklai',
+      description: 'Guinot, Neostrata, Anna Lotan ir kiti, oficialiai atstovaujami su pilnu palaikymu.',
+    },
+    {
+      title: 'Darbo protokolai',
+      description: 'Kiekvienam produktui aiški instrukcija procedūroms ir namų priežiūros rekomendacijoms.',
+    },
+    {
+      title: 'Asmeninis vadybininkas',
+      description: 'Vienas kontaktas, pažįstantis Jūsų veiklą ir padedantis priimti sprendimus.',
+    },
+    {
+      title: 'Praktiniai mokymai',
+      description: 'Seminarai su tarptautiniais lektoriais ir sertifikatais, stiprinančiais autoritetą.',
+    },
+    {
+      title: 'Startinis paketas',
+      description: 'Paruoštas rinkinys pradėti be didelių investicijų su vadybininko rekomendacija.',
+    },
+    {
+      title: 'Skaidri kainodara',
+      description: 'Didmeninės kainos nuo pirmos dienos, jokių paslėptų mokesčių.',
+    },
+  ] as const;
+
   return (
     <main className="bg-[#ECE2D3]">
       <NavigationBarSection forceLightSurface />
@@ -153,6 +181,17 @@ export default function OdosSpecialistamsPage() {
 
       <OdosAudienceSection />
       <OdosChallengesSection />
+      <ResponsibleBeautySection
+        eyebrowLabel={null}
+        heading={
+          <>
+            <span className="font-medium">Kaip UNICOS </span>
+            <span className="font-light">tai išsprendžia?</span>
+          </>
+        }
+        subheading="Gausite ne tik produktus, bet ir aplinką profesionaliam augimui."
+        cards={[...solutionCards]}
+      />
       <CmsGridSection />
       <FaqSection backgroundClassName="bg-[#EFE8DB]" />
       <CtaSection />
