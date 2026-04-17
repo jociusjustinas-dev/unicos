@@ -78,7 +78,7 @@ export function OdosChallengesSection() {
               Pažįstama situacija?
             </h2>
 
-            <div className="flex w-full max-w-[760px] flex-col gap-4 max-[767px]:gap-3">
+            <div className="flex w-full max-w-[530px] flex-col gap-4 max-[767px]:gap-3">
               {items.map((item, i) => {
                 const isOpen = openIndex === i;
                 return (
@@ -103,7 +103,7 @@ export function OdosChallengesSection() {
                       <div className="relative flex h-6 w-6 flex-none items-center justify-center max-[767px]:h-5 max-[767px]:w-5">
                         <div className="absolute h-px w-[70%] bg-[#EFE8DB]" />
                         <div
-                          className="absolute h-px w-[70%] bg-[#EFE8DB] transition-all duration-300"
+                          className="absolute h-px w-[70%] bg-[#EFE8DB] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
                           style={{
                             transform: isOpen ? 'rotate(90deg) scaleX(0)' : 'rotate(90deg) scaleX(1)',
                             opacity: isOpen ? 0 : 1,
@@ -112,7 +112,7 @@ export function OdosChallengesSection() {
                       </div>
                     </div>
 
-                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[220px]' : 'max-h-0'}`}>
+                    <div className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? 'max-h-[260px]' : 'max-h-0'}`}>
                       <div
                         className="pt-5 text-[#EFE8DB]/70 max-[767px]:pt-4"
                         style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}
