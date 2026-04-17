@@ -132,6 +132,7 @@ export default function OdosSpecialistamsPage() {
                   <CtaLink
                     href="/tapkite-partneriu"
                     variant="primary"
+                    className="min-w-[240px] justify-center"
                   >
                     Tapti partneriu
                   </CtaLink>
@@ -147,6 +148,7 @@ export default function OdosSpecialistamsPage() {
                   <CtaLink
                     href="/kontaktai"
                     variant="outline"
+                    className="min-w-[240px] justify-center"
                   >
                     Gauti konsultaciją
                   </CtaLink>
@@ -161,7 +163,7 @@ export default function OdosSpecialistamsPage() {
             </div>
 
             {/* RIGHT: PHOTO */}
-            <div className="relative min-w-0 flex-1 self-stretch overflow-hidden border border-[#1A1010]/10 min-[992px]:min-h-[620px] max-[991px]:h-[430px] max-[767px]:h-[320px]">
+            <div className="relative min-w-0 flex-1 overflow-hidden border border-[#1A1010]/10 min-[992px]:h-[560px] max-[991px]:h-[430px] max-[767px]:h-[320px]">
               <img src="/odos.jpg" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
               <div
                 className="absolute inset-0"
