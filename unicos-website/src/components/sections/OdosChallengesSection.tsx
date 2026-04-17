@@ -57,7 +57,7 @@ export function OdosChallengesSection() {
 
   return (
     <section className="relative z-[2] bg-[#1A1010]">
-      <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 py-20 max-[991px]:py-16 max-[767px]:px-6 max-[767px]:py-12 max-[479px]:px-4">
+      <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 py-28 max-[991px]:py-20 max-[767px]:px-6 max-[767px]:py-16 max-[479px]:px-4">
         <div
           ref={cardRef}
           className={`grid w-full grid-cols-[minmax(0,1fr)_minmax(360px,0.75fr)] items-stretch gap-[150px] text-[#EFE8DB] max-[991px]:grid-cols-1 max-[991px]:gap-12 max-[767px]:gap-8 transition-all duration-700 ease-out ${
