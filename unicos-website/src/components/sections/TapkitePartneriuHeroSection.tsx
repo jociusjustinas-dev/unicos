@@ -18,7 +18,7 @@ const LABEL: React.CSSProperties = {
 };
 
 const INPUT_BASE_CLASS =
-  'w-full appearance-none rounded-none border border-[rgba(239,232,219,0.08)] bg-[rgba(239,232,219,0.08)] px-4 py-3 text-base leading-6 font-normal text-[rgba(239,232,219,0.48)] placeholder:text-[rgba(239,232,219,0.48)] outline-none transition-[border-color,color] duration-200 focus:border-[rgba(239,232,219,0.48)] focus:text-[#EFE8DB] max-[767px]:text-sm max-[767px]:leading-5 max-[767px]:py-[10px] max-[767px]:px-3';
+  'w-full appearance-none rounded-none border border-[rgba(239,232,219,0.16)] bg-[rgba(239,232,219,0.09)] px-4 py-3 text-base leading-6 font-normal text-[rgba(239,232,219,0.82)] placeholder:text-[rgba(239,232,219,0.56)] outline-none transition-[border-color,color] duration-200 focus:border-[rgba(239,232,219,0.52)] focus:text-[#EFE8DB] max-[767px]:text-sm max-[767px]:leading-5 max-[767px]:py-[10px] max-[767px]:px-3';
 
 function ChevronDownIcon({ className = '' }: { className?: string }) {
   return (
@@ -351,10 +351,10 @@ export function TapkitePartneriuHeroSection() {
             <div
               className="mb-0 p-8 max-[767px]:p-6"
               style={{
-                backgroundColor: '#1A1010',
+                backgroundColor: '#64151F',
                 color: 'rgba(239,232,219,0.88)',
                 borderRadius: '0px',
-                border: '1px solid rgba(239,232,219,0.08)',
+                border: '1px solid rgba(239,232,219,0.16)',
               }}
             >
               {isSubmitted ? (
@@ -619,7 +619,7 @@ export function TapkitePartneriuHeroSection() {
                           onChange={(e) => handleFieldChange('consent', e.target.checked)}
                           required
                           disabled={isSubmitting}
-                          className={`h-4 w-4 appearance-none border bg-[rgba(26,16,16,0.05)] transition-[background-color,border-color] duration-200 ${
+                          className={`h-4 w-4 appearance-none border bg-[rgba(239,232,219,0.09)] transition-[background-color,border-color] duration-200 ${
                             errors.consent ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'
                           } ${values.consent ? '!border-[#EFE8DB] !bg-[#EFE8DB]' : ''}`}
                           style={{ borderRadius: '0px' }}
