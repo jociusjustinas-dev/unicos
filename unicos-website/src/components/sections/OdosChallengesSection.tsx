@@ -75,7 +75,8 @@ export function OdosChallengesSection() {
                 fontWeight: 300,
               }}
             >
-              Pažįstama situacija?
+              <span className="font-light">Pažįstama </span>
+              <span className="font-medium">situacija?</span>
             </h2>
 
             <div className="flex w-full max-w-[530px] flex-col gap-4 max-[767px]:gap-3">

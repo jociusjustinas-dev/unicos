@@ -112,7 +112,8 @@ export function OdosAudienceSection() {
               letterSpacing: '-0.03em',
             }}
           >
-            Kam skirtas šis sprendimas?
+            <span className="font-light">Kam skirtas </span>
+            <span className="font-medium">šis sprendimas?</span>
           </h2>
         </div>
 

@@ -90,11 +90,12 @@ export default function OdosSpecialistamsPage() {
                   fontWeight: 300,
                 }}
               >
-                Profesionali kosmetika salonams ir odos priežiūros specialistams
+                <span className="font-light">Profesionali kosmetika salonams ir </span>
+                <span className="font-medium">odos priežiūros specialistams</span>
               </h1>
 
               <p
-                className="m-0 mt-6 max-w-[62ch] text-[#1A1010]/78"
+                className="m-0 mt-6 max-w-[62ch] text-[#64151F]/78"
                 style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}
               >
                 Atrinkti prekių ženklai, aiškūs protokolai ir asmeninis palaikymas — kad Jūsų procedūros būtų
@@ -106,7 +107,7 @@ export default function OdosSpecialistamsPage() {
                 <div className="flex items-end gap-3">
                   <div
                     className="uppercase text-[#64151F]/70"
-                    style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1 }}
+                    style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1, paddingBottom: '6px' }}
                   >
                     STARTAS NUO
                   </div>
@@ -140,7 +141,7 @@ export default function OdosSpecialistamsPage() {
                     className="uppercase text-[#1A1010]/62"
                     style={{ fontSize: '10px', letterSpacing: '0.12em', ...BODY, fontWeight: 500 }}
                   >
-                    Patvirtinimas per 24 val.
+                    PATVIRTINIMAS PER 24 VAL.
                   </span>
                 </div>
 
