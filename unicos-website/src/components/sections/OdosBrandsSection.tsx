@@ -28,7 +28,7 @@ const cards: BrandCard[] = [
     title: 'Neostrata',
     description: 'Dermatologinė kosmetika su kliniškai įrodytomis aktyviosiomis medžiagomis.',
     image: '/mega-menu/2.jpeg',
-    logoSvg: '/Vector.svg',
+    logoSvg: '/comfort zone.svg',
   },
   {
     id: 'mary-cohr',
@@ -125,10 +125,24 @@ export function OdosBrandsSection() {
                 <img src={card.image} alt={card.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,16,0.08),rgba(26,16,16,0.55))]" aria-hidden />
               </div>
-              <div className="flex flex-col gap-2">
-                <div className="h-6">
+              <div className="group flex flex-col gap-2">
+                <div className="h-7">
                   {card.logoSvg ? (
-                    <img src={card.logoSvg} alt={card.title} className="h-full w-auto max-w-[180px] object-contain" loading="lazy" />
+                    <img
+                      src={card.logoSvg}
+                      alt={card.title}
+                      className="h-full w-[180px] object-contain object-left transition-[filter,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                      style={{ filter: 'grayscale(1) saturate(0)', opacity: 0.82 }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.filter = 'none';
+                        e.currentTarget.style.opacity = '1';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.filter = 'grayscale(1) saturate(0)';
+                        e.currentTarget.style.opacity = '0.82';
+                      }}
+                      loading="lazy"
+                    />
                   ) : (
                     <h3 className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '20px', lineHeight: '24px', fontWeight: 500 }}>
                       {card.title}
