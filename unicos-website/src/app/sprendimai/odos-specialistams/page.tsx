@@ -49,7 +49,7 @@ export default function OdosSpecialistamsPage() {
 
       <section
         className="relative z-[2] overflow-x-clip pt-40 pb-28 max-[767px]:pt-32 max-[767px]:pb-20"
-        style={{ backgroundColor: '#EFE8DB', borderBottom: '1px solid rgba(26,16,16,0.10)' }}
+        style={{ backgroundColor: '#EFE8DB' }}
       >
         <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
           <div className="flex w-full flex-row items-stretch gap-16 max-[991px]:flex-col max-[991px]:gap-12">
@@ -76,10 +76,7 @@ export default function OdosSpecialistamsPage() {
                 </div>
               </nav>
 
-              <div
-                className="mb-14 mt-4 h-px w-full bg-[#1A1010]/10 max-[767px]:mb-10 max-[767px]:mt-3"
-                aria-hidden
-              />
+              <div className="mb-10 max-[767px]:mb-8" aria-hidden />
 
               <h1
                 className="m-0 max-w-[18ch] text-[#64151F] tracking-[-0.03em]"

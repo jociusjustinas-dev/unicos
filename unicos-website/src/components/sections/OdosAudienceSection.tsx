@@ -94,7 +94,7 @@ export function OdosAudienceSection() {
   const cardRefs = [card0InView, card1InView, card2InView, card3InView];
 
   return (
-    <section className="relative z-[2] overflow-hidden bg-[#EFE8DB] pt-[160px] pb-[120px] max-[767px]:pt-24 max-[767px]:pb-16">
+    <section className="relative z-[2] overflow-hidden bg-[#EFE8DB] py-20 max-[767px]:py-14">
       <div className="relative z-[3] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headlineInView.ref}
