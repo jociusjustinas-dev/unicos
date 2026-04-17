@@ -112,9 +112,9 @@ export function OdosChallengesSection() {
                       </div>
                     </div>
 
-                    <div className={`overflow-hidden transition-all duration-800 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? 'max-h-[260px]' : 'max-h-0'}`}>
+                    <div className={`overflow-hidden transition-[max-height] duration-800 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? 'max-h-[260px]' : 'max-h-0'}`}>
                       <div
-                        className="pt-5 text-[#EFE8DB]/70 max-[767px]:pt-4"
+                        className={`pt-5 text-[#EFE8DB]/70 max-[767px]:pt-4 transition-opacity duration-800 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? 'opacity-100' : 'opacity-0'}`}
                         style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}
                       >
                         {item.paragraph}
