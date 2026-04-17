@@ -46,11 +46,11 @@ const contactAvatar = {
 } as const;
 
 export function FaqSection({ backgroundClassName = 'bg-white' }: { backgroundClassName?: string }) {
-  const [openIndex, setOpenIndex] = React.useState<number | null>(null);
+  const [openIndexes, setOpenIndexes] = React.useState<number[]>([]);
   const [wrapRef, visible] = useInViewOnce<HTMLDivElement>({ threshold: 0.08, rootMargin: '0px 0px -10% 0px' });
 
   const toggle = (i: number) => {
-    setOpenIndex((prev) => (prev === i ? null : i));
+    setOpenIndexes((prev) => (prev.includes(i) ? prev.filter((idx) => idx !== i) : [...prev, i]));
   };
 
   const panelStyle: React.CSSProperties = {
@@ -140,7 +140,7 @@ export function FaqSection({ backgroundClassName = 'bg-white' }: { backgroundCla
           {/* Dešinė: akordionas */}
           <div className="min-w-0 border-t border-solid border-[#1A1010]/20">
             {faqs.map((faq, i) => {
-              const isOpen = openIndex === i;
+              const isOpen = openIndexes.includes(i);
               const panelId = `faq-panel-${i}`;
               const buttonId = `faq-trigger-${i}`;
               const itemDelay = `${i * 85}ms`;

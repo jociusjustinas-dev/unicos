@@ -29,7 +29,7 @@ const items = [
 ] as const;
 
 export function OdosChallengesSection() {
-  const [openIndex, setOpenIndex] = React.useState<number | null>(0);
+  const [openIndexes, setOpenIndexes] = React.useState<number[]>([0]);
   const cardRef = React.useRef<HTMLDivElement>(null);
   const [cardVisible, setCardVisible] = React.useState(false);
 
@@ -52,7 +52,7 @@ export function OdosChallengesSection() {
   }, []);
 
   const handleToggle = (index: number) => {
-    setOpenIndex((prev) => (prev === index ? null : index));
+    setOpenIndexes((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
   };
 
   return (
@@ -80,7 +80,7 @@ export function OdosChallengesSection() {
 
             <div className="flex w-full max-w-[530px] flex-col gap-4 max-[767px]:gap-3">
               {items.map((item, i) => {
-                const isOpen = openIndex === i;
+                const isOpen = openIndexes.includes(i);
                 return (
                   <div
                     key={item.label}
