@@ -190,7 +190,7 @@ export default function OdosSpecialistamsPage() {
         cards={[...solutionCards]}
       />
       <CmsGridSection />
-      <FaqSection backgroundClassName="bg-[#EFE8DB]" />
+      <FaqSection backgroundClassName="bg-[#EFE8DB]" accent="maroon" />
       <CtaSection />
       <FooterSection />
     </main>

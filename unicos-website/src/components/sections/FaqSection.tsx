@@ -45,7 +45,13 @@ const contactAvatar = {
   alt: 'Konsultantė',
 } as const;
 
-export function FaqSection({ backgroundClassName = 'bg-white' }: { backgroundClassName?: string }) {
+export function FaqSection({
+  backgroundClassName = 'bg-white',
+  accent = 'green',
+}: {
+  backgroundClassName?: string;
+  accent?: 'green' | 'maroon';
+}) {
   const [openIndexes, setOpenIndexes] = React.useState<number[]>([]);
   const [wrapRef, visible] = useInViewOnce<HTMLDivElement>({ threshold: 0.08, rootMargin: '0px 0px -10% 0px' });
 
@@ -59,6 +65,9 @@ export function FaqSection({ backgroundClassName = 'bg-white' }: { backgroundCla
     transform: visible ? 'translateY(0)' : 'translateY(16px)',
     transition: 'opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1)',
   };
+
+  const accentColor = accent === 'maroon' ? '#64151F' : '#3B443A';
+  const ctaVariant = accent === 'maroon' ? 'primary' : 'secondary';
 
   return (
     <section
@@ -75,14 +84,15 @@ export function FaqSection({ backgroundClassName = 'bg-white' }: { backgroundCla
           <div className="max-w-[480px] min-[992px]:max-w-none">
             <div className="flex flex-col gap-6 max-[767px]:gap-5">
               <div className="flex items-center gap-2">
-                <div className="h-2 w-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
+                <div className="h-2 w-2 shrink-0" style={{ borderRadius: '0px', backgroundColor: accentColor }} aria-hidden />
                 <span
-                  className="uppercase text-[#3B443A]"
+                  className="uppercase"
                   style={{
                     ...BODY,
                     fontSize: '11px',
                     fontWeight: 500,
                     letterSpacing: '0.12em',
+                    color: accentColor,
                   }}
                 >
                   DUK
@@ -90,12 +100,13 @@ export function FaqSection({ backgroundClassName = 'bg-white' }: { backgroundCla
               </div>
 
               <h2
-                className="m-0 tracking-[-0.03em] text-[#3B443A]"
+                className="m-0 tracking-[-0.03em]"
                 style={{
                   fontFamily: "'Quiche Sans', Georgia, serif",
                   fontSize: 'clamp(2rem, 4vw, 3rem)',
                   lineHeight: 1.08,
                   fontWeight: 300,
+                  color: accentColor,
                 }}
               >
                 <span className="font-light">Dažniausiai</span>
@@ -130,7 +141,7 @@ export function FaqSection({ backgroundClassName = 'bg-white' }: { backgroundCla
               </div>
 
               <div className="shrink-0">
-                <CtaLink href="#kontaktai" variant="secondary">
+                <CtaLink href="#kontaktai" variant={ctaVariant}>
                   Susisiekite
                 </CtaLink>
               </div>
@@ -168,7 +179,7 @@ export function FaqSection({ backgroundClassName = 'bg-white' }: { backgroundCla
                   >
                     <span
                       className={`min-w-0 flex-1 transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                      isOpen ? 'text-[#3B443A]' : 'text-[#1A1010] group-hover:text-[#3B443A]'
+                      isOpen ? '' : accent === 'maroon' ? 'text-[#1A1010] group-hover:text-[#64151F]' : 'text-[#1A1010] group-hover:text-[#3B443A]'
                       }`}
                       style={{
                         ...BODY,
@@ -176,6 +187,7 @@ export function FaqSection({ backgroundClassName = 'bg-white' }: { backgroundCla
                         lineHeight: 1.2,
                         fontWeight: 500,
                         letterSpacing: '-0.02em',
+                        color: isOpen ? accentColor : undefined,
                       }}
                     >
                       {faq.question}
