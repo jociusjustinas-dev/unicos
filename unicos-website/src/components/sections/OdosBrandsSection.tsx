@@ -8,9 +8,9 @@ const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
 
-/** Kaip ProcessSection / home šviesiai žalia juosta (#E8EDE9). */
+/** Šviesiai žalia juosta — be bordo; hover tamsesnis žalias. */
 const brandsCarouselNavBtnClass =
-  'group flex h-12 w-12 shrink-0 items-center justify-center overflow-visible border border-[#3B443A]/22 bg-transparent p-0 text-[#3B443A] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#64151F] hover:bg-[#4a0f17] hover:text-[#EFE8DB] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64151F] disabled:pointer-events-none disabled:opacity-35';
+  'group flex h-12 w-12 shrink-0 items-center justify-center overflow-visible border border-[#3B443A]/22 bg-transparent p-0 text-[#3B443A] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#2f362e] hover:text-[#EFE8DB] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3B443A] disabled:pointer-events-none disabled:opacity-35';
 
 type BrandCard = {
   id: string;
@@ -115,8 +115,8 @@ export function OdosBrandsSection() {
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headerInView.ref}
-          className={`mb-10 flex flex-wrap items-end justify-between gap-6 transition-all duration-700 ease-out max-[767px]:mb-8 max-[767px]:gap-5 ${
-            headerInView.visible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]'
+          className={`mb-10 flex flex-wrap items-end justify-between gap-6 transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] max-[767px]:mb-8 max-[767px]:gap-5 ${
+            headerInView.visible ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
           }`}
         >
           <div className="flex min-w-0 max-w-[760px] flex-col gap-5 max-[767px]:gap-4">
@@ -137,7 +137,7 @@ export function OdosBrandsSection() {
             </p>
           </div>
 
-          <CtaLink href="#" variant="primary" className="shrink-0">
+          <CtaLink href="#" variant="secondary" className="shrink-0">
             Visi prekių ženklai
           </CtaLink>
         </div>
@@ -162,7 +162,7 @@ export function OdosBrandsSection() {
                 key={card.id}
                 data-brand-card
                 href="#"
-                className="group/card flex w-[min(100%,clamp(240px,26vw,300px))] shrink-0 snap-start cursor-pointer flex-col gap-5 bg-[#E8EDE9] max-[767px]:w-[min(100%,280px)] max-[767px]:max-w-[88vw] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64151F]"
+                className="group/card flex w-[min(100%,clamp(240px,26vw,300px))] shrink-0 snap-start cursor-pointer flex-col gap-5 bg-[#E8EDE9] max-[767px]:w-[min(100%,280px)] max-[767px]:max-w-[88vw] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3B443A]"
                 style={{
                   borderRadius: '0px',
                   textDecoration: 'none',
@@ -170,7 +170,7 @@ export function OdosBrandsSection() {
                 }}
               >
                 <div
-                  className="relative h-[380px] w-full overflow-hidden border border-[#3B443A]/14 transition-[border-color,box-shadow] duration-[900ms] ease-[cubic-bezier(0.22,1,0.45,1)] group-hover/card:border-[#3B443A]/26 group-hover/card:shadow-[0_32px_72px_-28px_rgba(59,68,58,0.14)]"
+                  className="relative h-[380px] w-full overflow-hidden border border-[#3B443A]/14 transition-[border-color] duration-[900ms] ease-[cubic-bezier(0.22,1,0.45,1)] group-hover/card:border-[#3B443A]/30"
                   style={{ borderRadius: '0px' }}
                 >
                   <img
@@ -195,7 +195,7 @@ export function OdosBrandsSection() {
                       />
                     ) : (
                       <h3
-                        className="m-0 text-[#1A1010] transition-colors duration-[520ms] ease-in-out group-hover/card:text-[#64151F]"
+                        className="m-0 text-[#1A1010] transition-colors duration-[520ms] ease-in-out group-hover/card:text-[#3B443A]"
                         style={{ ...BODY, fontSize: '18px', lineHeight: '22px', fontWeight: 500 }}
                       >
                         {card.title}
@@ -203,7 +203,7 @@ export function OdosBrandsSection() {
                     )}
                   </div>
                   <p
-                    className="m-0 text-[#1A1010]/78 transition-colors duration-[520ms] ease-in-out group-hover/card:text-[#64151F]/88"
+                    className="m-0 text-[#1A1010]/78 transition-colors duration-[520ms] ease-in-out group-hover/card:text-[#3B443A]"
                     style={{ ...BODY, fontSize: '14px', lineHeight: '22px', fontWeight: 400 }}
                   >
                     {card.description}
