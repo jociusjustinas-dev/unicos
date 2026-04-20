@@ -138,12 +138,12 @@ export function PrekiuZenklaiPage() {
                   role="tab"
                   aria-selected={active}
                   onClick={() => setActiveFilter(f.id)}
-                  className={`border px-4 py-2.5 transition-colors duration-200 ${
+                  className={`border px-5 py-2.5 transition-colors duration-200 ${
                     active
                       ? 'border-[#64151F] bg-[#64151F] text-[#EFE8DB]'
                       : 'border-[#1A1010]/10 bg-white/40 text-[#1A1010] hover:border-[#64151F]/45'
                   }`}
-                  style={{ ...BODY, fontSize: '13px', fontWeight: 500, borderRadius: '0px' }}
+                  style={{ ...BODY, fontSize: '13px', fontWeight: 500, borderRadius: '100vw' }}
                 >
                   {f.label}
                 </button>
@@ -175,7 +175,7 @@ export function PrekiuZenklaiPage() {
                           <span
                             key={label}
                             className="border border-[#1A1010]/14 px-2.5 py-1 text-[#1A1010]/78"
-                            style={{ ...BODY, fontSize: '12px', fontWeight: 400, borderRadius: '0px' }}
+                            style={{ ...BODY, fontSize: '12px', fontWeight: 400, borderRadius: '100vw' }}
                           >
                             {label}
                           </span>

@@ -217,7 +217,7 @@ export function OdosBrandsSection({
                         <span
                           key={label}
                           className="border border-[#1A1010]/14 px-2.5 py-1 text-[#1A1010]/78"
-                          style={{ ...BODY, fontSize: '12px', fontWeight: 400, borderRadius: '0px' }}
+                          style={{ ...BODY, fontSize: '12px', fontWeight: 400, borderRadius: '100vw' }}
                         >
                           {label}
                         </span>
