@@ -11,6 +11,7 @@ import { OdosChallengesSection } from '@/components/sections/OdosChallengesSecti
 import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
 import { OdosBrandsSection } from '@/components/sections/OdosBrandsSection';
 import { OdosStarterCalloutSection } from '@/components/sections/OdosStarterCalloutSection';
+import { OdosPartnerSpotlightSection } from '@/components/sections/OdosPartnerSpotlightSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 
@@ -190,8 +191,9 @@ export default function OdosSpecialistamsPage() {
         cards={[...solutionCards]}
       />
       <OdosBrandsSection />
-      <ProcessSection />
       <OdosStarterCalloutSection />
+      <ProcessSection />
+      <OdosPartnerSpotlightSection />
       <CmsGridSection />
       <FaqSection backgroundClassName="bg-[#EFE8DB]" accent="maroon" />
       <CtaSection />
