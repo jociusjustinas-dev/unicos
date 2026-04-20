@@ -11,6 +11,7 @@ import { OdosChallengesSection } from '@/components/sections/OdosChallengesSecti
 import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
 import { OdosBrandsSection } from '@/components/sections/OdosBrandsSection';
 import { OdosStarterCalloutSection } from '@/components/sections/OdosStarterCalloutSection';
+import { ProcessSection } from '@/components/sections/ProcessSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 
 const BODY: React.CSSProperties = {
@@ -189,6 +190,7 @@ export default function OdosSpecialistamsPage() {
         cards={[...solutionCards]}
       />
       <OdosBrandsSection />
+      <ProcessSection />
       <OdosStarterCalloutSection />
       <CmsGridSection />
       <FaqSection backgroundClassName="bg-[#EFE8DB]" accent="maroon" />
