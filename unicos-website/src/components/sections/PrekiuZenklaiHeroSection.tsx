@@ -7,9 +7,6 @@ const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
 
-const HERO_IMAGE_SRC = '/odos.jpg';
-const HERO_IMAGE_ALT = 'Profesionali kosmetika ir procedūros';
-
 export function PrekiuZenklaiHeroSection() {
   const blockRef = React.useRef<HTMLDivElement>(null);
   const revealTimersRef = React.useRef<number[]>([]);
@@ -82,11 +79,11 @@ export function PrekiuZenklaiHeroSection() {
     visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 motion-reduce:opacity-100 motion-reduce:translate-y-0';
 
   return (
-    <section className="relative z-[2] w-full bg-[#EFE8DB] pb-0 text-[#1A1010]">
+    <section className="relative z-[2] w-full bg-[#EFE8DB] pb-16 text-[#1A1010] max-[767px]:pb-12">
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={blockRef}
-          className="mx-auto flex max-w-[920px] flex-col items-center pb-14 pt-32 text-center max-[767px]:pb-12 max-[767px]:pt-28 max-[479px]:pb-10 max-[479px]:pt-24"
+          className="mx-auto flex max-w-[920px] flex-col items-center pt-44 text-center max-[767px]:pt-32 max-[479px]:pt-28"
         >
           <div className={`transition-all duration-700 ease-out ${reveal(labelVisible)}`}>
             <div className="flex items-center justify-center gap-2">
@@ -152,26 +149,6 @@ export function PrekiuZenklaiHeroSection() {
               >
                 Padėsime išsirinkti.
               </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="relative z-[1] w-full border-t border-[#1A1010]/10">
-        <div className="mx-auto w-full max-w-[1800px] px-16 pb-0 pt-6 max-[767px]:px-6 max-[767px]:pt-5 max-[479px]:px-4 max-[479px]:pt-4">
-          <div
-            className="relative w-full overflow-hidden border border-[#1A1010]/10"
-            style={{ borderRadius: '0px' }}
-          >
-            <div className="relative aspect-[21/9] min-h-[220px] w-full max-[991px]:aspect-video max-[479px]:min-h-[200px]">
-              <img
-                src={HERO_IMAGE_SRC}
-                alt={HERO_IMAGE_ALT}
-                loading="eager"
-                fetchPriority="high"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-[#1A1010]/08" aria-hidden />
             </div>
           </div>
         </div>

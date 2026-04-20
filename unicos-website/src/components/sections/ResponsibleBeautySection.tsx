@@ -70,6 +70,7 @@ export function ResponsibleBeautySection({
   subheading,
   cards,
   surfaceClassName = 'bg-white',
+  accent = 'green',
 }: {
   eyebrowLabel?: string | null;
   heading?: React.ReactNode;
@@ -77,7 +78,10 @@ export function ResponsibleBeautySection({
   cards?: BeautyCard[];
   /** Sekcijos fonas (AGENTS: šviesus paviršiai → #EFE8DB ant kreminio puslapio). */
   surfaceClassName?: string;
+  /** Ant kreminio fono žalia antraštė blogai skaitosi — naudokite `maroon`. */
+  accent?: 'green' | 'maroon';
 }) {
+  const isMaroon = accent === 'maroon';
   const gridRef = React.useRef<HTMLDivElement>(null);
   const [gridVisible, setGridVisible] = React.useState(false);
 
@@ -142,9 +146,13 @@ export function ResponsibleBeautySection({
           >
             {resolvedEyebrow ? (
               <div className="flex items-center justify-center gap-2">
-                <div className="w-2 h-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
+                <div
+                  className={`h-2 w-2 shrink-0 ${isMaroon ? 'bg-[#64151F]' : 'bg-[#3B443A]'}`}
+                  style={{ borderRadius: '0px' }}
+                  aria-hidden
+                />
                 <span
-                  className="text-[#3B443A] uppercase text-center"
+                  className={`uppercase text-center ${isMaroon ? 'text-[#64151F]' : 'text-[#3B443A]'}`}
                   style={{
                     fontSize: '11px',
                     fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -157,7 +165,7 @@ export function ResponsibleBeautySection({
               </div>
             ) : null}
             <h2
-              className="m-0 text-center tracking-[-0.02em] text-[#3B443A]"
+              className={`m-0 text-center tracking-[-0.02em] ${isMaroon ? 'text-[#64151F]' : 'text-[#3B443A]'}`}
               style={{
                 fontFamily: "'Quiche Sans', Georgia, serif",
                 fontSize: 'clamp(2rem, 3.5vw, 3rem)',
@@ -190,16 +198,22 @@ export function ResponsibleBeautySection({
                 'background-color 0.22s cubic-bezier(0.4, 0, 0.2, 1)',
                 'border-color 0.22s cubic-bezier(0.4, 0, 0.2, 1)',
               ].join(', ');
+              const cardHover = isMaroon
+                ? 'hover:bg-[#64151F] hover:border-[#64151F]'
+                : 'hover:bg-[#3B443A] hover:border-[#3B443A]';
+              const iconShell = isMaroon
+                ? 'border-[#64151F]/22 bg-[rgba(100,21,31,0.08)] text-[#64151F] group-hover:border-[#EFE8DB]/35 group-hover:bg-[rgba(239,232,219,0.14)] group-hover:text-[#EFE8DB]'
+                : 'border-[#3B443A]/20 bg-[rgba(59,68,58,0.08)] text-[#3B443A] group-hover:border-[#EFE8DB]/35 group-hover:bg-[rgba(239,232,219,0.14)] group-hover:text-[#EFE8DB]';
               return (
               <div
                 key={feature.title}
-                className={`group flex w-full flex-col items-center gap-6 border border-[#1A1010]/10 bg-[#ECE2D3] p-8 text-center ease-out hover:bg-[#3B443A] hover:border-[#3B443A] max-[767px]:gap-5 max-[767px]:p-6 ${
+                className={`group flex w-full flex-col items-center gap-6 border border-[#1A1010]/10 bg-[#ECE2D3] p-8 text-center ease-out ${cardHover} max-[767px]:gap-5 max-[767px]:p-6 ${
                   gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ borderRadius: '0px', transition: cardTransition }}
               >
                 <div
-                  className="relative mx-auto flex h-14 w-14 shrink-0 overflow-visible border border-[#3B443A]/20 bg-[rgba(59,68,58,0.08)] p-2 text-[#3B443A] transition-[background-color,border-color,color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:border-[#EFE8DB]/35 group-hover:bg-[rgba(239,232,219,0.14)] group-hover:text-[#EFE8DB] max-[767px]:h-12 max-[767px]:w-12 max-[767px]:p-1.5 motion-reduce:transition-none"
+                  className={`relative mx-auto flex h-14 w-14 shrink-0 overflow-visible border p-2 transition-[background-color,border-color,color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] max-[767px]:h-12 max-[767px]:w-12 max-[767px]:p-1.5 motion-reduce:transition-none ${iconShell}`}
                   style={{ borderRadius: '0px' }}
                 >
                   <span className="pointer-events-none absolute left-1/2 top-1/2 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center">

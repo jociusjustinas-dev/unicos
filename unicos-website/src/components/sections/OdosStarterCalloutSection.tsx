@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { SfCheckboxCheck } from '@/components/icons/feather';
-import { CtaLink } from '@/components/ui/CtaLink';
+import { CtaLink, type CtaVariant } from '@/components/ui/CtaLink';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -30,6 +30,8 @@ export function OdosStarterCalloutSection({
   showEyebrow = true,
   showPriceBlock = true,
   footerCtas,
+  footerCtaPrimaryVariant = 'primary',
+  footerCtaSecondaryVariant = 'outline',
 }: {
   eyebrowLabel?: string;
   headingLight?: string;
@@ -45,6 +47,9 @@ export function OdosStarterCalloutSection({
     primary: { href: string; label: string; microcopy: string };
     secondary: { href: string; label: string; microcopy: string };
   };
+  /** Ant žalios plokštumos — abu mygtukai gali būti `secondary` (žalias tonas). */
+  footerCtaPrimaryVariant?: CtaVariant;
+  footerCtaSecondaryVariant?: CtaVariant;
 } = {}) {
   const resolvedShowPrice = showPriceBlock && !footerCtas;
   const cardRef = React.useRef<HTMLDivElement>(null);
@@ -148,7 +153,11 @@ export function OdosStarterCalloutSection({
                 {footerCtas ? (
                   <div className="flex w-full max-w-[640px] flex-col items-stretch justify-center gap-6 sm:flex-row sm:items-start sm:justify-start sm:gap-8">
                     <div className="flex flex-col items-start gap-2.5 sm:items-start">
-                      <CtaLink href={footerCtas.primary.href} variant="primary" className="min-w-[240px] justify-center">
+                      <CtaLink
+                        href={footerCtas.primary.href}
+                        variant={footerCtaPrimaryVariant}
+                        className="min-w-[240px] justify-center"
+                      >
                         {footerCtas.primary.label}
                       </CtaLink>
                       <span
@@ -159,7 +168,11 @@ export function OdosStarterCalloutSection({
                       </span>
                     </div>
                     <div className="flex flex-col items-start gap-2.5 sm:items-start">
-                      <CtaLink href={footerCtas.secondary.href} variant="outline" className="min-w-[240px] justify-center">
+                      <CtaLink
+                        href={footerCtas.secondary.href}
+                        variant={footerCtaSecondaryVariant}
+                        className="min-w-[240px] justify-center"
+                      >
                         {footerCtas.secondary.label}
                       </CtaLink>
                       <span

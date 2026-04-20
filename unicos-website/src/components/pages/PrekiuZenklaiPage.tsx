@@ -127,6 +127,23 @@ export function PrekiuZenklaiPage() {
 
       <section className="relative z-[2] bg-[#EFE8DB] py-16 max-[767px]:py-12">
         <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
+          <div className="mb-10 max-[767px]:mb-8" role="presentation">
+            <div className="h-px w-full bg-[#1A1010]/10" aria-hidden />
+          </div>
+          <div
+            className="relative mb-12 w-full overflow-hidden border border-[#1A1010]/10 max-[767px]:mb-10"
+            style={{ borderRadius: '0px' }}
+          >
+            <div className="relative aspect-[21/9] min-h-[220px] w-full max-[991px]:aspect-video max-[479px]:min-h-[200px]">
+              <img
+                src="/odos.jpg"
+                alt="Profesionali kosmetika ir procedūros"
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-[#1A1010]/08" aria-hidden />
+            </div>
+          </div>
           <div
             className="mb-10 flex flex-wrap gap-2 max-[767px]:mb-8"
             role="tablist"
@@ -213,6 +230,7 @@ export function PrekiuZenklaiPage() {
 
       <ResponsibleBeautySection
         surfaceClassName="bg-[#EFE8DB]"
+        accent="maroon"
         eyebrowLabel={null}
         heading={
           <>
@@ -233,6 +251,8 @@ export function PrekiuZenklaiPage() {
         benefits={[...PREKIU_ZENKLAI_OFFICIAL_BULLETS]}
         imageSrc="/estetines.jpg"
         imageAlt="Oficialus atstovavimas profesionalioje aplinkoje"
+        footerCtaPrimaryVariant="secondary"
+        footerCtaSecondaryVariant="secondary"
         footerCtas={{
           primary: { href: '/tapkite-partneriu', label: 'Tapti partneriu', microcopy: 'Patvirtinimas per 24 val.' },
           secondary: { href: '/kontaktai', label: 'Gauti konsultaciją', microcopy: 'Padėsime išsirinkti.' },
