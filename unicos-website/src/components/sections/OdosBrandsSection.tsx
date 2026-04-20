@@ -4,6 +4,7 @@ import * as React from 'react';
 import type { BrandCarouselCard } from '@/config/sprendimaiSolutionLanding';
 import { ChevronLeftIcon, ChevronRightIcon } from '@/components/ui/ChevronArrows';
 import { CtaLink } from '@/components/ui/CtaLink';
+import { BrandShowcaseCard } from '@/components/ui/BrandShowcaseCard';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -169,58 +170,17 @@ export function OdosBrandsSection({
             style={{ scrollPaddingRight: 0, paddingRight: 0 }}
           >
             {cards.map((card) => (
-              <a
+              <BrandShowcaseCard
                 key={card.id}
-                data-brand-card
-                href="#"
-                className="group/card flex w-[min(100%,clamp(240px,26vw,300px))] shrink-0 snap-start cursor-pointer flex-col gap-5 bg-white max-[767px]:w-[min(100%,280px)] max-[767px]:max-w-[88vw] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3B443A]"
-                style={{
-                  borderRadius: '0px',
-                  textDecoration: 'none',
-                  color: 'inherit',
-                }}
-              >
-                <div
-                  className="relative h-[380px] w-full overflow-hidden border border-[#3B443A]/14 transition-[border-color] duration-[900ms] ease-[cubic-bezier(0.22,1,0.45,1)] group-hover/card:border-[#3B443A]/30"
-                  style={{ borderRadius: '0px' }}
-                >
-                  <img
-                    src={card.image}
-                    alt=""
-                    loading="lazy"
-                    className="pointer-events-none absolute left-1/2 top-1/2 h-[118%] min-h-full w-[118%] min-w-full max-w-none -translate-x-1/2 -translate-y-1/2 origin-center scale-100 object-cover [backface-visibility:hidden] transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.45,1)] will-change-transform group-hover/card:scale-[1.055] motion-reduce:transition-none motion-reduce:group-hover/card:scale-100"
-                  />
-                  <div
-                    className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,16,0.06),rgba(26,16,16,0.48))] transition-[opacity,background] duration-[900ms] ease-[cubic-bezier(0.22,1,0.45,1)] group-hover/card:opacity-[0.88] group-hover/card:bg-[linear-gradient(180deg,rgba(26,16,16,0.04),rgba(26,16,16,0.38))]"
-                    aria-hidden
-                  />
-                </div>
-                <div className="flex max-w-[min(100%,clamp(240px,26vw,300px))] flex-col gap-5 bg-white pr-4 max-[767px]:max-w-[min(100%,280px)]">
-                  <div className="flex h-5 items-center">
-                    {card.logoSvg ? (
-                      <img
-                        src={card.logoSvg}
-                        alt={card.title}
-                        className="h-5 max-w-[112px] object-contain object-left opacity-90 transition-[filter,opacity] duration-[520ms] ease-in-out [filter:grayscale(1)_brightness(0.42)_contrast(1.06)] group-hover/card:[filter:none] group-hover/card:opacity-100"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <h3
-                        className="m-0 text-[#1A1010] transition-colors duration-[520ms] ease-in-out group-hover/card:text-[#3B443A]"
-                        style={{ ...BODY, fontSize: '18px', lineHeight: '22px', fontWeight: 500 }}
-                      >
-                        {card.title}
-                      </h3>
-                    )}
-                  </div>
-                  <p
-                    className="m-0 text-[#1A1010]/78 transition-colors duration-[520ms] ease-in-out group-hover/card:text-[#3B443A]"
-                    style={{ ...BODY, fontSize: '14px', lineHeight: '22px', fontWeight: 400 }}
-                  >
-                    {card.description}
-                  </p>
-                </div>
-              </a>
+                dataBrandCard
+                className="w-[min(100%,clamp(240px,26vw,300px))] shrink-0 snap-start bg-white/40 max-[767px]:w-[min(100%,280px)] max-[767px]:max-w-[88vw]"
+                imageClassName="h-[380px]"
+                title={card.title}
+                logoSvg={card.logoSvg}
+                description={card.description}
+                imageSrc={card.image}
+                imageAlt={card.title}
+              />
             ))}
           </div>
 

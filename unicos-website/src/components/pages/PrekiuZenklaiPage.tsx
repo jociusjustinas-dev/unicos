@@ -18,6 +18,7 @@ import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeaut
 import { OdosStarterCalloutSection } from '@/components/sections/OdosStarterCalloutSection';
 import { OdosPartnerSpotlightSection } from '@/components/sections/OdosPartnerSpotlightSection';
 import { CtaLink } from '@/components/ui/CtaLink';
+import { BrandShowcaseCard } from '@/components/ui/BrandShowcaseCard';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -157,76 +158,50 @@ export function PrekiuZenklaiPage() {
           ) : (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {visibleBrands.map((brand) => (
-                <article
+                <BrandShowcaseCard
                   key={brand.id}
-                  className="group/card flex flex-col border border-[#1A1010]/16 bg-white text-[#1A1010] transition-[border-color,background-color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#64151F]/30"
-                  style={{ borderRadius: '0px' }}
-                >
-                  <div className="relative h-[220px] w-full overflow-hidden border-b border-[#1A1010]/10">
-                    <img
-                      src={brand.imageSrc}
-                      alt={brand.imageAlt}
-                      loading="lazy"
-                      className="h-full w-full scale-100 object-cover transition-transform duration-[1000ms] ease-[cubic-bezier(0.22,1,0.45,1)] group-hover/card:scale-[1.055]"
-                    />
-                    <div
-                      className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,16,0.04),rgba(26,16,16,0.36))] transition-[opacity,background] duration-[900ms] ease-[cubic-bezier(0.22,1,0.45,1)] group-hover/card:opacity-[0.88] group-hover/card:bg-[linear-gradient(180deg,rgba(26,16,16,0.02),rgba(26,16,16,0.28))]"
-                      aria-hidden
-                    />
-                    <div
-                      className="absolute left-4 top-4 inline-flex w-fit border border-[#64151F]/25 bg-[#64151F] px-2.5 py-1.5 uppercase text-[#EFE8DB]"
-                      style={{ ...BODY, fontSize: '10px', fontWeight: 500, letterSpacing: '0.12em', borderRadius: '0px' }}
-                    >
-                      {brand.badge}
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-4 p-6 max-[767px]:p-5">
-                    <div className="flex min-h-8 items-center">
-                      {brand.logoSvg ? (
-                        <img src={brand.logoSvg} alt={brand.title} loading="lazy" className="h-6 w-auto max-w-[170px] object-contain object-left" />
-                      ) : (
-                        <h3 className="m-0 text-[#64151F]" style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: '1.35rem', fontWeight: 500 }}>
-                          {brand.title}
-                        </h3>
-                      )}
-                    </div>
-                    <p className="m-0 text-[#1A1010]/78" style={{ ...BODY, fontSize: '15px', lineHeight: 1.5, fontWeight: 400 }}>
-                      {brand.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {brand.categoryLabels.map((label) => (
-                        <span
-                          key={label}
-                          className="border border-[#1A1010]/14 px-2.5 py-1 text-[#1A1010]/78"
-                          style={{ ...BODY, fontSize: '12px', fontWeight: 400, borderRadius: '0px' }}
-                        >
-                          {label}
-                        </span>
-                      ))}
-                    </div>
-                    <dl className="m-0 flex flex-col gap-2 border-t border-[#1A1010]/10 pt-4">
-                      <div>
-                        <dt className="m-0 uppercase text-[#1A1010]/48" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500 }}>
-                          Rekomenduojama
-                        </dt>
-                        <dd className="m-0 mt-1" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45, fontWeight: 400 }}>
-                          {brand.recommended}
-                        </dd>
+                  title={brand.title}
+                  logoSvg={brand.logoSvg}
+                  description={brand.description}
+                  imageSrc={brand.imageSrc}
+                  imageAlt={brand.imageAlt}
+                  badge={brand.badge}
+                  ctaHref={brand.href}
+                  ctaLabel="Sužinokite daugiau"
+                  meta={
+                    <>
+                      <div className="flex flex-wrap gap-2">
+                        {brand.categoryLabels.map((label) => (
+                          <span
+                            key={label}
+                            className="border border-[#1A1010]/14 px-2.5 py-1 text-[#1A1010]/78"
+                            style={{ ...BODY, fontSize: '12px', fontWeight: 400, borderRadius: '0px' }}
+                          >
+                            {label}
+                          </span>
+                        ))}
                       </div>
-                      <div>
-                        <dt className="m-0 uppercase text-[#1A1010]/48" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500 }}>
-                          Šalis
-                        </dt>
-                        <dd className="m-0 mt-1" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45, fontWeight: 400 }}>
-                          {brand.country}
-                        </dd>
-                      </div>
-                    </dl>
-                    <CtaLink href={brand.href} variant="primary" className="mt-1 w-full justify-center sm:w-auto">
-                      Sužinokite daugiau
-                    </CtaLink>
-                  </div>
-                </article>
+                      <dl className="m-0 flex flex-col gap-2 border-t border-[#1A1010]/10 pt-4">
+                        <div>
+                          <dt className="m-0 uppercase text-[#1A1010]/48" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500 }}>
+                            Rekomenduojama
+                          </dt>
+                          <dd className="m-0 mt-1" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45, fontWeight: 400 }}>
+                            {brand.recommended}
+                          </dd>
+                        </div>
+                        <div>
+                          <dt className="m-0 uppercase text-[#1A1010]/48" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500 }}>
+                            Šalis
+                          </dt>
+                          <dd className="m-0 mt-1" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45, fontWeight: 400 }}>
+                            {brand.country}
+                          </dd>
+                        </div>
+                      </dl>
+                    </>
+                  }
+                />
               ))}
             </div>
           )}
