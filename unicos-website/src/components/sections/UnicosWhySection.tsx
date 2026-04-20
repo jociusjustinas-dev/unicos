@@ -45,6 +45,11 @@ type UnicosWhySectionProps = {
   showHighlights?: boolean;
   /** Jei nenurodyta — numatytieji 3 burbulai kaip pagrindiniame puslapyje. */
   bubbles?: readonly UnicosWhyBubble[];
+  /**
+   * Kai `false` — be fono video ir kremo gradientų (pvz. prekių ženklų puslapyje,
+   * kad video atmosfera liktų tik hero viršuje).
+   */
+  withFooterVideoBackdrop?: boolean;
 };
 
 const DEFAULT_BUBBLES: readonly UnicosWhyBubble[] = [
@@ -84,6 +89,7 @@ export function UnicosWhySection({
   subheading = '„Sugihara Pro“ tapo Unicos, kad būtume dar arčiau Jūsų. Mūsų tikslas – ne tik pristatyti užsakymus, bet ir būti Jūsų kokybės filtru bei ramybės garantu.',
   showHighlights = true,
   bubbles,
+  withFooterVideoBackdrop = true,
 }: UnicosWhySectionProps = {}) {
   const [headlineRef, headlineVisible] = useRevealOnce<HTMLDivElement>();
   const [gridRef, gridVisible] = useRevealOnce<HTMLDivElement>({ threshold: 0.3, rootMargin: '0px 0px -18% 0px' });
@@ -91,6 +97,7 @@ export function UnicosWhySection({
   const bgVideoRef = React.useRef<HTMLVideoElement | null>(null);
 
   React.useEffect(() => {
+    if (!withFooterVideoBackdrop) return;
     const video = bgVideoRef.current;
     if (!video) return;
     const applyRate = () => {
@@ -99,7 +106,7 @@ export function UnicosWhySection({
     applyRate();
     video.addEventListener('loadedmetadata', applyRate);
     return () => video.removeEventListener('loadedmetadata', applyRate);
-  }, []);
+  }, [withFooterVideoBackdrop]);
 
   const headlineReveal = headlineVisible ? 'opacity-100 blur-0 translate-y-0' : 'opacity-0 blur-[12px] translate-y-5';
   const gridReveal = gridVisible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]';
@@ -112,35 +119,45 @@ export function UnicosWhySection({
 
   const values = bubbles ?? DEFAULT_BUBBLES;
 
+  const bubbleIdleBg = withFooterVideoBackdrop ? 'rgba(239,232,219,0.36)' : 'rgba(255,255,255,0.22)';
+
   return (
-    <section className="relative z-[2] overflow-x-clip bg-[#EFE8DB] pt-16 pb-28 max-[767px]:pt-12 max-[767px]:pb-20">
-      <div className="pointer-events-none absolute inset-0 z-0 flex opacity-[0.42]" aria-hidden>
-        <video
-          ref={bgVideoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="h-full w-full object-cover"
-          style={{
-            backgroundImage:
-              'url("https://cdn.prod.website-files.com/68ad5d7e748bdec61171c8d9%2F68b008bdf61a798d3721c7db_Footer-poster-00001.jpg")',
-          }}
-        >
-          <source src="https://cdn.prod.website-files.com/68ad5d7e748bdec61171c8d9%2F68b008bdf61a798d3721c7db_Footer-transcode.mp4" type="video/mp4" />
-          <source src="https://cdn.prod.website-files.com/68ad5d7e748bdec61171c8d9%2F68b008bdf61a798d3721c7db_Footer-transcode.webm" type="video/webm" />
-        </video>
-      </div>
-      <div
-        className="pointer-events-none absolute top-0 left-0 right-0 z-[1] h-[22%]"
-        style={{ backgroundImage: 'linear-gradient(180deg, rgba(239,232,219,0.86), rgba(239,232,219,0))' }}
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-[38%]"
-        style={{ backgroundImage: 'linear-gradient(0deg, rgba(239,232,219,0.9), rgba(239,232,219,0))' }}
-        aria-hidden
-      />
+    <section
+      className={`relative z-[2] overflow-x-clip pt-16 pb-28 max-[767px]:pt-12 max-[767px]:pb-20 ${
+        withFooterVideoBackdrop ? 'bg-[#EFE8DB]' : 'bg-transparent'
+      }`}
+    >
+      {withFooterVideoBackdrop ? (
+        <>
+          <div className="pointer-events-none absolute inset-0 z-0 flex opacity-[0.42]" aria-hidden>
+            <video
+              ref={bgVideoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-full w-full object-cover"
+              style={{
+                backgroundImage:
+                  'url("https://cdn.prod.website-files.com/68ad5d7e748bdec61171c8d9%2F68b008bdf61a798d3721c7db_Footer-poster-00001.jpg")',
+              }}
+            >
+              <source src="https://cdn.prod.website-files.com/68ad5d7e748bdec61171c8d9%2F68b008bdf61a798d3721c7db_Footer-transcode.mp4" type="video/mp4" />
+              <source src="https://cdn.prod.website-files.com/68ad5d7e748bdec61171c8d9%2F68b008bdf61a798d3721c7db_Footer-transcode.webm" type="video/webm" />
+            </video>
+          </div>
+          <div
+            className="pointer-events-none absolute top-0 left-0 right-0 z-[1] h-[22%]"
+            style={{ backgroundImage: 'linear-gradient(180deg, rgba(239,232,219,0.86), rgba(239,232,219,0))' }}
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-[38%]"
+            style={{ backgroundImage: 'linear-gradient(0deg, rgba(239,232,219,0.9), rgba(239,232,219,0))' }}
+            aria-hidden
+          />
+        </>
+      ) : null}
       <div className="relative z-[2] w-full max-w-[1800px] mx-auto px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headlineRef}
@@ -197,7 +214,7 @@ export function UnicosWhySection({
               >
                 {(() => {
                   const isHovered = hoveredBubble === i;
-                  const bubbleBg = isHovered ? v.hoverBg : 'rgba(239,232,219,0.36)';
+                  const bubbleBg = isHovered ? v.hoverBg : bubbleIdleBg;
                   const bubbleFg = isHovered ? v.hoverFg : '#1A1010';
                   return (
                 <div
