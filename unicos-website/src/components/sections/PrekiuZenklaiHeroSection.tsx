@@ -69,6 +69,15 @@ export function PrekiuZenklaiHeroSection() {
     };
   }, [runRevealOnce]);
 
+  /** Jei `preloader:done` jau iššoko prieš mount arba IO nepasileidžia — nepaliekame tuščio hero. */
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+    const id = window.setTimeout(() => runRevealOnce(), 2000);
+    return () => window.clearTimeout(id);
+  }, [runRevealOnce]);
+
   const reveal = (visible: boolean) =>
     visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 motion-reduce:opacity-100 motion-reduce:translate-y-0';
 
