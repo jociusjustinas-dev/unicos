@@ -46,10 +46,9 @@ When you see any BYQ default color — replace as follows:
 Ant šviesių fonų (#EFE8DB ir pan., pvz. prekių ženklų sekcijos): rodyklių mygtukų **hover / filled** būsena — **maroon** (`#64151F` rėmelis, hover užpildymas `#4a0f17`, tekstas `#EFE8DB`). **Nenaudoti** čia antrinės žalios (`#3B443A`) — žalia lieka tik tamsiems antriniams blokams (pvz. atskiri žali CTA kontekstai).
 
 ## Bordo sekcijos fonas (#64151F)
-- Antraštė ir paantraštė: **šviesus tekstas** (`#EFE8DB`, silpnesniam body ~72–88 % nepermatomumas).
-- **Ne** `CtaLink variant="primary"` (bordo ant bordo) — naudoti **`variant="glass"`** ir dažnai `labelMode="static"`, arba šviesų kontūro mygtuką.
-- Karuselės rodyklės: **šviesus rėmelis / ikona**, hover — **nougat užpildymas** ir **maroon tekstas** (atvirkštinis kontrastas).
-- Po nuotraukos: tekstai ir logotipai turi būti skaitomi ant bordo (šviesi numatytoji „monochrome“ / filtras, hover — pilna spalva arba ryškesnis šviesus tonas).
+- **Antraštės juosta** („Prekių ženklai…“ + CTA): laikyti ant **įprasto gelsvo** (`#EFE8DB`), tipografija **bordo** (`#64151F` / body `#64151F` su ~78 % nepermatomumu) — `CtaLink variant="primary"` ant gelsvo yra tinkama.
+- **Karuselės ir rodyklės** lieka ant bordo: rodyklėms — **šviesus rėmelis / ikona**, hover — **nougat užpildymas** ir **bordo tekstas**.
+- Po nuotraukos (kortelės tekstas ant bordo): šviesi numatytoji „monochrome“ / filtras, hover — pilna spalva arba ryškesnis šviesus tonas.
 
 ## Buttons
 Primary: bg #64151F, text #EFE8DB, border-radius 0px, hover bg #4a0f17

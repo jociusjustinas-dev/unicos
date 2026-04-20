@@ -104,7 +104,7 @@ function useInView<T extends HTMLElement>(threshold = 0.1) {
 }
 
 type Props = {
-  /** `nougat` — šviesus fonas (numatytasis). `maroon` — bordo fonas, šviesūs tekstai ir atvirkštinės rodyklės. */
+  /** `nougat` — visas blokas ant gelsvo. `maroon` — antraštė ant gelsvo (bordo tipografija), karuselė ant bordo. */
   surface?: OdosBrandsSurface;
 };
 
@@ -124,49 +124,48 @@ export function OdosBrandsSection({ surface = 'nougat' }: Props) {
 
   const navBtnClass = isMaroon ? brandsCarouselNavBtnMaroonSurfaceClass : brandsCarouselNavBtnNougatSurfaceClass;
 
+  const headerBlock = (
+    <div
+      ref={headerInView.ref}
+      className={`flex flex-wrap items-end justify-between gap-6 transition-all duration-700 ease-out ${
+        isMaroon ? 'mb-8 max-[767px]:mb-6' : 'mb-10 max-[767px]:mb-8'
+      } max-[767px]:gap-5 ${headerInView.visible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]'}`}
+    >
+      <div className="flex min-w-0 max-w-[760px] flex-col gap-5 max-[767px]:gap-4">
+        <h2
+          className="m-0 text-[#64151F] tracking-[-0.02em]"
+          style={{
+            fontFamily: "'Quiche Sans', Georgia, serif",
+            fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+            lineHeight: 1.06,
+            fontWeight: 300,
+          }}
+        >
+          <span className="font-light">Prekių ženklai, atrinkti </span>
+          <span className="font-medium">Jūsų sričiai.</span>
+        </h2>
+        <p className="m-0 text-[#64151F]/78" style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}>
+          Oficialiai atstovaujami, su mokymų programa ir logistikos palaikymu.
+        </p>
+      </div>
+
+      <CtaLink href="#" variant="primary" className="shrink-0">
+        Visi prekių ženklai
+      </CtaLink>
+    </div>
+  );
+
   return (
     <section
-      className={`relative z-[2] overflow-x-visible py-20 max-[767px]:py-14 ${isMaroon ? 'bg-[#64151F]' : 'bg-[#EFE8DB]'}`}
+      className={`relative z-[2] overflow-x-visible ${isMaroon ? 'bg-[#64151F] pt-0 pb-20 max-[767px]:pb-14' : 'bg-[#EFE8DB] py-20 max-[767px]:py-14'}`}
     >
-      <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
-        <div
-          ref={headerInView.ref}
-          className={`mb-10 flex flex-wrap items-end justify-between gap-6 max-[767px]:mb-8 max-[767px]:gap-5 transition-all duration-700 ease-out ${
-            headerInView.visible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]'
-          }`}
-        >
-          <div className="flex min-w-0 max-w-[760px] flex-col gap-5 max-[767px]:gap-4">
-            <h2
-              className={`m-0 tracking-[-0.02em] ${isMaroon ? 'text-[#EFE8DB]' : 'text-[#64151F]'}`}
-              style={{
-                fontFamily: "'Quiche Sans', Georgia, serif",
-                fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-                lineHeight: 1.06,
-                fontWeight: 300,
-              }}
-            >
-              <span className="font-light">Prekių ženklai, atrinkti </span>
-              <span className="font-medium">Jūsų sričiai.</span>
-            </h2>
-            <p
-              className={`m-0 ${isMaroon ? 'text-[#EFE8DB]/82' : 'text-[#64151F]/78'}`}
-              style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}
-            >
-              Oficialiai atstovaujami, su mokymų programa ir logistikos palaikymu.
-            </p>
-          </div>
-
-          {isMaroon ? (
-            <CtaLink href="#" variant="glass" labelMode="static" className="shrink-0">
-              Visi prekių ženklai
-            </CtaLink>
-          ) : (
-            <CtaLink href="#" variant="primary" className="shrink-0">
-              Visi prekių ženklai
-            </CtaLink>
-          )}
+      {isMaroon ? (
+        <div className="relative z-[2] w-full bg-[#EFE8DB] pt-20 pb-12 max-[767px]:pt-14 max-[767px]:pb-10">
+          <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">{headerBlock}</div>
         </div>
-      </div>
+      ) : (
+        <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">{headerBlock}</div>
+      )}
 
       <div className="relative left-1/2 z-[1] w-screen max-w-none -translate-x-1/2">
         <div
