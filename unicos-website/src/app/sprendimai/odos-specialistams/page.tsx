@@ -188,7 +188,7 @@ export default function OdosSpecialistamsPage() {
         subheading="Gausite ne tik produktus, bet ir aplinką profesionaliam augimui."
         cards={[...solutionCards]}
       />
-      <OdosBrandsSection surface="maroon" />
+      <OdosBrandsSection />
       <OdosStarterCalloutSection />
       <CmsGridSection />
       <FaqSection backgroundClassName="bg-[#EFE8DB]" accent="maroon" />

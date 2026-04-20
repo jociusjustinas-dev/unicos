@@ -8,15 +8,9 @@ const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
 
-export type OdosBrandsSurface = 'nougat' | 'maroon';
-
-/** Šviesus fonas — rodyklės bordo (žr. AGENTS.md). */
-const brandsCarouselNavBtnNougatSurfaceClass =
+/** Karuselės rodyklės — bordo hover ant šviesaus fono (žr. AGENTS.md). */
+const brandsCarouselNavBtnClass =
   'group flex h-12 w-12 shrink-0 items-center justify-center overflow-visible border border-[#1A1010]/18 bg-transparent p-0 text-[#1A1010] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#64151F] hover:bg-[#4a0f17] hover:text-[#EFE8DB] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64151F] disabled:pointer-events-none disabled:opacity-35';
-
-/** Bordo fonas — šviesios rodyklės, hover nougat (žr. AGENTS.md „Bordo sekcijos fonas“). */
-const brandsCarouselNavBtnMaroonSurfaceClass =
-  'group flex h-12 w-12 shrink-0 items-center justify-center overflow-visible border border-[#EFE8DB]/35 bg-transparent p-0 text-[#EFE8DB] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#EFE8DB] hover:bg-[#EFE8DB] hover:text-[#64151F] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EFE8DB] disabled:pointer-events-none disabled:opacity-35';
 
 type BrandCard = {
   id: string;
@@ -103,13 +97,7 @@ function useInView<T extends HTMLElement>(threshold = 0.1) {
   return { ref, visible };
 }
 
-type Props = {
-  /** `nougat` — visas blokas ant gelsvo. `maroon` — antraštė ant gelsvo (bordo tipografija), karuselė ant bordo. */
-  surface?: OdosBrandsSurface;
-};
-
-export function OdosBrandsSection({ surface = 'nougat' }: Props) {
-  const isMaroon = surface === 'maroon';
+export function OdosBrandsSection() {
   const headerInView = useInView<HTMLDivElement>(0.08);
   const trackInView = useInView<HTMLDivElement>(0.06);
   const scrollerRef = React.useRef<HTMLDivElement>(null);
@@ -122,52 +110,40 @@ export function OdosBrandsSection({ surface = 'nougat' }: Props) {
     el.scrollBy({ left: direction === 'next' ? step : -step, behavior: 'smooth' });
   };
 
-  const navBtnClass = isMaroon ? brandsCarouselNavBtnMaroonSurfaceClass : brandsCarouselNavBtnNougatSurfaceClass;
-
-  const headerBlock = (
-    <div
-      ref={headerInView.ref}
-      className={`flex flex-wrap items-end justify-between gap-6 transition-all duration-700 ease-out ${
-        isMaroon ? 'mb-8 max-[767px]:mb-6' : 'mb-10 max-[767px]:mb-8'
-      } max-[767px]:gap-5 ${headerInView.visible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]'}`}
-    >
-      <div className="flex min-w-0 max-w-[760px] flex-col gap-5 max-[767px]:gap-4">
-        <h2
-          className="m-0 text-[#64151F] tracking-[-0.02em]"
-          style={{
-            fontFamily: "'Quiche Sans', Georgia, serif",
-            fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-            lineHeight: 1.06,
-            fontWeight: 300,
-          }}
+  return (
+    <section className="relative z-[2] overflow-x-visible bg-[#EFE8DB] py-20 max-[767px]:py-14">
+      <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
+        <div
+          ref={headerInView.ref}
+          className={`mb-10 flex flex-wrap items-end justify-between gap-6 transition-all duration-700 ease-out max-[767px]:mb-8 max-[767px]:gap-5 ${
+            headerInView.visible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]'
+          }`}
         >
-          <span className="font-light">Prekių ženklai, atrinkti </span>
-          <span className="font-medium">Jūsų sričiai.</span>
-        </h2>
-        <p className="m-0 text-[#64151F]/78" style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}>
-          Oficialiai atstovaujami, su mokymų programa ir logistikos palaikymu.
-        </p>
+          <div className="flex min-w-0 max-w-[760px] flex-col gap-5 max-[767px]:gap-4">
+            <h2
+              className="m-0 text-[#64151F] tracking-[-0.02em]"
+              style={{
+                fontFamily: "'Quiche Sans', Georgia, serif",
+                fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+                lineHeight: 1.06,
+                fontWeight: 300,
+              }}
+            >
+              <span className="font-light">Prekių ženklai, atrinkti </span>
+              <span className="font-medium">Jūsų sričiai.</span>
+            </h2>
+            <p className="m-0 text-[#64151F]/78" style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}>
+              Oficialiai atstovaujami, su mokymų programa ir logistikos palaikymu.
+            </p>
+          </div>
+
+          <CtaLink href="#" variant="primary" className="shrink-0">
+            Visi prekių ženklai
+          </CtaLink>
+        </div>
       </div>
 
-      <CtaLink href="#" variant="primary" className="shrink-0">
-        Visi prekių ženklai
-      </CtaLink>
-    </div>
-  );
-
-  return (
-    <section
-      className={`relative z-[2] overflow-x-visible ${isMaroon ? 'bg-[#64151F] pt-0 pb-20 max-[767px]:pb-14' : 'bg-[#EFE8DB] py-20 max-[767px]:py-14'}`}
-    >
-      {isMaroon ? (
-        <div className="relative z-[2] w-full bg-[#EFE8DB] pt-20 pb-12 max-[767px]:pt-14 max-[767px]:pb-10">
-          <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">{headerBlock}</div>
-        </div>
-      ) : (
-        <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">{headerBlock}</div>
-      )}
-
-      <div className="relative left-1/2 z-[1] w-screen max-w-none -translate-x-1/2">
+      <div className="relative left-1/2 z-[1] w-screen max-w-none -translate-x-1/2 bg-[#EFE8DB]">
         <div
           ref={trackInView.ref}
           style={{
@@ -178,7 +154,7 @@ export function OdosBrandsSection({ surface = 'nougat' }: Props) {
         >
           <div
             ref={scrollerRef}
-            className="flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-1 pl-4 [-ms-overflow-style:none] [scrollbar-width:none] max-[767px]:scroll-pl-6 max-[767px]:pl-6 max-[479px]:scroll-pl-4 max-[479px]:pl-4 min-[768px]:scroll-pl-16 min-[768px]:pl-16 [&::-webkit-scrollbar]:hidden"
+            className="flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain bg-[#EFE8DB] pb-1 pl-4 [-ms-overflow-style:none] [scrollbar-width:none] max-[767px]:scroll-pl-6 max-[767px]:pl-6 max-[479px]:scroll-pl-4 max-[479px]:pl-4 min-[768px]:scroll-pl-16 min-[768px]:pl-16 [&::-webkit-scrollbar]:hidden"
             style={{ scrollPaddingRight: 0, paddingRight: 0 }}
           >
             {cards.map((card) => (
@@ -186,9 +162,7 @@ export function OdosBrandsSection({ surface = 'nougat' }: Props) {
                 key={card.id}
                 data-brand-card
                 href="#"
-                className={`group/card flex w-[min(100%,clamp(240px,26vw,300px))] shrink-0 snap-start cursor-pointer flex-col gap-5 max-[767px]:w-[min(100%,280px)] max-[767px]:max-w-[88vw] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
-                  isMaroon ? 'focus-visible:outline-[#EFE8DB]' : 'focus-visible:outline-[#64151F]'
-                }`}
+                className="group/card flex w-[min(100%,clamp(240px,26vw,300px))] shrink-0 snap-start cursor-pointer flex-col gap-5 bg-[#EFE8DB] max-[767px]:w-[min(100%,280px)] max-[767px]:max-w-[88vw] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64151F]"
                 style={{
                   borderRadius: '0px',
                   textDecoration: 'none',
@@ -196,11 +170,7 @@ export function OdosBrandsSection({ surface = 'nougat' }: Props) {
                 }}
               >
                 <div
-                  className={`relative h-[380px] w-full overflow-hidden border transition-[border-color,box-shadow] duration-[900ms] ease-[cubic-bezier(0.22,1,0.45,1)] ${
-                    isMaroon
-                      ? 'border-[#EFE8DB]/18 group-hover/card:border-[#EFE8DB]/28 group-hover/card:shadow-[0_32px_72px_-28px_rgba(0,0,0,0.35)]'
-                      : 'border-[#1A1010]/10 group-hover/card:border-[#1A1010]/16 group-hover/card:shadow-[0_32px_72px_-28px_rgba(26,16,16,0.12)]'
-                  }`}
+                  className="relative h-[380px] w-full overflow-hidden border border-[#1A1010]/10 transition-[border-color,box-shadow] duration-[900ms] ease-[cubic-bezier(0.22,1,0.45,1)] group-hover/card:border-[#1A1010]/16 group-hover/card:shadow-[0_32px_72px_-28px_rgba(26,16,16,0.12)]"
                   style={{ borderRadius: '0px' }}
                 >
                   <img
@@ -214,26 +184,18 @@ export function OdosBrandsSection({ surface = 'nougat' }: Props) {
                     aria-hidden
                   />
                 </div>
-                <div className="flex max-w-[min(100%,clamp(240px,26vw,300px))] flex-col gap-5 pr-4 max-[767px]:max-w-[min(100%,280px)]">
+                <div className="flex max-w-[min(100%,clamp(240px,26vw,300px))] flex-col gap-5 bg-[#EFE8DB] pr-4 max-[767px]:max-w-[min(100%,280px)]">
                   <div className="flex h-5 items-center">
                     {card.logoSvg ? (
                       <img
                         src={card.logoSvg}
                         alt={card.title}
-                        className={
-                          isMaroon
-                            ? 'h-5 max-w-[112px] object-contain object-left opacity-90 transition-[filter,opacity] duration-[520ms] ease-in-out [filter:brightness(0)_invert(1)] group-hover/card:[filter:none] group-hover/card:opacity-100'
-                            : 'h-5 max-w-[112px] object-contain object-left opacity-90 transition-[filter,opacity] duration-[520ms] ease-in-out [filter:grayscale(1)_brightness(0.42)_contrast(1.06)] group-hover/card:[filter:none] group-hover/card:opacity-100'
-                        }
+                        className="h-5 max-w-[112px] object-contain object-left opacity-90 transition-[filter,opacity] duration-[520ms] ease-in-out [filter:grayscale(1)_brightness(0.42)_contrast(1.06)] group-hover/card:[filter:none] group-hover/card:opacity-100"
                         loading="lazy"
                       />
                     ) : (
                       <h3
-                        className={`m-0 transition-colors duration-[520ms] ease-in-out ${
-                          isMaroon
-                            ? 'text-[#EFE8DB] group-hover/card:text-[#EFE8DB]'
-                            : 'text-[#1A1010] group-hover/card:text-[#64151F]'
-                        }`}
+                        className="m-0 text-[#1A1010] transition-colors duration-[520ms] ease-in-out group-hover/card:text-[#64151F]"
                         style={{ ...BODY, fontSize: '18px', lineHeight: '22px', fontWeight: 500 }}
                       >
                         {card.title}
@@ -241,11 +203,7 @@ export function OdosBrandsSection({ surface = 'nougat' }: Props) {
                     )}
                   </div>
                   <p
-                    className={`m-0 transition-colors duration-[520ms] ease-in-out ${
-                      isMaroon
-                        ? 'text-[#EFE8DB]/72 group-hover/card:text-[#EFE8DB]/92'
-                        : 'text-[#1A1010]/78 group-hover/card:text-[#64151F]/88'
-                    }`}
+                    className="m-0 text-[#1A1010]/78 transition-colors duration-[520ms] ease-in-out group-hover/card:text-[#64151F]/88"
                     style={{ ...BODY, fontSize: '14px', lineHeight: '22px', fontWeight: 400 }}
                   >
                     {card.description}
@@ -255,11 +213,11 @@ export function OdosBrandsSection({ surface = 'nougat' }: Props) {
             ))}
           </div>
 
-          <div className="mx-auto mt-8 flex max-w-[1800px] items-center justify-end gap-2 px-16 max-[767px]:mt-6 max-[767px]:px-6 max-[479px]:px-4">
+          <div className="mx-auto mt-8 flex max-w-[1800px] items-center justify-end gap-2 bg-[#EFE8DB] px-16 pb-1 max-[767px]:mt-6 max-[767px]:px-6 max-[479px]:px-4">
             <button
               type="button"
               onClick={() => scrollBrands('prev')}
-              className={navBtnClass}
+              className={brandsCarouselNavBtnClass}
               style={{ borderRadius: '0px' }}
               aria-label="Ankstesni prekių ženklai"
             >
@@ -268,7 +226,7 @@ export function OdosBrandsSection({ surface = 'nougat' }: Props) {
             <button
               type="button"
               onClick={() => scrollBrands('next')}
-              className={navBtnClass}
+              className={brandsCarouselNavBtnClass}
               style={{ borderRadius: '0px' }}
               aria-label="Kiti prekių ženklai"
             >
