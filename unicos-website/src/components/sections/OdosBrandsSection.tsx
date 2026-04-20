@@ -110,15 +110,16 @@ export function OdosBrandsSection() {
   };
 
   return (
-    <section className="relative z-[2] bg-[#EFE8DB] py-20 max-[767px]:py-14">
+    <section className="relative z-[2] overflow-x-visible bg-[#EFE8DB] py-20 max-[767px]:py-14">
+      {/* Antraštė — tik įprastas konteineris; CTA be rodyklių */}
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headerInView.ref}
-          className={`mb-12 flex flex-wrap items-end justify-between gap-6 max-[767px]:mb-10 max-[767px]:gap-5 transition-all duration-700 ease-out ${
+          className={`mb-10 flex flex-wrap items-end justify-between gap-6 max-[767px]:mb-8 max-[767px]:gap-5 transition-all duration-700 ease-out ${
             headerInView.visible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]'
           }`}
         >
-          <div className="flex min-w-0 max-w-[760px] flex-1 flex-col gap-5 max-[767px]:gap-4">
+          <div className="flex min-w-0 max-w-[760px] flex-col gap-5 max-[767px]:gap-4">
             <h2
               className="m-0 text-[#64151F] tracking-[-0.02em]"
               style={{
@@ -136,33 +137,14 @@ export function OdosBrandsSection() {
             </p>
           </div>
 
-          <div className="flex shrink-0 flex-wrap items-center justify-end gap-3 max-[479px]:w-full max-[479px]:justify-between">
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => scrollBrands('prev')}
-                className={carouselNavBtnClass}
-                style={{ borderRadius: '0px' }}
-                aria-label="Ankstesni prekių ženklai"
-              >
-                <ChevronLeftIcon className="h-[22px] w-[22px] text-current" />
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollBrands('next')}
-                className={carouselNavBtnClass}
-                style={{ borderRadius: '0px' }}
-                aria-label="Kiti prekių ženklai"
-              >
-                <ChevronRightIcon className="h-[22px] w-[22px] text-current" />
-              </button>
-            </div>
-            <CtaLink href="#" variant="primary" className="max-[479px]:flex-1 max-[479px]:justify-center">
-              Visi prekių ženklai →
-            </CtaLink>
-          </div>
+          <CtaLink href="#" variant="primary" className="shrink-0">
+            Visi prekių ženklai →
+          </CtaLink>
         </div>
+      </div>
 
+      {/* Karuselė per visą ekrano plotį; dešinė be padding (kortelės „išeina“ už kraštą) */}
+      <div className="relative left-1/2 z-[1] w-screen max-w-none -translate-x-1/2">
         <div
           ref={trackInView.ref}
           style={{
@@ -173,8 +155,8 @@ export function OdosBrandsSection() {
         >
           <div
             ref={scrollerRef}
-            className="flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            style={{ scrollPaddingInline: '0' }}
+            className="flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-1 pl-4 [-ms-overflow-style:none] [scrollbar-width:none] max-[767px]:scroll-pl-6 max-[767px]:pl-6 max-[479px]:scroll-pl-4 max-[479px]:pl-4 min-[768px]:scroll-pl-16 min-[768px]:pl-16 [&::-webkit-scrollbar]:hidden"
+            style={{ scrollPaddingRight: 0, paddingRight: 0 }}
           >
             {cards.map((card) => (
               <a
@@ -189,21 +171,21 @@ export function OdosBrandsSection() {
                 }}
               >
                 <div
-                  className="relative h-[380px] w-full overflow-hidden border border-[#1A1010]/10 shadow-[0_0_0_1px_rgba(26,16,16,0)] transition-[border-color,box-shadow,transform] duration-[650ms] ease-in-out will-change-transform group-hover/card:border-[#1A1010]/18 group-hover/card:shadow-[0_28px_64px_-18px_rgba(26,16,16,0.14)] group-hover/card:-translate-y-[2px]"
+                  className="relative h-[380px] w-full overflow-hidden border border-[#1A1010]/10 transition-[border-color,box-shadow] duration-[900ms] ease-[cubic-bezier(0.22,1,0.45,1)] group-hover/card:border-[#1A1010]/16 group-hover/card:shadow-[0_32px_72px_-28px_rgba(26,16,16,0.12)]"
                   style={{ borderRadius: '0px' }}
                 >
                   <img
                     src={card.image}
                     alt=""
                     loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-[transform,filter] duration-[720ms] ease-in-out will-change-transform group-hover/card:scale-[1.012]"
+                    className="pointer-events-none absolute left-1/2 top-1/2 h-[118%] min-h-full w-[118%] min-w-full max-w-none -translate-x-1/2 -translate-y-1/2 origin-center scale-100 object-cover [backface-visibility:hidden] transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.45,1)] will-change-transform group-hover/card:scale-[1.055] motion-reduce:transition-none motion-reduce:group-hover/card:scale-100"
                   />
                   <div
-                    className="absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,16,0.06),rgba(26,16,16,0.48))] transition-[opacity,background] duration-[650ms] ease-in-out group-hover/card:opacity-[0.88] group-hover/card:bg-[linear-gradient(180deg,rgba(26,16,16,0.04),rgba(26,16,16,0.38))]"
+                    className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,16,0.06),rgba(26,16,16,0.48))] transition-[opacity,background] duration-[900ms] ease-[cubic-bezier(0.22,1,0.45,1)] group-hover/card:opacity-[0.88] group-hover/card:bg-[linear-gradient(180deg,rgba(26,16,16,0.04),rgba(26,16,16,0.38))]"
                     aria-hidden
                   />
                 </div>
-                <div className="flex flex-col gap-5">
+                <div className="flex max-w-[min(100%,clamp(240px,26vw,300px))] flex-col gap-5 pr-4 max-[767px]:max-w-[min(100%,280px)]">
                   <div className="flex h-5 items-center">
                     {card.logoSvg ? (
                       <img
@@ -230,6 +212,28 @@ export function OdosBrandsSection() {
                 </div>
               </a>
             ))}
+          </div>
+
+          {/* Rodyklės po karuselės juosta, lygiuojamos su kairiniu turinio kraštu */}
+          <div className="mx-auto mt-8 flex max-w-[1800px] items-center gap-2 px-16 max-[767px]:mt-6 max-[767px]:px-6 max-[479px]:px-4">
+            <button
+              type="button"
+              onClick={() => scrollBrands('prev')}
+              className={carouselNavBtnClass}
+              style={{ borderRadius: '0px' }}
+              aria-label="Ankstesni prekių ženklai"
+            >
+              <ChevronLeftIcon className="h-[22px] w-[22px] text-current" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollBrands('next')}
+              className={carouselNavBtnClass}
+              style={{ borderRadius: '0px' }}
+              aria-label="Kiti prekių ženklai"
+            >
+              <ChevronRightIcon className="h-[22px] w-[22px] text-current" />
+            </button>
           </div>
         </div>
       </div>
