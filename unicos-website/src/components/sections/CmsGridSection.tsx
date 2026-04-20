@@ -327,13 +327,13 @@ export function CmsGridSection() {
                 className="m-0 tracking-[-0.02em] text-[#64151F]"
                 style={{
                   fontFamily: "'Quiche Sans', Georgia, serif",
-                  fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
-                  lineHeight: 1.12,
+                  fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+                  lineHeight: 1.06,
                   fontWeight: 300,
                 }}
               >
-                <span className="font-medium">Mokymai</span>
-                <span className="font-light"> ir renginiai</span>
+                <span className="font-light">Mokymai ir </span>
+                <span className="font-medium">renginiai</span>
               </h2>
 
               <p className="m-0 max-w-[48ch] text-[#1A1010]/82" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>

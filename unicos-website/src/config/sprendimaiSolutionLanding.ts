@@ -65,8 +65,6 @@ export type SprendimaiSolutionLandingConfig = {
   heroH1MaxWidthClass?: string;
   audienceConsultTitle: string;
   audienceConsultBody: string;
-  /** Po „Kam skirtas…?“ antraštės (nebūtina). */
-  audienceSubheading?: string | null;
   audienceCards: AudienceCards4;
   challenges: Challenges3;
   solutionCards: readonly SolutionGridCard[];
@@ -147,7 +145,7 @@ const ODOS_BRANDS: readonly BrandCarouselCard[] = [
     id: 'comfort-zone',
     title: '[ comfort zone ]',
     description: 'Itališka tvarumo filosofija ir procedūrinės linijos salonams.',
-    image: '/mega-menu/4.jpeg',
+    image: '/Female_hands_applying_202604110815.jpeg',
     logoSvg: '/comfort zone.svg',
   },
   {
@@ -183,7 +181,6 @@ export const odosSpecialistamsLandingConfig: SprendimaiSolutionLandingConfig = {
   heroCta2Microcopy: 'Padėsime sudėlioti asortimentą.',
   audienceConsultTitle: 'Reikia konsultacijos?',
   audienceConsultBody: 'Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.',
-  audienceSubheading: null,
   challenges: ODOS_DEFAULT_CHALLENGES,
   responsibleSubheading: 'Gausite ne tik produktus, bet ir aplinką profesionaliam augimui.',
   brandsHeadingLight: 'Prekių ženklai, atrinkti ',
@@ -262,7 +259,7 @@ export const odosSpecialistamsLandingConfig: SprendimaiSolutionLandingConfig = {
     quote: UNICOS_KAZLAUSKIENE_QUOTE,
     authorName: 'Dr. Ieva Kazlauskienė',
     authorMeta: 'Dermatovenerologė, Vilnius',
-    portraitSrc: '/mega-menu/3.jpeg',
+    portraitSrc: '/Female_hands_applying_202604110815.jpeg',
     portraitAlt: 'Dr. Ieva Kazlauskienė',
     footnote: 'Portretinė partnerio ar kliento nuotrauka — citatai patikimumas ir žmogiškumas.',
   },
@@ -294,8 +291,8 @@ export const plaukuPrieziurosSpecialistamsLandingConfig: SprendimaiSolutionLandi
   breadcrumbLabel: 'Plaukų priežiūros specialistams',
   heroImageSrc: '/plaukai.jpg',
   heroImageAlt: 'Plaukų priežiūra salone',
-  heroH1Light: 'Profesionali plaukų priežiūros kosmetika salonams',
-  heroH1Bold: '',
+  heroH1Light: 'Profesionali plaukų priežiūros kosmetika ',
+  heroH1Bold: 'salonams',
   heroH1MaxWidthClass: 'max-w-[min(100%,52rem)]',
   heroLead:
     'Aukštos kokybės prekių ženklai, praktinės žinios ir asmeninis palaikymas — kad Jūsų klientai grįžtų ir rekomenduotų kitiems.',
@@ -303,7 +300,6 @@ export const plaukuPrieziurosSpecialistamsLandingConfig: SprendimaiSolutionLandi
   heroCta2Microcopy: 'Padėsime sudėlioti asortimentą.',
   audienceConsultTitle: 'Reikia konsultacijos?',
   audienceConsultBody: 'Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.',
-  audienceSubheading: null,
   challenges: PLAUKU_CHALLENGES,
   responsibleSubheading: 'Gausite ne tik produktus, bet ir aplinką profesionaliam augimui.',
   brandsHeadingLight: 'Prekių ženklai, atrinkti ',
@@ -324,7 +320,7 @@ export const plaukuPrieziurosSpecialistamsLandingConfig: SprendimaiSolutionLandi
     },
     {
       id: 'p3',
-      bg: '/plaukai.jpg',
+      bg: '/cover/Professional_beauty_salon_202604131349.jpeg',
       heading: 'Salonams su keliomis kėdėmis',
       body: 'Auginate komandą, reikia patikimo tiekėjo kokybei standartizuoti.',
     },
@@ -413,7 +409,7 @@ const ESTETINE_BRANDS: readonly BrandCarouselCard[] = [
     id: 'fillmed',
     title: 'Fillmed',
     description: 'Filorga profesionali linija estetinės medicinos procedūroms. Mezoterapija, biorevitalizacija, pildymas.',
-    image: '/estetines.jpg',
+    image: '/mega-menu/4.jpeg',
   },
   {
     id: 'neostrata-est',
@@ -449,7 +445,6 @@ export const estetinesMedicinosKlinikomsLandingConfig: SprendimaiSolutionLanding
   heroCta2Microcopy: 'Aptarsime Jūsų klinikos poreikius.',
   audienceConsultTitle: 'Reikia konsultacijos?',
   audienceConsultBody: 'Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.',
-  audienceSubheading: 'Jei atpažįstate save bent vienoje situacijoje — esame tam ir sukurti.',
   challenges: ESTETINE_CHALLENGES,
   responsibleSubheading: 'Gausite ne tik produktus, bet ir struktūrą, kuria galite pasitikėti.',
   brandsHeadingLight: 'Prekių ženklai.',
@@ -458,7 +453,7 @@ export const estetinesMedicinosKlinikomsLandingConfig: SprendimaiSolutionLanding
   audienceCards: [
     {
       id: 'e1',
-      bg: '/estetines.jpg',
+      bg: '/mega-menu/2.jpeg',
       heading: 'Estetinės dermatologijos klinikoms',
       body: 'Atliekate injekcines, lazerines ar aparatines procedūras ir ieškote patikimų profesionalių priemonių pre- ir postprocedūrinei priežiūrai.',
     },
@@ -470,7 +465,7 @@ export const estetinesMedicinosKlinikomsLandingConfig: SprendimaiSolutionLanding
     },
     {
       id: 'e3',
-      bg: '/Female_aesthetician_consulting_202604110817.jpeg',
+      bg: '/Female_hands_applying_202604110815.jpeg',
       heading: 'Estetinės medicinos centrams',
       body: 'Valdote komandą specialistų ir reikia standartizuoto asortimento su aiškiais protokolais visiems.',
     },
@@ -532,7 +527,7 @@ export const estetinesMedicinosKlinikomsLandingConfig: SprendimaiSolutionLanding
     quote: UNICOS_KAZLAUSKIENE_QUOTE,
     authorName: 'Dr. Ieva Kazlauskienė',
     authorMeta: 'Dermatovenerologė, Vilnius',
-    portraitSrc: '/mega-menu/3.jpeg',
+    portraitSrc: '/cover/Professional_beauty_salon_202604131349.jpeg',
     portraitAlt: 'Dr. Ieva Kazlauskienė',
     footnote: 'Portretinė partnerio ar kliento nuotrauka — citatai patikimumas ir žmogiškumas.',
   },
@@ -572,7 +567,6 @@ export const vaistinemsIrFarmacijosSpecialistamsLandingConfig: SprendimaiSolutio
   heroCta2Microcopy: 'Padėsime rasti tinkamiausią kelią.',
   audienceConsultTitle: 'Reikia konsultacijos?',
   audienceConsultBody: 'Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.',
-  audienceSubheading: 'Jei atpažįstate save — esame tam ir sukurti.',
   challenges: VAISTINE_CHALLENGES,
   responsibleSubheading: 'Gausite ne tik produktus, bet ir aplinką profesionaliam augimui.',
   brandsHeadingLight: 'Prekių ženklai, atrinkti ',
@@ -581,7 +575,7 @@ export const vaistinemsIrFarmacijosSpecialistamsLandingConfig: SprendimaiSolutio
   audienceCards: [
     {
       id: 'f1',
-      bg: '/farmacija.jpg',
+      bg: '/mega-menu/2.jpeg',
       heading: 'Dermakosmetikos konsultantams',
       body: 'Rekomenduojate produktus klientams ir norite dirbti su patikimais, profesionaliais prekių ženklais.',
     },
@@ -642,7 +636,7 @@ export const vaistinemsIrFarmacijosSpecialistamsLandingConfig: SprendimaiSolutio
       'Vadybininko konsultacija pagal Jūsų klientų profilį',
       'Galimybė keisti ir plėsti asortimentą augant',
     ],
-    imageSrc: '/cover/farmacy_minimal_202604131347.jpeg',
+    imageSrc: '/mega-menu/3.jpeg',
     imageAlt: 'Farmacijos specialistė konsultuoja pirkėją',
     starterPrice: '150 €',
   },
@@ -651,7 +645,7 @@ export const vaistinemsIrFarmacijosSpecialistamsLandingConfig: SprendimaiSolutio
     quote: UNICOS_KAZLAUSKIENE_QUOTE,
     authorName: 'Dr. Ieva Kazlauskienė',
     authorMeta: 'Dermatovenerologė, Vilnius',
-    portraitSrc: '/mega-menu/3.jpeg',
+    portraitSrc: '/Female_hands_applying_202604110815.jpeg',
     portraitAlt: 'Dr. Ieva Kazlauskienė',
     footnote: 'Portretinė partnerio ar kliento nuotrauka — citatai patikimumas ir žmogiškumas.',
   },

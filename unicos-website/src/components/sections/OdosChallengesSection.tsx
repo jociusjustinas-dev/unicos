@@ -69,8 +69,8 @@ export function OdosChallengesSection({ items = defaultChallenges }: { items?: C
               className="m-0 text-[#EFE8DB]"
               style={{
                 fontFamily: "'Quiche Sans', Georgia, serif",
-                fontSize: 'clamp(2rem, 3.4vw, 2.8rem)',
-                lineHeight: 1.05,
+                fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+                lineHeight: 1.06,
                 letterSpacing: '-0.02em',
                 fontWeight: 300,
               }}

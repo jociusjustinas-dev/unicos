@@ -100,11 +100,11 @@ export function FaqSection({
               </div>
 
               <h2
-                className="m-0 tracking-[-0.03em]"
+                className="m-0 tracking-[-0.02em]"
                 style={{
                   fontFamily: "'Quiche Sans', Georgia, serif",
-                  fontSize: 'clamp(2rem, 4vw, 3rem)',
-                  lineHeight: 1.08,
+                  fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+                  lineHeight: 1.06,
                   fontWeight: 300,
                   color: accentColor,
                 }}

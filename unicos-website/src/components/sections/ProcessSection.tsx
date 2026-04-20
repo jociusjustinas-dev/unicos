@@ -89,8 +89,8 @@ export function ProcessSection({
   const resolvedHeading =
     heading ??
     <>
-      <span className="font-medium text-[#3B443A]">Kaip tapti </span>
-      <span className="font-light text-[#3B443A]">partneriu?</span>
+      <span className="font-light text-[#3B443A]">Kaip tapti </span>
+      <span className="font-medium text-[#3B443A]">partneriu?</span>
     </>;
 
   const resolvedIntro = introText === null ? null : introText ?? 'Paprastas ir aiškus kelias partnerystės link.';
@@ -121,10 +121,10 @@ export function ProcessSection({
           style={reveal(headingVisible)}
         >
           <h2
-            className="m-0 leading-[1.12] tracking-[-0.02em] max-[767px]:leading-[1.15]"
+            className="m-0 leading-[1.06] tracking-[-0.02em]"
             style={{
               fontFamily: "'Quiche Sans', Georgia, serif",
-              fontSize: 'clamp(2rem, 4vw, 2.75rem)',
+              fontSize: 'clamp(2rem, 3.5vw, 3rem)',
               fontWeight: 300,
             }}
           >

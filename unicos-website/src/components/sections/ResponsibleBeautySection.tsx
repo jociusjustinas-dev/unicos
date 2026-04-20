@@ -114,8 +114,8 @@ export function ResponsibleBeautySection({
   const resolvedHeading =
     heading ??
     <>
-      <span className="font-medium">Atsakingas</span>
-      <span className="font-light"> grožis</span>
+      <span className="font-light">Atsakingas </span>
+      <span className="font-medium">grožis</span>
     </>;
   const resolvedSubheading = subheading === null ? null : subheading ?? 'Mums svarbu ne tik galutinis rezultatas, bet ir kelias, kuriuo jis pasiekiamas. Renkamės partnerius, kuriems, kaip ir mums, rūpi tvarumas, etika ir atsakingas požiūris į aplinką.';
 
@@ -154,8 +154,13 @@ export function ResponsibleBeautySection({
               </div>
             ) : null}
             <h2
-              className="m-0 text-[#3B443A] text-center tracking-[-2px] text-[clamp(32px,3.8vw,48px)] leading-[1.08] max-[767px]:tracking-[-1.5px]"
-              style={{ fontFamily: "'Quiche Sans', Georgia, serif" }}
+              className="m-0 text-center tracking-[-0.02em] text-[#3B443A]"
+              style={{
+                fontFamily: "'Quiche Sans', Georgia, serif",
+                fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+                lineHeight: 1.06,
+                fontWeight: 300,
+              }}
             >
               {resolvedHeading}
             </h2>

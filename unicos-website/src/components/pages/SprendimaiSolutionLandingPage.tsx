@@ -152,15 +152,14 @@ export function SprendimaiSolutionLandingPage({ config }: { config: SprendimaiSo
         cards={config.audienceCards}
         consultTitle={config.audienceConsultTitle}
         consultBody={config.audienceConsultBody}
-        audienceSubheading={config.audienceSubheading ?? undefined}
       />
       <OdosChallengesSection items={config.challenges} />
       <ResponsibleBeautySection
         eyebrowLabel={null}
         heading={
           <>
-            <span className="font-medium">Kaip UNICOS </span>
-            <span className="font-light">tai išsprendžia?</span>
+            <span className="font-light">Kaip UNICOS </span>
+            <span className="font-medium">tai išsprendžia?</span>
           </>
         }
         subheading={config.responsibleSubheading}

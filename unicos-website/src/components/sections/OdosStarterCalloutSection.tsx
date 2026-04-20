@@ -83,8 +83,8 @@ export function OdosStarterCalloutSection({
                   className="m-0 text-[#3B443A] tracking-[-0.02em]"
                   style={{
                     fontFamily: "'Quiche Sans', Georgia, serif",
-                    fontSize: 'clamp(2.1rem, 4.2vw, 3.2rem)',
-                    lineHeight: 1.05,
+                    fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+                    lineHeight: 1.06,
                     fontWeight: 300,
                   }}
                 >
