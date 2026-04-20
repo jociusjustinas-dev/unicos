@@ -229,9 +229,6 @@ export function PrekiuZenklaiPage() {
       </section>
 
       <ResponsibleBeautySection
-        surfaceClassName="bg-[#EFE8DB]"
-        accent="maroon"
-        eyebrowLabel={null}
         heading={
           <>
             <span className="font-light">Kaip atrenkame </span>
