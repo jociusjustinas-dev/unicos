@@ -8,8 +8,9 @@ const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
 
-const carouselNavBtnClass =
-  'group flex h-12 w-12 shrink-0 items-center justify-center overflow-visible border border-[#1A1010]/18 bg-transparent p-0 text-[#1A1010] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#3B443A] hover:text-[#EFE8DB] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64151F] disabled:pointer-events-none disabled:opacity-35';
+/** Karuselės rodyklės — bordo (ne žalia #3B443A); žr. AGENTS.md „Carousel row navigation“. */
+const brandsCarouselNavBtnClass =
+  'group flex h-12 w-12 shrink-0 items-center justify-center overflow-visible border border-[#1A1010]/18 bg-transparent p-0 text-[#1A1010] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#64151F] hover:bg-[#4a0f17] hover:text-[#EFE8DB] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64151F] disabled:pointer-events-none disabled:opacity-35';
 
 type BrandCard = {
   id: string;
@@ -219,7 +220,7 @@ export function OdosBrandsSection() {
             <button
               type="button"
               onClick={() => scrollBrands('prev')}
-              className={carouselNavBtnClass}
+              className={brandsCarouselNavBtnClass}
               style={{ borderRadius: '0px' }}
               aria-label="Ankstesni prekių ženklai"
             >
@@ -228,7 +229,7 @@ export function OdosBrandsSection() {
             <button
               type="button"
               onClick={() => scrollBrands('next')}
-              className={carouselNavBtnClass}
+              className={brandsCarouselNavBtnClass}
               style={{ borderRadius: '0px' }}
               aria-label="Kiti prekių ženklai"
             >

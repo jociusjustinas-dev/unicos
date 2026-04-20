@@ -42,6 +42,9 @@ When you see any BYQ default color — replace as follows:
 - Light card backgrounds → #EFE8DB or #3B443A (dark variant)
 - Gradient overlays: match to #EFE8DB with correct rgba values
 
+## Carousel row navigation (horizontalūs „prev/next“ mygtukai)
+Ant šviesių fonų (#EFE8DB ir pan., pvz. prekių ženklų sekcijos): rodyklių mygtukų **hover / filled** būsena — **maroon** (`#64151F` rėmelis, hover užpildymas `#4a0f17`, tekstas `#EFE8DB`). **Nenaudoti** čia antrinės žalios (`#3B443A`) — žalia lieka tik tamsiems antriniams blokams (pvz. atskiri žali CTA kontekstai).
+
 ## Buttons
 Primary: bg #64151F, text #EFE8DB, border-radius 0px, hover bg #4a0f17
 Ghost: border 1px solid #64151F, transparent bg, text #64151F, 
