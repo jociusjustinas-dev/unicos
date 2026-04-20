@@ -68,6 +68,28 @@ const defaultBrandCards: BrandCarouselCard[] = [
   },
 ];
 
+const DEFAULT_BADGE = 'Oficialus atstovas Lietuvoje';
+const FALLBACK_META = {
+  categoryLabels: ['Odos priežiūra'],
+  recommended: 'Klinikoms, salonams',
+  country: 'Prancūzija',
+} as const;
+
+const BRAND_META_BY_ID: Record<string, { categoryLabels: string[]; recommended: string; country: string }> = {
+  guinot: { categoryLabels: ['Odos priežiūra', 'Dermakosmetika'], recommended: 'Klinikoms, salonams', country: 'Prancūzija' },
+  neostrata: { categoryLabels: ['Odos priežiūra', 'Estetinė dermatologija'], recommended: 'Klinikoms, dermatologams', country: 'JAV' },
+  'mary-cohr': { categoryLabels: ['Odos priežiūra'], recommended: 'Salonams, SPA', country: 'Prancūzija' },
+  exuviance: { categoryLabels: ['Dermakosmetika', 'Odos priežiūra'], recommended: 'Kosmetologams, klinikoms', country: 'JAV' },
+  'comfort-zone': { categoryLabels: ['Odos priežiūra'], recommended: 'Salonams, SPA', country: 'Italija' },
+  nimue: { categoryLabels: ['Dermakosmetika', 'Odos priežiūra'], recommended: 'Klinikoms, kosmetologams', country: 'PAR' },
+  biologique: { categoryLabels: ['Odos priežiūra'], recommended: 'Klinikoms, salonams', country: 'Prancūzija' },
+  'dr-spiller': { categoryLabels: ['Dermakosmetika', 'Odos priežiūra'], recommended: 'Klinikoms, kosmetologams', country: 'Vokietija' },
+  fillmed: { categoryLabels: ['Estetinė dermatologija'], recommended: 'Klinikoms', country: 'Prancūzija' },
+  'neostrata-est': { categoryLabels: ['Odos priežiūra', 'Estetinė dermatologija'], recommended: 'Klinikoms, dermatologams', country: 'JAV' },
+  caregen: { categoryLabels: ['Estetinė dermatologija', 'Plaukų priežiūra'], recommended: 'Klinikoms, trichologams', country: 'Pietų Korėja' },
+  'anna-lotan': { categoryLabels: ['Odos priežiūra', 'Dermakosmetika'], recommended: 'Kosmetologams', country: 'Izraelis' },
+};
+
 function useInView<T extends HTMLElement>(threshold = 0.1) {
   const ref = React.useRef<T>(null);
   const [visible, setVisible] = React.useState(false);
@@ -170,6 +192,9 @@ export function OdosBrandsSection({
             style={{ scrollPaddingRight: 0, paddingRight: 0 }}
           >
             {cards.map((card) => (
+              (() => {
+                const meta = BRAND_META_BY_ID[card.id] ?? FALLBACK_META;
+                return (
               <BrandShowcaseCard
                 key={card.id}
                 dataBrandCard
@@ -181,7 +206,45 @@ export function OdosBrandsSection({
                 description={card.description}
                 imageSrc={card.image}
                 imageAlt={card.title}
+                badge={DEFAULT_BADGE}
+                ctaHref="/prekiu-zenklai"
+                ctaLabel="Sužinokite daugiau"
+                meta={
+                  <>
+                    <div className="flex flex-wrap gap-2">
+                      {meta.categoryLabels.map((label) => (
+                        <span
+                          key={label}
+                          className="border border-[#1A1010]/14 px-2.5 py-1 text-[#1A1010]/78"
+                          style={{ ...BODY, fontSize: '12px', fontWeight: 400, borderRadius: '0px' }}
+                        >
+                          {label}
+                        </span>
+                      ))}
+                    </div>
+                    <dl className="m-0 flex flex-col gap-2 border-t border-[#1A1010]/10 pt-4">
+                      <div>
+                        <dt className="m-0 uppercase text-[#1A1010]/48" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500 }}>
+                          Rekomenduojama
+                        </dt>
+                        <dd className="m-0 mt-1" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45, fontWeight: 400 }}>
+                          {meta.recommended}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="m-0 uppercase text-[#1A1010]/48" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500 }}>
+                          Šalis
+                        </dt>
+                        <dd className="m-0 mt-1" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45, fontWeight: 400 }}>
+                          {meta.country}
+                        </dd>
+                      </div>
+                    </dl>
+                  </>
+                }
               />
+                );
+              })()
             ))}
           </div>
 
