@@ -121,7 +121,7 @@ export function PrekiuZenklaiPage() {
         </div>
       </section>
 
-      <section className="relative z-[2] bg-white py-16 max-[767px]:py-12">
+      <section className="relative z-[2] bg-[#EFE8DB] py-16 max-[767px]:py-12">
         <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
           <div
             className="mb-10 flex flex-wrap gap-2 max-[767px]:mb-8"
@@ -159,7 +159,7 @@ export function PrekiuZenklaiPage() {
               {visibleBrands.map((brand) => (
                 <article
                   key={brand.id}
-                  className="group/card flex flex-col border border-[#1A1010]/10 bg-[#EFE8DB] text-[#1A1010] transition-[border-color,background-color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#64151F]/30"
+                  className="group/card flex flex-col border border-[#1A1010]/16 bg-white text-[#1A1010] transition-[border-color,background-color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#64151F]/30"
                   style={{ borderRadius: '0px' }}
                 >
                   <div className="relative h-[220px] w-full overflow-hidden border-b border-[#1A1010]/10">
@@ -181,9 +181,15 @@ export function PrekiuZenklaiPage() {
                     </div>
                   </div>
                   <div className="flex flex-col gap-4 p-6 max-[767px]:p-5">
-                    <h3 className="m-0 text-[#64151F]" style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: '1.35rem', fontWeight: 500 }}>
-                      {brand.title}
-                    </h3>
+                    <div className="flex min-h-8 items-center">
+                      {brand.logoSvg ? (
+                        <img src={brand.logoSvg} alt={brand.title} loading="lazy" className="h-6 w-auto max-w-[170px] object-contain object-left" />
+                      ) : (
+                        <h3 className="m-0 text-[#64151F]" style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: '1.35rem', fontWeight: 500 }}>
+                          {brand.title}
+                        </h3>
+                      )}
+                    </div>
                     <p className="m-0 text-[#1A1010]/78" style={{ ...BODY, fontSize: '15px', lineHeight: 1.5, fontWeight: 400 }}>
                       {brand.description}
                     </p>

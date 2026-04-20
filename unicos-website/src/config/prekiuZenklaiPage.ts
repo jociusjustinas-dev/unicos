@@ -11,6 +11,7 @@ export const PREKIU_ZENKLAI_FILTERS: readonly { id: PrekiuZenklaiFilterId; label
 export type PrekiuZenklaiBrandCard = {
   id: string;
   title: string;
+  logoSvg?: string;
   description: string;
   badge: string;
   /** Filtravimui pagal kategorijas */
@@ -29,6 +30,7 @@ export const PREKIU_ZENKLAI_BRANDS: readonly PrekiuZenklaiBrandCard[] = [
   {
     id: 'guinot',
     title: 'Guinot',
+    logoSvg: '/Guinot logo.svg',
     description: 'Profesionali odos priežiūra su unikaliomis aparatinėmis procedūromis.',
     badge: 'Oficialus atstovas Lietuvoje',
     categoryIds: ['odos', 'derma'],
@@ -55,6 +57,7 @@ export const PREKIU_ZENKLAI_BRANDS: readonly PrekiuZenklaiBrandCard[] = [
   {
     id: 'mary-cohr',
     title: 'Mary Cohr',
+    logoSvg: '/Mary Cohr logo.svg',
     description: 'Aukščiausios klasės sprendimai veidui ir kūnui profesionalioms procedūroms.',
     badge: 'Oficialus atstovas Lietuvoje',
     categoryIds: ['odos'],
