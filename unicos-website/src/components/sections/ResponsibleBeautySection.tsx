@@ -207,7 +207,7 @@ export function ResponsibleBeautySection({
               return (
               <div
                 key={feature.title}
-                className={`group flex w-full flex-col items-center gap-6 border border-[#1A1010]/10 bg-[#ECE2D3] p-8 text-center ease-out ${cardHover} max-[767px]:gap-5 max-[767px]:p-6 ${
+                className={`group flex w-full flex-col items-center gap-6 border border-[#1A1010]/10 bg-white p-8 text-center ease-out ${cardHover} max-[767px]:gap-5 max-[767px]:p-6 ${
                   gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ borderRadius: '0px', transition: cardTransition }}
