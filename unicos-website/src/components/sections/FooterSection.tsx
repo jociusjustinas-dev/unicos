@@ -166,7 +166,7 @@ export function FooterSection({
             <FooterColumn
               title="Navigacija"
               links={[
-                { label: 'Prekių ženklai', href: '#' },
+                { label: 'Prekių ženklai', href: '/prekiu-zenklai' },
                 { label: 'Akademija', href: '#' },
                 { label: 'Sprendimai', href: '/sprendimai/odos-specialistams' },
                 { label: 'Platforma', href: '#' },

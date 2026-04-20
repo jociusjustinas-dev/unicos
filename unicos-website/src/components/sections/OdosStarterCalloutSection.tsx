@@ -27,6 +27,9 @@ export function OdosStarterCalloutSection({
   imageSrc = '/mega-menu/3.jpeg',
   imageAlt = 'Specialistė konsultuoja klientę dėl odos priežiūros',
   starterPrice = '950 €',
+  showEyebrow = true,
+  showPriceBlock = true,
+  footerCtas,
 }: {
   eyebrowLabel?: string;
   headingLight?: string;
@@ -36,7 +39,14 @@ export function OdosStarterCalloutSection({
   imageSrc?: string;
   imageAlt?: string;
   starterPrice?: string;
+  showEyebrow?: boolean;
+  showPriceBlock?: boolean;
+  footerCtas?: {
+    primary: { href: string; label: string; microcopy: string };
+    secondary: { href: string; label: string; microcopy: string };
+  };
 } = {}) {
+  const resolvedShowPrice = showPriceBlock && !footerCtas;
   const cardRef = React.useRef<HTMLDivElement>(null);
   const [visible, setVisible] = React.useState(false);
 
@@ -69,15 +79,17 @@ export function OdosStarterCalloutSection({
           <div className="grid grid-cols-2 gap-x-[132px] gap-y-[132px] p-12 text-[#1A1010] max-[991px]:grid-cols-1 max-[991px]:gap-x-12 max-[991px]:gap-y-12 max-[767px]:gap-8 max-[767px]:p-8">
             <div className="flex max-w-[640px] flex-col items-start justify-between gap-8 max-[767px]:gap-6">
               <div className="flex flex-col items-start gap-8 max-[767px]:gap-6">
-                <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
-                  <span
-                    className="uppercase text-[#3B443A]"
-                    style={{ ...BODY, fontSize: '11px', lineHeight: '14px', fontWeight: 500, letterSpacing: '0.12em' }}
-                  >
-                    {eyebrowLabel}
-                  </span>
-                </div>
+                {showEyebrow ? (
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
+                    <span
+                      className="uppercase text-[#3B443A]"
+                      style={{ ...BODY, fontSize: '11px', lineHeight: '14px', fontWeight: 500, letterSpacing: '0.12em' }}
+                    >
+                      {eyebrowLabel}
+                    </span>
+                  </div>
+                ) : null}
 
                 <h2
                   className="m-0 text-[#3B443A] tracking-[-0.02em]"
@@ -98,27 +110,29 @@ export function OdosStarterCalloutSection({
                   {description}
                 </p>
 
-                <div className="flex flex-col items-start gap-2.5">
-                  <div className="flex items-end gap-3">
-                    <div
-                      className="uppercase text-[#3B443A]/65"
-                      style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1, paddingBottom: '6px' }}
-                    >
-                      STARTAS NUO
-                    </div>
-                    <div
-                      className="text-[#3B443A]"
-                      style={{
-                        fontFamily: "'Quiche Sans', Georgia, serif",
-                        fontSize: 'clamp(2.3rem, 4vw, 3.2rem)',
-                        lineHeight: 1,
-                        fontWeight: 300,
-                      }}
-                    >
-                      {starterPrice}
+                {resolvedShowPrice ? (
+                  <div className="flex flex-col items-start gap-2.5">
+                    <div className="flex items-end gap-3">
+                      <div
+                        className="uppercase text-[#3B443A]/65"
+                        style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1, paddingBottom: '6px' }}
+                      >
+                        STARTAS NUO
+                      </div>
+                      <div
+                        className="text-[#3B443A]"
+                        style={{
+                          fontFamily: "'Quiche Sans', Georgia, serif",
+                          fontSize: 'clamp(2.3rem, 4vw, 3.2rem)',
+                          lineHeight: 1,
+                          fontWeight: 300,
+                        }}
+                      >
+                        {starterPrice}
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : null}
 
                 <div className="h-px w-full bg-[#1A1010]/10" aria-hidden />
 
@@ -131,17 +145,44 @@ export function OdosStarterCalloutSection({
                   ))}
                 </div>
 
-                <div className="flex flex-col items-start gap-2.5">
-                  <CtaLink href="/kontaktai" variant="secondary">
-                    Gauti startinio paketo pasiūlymą
-                  </CtaLink>
-                  <span
-                    className="uppercase text-[#1A1010]/52"
-                    style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}
-                  >
-                    VADYBININKAS SUSISIEKS PER 24 VAL.
-                  </span>
-                </div>
+                {footerCtas ? (
+                  <div className="flex w-full max-w-[640px] flex-col items-stretch justify-center gap-6 sm:flex-row sm:items-start sm:justify-start sm:gap-8">
+                    <div className="flex flex-col items-start gap-2.5 sm:items-start">
+                      <CtaLink href={footerCtas.primary.href} variant="primary" className="min-w-[240px] justify-center">
+                        {footerCtas.primary.label}
+                      </CtaLink>
+                      <span
+                        className="uppercase text-[#1A1010]/52"
+                        style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}
+                      >
+                        {footerCtas.primary.microcopy}
+                      </span>
+                    </div>
+                    <div className="flex flex-col items-start gap-2.5 sm:items-start">
+                      <CtaLink href={footerCtas.secondary.href} variant="outline" className="min-w-[240px] justify-center">
+                        {footerCtas.secondary.label}
+                      </CtaLink>
+                      <span
+                        className="uppercase text-[#1A1010]/52"
+                        style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}
+                      >
+                        {footerCtas.secondary.microcopy}
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-start gap-2.5">
+                    <CtaLink href="/kontaktai" variant="secondary">
+                      Gauti startinio paketo pasiūlymą
+                    </CtaLink>
+                    <span
+                      className="uppercase text-[#1A1010]/52"
+                      style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}
+                    >
+                      VADYBININKAS SUSISIEKS PER 24 VAL.
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
 

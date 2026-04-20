@@ -225,7 +225,7 @@ function PrekesZenklaiPanel({
               Atstovaujame 30+ pasaulinių profesionalios kosmetikos prekių ženklų Baltijos šalyse.
             </p>
             <a
-              href="#"
+              href="/prekiu-zenklai"
               className="inline-flex items-center no-underline hover:opacity-60 transition-opacity duration-200"
               style={{ ...NAV_FONT, fontSize: '13px', fontWeight: 500, color: '#EFE8DB' }}
             >
@@ -369,7 +369,7 @@ function MobileMenu({ open }: { open: boolean }) {
         </div>
 
         {[
-          { label: 'Prekių ženklai', href: '#' },
+          { label: 'Prekių ženklai', href: '/prekiu-zenklai' },
           { label: 'Akademija', href: '#' },
           { label: 'Partnerystė', href: '#' },
           { label: 'Apie Unicos', href: '#' },
