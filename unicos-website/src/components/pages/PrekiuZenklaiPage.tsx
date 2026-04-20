@@ -10,6 +10,7 @@ import {
   type PrekiuZenklaiFilterId,
 } from '@/config/prekiuZenklaiPage';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
+import { PrekiuZenklaiHeroSection } from '@/components/sections/PrekiuZenklaiHeroSection';
 import { FooterSection } from '@/components/sections/FooterSection';
 import { CmsGridSection } from '@/components/sections/CmsGridSection';
 import { FaqSection } from '@/components/sections/FaqSection';
@@ -17,7 +18,6 @@ import { CtaSection } from '@/components/sections/CtaSection';
 import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
 import { OdosStarterCalloutSection } from '@/components/sections/OdosStarterCalloutSection';
 import { OdosPartnerSpotlightSection } from '@/components/sections/OdosPartnerSpotlightSection';
-import { CtaLink } from '@/components/ui/CtaLink';
 import { BrandShowcaseCard } from '@/components/ui/BrandShowcaseCard';
 import { SfAward, SfLayers, SfPhone } from '@/components/icons/feather';
 
@@ -28,12 +28,113 @@ const BODY: React.CSSProperties = {
 const SPOTLIGHT_QUOTE =
   '„Su UNICOS pagalba optimizavome produktų krepšelį ir tai tiesiogiai atsispindėjo mūsų klinikos pelningume jau po pirmo ketvirčio. Svarbiausia — oficialus atstovavimas ir struktūruoti protokolai suteikia ramybę kiekvieną dieną.“';
 
-function ecosystemIconForTitle(title: string) {
-  const size = 20;
-  const common = { size, 'aria-hidden': true as const };
+const ECOSYSTEM_BUBBLE_META = [
+  { hoverBg: '#64151F', hoverFg: '#EFE8DB', border: 'rgba(100,21,31,0.38)' },
+  { hoverBg: '#3B443A', hoverFg: '#EFE8DB', border: 'rgba(59,68,58,0.34)' },
+  { hoverBg: '#1A1010', hoverFg: '#EFE8DB', border: 'rgba(26,16,16,0.32)' },
+] as const;
+
+function useRevealOnce<T extends HTMLElement>(options?: IntersectionObserverInit) {
+  const ref = React.useRef<T | null>(null);
+  const [visible, setVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px', ...options }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  return [ref, visible] as const;
+}
+
+function ecosystemIconForTitle(title: string, size = 22) {
+  const common = { size, className: 'block shrink-0 overflow-visible text-current', 'aria-hidden': true as const };
   if (title === 'Produktai') return <SfLayers {...common} />;
   if (title === 'Žinios') return <SfAward {...common} />;
   return <SfPhone {...common} />;
+}
+
+function PrekiuZenklaiEcosystemOverlapGrid() {
+  const [gridRef, gridVisible] = useRevealOnce<HTMLDivElement>({ threshold: 0.3, rootMargin: '0px 0px -18% 0px' });
+  const [hoveredBubble, setHoveredBubble] = React.useState<number | null>(null);
+  const gridReveal = gridVisible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]';
+
+  return (
+    <div
+      ref={gridRef}
+      className={`mx-auto max-w-[1144px] transition-all duration-700 ease-out motion-reduce:opacity-100 motion-reduce:blur-0 ${gridReveal}`}
+    >
+      <div className="flex items-center justify-center max-[991px]:justify-start max-[767px]:flex-col max-[767px]:items-center">
+        {PREKIU_ZENKLAI_ECOSYSTEM_CARDS.map((card, i) => {
+          const theme = ECOSYSTEM_BUBBLE_META[i] ?? ECOSYSTEM_BUBBLE_META[2];
+          const isHovered = hoveredBubble === i;
+          const bubbleBg = isHovered ? theme.hoverBg : 'rgba(239,232,219,0.36)';
+          const bubbleFg = isHovered ? theme.hoverFg : '#1A1010';
+          return (
+            <div
+              key={card.title}
+              className={`relative ${i === 0 ? '' : 'min-[768px]:-ml-14 max-[767px]:-mt-7'}`}
+              onMouseEnter={() => setHoveredBubble(i)}
+              onMouseLeave={() => setHoveredBubble(null)}
+              style={{
+                zIndex: i === 2 ? 40 : 20 + i,
+                opacity: gridVisible ? 1 : 0,
+                transform: gridVisible ? 'translateX(0)' : 'translateX(-28px)',
+                transition: `opacity 1s cubic-bezier(0.22,1,0.36,1) ${i * 140}ms, transform 1s cubic-bezier(0.22,1,0.36,1) ${i * 140}ms`,
+              }}
+            >
+              <div
+                className="group flex h-[388px] w-[388px] flex-col justify-center px-20 transition-[background-color,color,border-color,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] max-[991px]:h-[340px] max-[991px]:w-[340px] max-[991px]:px-14 max-[767px]:h-auto max-[767px]:w-[min(92vw,388px)] max-[767px]:items-center max-[767px]:px-10 max-[767px]:py-10"
+                style={{
+                  borderRadius: '100vw',
+                  backgroundColor: bubbleBg,
+                  color: bubbleFg,
+                  border: `1px solid ${theme.border}`,
+                  backdropFilter: isHovered ? 'blur(0px)' : 'blur(10px)',
+                  WebkitBackdropFilter: isHovered ? 'blur(0px)' : 'blur(10px)',
+                  boxShadow: isHovered ? 'none' : 'inset 0 1px 0 rgba(255,255,255,0.2)',
+                }}
+              >
+                <h3
+                  className="m-0 text-[clamp(1.25rem,1.65vw,1.8rem)] leading-[1.12] tracking-[-0.02em] max-[991px]:text-[clamp(1.18rem,1.5vw,1.6rem)] max-[767px]:text-center"
+                  style={{ ...BODY, fontWeight: 500 }}
+                >
+                  {card.title}
+                </h3>
+                <div className="mt-5 mb-5 flex h-[84px] w-[84px] shrink-0 items-center justify-center text-current max-[991px]:h-[72px] max-[991px]:w-[72px]">
+                  <span
+                    className="flex items-center justify-center transition-[opacity,transform] duration-400 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                    style={{
+                      opacity: isHovered ? 0.95 : 0.72,
+                      transform: isHovered ? 'scale(1.04)' : 'scale(1)',
+                    }}
+                  >
+                    {ecosystemIconForTitle(card.title, 52)}
+                  </span>
+                </div>
+                <p
+                  className="m-0 max-w-[26ch] text-[15px] leading-[1.45] max-[991px]:text-[14px] max-[767px]:text-center"
+                  style={{ ...BODY, fontWeight: 400 }}
+                >
+                  {card.description}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 export function PrekiuZenklaiPage() {
@@ -48,88 +149,7 @@ export function PrekiuZenklaiPage() {
     <main className="bg-[#ECE2D3]">
       <NavigationBarSection forceLightSurface />
 
-      <section
-        className="relative z-[2] overflow-x-clip pt-40 pb-28 max-[767px]:pt-32 max-[767px]:pb-20"
-        style={{ backgroundColor: '#EFE8DB' }}
-      >
-        <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
-          <div className="flex w-full flex-row items-stretch gap-16 max-[991px]:flex-col max-[991px]:gap-12">
-            <div className="flex min-w-0 flex-1 flex-col justify-center">
-              <nav className="mb-0" aria-label="Breadcrumb">
-                <div className="flex items-center gap-3">
-                  <span
-                    className="uppercase text-[#64151F]"
-                    style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
-                  >
-                    Prekių ženklai
-                  </span>
-                </div>
-              </nav>
-
-              <div className="mb-10 max-[767px]:mb-8" aria-hidden />
-
-              <h1
-                className="m-0 max-w-[min(100%,48rem)] text-[#64151F] tracking-[-0.03em]"
-                style={{
-                  fontFamily: "'Quiche Sans', Georgia, serif",
-                  fontSize: 'clamp(2.1rem,3.3vw,3.1rem)',
-                  lineHeight: 1.05,
-                  fontWeight: 300,
-                }}
-              >
-                <span className="font-light">Tik tai, kuo </span>
-                <span className="font-medium">patys tikime.</span>
-              </h1>
-
-              <p
-                className="m-0 mt-6 max-w-[62ch] text-[#64151F]/78"
-                style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}
-              >
-                Profesionalūs kosmetikos prekių ženklai, oficialiai atstovaujami Lietuvoje. Guinot, Neostrata, Fillmed,
-                Anna Lotan ir kiti — su mokymais, protokolais ir asmeniniu palaikymu.
-              </p>
-
-              <div className="my-8 h-px w-full bg-[#1A1010]/10 max-[767px]:my-7" aria-hidden />
-
-              <div className="flex flex-wrap items-start gap-8">
-                <div className="flex flex-col items-start gap-2.5">
-                  <CtaLink href="/tapkite-partneriu" variant="primary" className="min-w-[240px] justify-center">
-                    Tapti partneriu
-                  </CtaLink>
-                  <span
-                    className="uppercase text-[#1A1010]/62"
-                    style={{ fontSize: '10px', letterSpacing: '0.12em', ...BODY, fontWeight: 500 }}
-                  >
-                    Patvirtinimas per 24 val.
-                  </span>
-                </div>
-
-                <div className="flex flex-col items-start gap-2.5">
-                  <CtaLink href="/kontaktai" variant="outline" className="min-w-[240px] justify-center">
-                    Gauti konsultaciją
-                  </CtaLink>
-                  <span
-                    className="uppercase text-[#1A1010]/62"
-                    style={{ fontSize: '10px', lineHeight: '1.1', letterSpacing: '0.12em', ...BODY, fontWeight: 500 }}
-                  >
-                    Padėsime išsirinkti.
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative min-w-0 flex-1 overflow-hidden border border-[#1A1010]/10 min-[992px]:h-[560px] max-[991px]:h-[430px] max-[767px]:h-[320px]">
-              <img
-                src="/odos.jpg"
-                alt="Profesionali kosmetika ir procedūros"
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-              <div className="absolute inset-0" style={{ backgroundColor: 'rgba(26,16,16,0.14)' }} aria-hidden />
-            </div>
-          </div>
-        </div>
-      </section>
+      <PrekiuZenklaiHeroSection />
 
       <section className="relative z-[2] bg-[#EFE8DB] py-16 max-[767px]:py-12">
         <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
@@ -244,7 +264,7 @@ export function PrekiuZenklaiPage() {
         }}
       />
 
-      <section className="relative z-[2] bg-[#EFE8DB] py-20 max-[767px]:py-14">
+      <section className="relative z-[2] overflow-x-clip bg-[#EFE8DB] py-20 max-[767px]:py-14">
         <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
           <div className="mx-auto mb-12 flex max-w-[720px] flex-col items-center gap-5 text-center max-[767px]:mb-10 max-[767px]:gap-4">
             <h2
@@ -264,34 +284,7 @@ export function PrekiuZenklaiPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {PREKIU_ZENKLAI_ECOSYSTEM_CARDS.map((card) => (
-              <div
-                key={card.title}
-                className="group flex flex-col gap-5 border border-[#1A1010]/10 bg-white p-8 text-left transition-[background-color,border-color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#3B443A] max-[767px]:gap-4 max-[767px]:p-6"
-                style={{ borderRadius: '0px' }}
-              >
-                <div
-                  className="flex h-12 w-12 shrink-0 items-center justify-center border-2 border-[#EFE8DB] bg-[#ECE2D3]/55 text-[#64151F] transition-[background-color,border-color,color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:border-[#EFE8DB]/70 group-hover:bg-[rgba(239,232,219,0.18)] group-hover:text-[#EFE8DB] max-[479px]:h-10 max-[479px]:w-10 motion-reduce:transition-none"
-                  style={{ borderRadius: '100vw' }}
-                >
-                  {ecosystemIconForTitle(card.title)}
-                </div>
-                <h3
-                  className="m-0 text-[#1A1010] transition-colors duration-200 group-hover:text-[#EFE8DB]"
-                  style={{ ...BODY, fontSize: '18px', fontWeight: 600, lineHeight: 1.25 }}
-                >
-                  {card.title}
-                </h3>
-                <p
-                  className="m-0 text-[#1A1010]/72 transition-colors duration-200 group-hover:text-[#EFE8DB]/88"
-                  style={{ ...BODY, fontSize: '15px', lineHeight: 1.55, fontWeight: 400 }}
-                >
-                  {card.description}
-                </p>
-              </div>
-            ))}
-          </div>
+          <PrekiuZenklaiEcosystemOverlapGrid />
         </div>
       </section>
 
