@@ -173,8 +173,9 @@ export function OdosBrandsSection({
               <BrandShowcaseCard
                 key={card.id}
                 dataBrandCard
-                className="w-[min(100%,clamp(240px,26vw,300px))] shrink-0 snap-start bg-white/40 max-[767px]:w-[min(100%,280px)] max-[767px]:max-w-[88vw]"
+                className="w-[min(100%,clamp(240px,26vw,300px))] shrink-0 snap-start max-[767px]:w-[min(100%,280px)] max-[767px]:max-w-[88vw]"
                 imageClassName="h-[380px]"
+                tone="green"
                 title={card.title}
                 logoSvg={card.logoSvg}
                 description={card.description}
