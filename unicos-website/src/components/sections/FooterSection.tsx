@@ -186,9 +186,6 @@ export function FooterSection({
               title="Sprendimai"
               links={[
                 { label: 'Odos priežiūros specialistams', href: '/sprendimai/odos-specialistams' },
-                { label: 'Plaukų priežiūros specialistams', href: '/sprendimai/plauku-prieziuros-specialistams' },
-                { label: 'Estetinės dermatologijos specialistams', href: '/sprendimai/estetines-medicinos-klinikoms' },
-                { label: 'Dermakosmetikos konsultantams ir farmacininkams', href: '/sprendimai/vaistinems-ir-farmacijos-specialistams' },
               ]}
             />
           </div>
