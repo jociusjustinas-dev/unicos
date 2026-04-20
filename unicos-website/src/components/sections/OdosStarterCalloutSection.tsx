@@ -36,31 +36,23 @@ export function OdosStarterCalloutSection() {
   }, []);
 
   return (
-    <section className="relative z-[2] overflow-hidden bg-[#EFE8DB] py-20 max-[767px]:py-14">
+    <section className="relative z-[2] overflow-hidden bg-[#E8EDE9] py-20 max-[767px]:py-14">
       <div
-        className="pointer-events-none absolute inset-0 z-[1]"
-        style={{
-          backgroundImage: "url('/mega-menu/4.jpeg')",
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          opacity: 0.08,
-          filter: 'blur(18px)',
-          transform: 'scale(1.08)',
-        }}
+        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(232,237,233,0)_0%,rgba(59,68,58,0.06)_100%)]"
         aria-hidden
       />
 
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={cardRef}
-          className={`grid grid-cols-2 gap-x-[132px] gap-y-[132px] border border-[#EFE8DB]/16 bg-[#1A1010] p-12 text-[#EFE8DB] max-[991px]:gap-x-12 max-[991px]:gap-y-12 max-[991px]:grid-cols-1 max-[767px]:gap-8 max-[767px]:p-8 transition-all duration-700 ease-out ${
+          className={`grid grid-cols-2 gap-x-[132px] gap-y-[132px] border border-[#1A1010]/10 bg-[#3B443A] p-12 text-[#EFE8DB] max-[991px]:gap-x-12 max-[991px]:gap-y-12 max-[991px]:grid-cols-1 max-[767px]:gap-8 max-[767px]:p-8 transition-all duration-700 ease-out ${
             visible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]'
           }`}
           style={{ borderRadius: '0px' }}
         >
           <div className="flex max-w-[640px] flex-col items-start justify-between gap-8 max-[767px]:gap-6">
             <div className="flex flex-col items-start gap-8 max-[767px]:gap-6">
-              <div className="inline-flex items-center px-2 py-1 border border-[#EFE8DB]/18 bg-[rgba(239,232,219,0.08)]" style={{ borderRadius: '0px' }}>
+              <div className="inline-flex items-center px-2 py-1 border border-[#EFE8DB]/22 bg-[rgba(239,232,219,0.1)]" style={{ borderRadius: '0px' }}>
                 <span
                   className="uppercase text-[#EFE8DB]/88"
                   style={{ ...BODY, fontSize: '10px', lineHeight: '12px', fontWeight: 500, letterSpacing: '0.12em' }}
@@ -109,7 +101,7 @@ export function OdosStarterCalloutSection() {
 
               <div className="flex flex-col items-start gap-2.5">
                 <CtaLink href="/kontaktai" variant="primary">
-                  Gauti startinio paketo pasiūlymą →
+                  Gauti startinio paketo pasiūlymą
                 </CtaLink>
                 <span
                   className="uppercase text-[#EFE8DB]/62"

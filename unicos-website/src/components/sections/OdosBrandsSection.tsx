@@ -8,9 +8,9 @@ const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
 
-/** Karuselės rodyklės — bordo hover ant šviesaus fono (žr. AGENTS.md). */
+/** Kaip ProcessSection / home šviesiai žalia juosta (#E8EDE9). */
 const brandsCarouselNavBtnClass =
-  'group flex h-12 w-12 shrink-0 items-center justify-center overflow-visible border border-[#1A1010]/18 bg-transparent p-0 text-[#1A1010] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#64151F] hover:bg-[#4a0f17] hover:text-[#EFE8DB] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64151F] disabled:pointer-events-none disabled:opacity-35';
+  'group flex h-12 w-12 shrink-0 items-center justify-center overflow-visible border border-[#3B443A]/22 bg-transparent p-0 text-[#3B443A] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#64151F] hover:bg-[#4a0f17] hover:text-[#EFE8DB] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64151F] disabled:pointer-events-none disabled:opacity-35';
 
 type BrandCard = {
   id: string;
@@ -111,7 +111,7 @@ export function OdosBrandsSection() {
   };
 
   return (
-    <section className="relative z-[2] overflow-x-visible bg-[#EFE8DB] py-20 max-[767px]:py-14">
+    <section className="relative z-[2] overflow-x-visible bg-[#E8EDE9] py-20 max-[767px]:py-14">
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headerInView.ref}
@@ -121,7 +121,7 @@ export function OdosBrandsSection() {
         >
           <div className="flex min-w-0 max-w-[760px] flex-col gap-5 max-[767px]:gap-4">
             <h2
-              className="m-0 text-[#64151F] tracking-[-0.02em]"
+              className="m-0 text-[#3B443A] tracking-[-0.02em]"
               style={{
                 fontFamily: "'Quiche Sans', Georgia, serif",
                 fontSize: 'clamp(2rem, 3.5vw, 3rem)',
@@ -132,7 +132,7 @@ export function OdosBrandsSection() {
               <span className="font-light">Prekių ženklai, atrinkti </span>
               <span className="font-medium">Jūsų sričiai.</span>
             </h2>
-            <p className="m-0 text-[#64151F]/78" style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}>
+            <p className="m-0 text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}>
               Oficialiai atstovaujami, su mokymų programa ir logistikos palaikymu.
             </p>
           </div>
@@ -143,7 +143,7 @@ export function OdosBrandsSection() {
         </div>
       </div>
 
-      <div className="relative left-1/2 z-[1] w-screen max-w-none -translate-x-1/2 bg-[#EFE8DB]">
+      <div className="relative left-1/2 z-[1] w-screen max-w-none -translate-x-1/2 bg-[#E8EDE9]">
         <div
           ref={trackInView.ref}
           style={{
@@ -154,7 +154,7 @@ export function OdosBrandsSection() {
         >
           <div
             ref={scrollerRef}
-            className="flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain bg-[#EFE8DB] pb-1 pl-4 [-ms-overflow-style:none] [scrollbar-width:none] max-[767px]:scroll-pl-6 max-[767px]:pl-6 max-[479px]:scroll-pl-4 max-[479px]:pl-4 min-[768px]:scroll-pl-16 min-[768px]:pl-16 [&::-webkit-scrollbar]:hidden"
+            className="flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain bg-[#E8EDE9] pb-1 pl-4 [-ms-overflow-style:none] [scrollbar-width:none] max-[767px]:scroll-pl-6 max-[767px]:pl-6 max-[479px]:scroll-pl-4 max-[479px]:pl-4 min-[768px]:scroll-pl-16 min-[768px]:pl-16 [&::-webkit-scrollbar]:hidden"
             style={{ scrollPaddingRight: 0, paddingRight: 0 }}
           >
             {cards.map((card) => (
@@ -162,7 +162,7 @@ export function OdosBrandsSection() {
                 key={card.id}
                 data-brand-card
                 href="#"
-                className="group/card flex w-[min(100%,clamp(240px,26vw,300px))] shrink-0 snap-start cursor-pointer flex-col gap-5 bg-[#EFE8DB] max-[767px]:w-[min(100%,280px)] max-[767px]:max-w-[88vw] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64151F]"
+                className="group/card flex w-[min(100%,clamp(240px,26vw,300px))] shrink-0 snap-start cursor-pointer flex-col gap-5 bg-[#E8EDE9] max-[767px]:w-[min(100%,280px)] max-[767px]:max-w-[88vw] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64151F]"
                 style={{
                   borderRadius: '0px',
                   textDecoration: 'none',
@@ -170,7 +170,7 @@ export function OdosBrandsSection() {
                 }}
               >
                 <div
-                  className="relative h-[380px] w-full overflow-hidden border border-[#1A1010]/10 transition-[border-color,box-shadow] duration-[900ms] ease-[cubic-bezier(0.22,1,0.45,1)] group-hover/card:border-[#1A1010]/16 group-hover/card:shadow-[0_32px_72px_-28px_rgba(26,16,16,0.12)]"
+                  className="relative h-[380px] w-full overflow-hidden border border-[#3B443A]/14 transition-[border-color,box-shadow] duration-[900ms] ease-[cubic-bezier(0.22,1,0.45,1)] group-hover/card:border-[#3B443A]/26 group-hover/card:shadow-[0_32px_72px_-28px_rgba(59,68,58,0.14)]"
                   style={{ borderRadius: '0px' }}
                 >
                   <img
@@ -184,7 +184,7 @@ export function OdosBrandsSection() {
                     aria-hidden
                   />
                 </div>
-                <div className="flex max-w-[min(100%,clamp(240px,26vw,300px))] flex-col gap-5 bg-[#EFE8DB] pr-4 max-[767px]:max-w-[min(100%,280px)]">
+                <div className="flex max-w-[min(100%,clamp(240px,26vw,300px))] flex-col gap-5 bg-[#E8EDE9] pr-4 max-[767px]:max-w-[min(100%,280px)]">
                   <div className="flex h-5 items-center">
                     {card.logoSvg ? (
                       <img
@@ -213,7 +213,7 @@ export function OdosBrandsSection() {
             ))}
           </div>
 
-          <div className="mx-auto mt-8 flex max-w-[1800px] items-center justify-end gap-2 bg-[#EFE8DB] px-16 pb-1 max-[767px]:mt-6 max-[767px]:px-6 max-[479px]:px-4">
+          <div className="mx-auto mt-8 flex max-w-[1800px] items-center justify-end gap-2 bg-[#E8EDE9] px-16 pb-1 max-[767px]:mt-6 max-[767px]:px-6 max-[479px]:px-4">
             <button
               type="button"
               onClick={() => scrollBrands('prev')}
