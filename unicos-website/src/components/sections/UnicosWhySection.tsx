@@ -39,7 +39,7 @@ export type UnicosWhyBubble = {
   border: string;
 };
 
-/** `mint` — kaip OdosStarterCalloutSection vidinis paviršius (#E8EDE9), žalia antraštė. */
+/** `mint` — baltas fonas kaip callout išorė + video po šviesiu sluoksniu, žalia antraštė. */
 export type UnicosWhyBackdropTone = 'warmCream' | 'mint';
 
 type UnicosWhySectionProps = {
@@ -53,7 +53,7 @@ type UnicosWhySectionProps = {
    * kad video atmosfera liktų tik hero viršuje).
    */
   withFooterVideoBackdrop?: boolean;
-  /** Fono / gradientų / antraštės tonas; `mint` derina su žaliu callout bloku virš sekcijos. */
+  /** Fono / antraštės tonas; `mint` = šviesus baltas sluoksnis + matomas fono video. */
   backdropTone?: UnicosWhyBackdropTone;
 };
 
@@ -111,6 +111,7 @@ export function UnicosWhySection({
     };
     applyRate();
     video.addEventListener('loadedmetadata', applyRate);
+    void video.play().catch(() => {});
     return () => video.removeEventListener('loadedmetadata', applyRate);
   }, [withFooterVideoBackdrop]);
 
@@ -129,25 +130,24 @@ export function UnicosWhySection({
   const bubbleIdleBg = !withFooterVideoBackdrop
     ? 'rgba(255,255,255,0.22)'
     : isMint
-      ? 'rgba(232,237,233,0.42)'
+      ? 'rgba(255,255,255,0.48)'
       : 'rgba(239,232,219,0.36)';
 
+  /** Mint + video: `bg-white` kaip OdosStarterCalloutSection išorė; video po šviesiu baltu sluoksniu. */
   const sectionBgClass = !withFooterVideoBackdrop
     ? 'bg-transparent'
     : isMint
-      ? 'bg-[#E8EDE9]'
+      ? 'bg-white'
       : 'bg-[#EFE8DB]';
 
-  const gradientTop =
-    withFooterVideoBackdrop && isMint
-      ? 'linear-gradient(180deg, rgba(232,237,233,0.92), rgba(232,237,233,0))'
-      : 'linear-gradient(180deg, rgba(239,232,219,0.86), rgba(239,232,219,0))';
-  const gradientBottom =
-    withFooterVideoBackdrop && isMint
-      ? 'linear-gradient(0deg, rgba(232,237,233,0.94), rgba(232,237,233,0))'
-      : 'linear-gradient(0deg, rgba(239,232,219,0.9), rgba(239,232,219,0))';
+  const warmGradientTop = 'linear-gradient(180deg, rgba(239,232,219,0.86), rgba(239,232,219,0))';
+  const warmGradientBottom = 'linear-gradient(0deg, rgba(239,232,219,0.9), rgba(239,232,219,0))';
+  const mintEdgeTop = 'linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,0))';
+  const mintEdgeBottom = 'linear-gradient(0deg, rgba(255,255,255,0.96), rgba(255,255,255,0))';
 
-  const headingColorClass = isMint ? 'text-[#3B443A]' : 'text-[#64151F]';
+  const headingColorClass = isMint
+    ? 'text-[#3B443A] [&_span]:text-[#3B443A]'
+    : 'text-[#64151F]';
   const highlightColorClass = isMint ? 'text-[#3B443A]' : 'text-[#64151F]';
   const separatorClass = isMint ? 'bg-[#3B443A]/18' : 'bg-[#1A1010]/15';
 
@@ -155,14 +155,17 @@ export function UnicosWhySection({
     <section className={`relative z-[2] overflow-x-clip pt-16 pb-28 max-[767px]:pt-12 max-[767px]:pb-20 ${sectionBgClass}`}>
       {withFooterVideoBackdrop ? (
         <>
-          <div className="pointer-events-none absolute inset-0 z-0 flex opacity-[0.42]" aria-hidden>
+          <div
+            className={`pointer-events-none absolute inset-0 z-0 flex ${isMint ? '' : 'opacity-[0.42]'}`}
+            aria-hidden
+          >
             <video
               ref={bgVideoRef}
               autoPlay
               loop
               muted
               playsInline
-              className="h-full w-full object-cover"
+              className={`h-full w-full object-cover ${isMint ? 'opacity-100' : ''}`}
               style={{
                 backgroundImage:
                   'url("https://cdn.prod.website-files.com/68ad5d7e748bdec61171c8d9%2F68b008bdf61a798d3721c7db_Footer-poster-00001.jpg")',
@@ -172,19 +175,37 @@ export function UnicosWhySection({
               <source src="https://cdn.prod.website-files.com/68ad5d7e748bdec61171c8d9%2F68b008bdf61a798d3721c7db_Footer-transcode.webm" type="video/webm" />
             </video>
           </div>
-          <div
-            className="pointer-events-none absolute top-0 left-0 right-0 z-[1] h-[22%]"
-            style={{ backgroundImage: gradientTop }}
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-[38%]"
-            style={{ backgroundImage: gradientBottom }}
-            aria-hidden
-          />
+          {isMint ? (
+            <>
+              <div className="pointer-events-none absolute inset-0 z-[1] bg-white/78" aria-hidden />
+              <div
+                className="pointer-events-none absolute top-0 left-0 right-0 z-[2] h-[18%]"
+                style={{ backgroundImage: mintEdgeTop }}
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute bottom-0 left-0 right-0 z-[2] h-[30%]"
+                style={{ backgroundImage: mintEdgeBottom }}
+                aria-hidden
+              />
+            </>
+          ) : (
+            <>
+              <div
+                className="pointer-events-none absolute top-0 left-0 right-0 z-[1] h-[22%]"
+                style={{ backgroundImage: warmGradientTop }}
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-[38%]"
+                style={{ backgroundImage: warmGradientBottom }}
+                aria-hidden
+              />
+            </>
+          )}
         </>
       ) : null}
-      <div className="relative z-[2] w-full max-w-[1800px] mx-auto px-16 max-[767px]:px-6 max-[479px]:px-4">
+      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headlineRef}
           className={`flex flex-col items-center text-center mx-auto mb-20 max-w-[720px] max-[767px]:mb-14 max-[767px]:gap-5 gap-6 transition-all duration-700 ease-out ${headlineReveal}`}
