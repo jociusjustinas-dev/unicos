@@ -19,6 +19,7 @@ import { OdosStarterCalloutSection } from '@/components/sections/OdosStarterCall
 import { OdosPartnerSpotlightSection } from '@/components/sections/OdosPartnerSpotlightSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { BrandShowcaseCard } from '@/components/ui/BrandShowcaseCard';
+import { SfAward, SfLayers, SfPhone } from '@/components/icons/feather';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -26,6 +27,14 @@ const BODY: React.CSSProperties = {
 
 const SPOTLIGHT_QUOTE =
   '„Su UNICOS pagalba optimizavome produktų krepšelį ir tai tiesiogiai atsispindėjo mūsų klinikos pelningume jau po pirmo ketvirčio. Svarbiausia — oficialus atstovavimas ir struktūruoti protokolai suteikia ramybę kiekvieną dieną.“';
+
+function ecosystemIconForTitle(title: string) {
+  const size = 20;
+  const common = { size, 'aria-hidden': true as const };
+  if (title === 'Produktai') return <SfLayers {...common} />;
+  if (title === 'Žinios') return <SfAward {...common} />;
+  return <SfPhone {...common} />;
+}
 
 export function PrekiuZenklaiPage() {
   const [activeFilter, setActiveFilter] = React.useState<PrekiuZenklaiFilterId>('all');
@@ -259,9 +268,15 @@ export function PrekiuZenklaiPage() {
             {PREKIU_ZENKLAI_ECOSYSTEM_CARDS.map((card) => (
               <div
                 key={card.title}
-                className="group flex flex-col gap-4 border border-[#1A1010]/10 bg-white p-8 text-left transition-[background-color,border-color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#3B443A] max-[767px]:p-6"
+                className="group flex flex-col gap-5 border border-[#1A1010]/10 bg-white p-8 text-left transition-[background-color,border-color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#3B443A] max-[767px]:gap-4 max-[767px]:p-6"
                 style={{ borderRadius: '0px' }}
               >
+                <div
+                  className="flex h-12 w-12 shrink-0 items-center justify-center border-2 border-[#EFE8DB] bg-[#ECE2D3]/55 text-[#64151F] transition-[background-color,border-color,color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:border-[#EFE8DB]/70 group-hover:bg-[rgba(239,232,219,0.18)] group-hover:text-[#EFE8DB] max-[479px]:h-10 max-[479px]:w-10 motion-reduce:transition-none"
+                  style={{ borderRadius: '100vw' }}
+                >
+                  {ecosystemIconForTitle(card.title)}
+                </div>
                 <h3
                   className="m-0 text-[#1A1010] transition-colors duration-200 group-hover:text-[#EFE8DB]"
                   style={{ ...BODY, fontSize: '18px', fontWeight: 600, lineHeight: 1.25 }}
