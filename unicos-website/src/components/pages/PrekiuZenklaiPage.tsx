@@ -77,7 +77,7 @@ function PrekiuZenklaiEcosystemFeatureGrid() {
         return (
           <div
             key={card.title}
-            className={`group flex w-full flex-col items-start gap-6 border border-[#1A1010]/10 bg-[#ECE2D3]/90 p-8 text-left ease-out hover:bg-[#3B443A] hover:border-[#3B443A] max-[767px]:gap-5 max-[767px]:p-6 motion-reduce:opacity-100 motion-reduce:translate-y-0 ${
+            className={`group flex w-full flex-col items-start gap-6 border border-[#1A1010]/10 bg-[#ECE2D3] p-8 text-left ease-out hover:bg-[#3B443A] hover:border-[#3B443A] max-[767px]:gap-5 max-[767px]:p-6 motion-reduce:opacity-100 motion-reduce:translate-y-0 ${
               gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ borderRadius: '0px', transition: cardTransition }}
@@ -127,23 +127,6 @@ export function PrekiuZenklaiPage() {
 
       <section className="relative z-[2] bg-[#EFE8DB] py-16 max-[767px]:py-12">
         <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
-          <div className="mb-10 max-[767px]:mb-8" role="presentation">
-            <div className="h-px w-full bg-[#1A1010]/10" aria-hidden />
-          </div>
-          <div
-            className="relative mb-12 w-full overflow-hidden border border-[#1A1010]/10 max-[767px]:mb-10"
-            style={{ borderRadius: '0px' }}
-          >
-            <div className="relative aspect-[21/9] min-h-[220px] w-full max-[991px]:aspect-video max-[479px]:min-h-[200px]">
-              <img
-                src="/odos.jpg"
-                alt="Profesionali kosmetika ir procedūros"
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-[#1A1010]/08" aria-hidden />
-            </div>
-          </div>
           <div
             className="mb-10 flex flex-wrap gap-2 max-[767px]:mb-8"
             role="tablist"
