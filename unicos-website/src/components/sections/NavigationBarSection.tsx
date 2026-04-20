@@ -371,9 +371,9 @@ function MobileMenu({ open }: { open: boolean }) {
         {[
           { label: 'Prekių ženklai', href: '/prekiu-zenklai' },
           { label: 'Akademija', href: '#' },
-          { label: 'Partnerystė', href: '#' },
-          { label: 'Apie Unicos', href: '#' },
-          { label: 'Kontaktai', href: '#' },
+          { label: 'Partnerystė', href: '/tapkite-partneriu' },
+          { label: 'Apie Unicos', href: '/apie-unicos' },
+          { label: 'Kontaktai', href: '/kontaktai' },
           { label: 'Resursai', href: '#' },
         ].map((item) => (
           <a
@@ -393,7 +393,7 @@ function MobileMenu({ open }: { open: boolean }) {
           >
             Prisijungti
           </a>
-          <CtaLink href="#" variant="secondary" className="self-center">
+          <CtaLink href="/tapkite-partneriu" variant="secondary" className="self-center">
             Tapti partneriu
           </CtaLink>
         </div>
@@ -591,8 +591,8 @@ export function NavigationBarSection({
             {/* Plain links */}
             {[
               { label: 'Akademija', href: '#' },
-              { label: 'Partnerystė', href: '#' },
-              { label: 'Apie Unicos', href: '#' },
+              { label: 'Partnerystė', href: '/tapkite-partneriu' },
+              { label: 'Apie Unicos', href: '/apie-unicos' },
             ].map((item) => (
               <a
                 key={item.label}
@@ -628,7 +628,7 @@ export function NavigationBarSection({
             </div>
 
             <a
-              href="#"
+              href="/kontaktai"
               className={`px-4 py-2 border border-transparent no-underline transition-all duration-300 hover:bg-[rgba(59,68,58,0.88)] hover:text-[#EFE8DB] ${
                 useLightNavSurface
                   ? 'text-[#1A1010] hover:border-transparent'
@@ -660,7 +660,7 @@ export function NavigationBarSection({
               </div>
             </a>
 
-            <CtaLink href="#" variant="secondary" className="whitespace-nowrap">
+            <CtaLink href="/tapkite-partneriu" variant="secondary" className="whitespace-nowrap">
               Tapti partneriu
             </CtaLink>
             </div>

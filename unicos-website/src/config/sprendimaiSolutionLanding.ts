@@ -91,7 +91,25 @@ export const SPRENDIMAI_NAV_SEGMENTS: readonly {
     image: '/mega-menu/1.jpeg',
     accent: '#64151F',
   },
-] as const;
+  {
+    title: 'Plaukų priežiūros specialistams',
+    href: '/sprendimai/plauku-prieziuros-specialistams',
+    image: '/mega-menu/2.jpeg',
+    accent: '#3B443A',
+  },
+  {
+    title: 'Estetinės dermatologijos specialistams',
+    href: '/sprendimai/estetines-medicinos-klinikoms',
+    image: '/mega-menu/3.jpeg',
+    accent: '#64151F',
+  },
+  {
+    title: 'Dermakosmetikos konsultantams ir farmacininkams',
+    href: '/sprendimai/vaistinems-ir-farmacijos-specialistams',
+    image: '/mega-menu/4.jpeg',
+    accent: '#3B443A',
+  },
+];
 
 const ODOS_DEFAULT_CHALLENGES: Challenges3 = [
   {
