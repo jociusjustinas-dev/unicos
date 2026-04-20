@@ -265,8 +265,8 @@ export const odosSpecialistamsLandingConfig: SprendimaiSolutionLandingConfig = {
   },
 };
 
-/** Plaukų puslapyje — keturi odos prekių ženklai pagal sutartą PDF tekstą. */
-const PLAUKU_BRANDS: readonly BrandCarouselCard[] = ODOS_BRANDS.slice(0, 4);
+/** Plaukų puslapyje — daugiau kortelių, kad karuselė aiškiai overflow'intų. */
+const PLAUKU_BRANDS: readonly BrandCarouselCard[] = ODOS_BRANDS.slice(0, 6);
 
 const PLAUKU_CHALLENGES: Challenges3 = [
   {
@@ -429,6 +429,18 @@ const ESTETINE_BRANDS: readonly BrandCarouselCard[] = [
     description: 'Profesionali kosmetika su natūralių ingredientų pagrindu — procedūroms ir namų priežiūrai.',
     image: '/mega-menu/1.jpeg',
   },
+  {
+    id: 'nimue-est',
+    title: 'Nimue',
+    description: 'Aktyvios formulės odos atsinaujinimui, tinkamos klinikinėms estetinėms programoms.',
+    image: '/Female_hands_applying_202604110815.jpeg',
+  },
+  {
+    id: 'dr-spiller-est',
+    title: 'Dr. Spiller',
+    description: 'Patikima vokiška dermokosmetika jautrios odos priežiūrai po procedūrų.',
+    image: '/cover/Professional_beauty_salon_202604131349.jpeg',
+  },
 ];
 
 export const estetinesMedicinosKlinikomsLandingConfig: SprendimaiSolutionLandingConfig = {
@@ -533,7 +545,7 @@ export const estetinesMedicinosKlinikomsLandingConfig: SprendimaiSolutionLanding
   },
 };
 
-const VAISTINE_BRANDS: readonly BrandCarouselCard[] = ODOS_BRANDS.slice(0, 4);
+const VAISTINE_BRANDS: readonly BrandCarouselCard[] = ODOS_BRANDS.slice(0, 6);
 
 const VAISTINE_CHALLENGES: Challenges3 = [
   {
