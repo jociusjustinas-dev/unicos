@@ -6,16 +6,19 @@ const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
 
-const STAT_BADGE = '+35% pajamų augimas';
+const defaultStatBadge = '+35% pajamų augimas';
 
-const QUOTE =
+const defaultQuote =
   '„Su UNICOS pagalba optimizavome produktų krepšelį ir tai tiesiogiai atsispindėjo mūsų klinikos pelningume jau po pirmo ketvirčio. Svarbiausia — oficialus atstovavimas ir struktūruoti protokolai suteikia ramybę kiekvieną dieną.“';
 
-const AUTHOR_NAME = 'Dr. Ieva Kazlauskienė';
-const AUTHOR_META = 'Dermatovenerologė, Vilnius';
+const defaultAuthorName = 'Dr. Ieva Kazlauskienė';
+const defaultAuthorMeta = 'Dermatovenerologė, Vilnius';
 
-const PORTRAIT_SRC = '/mega-menu/3.jpeg';
-const PORTRAIT_ALT = 'Dr. Ieva Kazlauskienė';
+const defaultPortraitSrc = '/mega-menu/3.jpeg';
+const defaultPortraitAlt = 'Dr. Ieva Kazlauskienė';
+
+const defaultFootnote =
+  'Portretinė partnerio ar kliento nuotrauka — citatai patikimumas ir žmogiškumas.';
 
 function useInViewOnce(threshold = 0.1) {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -40,7 +43,25 @@ function useInViewOnce(threshold = 0.1) {
   return { ref, visible };
 }
 
-export function OdosPartnerSpotlightSection() {
+export function OdosPartnerSpotlightSection({
+  spotlightHeadingId = 'odos-spotlight-heading',
+  statBadge = defaultStatBadge,
+  quote = defaultQuote,
+  authorName = defaultAuthorName,
+  authorMeta = defaultAuthorMeta,
+  portraitSrc = defaultPortraitSrc,
+  portraitAlt = defaultPortraitAlt,
+  footnote = defaultFootnote,
+}: {
+  spotlightHeadingId?: string;
+  statBadge?: string;
+  quote?: string;
+  authorName?: string;
+  authorMeta?: string;
+  portraitSrc?: string;
+  portraitAlt?: string;
+  footnote?: string;
+} = {}) {
   const root = useInViewOnce(0.08);
   const ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
   const reveal: React.CSSProperties = {
@@ -53,7 +74,7 @@ export function OdosPartnerSpotlightSection() {
     <section
       id="partnerystes-istorija"
       className="relative z-[2] overflow-x-clip bg-[#3B443A] py-[clamp(4.5rem,10vw,6.5rem)] text-[#EFE8DB] max-[767px]:py-16 max-[479px]:py-14"
-      aria-labelledby="odos-spotlight-heading"
+      aria-labelledby={spotlightHeadingId}
     >
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
@@ -67,11 +88,11 @@ export function OdosPartnerSpotlightSection() {
               style={{ borderRadius: '0px' }}
             >
               <span className="text-[#EFE8DB]" style={{ ...BODY, fontSize: '13px', lineHeight: '18px', fontWeight: 600, letterSpacing: '0.02em' }}>
-                {STAT_BADGE}
+                {statBadge}
               </span>
             </div>
 
-            <h2 id="odos-spotlight-heading" className="sr-only">
+            <h2 id={spotlightHeadingId} className="sr-only">
               Partnerės atsiliepimas
             </h2>
 
@@ -86,16 +107,16 @@ export function OdosPartnerSpotlightSection() {
                   letterSpacing: '-0.02em',
                 }}
               >
-                {QUOTE}
+                {quote}
               </p>
             </blockquote>
 
             <div className="flex flex-col gap-2 border-t border-[#EFE8DB]/16 pt-8 max-[991px]:pt-6">
               <p className="m-0 text-[#EFE8DB]" style={{ ...BODY, fontSize: '17px', lineHeight: '24px', fontWeight: 600 }}>
-                {AUTHOR_NAME}
+                {authorName}
               </p>
               <p className="m-0 text-[#EFE8DB]/72" style={{ ...BODY, fontSize: '14px', lineHeight: '22px', fontWeight: 400 }}>
-                {AUTHOR_META}
+                {authorMeta}
               </p>
             </div>
           </div>
@@ -105,11 +126,11 @@ export function OdosPartnerSpotlightSection() {
               className="relative h-full min-h-[inherit] w-full overflow-hidden border border-[#EFE8DB]/14"
               style={{ borderRadius: '0px' }}
             >
-              <img src={PORTRAIT_SRC} alt={PORTRAIT_ALT} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[center_25%]" />
+              <img src={portraitSrc} alt={portraitAlt} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[center_25%]" />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,16,0.05),rgba(26,16,16,0.35))]" aria-hidden />
             </div>
             <p className="mt-4 m-0 text-[#EFE8DB]/58" style={{ ...BODY, fontSize: '13px', lineHeight: 1.5, fontWeight: 400 }}>
-              Portretinė partnerio ar kliento nuotrauka — citatai patikimumas ir žmogiškumas.
+              {footnote}
             </p>
           </div>
         </div>

@@ -1,5 +1,6 @@
 'use client';
 import * as React from 'react';
+import { SPRENDIMAI_NAV_SEGMENTS } from '@/config/sprendimaiSolutionLanding';
 import { SfArrowLeft, SfMenu, SfX } from '@/components/icons/feather';
 import { CtaLink } from '@/components/ui/CtaLink';
 
@@ -15,33 +16,6 @@ interface DropdownColumn {
 // ---------------------------------------------------------------------------
 // Data
 // ---------------------------------------------------------------------------
-
-const SPRENDIMAI_SEGMENTS = [
-  {
-    title: 'Odos priežiūros specialistams',
-    href: '#',
-    image: '/mega-menu/1.jpeg',
-    accent: '#64151F',
-  },
-  {
-    title: 'Plaukų priežiūros specialistams',
-    href: '#',
-    image: '/mega-menu/2.jpeg',
-    accent: '#3B443A',
-  },
-  {
-    title: 'Estetinės dermatologijos specialistams',
-    href: '#',
-    image: '/mega-menu/3.jpeg',
-    accent: '#1A1010',
-  },
-  {
-    title: 'Dermakosmetikos konsultantams ir vaistininkams',
-    href: '#',
-    image: '/mega-menu/4.jpeg',
-    accent: '#4A3A1E',
-  },
-] as const;
 
 const PREKES_ZENKLAI_COLUMNS: DropdownColumn[] = [
   {
@@ -149,7 +123,7 @@ function SprendimaiPanel({
       <div className="absolute inset-0 bg-[#EFE8DB] border-b border-[rgba(26,16,16,0.08)]" />
       <div className="relative z-10 max-w-[1800px] mx-auto px-16 max-[767px]:px-6 pt-10 pb-10 max-[479px]:px-4 max-[767px]:pt-7 max-[767px]:pb-7">
         <div className="grid grid-cols-4 gap-5 max-[1279px]:grid-cols-2 max-[767px]:grid-cols-1">
-          {SPRENDIMAI_SEGMENTS.map((segment) => (
+          {SPRENDIMAI_NAV_SEGMENTS.map((segment) => (
             <a
               key={segment.title}
               href={segment.href}
@@ -379,7 +353,7 @@ function MobileMenu({ open }: { open: boolean }) {
           >
             <div className="overflow-hidden">
               <div className="flex flex-col pb-1">
-                {SPRENDIMAI_SEGMENTS.map((segment) => (
+                {SPRENDIMAI_NAV_SEGMENTS.map((segment) => (
                   <a
                     key={segment.title}
                     href={segment.href}

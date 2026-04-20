@@ -18,7 +18,23 @@ const BENEFITS = [
 /** Šiek tiek žalesnis už baltą — kaip ProcessSection juosta. */
 const INNER_SURFACE = '#E8EDE9';
 
-export function OdosStarterCalloutSection() {
+export function OdosStarterCalloutSection({
+  eyebrowLabel = 'Specialus pasiūlymas',
+  headingLight = 'Startinis paketas ',
+  headingBold = 'odos specialistams.',
+  description = 'Nežinote nuo ko pradėti? Paruošėme rinkinį lengvam startui.',
+  benefits = [...BENEFITS],
+  imageSrc = '/mega-menu/3.jpeg',
+  imageAlt = 'Specialistė konsultuoja klientę dėl odos priežiūros',
+}: {
+  eyebrowLabel?: string;
+  headingLight?: string;
+  headingBold?: string;
+  description?: string;
+  benefits?: readonly string[];
+  imageSrc?: string;
+  imageAlt?: string;
+} = {}) {
   const cardRef = React.useRef<HTMLDivElement>(null);
   const [visible, setVisible] = React.useState(false);
 
@@ -57,7 +73,7 @@ export function OdosStarterCalloutSection() {
                     className="uppercase text-[#3B443A]"
                     style={{ ...BODY, fontSize: '11px', lineHeight: '14px', fontWeight: 500, letterSpacing: '0.12em' }}
                   >
-                    Specialus pasiūlymas
+                    {eyebrowLabel}
                   </span>
                 </div>
 
@@ -70,14 +86,14 @@ export function OdosStarterCalloutSection() {
                     fontWeight: 300,
                   }}
                 >
-                  <span className="font-light">Startinis paketas </span>
-                  <span className="font-medium">odos specialistams.</span>
+                  <span className="font-light">{headingLight}</span>
+                  <span className="font-medium">{headingBold}</span>
                 </h2>
               </div>
 
               <div className="flex flex-col items-start gap-8 max-[767px]:gap-6">
                 <p className="m-0 text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}>
-                  Nežinote nuo ko pradėti? Paruošėme rinkinį lengvam startui.
+                  {description}
                 </p>
 
                 <div className="flex flex-col items-start gap-2.5">
@@ -105,7 +121,7 @@ export function OdosStarterCalloutSection() {
                 <div className="h-px w-full bg-[#1A1010]/10" aria-hidden />
 
                 <div className="flex flex-col gap-2.5">
-                  {BENEFITS.map((benefit) => (
+                  {benefits.map((benefit) => (
                     <div key={benefit} className="flex items-start gap-2 text-[#1A1010]/82">
                       <SfCheckboxCheck size={16} className="mt-[1px] shrink-0 text-[#3B443A]" aria-hidden />
                       <span style={{ ...BODY, fontSize: '14px', lineHeight: '1.4', fontWeight: 400 }}>{benefit}</span>
@@ -131,12 +147,7 @@ export function OdosStarterCalloutSection() {
               className="h-[628px] w-full overflow-hidden border border-[#3B443A]/14 max-[767px]:h-[320px]"
               style={{ borderRadius: '0px' }}
             >
-              <img
-                src="/mega-menu/3.jpeg"
-                alt="Specialistė konsultuoja klientę dėl odos priežiūros"
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
+              <img src={imageSrc} alt={imageAlt} loading="lazy" className="h-full w-full object-cover" />
             </div>
           </div>
         </div>

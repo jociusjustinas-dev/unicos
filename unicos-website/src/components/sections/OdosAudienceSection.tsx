@@ -1,13 +1,14 @@
 'use client';
 
 import * as React from 'react';
+import type { AudienceCards4 } from '@/config/sprendimaiSolutionLanding';
 import { CtaLink } from '@/components/ui/CtaLink';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
 
-const cards = [
+const defaultAudienceCards: AudienceCards4 = [
   {
     id: 'first',
     bg: '/mega-menu/1.jpeg',
@@ -32,7 +33,7 @@ const cards = [
     heading: 'Pradedantiems specialistams',
     body: 'Kuriate kabinetą ir norite tvirto pagrindo nuo pirmos dienos be brangių klaidų.',
   },
-] as const;
+];
 
 function useInView(threshold = 0.1) {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -84,7 +85,15 @@ function ParallaxImage({ src }: { src: string }) {
   );
 }
 
-export function OdosAudienceSection() {
+export function OdosAudienceSection({
+  cards = defaultAudienceCards,
+  consultTitle = 'Reikia konsultacijos?',
+  consultBody = 'Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.',
+}: {
+  cards?: AudienceCards4;
+  consultTitle?: string;
+  consultBody?: string;
+} = {}) {
   const headlineInView = useInView(0.1);
   const ctaInView = useInView(0.1);
   const card0InView = useInView(0.1);
@@ -184,10 +193,10 @@ export function OdosAudienceSection() {
               </div>
               <div className="flex flex-col items-start">
                 <div className="text-[#1A1010]/90" style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 500 }}>
-                  Reikia konsultacijos?
+                  {consultTitle}
                 </div>
                 <div className="text-[#1A1010]/64" style={{ ...BODY, fontSize: '14px', lineHeight: '20px', fontWeight: 400 }}>
-                  Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.
+                  {consultBody}
                 </div>
               </div>
             </div>

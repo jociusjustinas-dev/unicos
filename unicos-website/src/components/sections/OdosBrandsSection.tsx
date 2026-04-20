@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import type { BrandCarouselCard } from '@/config/sprendimaiSolutionLanding';
 import { ChevronLeftIcon, ChevronRightIcon } from '@/components/ui/ChevronArrows';
 import { CtaLink } from '@/components/ui/CtaLink';
 
@@ -12,15 +13,7 @@ const BODY: React.CSSProperties = {
 const brandsCarouselNavBtnClass =
   'group flex h-12 w-12 shrink-0 items-center justify-center overflow-visible border border-[#3B443A]/22 bg-transparent p-0 text-[#3B443A] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#2f362e] hover:text-[#EFE8DB] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3B443A] disabled:pointer-events-none disabled:opacity-35';
 
-type BrandCard = {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  logoSvg?: string;
-};
-
-const cards: BrandCard[] = [
+const defaultBrandCards: BrandCarouselCard[] = [
   {
     id: 'guinot',
     title: 'Guinot',
@@ -97,7 +90,7 @@ function useInView<T extends HTMLElement>(threshold = 0.1) {
   return { ref, visible };
 }
 
-export function OdosBrandsSection() {
+export function OdosBrandsSection({ cards = defaultBrandCards }: { cards?: readonly BrandCarouselCard[] } = {}) {
   const headerInView = useInView<HTMLDivElement>(0.08);
   const trackInView = useInView<HTMLDivElement>(0.06);
   const scrollerRef = React.useRef<HTMLDivElement>(null);
