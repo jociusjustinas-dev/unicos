@@ -141,7 +141,7 @@ export function PrekiuZenklaiPage() {
                   className={`border px-4 py-2.5 transition-colors duration-200 ${
                     active
                       ? 'border-[#64151F] bg-[#64151F] text-[#EFE8DB]'
-                      : 'border-[#1A1010]/14 bg-white text-[#1A1010] hover:border-[#64151F]/45'
+                      : 'border-[#1A1010]/10 bg-white/40 text-[#1A1010] hover:border-[#64151F]/45'
                   }`}
                   style={{ ...BODY, fontSize: '13px', fontWeight: 500, borderRadius: '0px' }}
                 >
