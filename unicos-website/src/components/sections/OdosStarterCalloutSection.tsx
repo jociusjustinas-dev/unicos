@@ -26,6 +26,7 @@ export function OdosStarterCalloutSection({
   benefits = [...BENEFITS],
   imageSrc = '/mega-menu/3.jpeg',
   imageAlt = 'Specialistė konsultuoja klientę dėl odos priežiūros',
+  starterPrice = '950 €',
 }: {
   eyebrowLabel?: string;
   headingLight?: string;
@@ -34,6 +35,7 @@ export function OdosStarterCalloutSection({
   benefits?: readonly string[];
   imageSrc?: string;
   imageAlt?: string;
+  starterPrice?: string;
 } = {}) {
   const cardRef = React.useRef<HTMLDivElement>(null);
   const [visible, setVisible] = React.useState(false);
@@ -113,7 +115,7 @@ export function OdosStarterCalloutSection({
                         fontWeight: 300,
                       }}
                     >
-                      950 €
+                      {starterPrice}
                     </div>
                   </div>
                 </div>

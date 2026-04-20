@@ -50,7 +50,7 @@ const steps: Step[] = [
   },
   {
     number: '4',
-    title: 'Įvedimas',
+    title: 'Onboarding',
     intro: 'Su Jumis susisieks asmeninis vadybininkas ir padės žengti pirmuosius žingsnius.',
     bullets: ['Pirmojo krepšelio formavimas', 'Supažindinimas su lojalumu'],
   },

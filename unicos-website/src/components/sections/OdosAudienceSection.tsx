@@ -89,10 +89,12 @@ export function OdosAudienceSection({
   cards = defaultAudienceCards,
   consultTitle = 'Reikia konsultacijos?',
   consultBody = 'Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.',
+  audienceSubheading,
 }: {
   cards?: AudienceCards4;
   consultTitle?: string;
   consultBody?: string;
+  audienceSubheading?: string | null;
 } = {}) {
   const headlineInView = useInView(0.1);
   const ctaInView = useInView(0.1);
@@ -124,6 +126,14 @@ export function OdosAudienceSection({
             <span className="font-light">Kam skirtas </span>
             <span className="font-medium">šis sprendimas?</span>
           </h2>
+          {audienceSubheading ? (
+            <p
+              className="m-0 mt-6 max-w-[56ch] text-[#1A1010]/78"
+              style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}
+            >
+              {audienceSubheading}
+            </p>
+          ) : null}
         </div>
 
         <div className="mb-20 overflow-x-auto max-[767px]:mb-14">

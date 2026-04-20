@@ -59,7 +59,7 @@ export function SprendimaiSolutionLandingPage({ config }: { config: SprendimaiSo
               <div className="mb-10 max-[767px]:mb-8" aria-hidden />
 
               <h1
-                className="m-0 max-w-[22ch] text-[#64151F] tracking-[-0.03em]"
+                className={`m-0 text-[#64151F] tracking-[-0.03em] ${config.heroH1MaxWidthClass ?? 'max-w-[22ch]'}`}
                 style={{
                   fontFamily: "'Quiche Sans', Georgia, serif",
                   fontSize: 'clamp(2.1rem,3.3vw,3.1rem)',
@@ -67,8 +67,14 @@ export function SprendimaiSolutionLandingPage({ config }: { config: SprendimaiSo
                   fontWeight: 300,
                 }}
               >
-                <span className="font-light">{config.heroH1Light}</span>
-                <span className="font-medium">{config.heroH1Bold}</span>
+                {config.heroH1Bold ? (
+                  <>
+                    <span className="font-light">{config.heroH1Light}</span>
+                    <span className="font-medium">{config.heroH1Bold}</span>
+                  </>
+                ) : (
+                  <span className="font-medium">{config.heroH1Light}</span>
+                )}
               </h1>
 
               <p
@@ -95,7 +101,7 @@ export function SprendimaiSolutionLandingPage({ config }: { config: SprendimaiSo
                       color: '#64151F',
                     }}
                   >
-                    950 €
+                    {config.heroPrice}
                   </div>
                 </div>
               </div>
@@ -123,7 +129,7 @@ export function SprendimaiSolutionLandingPage({ config }: { config: SprendimaiSo
                     className="uppercase text-[#1A1010]/62"
                     style={{ fontSize: '10px', lineHeight: '1.1', letterSpacing: '0.12em', ...BODY, fontWeight: 500 }}
                   >
-                    PADĖSIME SUDĖLIOTI ASORTIMENTĄ.
+                    {config.heroCta2Microcopy}
                   </span>
                 </div>
               </div>
@@ -146,8 +152,9 @@ export function SprendimaiSolutionLandingPage({ config }: { config: SprendimaiSo
         cards={config.audienceCards}
         consultTitle={config.audienceConsultTitle}
         consultBody={config.audienceConsultBody}
+        audienceSubheading={config.audienceSubheading ?? undefined}
       />
-      <OdosChallengesSection />
+      <OdosChallengesSection items={config.challenges} />
       <ResponsibleBeautySection
         eyebrowLabel={null}
         heading={
@@ -156,10 +163,16 @@ export function SprendimaiSolutionLandingPage({ config }: { config: SprendimaiSo
             <span className="font-light">tai išsprendžia?</span>
           </>
         }
-        subheading="Gausite ne tik produktus, bet ir aplinką profesionaliam augimui."
+        subheading={config.responsibleSubheading}
         cards={solutionCards}
       />
-      <OdosBrandsSection cards={config.brandCards} />
+      <OdosBrandsSection
+        cards={config.brandCards}
+        headingLight={config.brandsHeadingLight}
+        headingBold={config.brandsHeadingBold}
+        subheading={config.brandsSubheading}
+        brandsCtaLabel={config.brandsCtaLabel}
+      />
       <OdosStarterCalloutSection
         eyebrowLabel={config.starter.eyebrowLabel}
         headingLight={config.starter.headingLight}
@@ -168,6 +181,7 @@ export function SprendimaiSolutionLandingPage({ config }: { config: SprendimaiSo
         benefits={config.starter.benefits}
         imageSrc={config.starter.imageSrc}
         imageAlt={config.starter.imageAlt}
+        starterPrice={config.starter.starterPrice}
       />
       <ProcessSection />
       <OdosPartnerSpotlightSection

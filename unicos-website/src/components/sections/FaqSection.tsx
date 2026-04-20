@@ -13,30 +13,30 @@ const faqs = [
     id: 'faq-partner',
     question: 'Kaip tapti partneriu?',
     answer:
-      'Viskas prasideda nuo paprastos registracijos formos. Gavę Jūsų duomenis, mes juos peržiūrėsime ir susisieksime su Jumis per 24 valandas, kad suteiktume prieigą.',
+      'Viskas prasideda nuo paprastos registracijos formos. Gavę Jūsų duomenis, juos peržiūrėsime ir susisieksime su Jumis per 24 valandas, kad suteiktume prieigą.',
   },
   {
     id: 'faq-min-order',
     question: 'Koks minimalus užsakymas?',
-    answer: 'Startuoti galite vos nuo 150€. Turime paruoštus rinkinius.',
+    answer: 'Startuoti galite vos nuo 150 €. Turime paruoštus rinkinius.',
   },
   {
     id: 'faq-trainings',
     question: 'Ar teikiate mokymus?',
     answer:
-      'Tikrai taip! Nuolat kviečiame į praktinius seminarus ir mokymus, kur ne tik dalijamės žiniomis, bet ir išduodame sertifikatus.',
+      'Tikrai taip. Nuolat kviečiame į praktinius seminarus ir mokymus, kur ne tik dalijamės žiniomis, bet ir išduodame sertifikatus.',
   },
   {
     id: 'faq-delivery',
     question: 'Kaip vyksta prekių pristatymas?',
     answer:
-      'Taupome Jūsų laiką: jei užsakote iki 14:00 val., prekes išsiunčiame dar tą pačią dieną. Dažniausiai siunta Jus pasieks per 1–2 d.d.',
+      'Jei užsakote iki 14:00 val., prekes išsiunčiame dar tą pačią dieną. Dažniausiai siunta Jus pasiekia per 1–2 d. d.',
   },
   {
     id: 'faq-samples',
     question: 'Ar galima gauti mėginių?',
     answer:
-      'Žinoma. Prie kiekvieno užsakymo pridedame mėginių, kad galėtumėte išbandyti naujienas. Taip pat turime specialius „Startinius rinkinius“ susipažinimui.',
+      'Žinoma. Prie kiekvieno užsakymo pridedame mėginių, kad galėtumėte išbandyti naujienas. Taip pat turime specialius startinius rinkinius susipažinimui.',
   },
 ];
 
@@ -133,16 +133,16 @@ export function FaqSection({
 
               <div className="max-w-[min(20rem,100%)] shrink text-left max-[767px]:text-left">
                 <div className="text-sm font-medium leading-5 text-[#1A1010]" style={BODY}>
-                  Reikia konsultacijos?
+                  Vis dar turite klausimų?
                 </div>
                 <div className="text-sm leading-5 text-[#1A1010]/65" style={BODY}>
-                  Visada mielai padėsime.
+                  Drąsiai kreipkitės — visada esame pasiruošę padėti.
                 </div>
               </div>
 
               <div className="shrink-0">
-                <CtaLink href="#kontaktai" variant={ctaVariant}>
-                  Susisiekite
+                <CtaLink href="/kontaktai" variant={ctaVariant}>
+                  Susisiekti su vadybininku
                 </CtaLink>
               </div>
             </div>

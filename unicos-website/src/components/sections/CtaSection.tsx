@@ -95,10 +95,7 @@ export function CtaSection() {
 
             <div className="flex w-full max-w-[640px] flex-col items-stretch justify-center gap-6 sm:flex-row sm:items-start sm:justify-center sm:gap-8">
               <div className="flex flex-col items-center gap-2.5 sm:items-center">
-                <CtaLink
-                  href="#kontaktai"
-                  variant="primary"
-                >
+                <CtaLink href="/kontaktai" variant="primary">
                   Pildyti partnerio paraišką
                 </CtaLink>
                 <span
@@ -109,10 +106,7 @@ export function CtaSection() {
                 </span>
               </div>
               <div className="flex flex-col items-center gap-2.5 sm:items-center">
-                <CtaLink
-                  href="#kontaktai"
-                  variant="glass"
-                >
+                <CtaLink href="/kontaktai" variant="glass">
                   Gauti konsultaciją
                 </CtaLink>
                 <span
@@ -122,6 +116,25 @@ export function CtaSection() {
                   15 MIN. POREIKIŲ ANALIZĖ
                 </span>
               </div>
+            </div>
+
+            <div className="mt-10 flex flex-col items-center gap-2 text-center sm:mt-12">
+              <a
+                href="tel:+37060000000"
+                className="text-[#EFE8DB] no-underline transition-opacity hover:opacity-80"
+                style={{ ...BODY, fontSize: '16px', fontWeight: 500 }}
+              >
+                +370 600 00000
+              </a>
+              <span className="text-[#EFE8DB]/82" style={{ ...BODY, fontSize: '15px', fontWeight: 400 }}>
+                Live Chat
+              </span>
+              <span
+                className="uppercase text-[#EFE8DB]/55"
+                style={{ fontSize: '10px', letterSpacing: '0.12em', ...BODY, fontWeight: 500 }}
+              >
+                B2B linija aktyvi
+              </span>
             </div>
           </div>
         </div>

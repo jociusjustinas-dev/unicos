@@ -57,7 +57,7 @@ export function FooterSection({
               className="m-0 text-sm font-medium leading-[142%] tracking-[-0.01em] text-[#3B443A] max-[479px]:text-xs"
               style={BODY}
             >
-              © {new Date().getFullYear()} Unicos. Visos teisės saugomos.
+              Copyright © {new Date().getFullYear()} UNICOS. Visos teisės saugomos.
             </p>
             <a href="/" className="inline-block h-6 max-[479px]:h-[18px] w-fit">
               <span
@@ -95,7 +95,7 @@ export function FooterSection({
             <a href="/" className="inline-block h-6 max-[479px]:h-[18px] w-fit">
               <img
                 src="/Group%201.svg"
-                alt="Unicos"
+                alt="UNICOS"
                 className="h-full w-auto opacity-90"
                 loading="lazy"
                 width={3183}
@@ -103,6 +103,18 @@ export function FooterSection({
                 style={{ borderRadius: '0px' }}
               />
             </a>
+            <p className="m-0 mt-2 text-[#EFE8DB]/55" style={{ ...BODY, fontSize: '13px', lineHeight: 1.45, fontWeight: 400 }}>
+              Anksčiau Sugihara Pro
+            </p>
+            <div className="mt-4 flex flex-col gap-1.5 text-[#EFE8DB]/88" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45, fontWeight: 400 }}>
+              <span>Vilnius, Lietuva</span>
+              <a href="tel:+37060000000" className="text-[#EFE8DB] no-underline transition-opacity hover:opacity-80">
+                +370 600 00000
+              </a>
+              <a href="mailto:info@unicos.lt" className="text-[#EFE8DB] no-underline transition-opacity hover:opacity-80">
+                info@unicos.lt
+              </a>
+            </div>
 
             <div className="flex flex-col items-start mb-0 max-[479px]:w-full">
               <form
@@ -112,8 +124,11 @@ export function FooterSection({
               >
                 <div className="flex flex-col gap-3">
                   <div className={columnHeadingClass} style={BODY}>
-                    Prenumeruokite naujienlaiškį
+                    Naujienlaiškis
                   </div>
+                  <p className="m-0 max-w-[40ch] text-[#EFE8DB]/72" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45, fontWeight: 400 }}>
+                    Gaukite ekspertines įžvalgas, kvietimus į mokymus ir specialius pasiūlymus.
+                  </p>
                   <div className="relative max-w-[304px] max-[479px]:max-w-full">
                     <label htmlFor="footer-email" className="sr-only">
                       El. paštas
@@ -141,7 +156,7 @@ export function FooterSection({
                   </div>
                 </div>
                 <p className="text-sm font-medium leading-[142%] tracking-[-0.01em] text-[#EFE8DB]/50 max-[479px]:text-xs m-0" style={BODY}>
-                  Jūsų duomenys neperduodami trečiosioms šalims.
+                  Prenumeruodami sutinkate gauti UNICOS naujienas (edukaciją, pasiūlymus) 1–2 k./mėn. Jūsų duomenys saugūs — skaitykite mūsų privatumo politiką.
                 </p>
               </form>
             </div>
@@ -149,33 +164,31 @@ export function FooterSection({
 
           <div className="flex shrink-0 gap-[min(7vw,107px)] pr-0 max-[991px]:pr-0 max-[767px]:flex-wrap max-[767px]:gap-x-16 max-[767px]:gap-y-10 max-[479px]:gap-x-12 max-[479px]:gap-y-10">
             <FooterColumn
-              title="Sprendimai"
-              links={[
-                { label: 'Odos priežiūros specialistams', href: '#' },
-                { label: 'Plaukų priežiūros specialistams', href: '#' },
-                { label: 'Estetinės dermatologijos specialistams', href: '#' },
-                { label: 'Dermakosmetikos konsultantams ir vaistininkams', href: '#' },
-              ]}
-            />
-            <FooterColumn
-              title="Puslapiai"
+              title="Navigacija"
               links={[
                 { label: 'Prekių ženklai', href: '#' },
                 { label: 'Akademija', href: '#' },
-                { label: 'Partnerystė', href: '#' },
-                { label: 'Apie Unicos', href: '#' },
-                { label: 'Kontaktai', href: '#kontaktai' },
+                { label: 'Sprendimai', href: '/sprendimai/odos-specialistams' },
+                { label: 'Platforma', href: '#' },
               ]}
             />
             <FooterColumn
-              title="Informacija"
+              title="Pagalba"
               links={[
-                { label: 'Naujienos', href: '#' },
-                { label: 'DUK', href: '#' },
-                { label: 'Mokymų medžiaga', href: '#' },
-                { label: 'Privatumo politika', href: '#' },
-                { label: 'Slapukų politika', href: '#' },
-                { label: 'Pirkimo taisyklės', href: '#' },
+                { label: 'Mokymai', href: '#mokymai-renginiai' },
+                { label: 'Logistika', href: '#' },
+                { label: 'D.U.K.', href: '#duk' },
+                { label: 'Privatumas', href: '#' },
+                { label: 'Taisyklės', href: '#' },
+              ]}
+            />
+            <FooterColumn
+              title="Sprendimai"
+              links={[
+                { label: 'Odos priežiūros specialistams', href: '/sprendimai/odos-specialistams' },
+                { label: 'Plaukų priežiūros specialistams', href: '/sprendimai/plauku-prieziuros-specialistams' },
+                { label: 'Estetinės dermatologijos specialistams', href: '/sprendimai/estetines-medicinos-klinikoms' },
+                { label: 'Dermakosmetikos konsultantams ir farmacininkams', href: '/sprendimai/vaistinems-ir-farmacijos-specialistams' },
               ]}
             />
           </div>
@@ -186,7 +199,7 @@ export function FooterSection({
           <a href="/" className="block w-full max-w-full no-underline">
             <img
               src="/Group%201.svg"
-              alt="Unicos"
+              alt="UNICOS"
               className="block w-full max-w-full h-auto opacity-[0.42] hover:opacity-[0.55] transition-opacity duration-300"
               loading="lazy"
               width={3183}
@@ -240,7 +253,7 @@ export function FooterSection({
                 </a>
               </div>
               <p className="text-sm font-medium leading-[142%] tracking-[-0.01em] m-0 max-[479px]:text-xs" style={BODY}>
-                © {new Date().getFullYear()} Unicos. Visos teisės saugomos.
+                Copyright © {new Date().getFullYear()} UNICOS. Visos teisės saugomos.
               </p>
             </div>
             <p className="text-sm font-medium leading-[142%] tracking-[-0.01em] m-0 max-[479px]:text-xs text-[#EFE8DB]/70" style={BODY}>

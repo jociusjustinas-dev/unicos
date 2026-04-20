@@ -44,9 +44,9 @@ const events: EventCardData[] = [
   {
     id: 'evt-1',
     tags: ['DERMATOLOGIJA', 'GYVAI', 'LT'],
-    datetime: 'Spalio 24, 10:00 - 16:00',
+    datetime: 'Spalio 24, 10:00–16:00',
     title: 'Neostrata rūgštinių pilingų meistriškumas',
-    rowLeft: 'Vilnius, unicos akademija',
+    rowLeft: 'Vilnius, UNICOS Akademija',
     rowRight: 'Tarptautinis sertifikatas',
     statusLine: 'Liko 4 vietos',
     statusMuted: true,
@@ -61,9 +61,9 @@ const events: EventCardData[] = [
   {
     id: 'evt-2',
     tags: ['KOSMETOLOGIJA', 'GYVAI', 'LT'],
-    datetime: 'Lapkričio 05, 11:00 - 15:00',
+    datetime: 'Lapkričio 05, 11:00–15:00',
     title: 'Guinot aparatinės procedūros: Hydradermie',
-    rowLeft: 'Kaunas, Viešbutis „Moxy“',
+    rowLeft: 'Kaunas, viešbutis „Moxy“',
     rowRight: 'Dalyvio diplomas',
     statusLine: 'Registracija atvira',
     statusTone: 'green',
@@ -76,8 +76,8 @@ const events: EventCardData[] = [
   },
   {
     id: 'evt-3',
-    tags: ['VERSLAS', 'ONLINE', 'LT/EN'],
-    datetime: 'Lapkričio 12, 09:00 - 11:00',
+    tags: ['VERSLAS', 'ONLINE', 'LT-EN'],
+    datetime: 'Lapkričio 12, 09:00–11:00',
     title: 'Verslo augimo pusryčiai: Kainodara',
     rowLeft: 'Online / Zoom',
     rowRight: 'Nėra',
@@ -90,56 +90,6 @@ const events: EventCardData[] = [
     price: '29 €',
     href: '/akademija/renginiai/evt-3',
     image: '/mega-menu/3.jpeg',
-  },
-  {
-    id: 'evt-4',
-    tags: ['MEZOTERAPIJA', 'GYVAI', 'LT'],
-    datetime: 'Spalio 31, 09:00 - 13:00',
-    title: 'Injekcinės procedūros veido kontūrams',
-    rowLeft: 'Vilnius, unicos akademija',
-    rowRight: 'Baigimo pažymėjimas',
-    statusLine: 'Liko 8 vietos',
-    statusMuted: true,
-    statusTone: 'maroon',
-    speaker: 'Dr. Greta Paulauskaitė',
-    role: 'Estetinės medicinos gydytoja',
-    speakerAvatar: SPEAKER_AVATAR,
-    price: '120 €',
-    href: '/akademija/renginiai/evt-4',
-    image: '/mega-menu/4.jpeg',
-  },
-  {
-    id: 'evt-5',
-    tags: ['ODOS PRIEŽIŪRA', 'GYVAI', 'LT'],
-    datetime: 'Lapkričio 08, 10:00 - 14:00',
-    title: 'Sezoninės odos priežiūros protokolai',
-    rowLeft: 'Kaunas, unicos akademija',
-    rowRight: 'Dalyvio sertifikatas',
-    statusLine: 'Registracija atvira',
-    statusTone: 'green',
-    speaker: 'Monika Žukauskaitė',
-    role: 'Kosmetologė – edukatorė',
-    speakerAvatar: SPEAKER_AVATAR,
-    price: '65 €',
-    href: '/akademija/renginiai/evt-5',
-    image: '/mega-menu/2.jpeg',
-  },
-  {
-    id: 'evt-6',
-    tags: ['MARKETINGAS', 'ONLINE', 'LT'],
-    datetime: 'Lapkričio 19, 18:00 - 19:30',
-    title: 'Socialinių tinklų turinio planavimas B2B',
-    rowLeft: 'Online / Zoom',
-    rowRight: 'Įrašas 7 d.',
-    statusLine: 'Neribota',
-    statusTone: 'green',
-    onlineVenue: true,
-    speaker: 'Audronė Klimaitė',
-    role: 'Skaitinės rinkodaros konsultantė',
-    speakerAvatar: SPEAKER_AVATAR,
-    price: '15 €',
-    href: '/akademija/renginiai/evt-6',
-    image: '/mega-menu/1.jpeg',
   },
 ];
 
@@ -279,7 +229,7 @@ function EventCard({ card }: { card: EventCardData }) {
             </p>
           </div>
           <CtaLink href="#kontaktai" variant="primary" className="self-start sm:self-auto">
-            Registruotis
+            Registruotis →
           </CtaLink>
         </div>
       </div>
@@ -391,7 +341,7 @@ export function CmsGridSection() {
               </p>
 
               <CtaLink href="#" variant="primary" className="w-fit">
-                Visi renginiai
+                Visi renginiai →
               </CtaLink>
             </div>
 
@@ -434,7 +384,7 @@ export function CmsGridSection() {
                   </div>
                 </div>
                 <p className="m-0 max-w-[52ch] text-[#1A1010]/55" style={{ ...BODY, fontSize: '11px', lineHeight: 1.45, fontWeight: 400 }}>
-                  Sutikdami patvirtinate registraciją apie renginius. Duomenys tvarkomi pagal{' '}
+                  Prenumeruodami sutinkate gauti UNICOS naujienas (edukaciją, pasiūlymus) 1–2 k./mėn. Jūsų duomenys saugūs — skaitykite mūsų{' '}
                   <a href="#" className="text-[#64151F] underline underline-offset-2 transition-opacity hover:opacity-80">
                     privatumo politiką
                   </a>
@@ -513,7 +463,7 @@ export function CmsGridSection() {
                 </div>
               </div>
               <p className="m-0 max-w-[52ch] text-[#1A1010]/55" style={{ ...BODY, fontSize: '11px', lineHeight: 1.45, fontWeight: 400 }}>
-                Sutikdami patvirtinate registraciją apie renginius. Duomenys tvarkomi pagal{' '}
+                Prenumeruodami sutinkate gauti UNICOS naujienas (edukaciją, pasiūlymus) 1–2 k./mėn. Jūsų duomenys saugūs — skaitykite mūsų{' '}
                 <a href="#" className="text-[#64151F] underline underline-offset-2 transition-opacity hover:opacity-80">
                   privatumo politiką
                 </a>

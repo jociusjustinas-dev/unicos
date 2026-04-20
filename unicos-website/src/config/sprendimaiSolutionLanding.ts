@@ -29,7 +29,15 @@ export type StarterCalloutConfig = {
   benefits: readonly string[];
   imageSrc: string;
   imageAlt: string;
+  starterPrice: string;
 };
+
+export type ChallengeItem = {
+  label: string;
+  paragraph: string;
+};
+
+export type Challenges3 = readonly [ChallengeItem, ChallengeItem, ChallengeItem];
 
 export type PartnerSpotlightConfig = {
   statBadge: string;
@@ -47,14 +55,28 @@ export type SprendimaiSolutionLandingConfig = {
   breadcrumbLabel: string;
   heroImageSrc: string;
   heroImageAlt: string;
+  /** Jei `heroH1Bold` tuščia — rodomas tik `heroH1Light` (pvz. viena antraštės eilutė). */
   heroH1Light: string;
   heroH1Bold: string;
   heroLead: string;
+  heroPrice: string;
+  heroCta2Microcopy: string;
+  /** Tailwind klasė hero `h1` plotui (pvz. ilgesnei antraštei). */
+  heroH1MaxWidthClass?: string;
   audienceConsultTitle: string;
   audienceConsultBody: string;
+  /** Po „Kam skirtas…?“ antraštės (nebūtina). */
+  audienceSubheading?: string | null;
   audienceCards: AudienceCards4;
+  challenges: Challenges3;
   solutionCards: readonly SolutionGridCard[];
+  responsibleSubheading: string;
   brandCards: readonly BrandCarouselCard[];
+  brandsHeadingLight: string;
+  brandsHeadingBold: string;
+  brandsSubheading: string;
+  /** Numatyta: „Visi prekių ženklai →“. */
+  brandsCtaLabel?: string;
   starter: StarterCalloutConfig;
   spotlight: PartnerSpotlightConfig;
 };
@@ -78,18 +100,39 @@ export const SPRENDIMAI_NAV_SEGMENTS: readonly {
     accent: '#3B443A',
   },
   {
-    title: 'Estetinės medicinos klinikoms',
+    title: 'Estetinės dermatologijos specialistams',
     href: '/sprendimai/estetines-medicinos-klinikoms',
     image: '/mega-menu/3.jpeg',
     accent: '#1A1010',
   },
   {
-    title: 'Vaistinėms ir farmacijos specialistams',
+    title: 'Dermakosmetikos konsultantams ir farmacininkams',
     href: '/sprendimai/vaistinems-ir-farmacijos-specialistams',
     image: '/mega-menu/4.jpeg',
     accent: '#4A3A1E',
   },
 ] as const;
+
+const ODOS_DEFAULT_CHALLENGES: Challenges3 = [
+  {
+    label: 'Per daug pasirinkimų, per mažai aiškumo',
+    paragraph:
+      'Šimtai ženklų, niekur neparašyta, kas veikia profesionalioje procedūroje, gaištate bandydami ir klysdami.',
+  },
+  {
+    label: 'Produktas be palaikymo',
+    paragraph:
+      'Nusipirkote, bet negavote nei protokolo, nei mokymo, dirbate intuicija ir rizikuojate reputacija.',
+  },
+  {
+    label: 'Tiekėjas, o ne partneris',
+    paragraph:
+      'Reikia ne tik dėžučių, bet ir atsakymo, žmogaus, kuris supranta kasdienybę ir padeda augti.',
+  },
+];
+
+const UNICOS_KAZLAUSKIENE_QUOTE =
+  '„Su UNICOS pagalba optimizavome produktų krepšelį ir tai tiesiogiai atsispindėjo mūsų klinikos pelningume jau po pirmo ketvirčio. Svarbiausia — oficialus atstovavimas ir struktūruoti protokolai suteikia ramybę kiekvieną dieną.“';
 
 const ODOS_BRANDS: readonly BrandCarouselCard[] = [
   {
@@ -154,8 +197,16 @@ export const odosSpecialistamsLandingConfig: SprendimaiSolutionLandingConfig = {
   heroH1Bold: 'odos priežiūros specialistams',
   heroLead:
     'Atrinkti prekių ženklai, aiškūs protokolai ir asmeninis palaikymas — kad Jūsų procedūros būtų nepriekaištingos, o klientai grįžtų vėl ir vėl.',
+  heroPrice: '950 €',
+  heroCta2Microcopy: 'Padėsime sudėlioti asortimentą.',
   audienceConsultTitle: 'Reikia konsultacijos?',
   audienceConsultBody: 'Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.',
+  audienceSubheading: null,
+  challenges: ODOS_DEFAULT_CHALLENGES,
+  responsibleSubheading: 'Gausite ne tik produktus, bet ir aplinką profesionaliam augimui.',
+  brandsHeadingLight: 'Prekių ženklai, atrinkti ',
+  brandsHeadingBold: 'Jūsų sričiai.',
+  brandsSubheading: 'Oficialiai atstovaujami, su mokymų programa ir logistikos palaikymu.',
   audienceCards: [
     {
       id: 'first',
@@ -222,11 +273,11 @@ export const odosSpecialistamsLandingConfig: SprendimaiSolutionLandingConfig = {
     ],
     imageSrc: '/mega-menu/3.jpeg',
     imageAlt: 'Specialistė konsultuoja klientę dėl odos priežiūros',
+    starterPrice: '950 €',
   },
   spotlight: {
     statBadge: '+35% pajamų augimas',
-    quote:
-      '„Su UNICOS pagalba optimizavome produktų krepšelį ir tai tiesiogiai atsispindėjo mūsų klinikos pelningume jau po pirmo ketvirčio. Svarbiausia — oficialus atstovavimas ir struktūruoti protokolai suteikia ramybę kiekvieną dieną.“',
+    quote: UNICOS_KAZLAUSKIENE_QUOTE,
     authorName: 'Dr. Ieva Kazlauskienė',
     authorMeta: 'Dermatovenerologė, Vilnius',
     portraitSrc: '/mega-menu/3.jpeg',
@@ -235,42 +286,24 @@ export const odosSpecialistamsLandingConfig: SprendimaiSolutionLandingConfig = {
   },
 };
 
-const PLAUKU_BRANDS: readonly BrandCarouselCard[] = [
+/** Plaukų puslapyje — keturi odos prekių ženklai pagal sutartą PDF tekstą. */
+const PLAUKU_BRANDS: readonly BrandCarouselCard[] = ODOS_BRANDS.slice(0, 4);
+
+const PLAUKU_CHALLENGES: Challenges3 = [
   {
-    id: 'wella',
-    title: 'Wella Professionals',
-    description: 'Spalva, tekstūra ir priežiūra, kurią renkasi profesionalai visame pasaulyje.',
-    image: '/cover/hair_salon_minimal_202604131146.jpeg',
+    label: 'Klientai perka kitur',
+    paragraph:
+      'Rekomenduojate, bet klientas nusiperka internete ar prekybos centre. Prarandate pajamas ir pasitikėjimą.',
   },
   {
-    id: 'goldwell',
-    title: 'Goldwell',
-    description: 'Sistemingi sprendimai dažymui, formavimui ir ilgalaikiam blizgesiui.',
-    image: '/mega-menu/2.jpeg',
+    label: 'Produktai nesukuria vertės',
+    paragraph:
+      'Priemonės niekuo neišsiskiria, klientai nemato skirtumo tarp Jūsų ir konkurentų.',
   },
   {
-    id: 'schwarzkopf',
-    title: 'Schwarzkopf Professional',
-    description: 'Inovacijos salono procedūroms ir namų priežiūros linijoms.',
-    image: '/plaukai.jpg',
-  },
-  {
-    id: 'loreal-pro',
-    title: "L'Oréal Professionnel",
-    description: 'Plataus profilio linijos kirpėjams ir spalvos specialistams.',
-    image: '/mega-menu/1.jpeg',
-  },
-  {
-    id: 'la-biosthetique',
-    title: 'La Biosthetique',
-    description: 'Švelni formulė ir aukšta kokybė jautriai galvos odai ir plaukams.',
-    image: '/mega-menu/4.jpeg',
-  },
-  {
-    id: 'balmain',
-    title: 'Balmain Hair',
-    description: 'Prabangūs finishing produktai ir stiliaus akcentai.',
-    image: '/mega-menu/3.jpeg',
+    label: 'Trūksta pardavimo įrankių',
+    paragraph:
+      'Žinote, kad galėtumėte parduoti daugiau, bet nėra nei gairių, nei mokymų, nei tiekėjo palaikymo.',
   },
 ];
 
@@ -279,349 +312,365 @@ export const plaukuPrieziurosSpecialistamsLandingConfig: SprendimaiSolutionLandi
   breadcrumbLabel: 'Plaukų priežiūros specialistams',
   heroImageSrc: '/plaukai.jpg',
   heroImageAlt: 'Plaukų priežiūra salone',
-  heroH1Light: 'Profesionalūs produktai salonams ir ',
-  heroH1Bold: 'plaukų priežiūros specialistams',
+  heroH1Light: 'Profesionali plaukų priežiūros kosmetika salonams',
+  heroH1Bold: '',
+  heroH1MaxWidthClass: 'max-w-[min(100%,52rem)]',
   heroLead:
-    'Spalvos, priežiūros ir stiliaus linijos su aiškiais protokolais ir mokymų palaikymu — kad kiekviena paslauga būtų prognozuojama ir vertinama.',
+    'Aukštos kokybės prekių ženklai, praktinės žinios ir asmeninis palaikymas — kad Jūsų klientai grįžtų ir rekomenduotų kitiems.',
+  heroPrice: '950 €',
+  heroCta2Microcopy: 'Padėsime sudėlioti asortimentą.',
   audienceConsultTitle: 'Reikia konsultacijos?',
-  audienceConsultBody: 'Padėsime parinkti linijas pagal Jūsų salono profilį ir klientūros.',
+  audienceConsultBody: 'Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.',
+  audienceSubheading: null,
+  challenges: PLAUKU_CHALLENGES,
+  responsibleSubheading: 'Gausite ne tik produktus, bet ir aplinką profesionaliam augimui.',
+  brandsHeadingLight: 'Prekių ženklai, atrinkti ',
+  brandsHeadingBold: 'Jūsų sričiai.',
+  brandsSubheading: 'Oficialiai atstovaujami, su mokymų programa ir logistikos palaikymu.',
   audienceCards: [
     {
       id: 'p1',
       bg: '/cover/hair_salon_minimal_202604131146.jpeg',
-      heading: 'Kirpykloms ir salonams',
-      body: 'Norite atnaujinti asortimentą ir pasiūlyti klientams patikimus profesionalius prekių ženklus.',
+      heading: 'Grožio salonams',
+      body: 'Profesionalių plaukų produktų, stiprinančių paslaugų kokybę ir lojalumą.',
     },
     {
       id: 'p2',
       bg: '/mega-menu/2.jpeg',
-      heading: 'Spalvos specialistams',
-      body: 'Sudėtingesnės formulės, aiškios maišymo gairės ir saugūs rezultatai.',
+      heading: 'Kirpykloms',
+      body: 'Norite pasiūlyti daugiau nei kirpimą — produktus, kuriais klientai pasitikėtų.',
     },
     {
       id: 'p3',
       bg: '/plaukai.jpg',
-      heading: 'Barberiams ir vyriškų stilių studijoms',
-      body: 'Produktai tekstūrai, formavimui ir kasdieniam priežiūros ritualui.',
+      heading: 'Salonams su keliomis kėdėmis',
+      body: 'Auginate komandą, reikia patikimo tiekėjo kokybei standartizuoti.',
     },
     {
       id: 'p4',
       bg: '/mega-menu/1.jpeg',
       heading: 'Pradedantiems meistrams',
-      body: 'Struktūruotas startas: nuo bazinių procedūrų iki rekomendacijų namams.',
+      body: 'Kuriate klientų bazę su ženklais, keliančiais profesinį įvaizdį.',
     },
   ],
   solutionCards: [
     {
       title: 'Profesionalūs prekių ženklai',
-      description: 'Wella, Goldwell, Schwarzkopf Professional ir kitos oficialiai palaikomos linijos.',
+      description:
+        'Atrinkti ženklai, kurių negalima nusipirkti prekybos centre — Jūsų salonas tampa išskirtine vieta.',
     },
     {
-      title: 'Protokolai ir technikos',
-      description: 'Aiškios procedūros spalvai, atkūrimui ir formavimui — mažiau klaidų salone.',
+      title: 'Pardavimų gairės',
+      description:
+        'Kiekvienam produktui aiškios rekomendacijos: ką siūlyti, kaip pristatyti, kokius rezultatus akcentuoti.',
+    },
+    {
+      title: 'Komandos mokymai',
+      description: 'Praktiniai seminarai nuo produktų pažinimo iki pardavimo technikos prie kėdės.',
     },
     {
       title: 'Asmeninis vadybininkas',
-      description: 'Vienas kontaktas užsakymams, naujienoms ir sprendimams pagal Jūsų apyvartą.',
-    },
-    {
-      title: 'Mokymai komandai',
-      description: 'Praktiniai seminarai ir medžiaga, kad visa komanda dirbtų vienodu standartu.',
+      description: 'Padės sudėlioti asortimentą, suplanuoti akcijas ir spręsti kasdienius klausimus.',
     },
     {
       title: 'Startinis paketas',
-      description: 'Paruoštas rinkinys salonui ar meistrui pradėti be perteklinės rizikos.',
+      description: 'Paruoštas rinkinys pradėti be didelių investicijų su vadybininko rekomendacija.',
     },
     {
       title: 'Skaidri kainodara',
-      description: 'Didmeninės sąlygos ir prognozuojamos išlaidų eilutės.',
+      description: 'Didmeninės kainos nuo pirmos dienos, jokių paslėptų mokesčių.',
     },
   ],
   brandCards: PLAUKU_BRANDS,
   starter: {
     eyebrowLabel: 'Specialus pasiūlymas',
     headingLight: 'Startinis paketas ',
-    headingBold: 'plaukų priežiūros specialistams.',
+    headingBold: 'plaukų specialistams.',
     description: 'Nežinote nuo ko pradėti? Paruošėme rinkinį lengvam startui.',
     benefits: [
-      'Populiariausi produktai procedūroms ir namų priežiūrai',
-      'Vadybininko rekomendacija pagal salono profilį',
-      'Darbo protokolai ir mokymo medžiaga',
+      'Populiariausi šampūnai, kaukės ir priežiūros priemonės',
+      'Pardavimų gairės komandai',
+      'Vadybininko rekomendacija pagal salono dydį',
       'Galimybė keisti pagal poreikius',
     ],
     imageSrc: '/mega-menu/2.jpeg',
     imageAlt: 'Meistras dirba su kliento plaukais',
+    starterPrice: '950 €',
   },
   spotlight: {
-    statBadge: '+28% pasikartojančių vizitų',
-    quote:
-      '„Kai visi naudoja tuos pačius protokolus, spalvos rezultatas tampa nuspėjamas, o klientai rekomenduoja mus dažniau. UNICOS komanda tikrai supranta salono dinamiką.“',
-    authorName: 'Rūta Petraitienė',
-    authorMeta: 'Salono vadovė, Kaunas',
-    portraitSrc: '/mega-menu/2.jpeg',
-    portraitAlt: 'Rūta Petraitienė',
+    statBadge: '+35% pajamų augimas',
+    quote: UNICOS_KAZLAUSKIENE_QUOTE,
+    authorName: 'Dr. Ieva Kazlauskienė',
+    authorMeta: 'Dermatovenerologė, Vilnius',
+    portraitSrc: '/mega-menu/3.jpeg',
+    portraitAlt: 'Dr. Ieva Kazlauskienė',
     footnote: 'Portretinė partnerio ar kliento nuotrauka — citatai patikimumas ir žmogiškumas.',
   },
 };
 
-const ESTETINE_BRANDS: readonly BrandCarouselCard[] = [
+const ESTETINE_CHALLENGES: Challenges3 = [
   {
-    id: 'environ',
-    title: 'Environ',
-    description: 'Vitaminų A ir antioksidantų filosofija procedūroms ir namų priežiūrai.',
-    image: '/estetines.jpg',
+    label: 'Reputacijos rizika',
+    paragraph:
+      'Estetinėje dermatologijoje kiekviena priemonė turi būti patikima. Vienas blogas produktas gali pakenkti ne tik pacientui, bet ir Jūsų profesinei reputacijai.',
   },
   {
-    id: 'medik8',
-    title: 'Medik8',
-    description: 'Mokslu grįsta kosmetika su matomais odos pokyčiais.',
-    image: '/mega-menu/1.jpeg',
+    label: 'Oficialaus atstovavimo trūkumas',
+    paragraph:
+      'Naudojate produktus, bet neturite oficialaus tiekėjo statuso. Negalite gauti nei mokymų, nei sertifikatų, nei pilno palaikymo.',
+  },
+  {
+    label: 'Fragmentuotas tiekimas',
+    paragraph:
+      'Užsakinėjate iš kelių tiekėjų, derinant pristatymus ir sąskaitas. Gaištate laiką administravimui vietoj darbo su pacientais.',
+  },
+];
+
+const ESTETINE_BRANDS: readonly BrandCarouselCard[] = [
+  {
+    id: 'fillmed',
+    title: 'Fillmed',
+    description: 'Filorga profesionali linija estetinės medicinos procedūroms. Mezoterapija, biorevitalizacija, pildymas.',
+    image: '/estetines.jpg',
   },
   {
     id: 'neostrata-est',
     title: 'Neostrata',
-    description: 'Aktyviosios medžiagos ir švelnūs protokolai po procedūrų.',
+    description: 'Dermatologinė kosmetika, paremta glikolio ir polihidroksi rūgščių mokslu. Pilingai ir atjauninimas.',
     image: '/mega-menu/2.jpeg',
   },
   {
-    id: 'exuviance-est',
-    title: 'Exuviance',
-    description: 'PHAs ir AHAs subalansuotoms procedūroms klinikoje.',
+    id: 'caregen',
+    title: 'Caregen',
+    description: 'Pažangūs peptidų sprendimai odos atjauninimui ir plaukų atkūrimui.',
     image: '/mega-menu/3.jpeg',
   },
   {
-    id: 'biologique-est',
-    title: 'Biologique Recherche',
-    description: 'Personalizuoti odos priežiūros protokolai aukštiems standartams.',
-    image: '/mega-menu/4.jpeg',
-  },
-  {
-    id: 'guinot-est',
-    title: 'Guinot',
-    description: 'Klasikinės procedūros ir namų linijos klientų lojalumui.',
+    id: 'anna-lotan',
+    title: 'Anna Lotan',
+    description: 'Profesionali kosmetika su natūralių ingredientų pagrindu — procedūroms ir namų priežiūrai.',
     image: '/mega-menu/1.jpeg',
-    logoSvg: '/Guinot logo.svg',
   },
 ];
 
 export const estetinesMedicinosKlinikomsLandingConfig: SprendimaiSolutionLandingConfig = {
   htmlIdPrefix: 'estetines-klinikos',
-  breadcrumbLabel: 'Estetinės medicinos klinikoms',
+  breadcrumbLabel: 'Estetinės dermatologijos specialistams',
   heroImageSrc: '/estetines.jpg',
-  heroImageAlt: 'Estetinės medicinos konsultacija',
-  heroH1Light: 'Partnerystė ',
+  heroImageAlt: 'Estetinės dermatologijos konsultacija',
+  heroH1Light: 'Profesionali kosmetika ir sprendimai ',
   heroH1Bold: 'estetinės medicinos klinikoms',
+  heroH1MaxWidthClass: 'max-w-[min(100%,52rem)]',
   heroLead:
-    'Produktai ir protokolai, atitinkantys aukštus klinikos standartus: nuo paruošiamųjų etapų iki namų priežiūros po procedūrų.',
+    'Tarptautiniu mastu pripažinti prekių ženklai, struktūruoti protokolai ir atsakinga partnerystė — kad Jūsų pacientai gautų geriausią rezultatą, o Jūs — ramybę.',
+  heroPrice: '950 €',
+  heroCta2Microcopy: 'Aptarsime Jūsų klinikos poreikius.',
   audienceConsultTitle: 'Reikia konsultacijos?',
-  audienceConsultBody: 'Padėsime suderinti asortimentą su Jūsų paslaugų spektru ir komandos patirtimi.',
+  audienceConsultBody: 'Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.',
+  audienceSubheading: 'Jei atpažįstate save bent vienoje situacijoje — esame tam ir sukurti.',
+  challenges: ESTETINE_CHALLENGES,
+  responsibleSubheading: 'Gausite ne tik produktus, bet ir struktūrą, kuria galite pasitikėti.',
+  brandsHeadingLight: 'Prekių ženklai.',
+  brandsHeadingBold: '',
+  brandsSubheading: 'Kiekvienas ženklas — oficialiai atstovaujamas, su klinikine dokumentacija ir mokymų programa.',
   audienceCards: [
     {
       id: 'e1',
       bg: '/estetines.jpg',
-      heading: 'Estetinės medicinos klinikoms',
-      body: 'Ieškote patikimų linijų, derančių su injekcinėmis ir aparatinėmis procedūromis.',
+      heading: 'Estetinės dermatologijos klinikoms',
+      body: 'Atliekate injekcines, lazerines ar aparatines procedūras ir ieškote patikimų profesionalių priemonių pre- ir postprocedūrinei priežiūrai.',
     },
     {
       id: 'e2',
       bg: '/mega-menu/3.jpeg',
-      heading: 'Odą atkuriančioms procedūroms',
-      body: 'Produktai, skirti raminimui, barjerui ir ilgalaikiam rezultatui po intervencijų.',
+      heading: 'Dermatovenerologų kabinetams',
+      body: 'Jūsų pacientams reikia dermatologiškai patvirtintų produktų, kuriuos galite rekomenduoti su pasitikėjimu.',
     },
     {
       id: 'e3',
       bg: '/Female_aesthetician_consulting_202604110817.jpeg',
-      heading: 'Konsultacijų kabinetams',
-      body: 'Aiškios rekomendacijos ir medžiaga, padedanti klientui laikytis plano namuose.',
+      heading: 'Estetinės medicinos centrams',
+      body: 'Valdote komandą specialistų ir reikia standartizuoto asortimento su aiškiais protokolais visiems.',
     },
     {
       id: 'e4',
       bg: '/mega-menu/1.jpeg',
-      heading: 'Naujoms klinikų grandinėms',
-      body: 'Vieningas tiekimas, mokymai ir standartai visoms Jūsų vietoms.',
+      heading: 'Gydytojams, plečiantiems paslaugų portfelį',
+      body: 'Norite papildyti savo kliniką kosmetologinėmis procedūromis ir ieškote patikimo partnerio nuo pirmo žingsnio.',
     },
   ],
   solutionCards: [
     {
-      title: 'Klinikai atrinkti prekių ženklai',
-      description: 'Oficialūs tiekėjai ir dokumentacija, atitinkanti profesionalią veiklą.',
+      title: 'Oficialiai atstovaujami ženklai',
+      description: 'Fillmed, Neostrata, Caregen ir kiti — kiekvienas su oficialiu atstovavimo statusu, garantijomis ir pilna dokumentacija.',
     },
     {
-      title: 'Protokolai po procedūrų',
-      description: 'Žingsniai ir produktai, mažinantys riziką ir palaikantys rezultatą.',
+      title: 'Struktūruoti protokolai',
+      description:
+        'Kiekvienam produktui ir procedūrai paruošti detalūs darbo protokolai, paremti klinikiniais tyrimais ir gamintojo rekomendacijomis.',
     },
     {
-      title: 'Dedikuotas vadybininkas',
-      description: 'Vienas kontaktas užsakymams, naujovėms ir komandos klausimams.',
+      title: 'Tarptautiniai mokymai ir sertifikatai',
+      description:
+        'Reguliarūs seminarai su tarptautiniais lektoriais. Sertifikatai, kurie patvirtina Jūsų kompetenciją pacientų ir kolegų akyse.',
     },
     {
-      title: 'Mokymai personalui',
-      description: 'Programos gydytojams, slaugytojoms ir estetikos specialistams.',
+      title: 'Asmeninis vadybininkas',
+      description:
+        'Dedikuotas kontaktinis asmuo, kuris supranta estetinės dermatologijos specifiką ir padeda priimti greitus sprendimus.',
     },
     {
-      title: 'Startinis paketas',
-      description: 'Paruoštas rinkinys naujai paslaugų grupei ar filialui paleisti.',
+      title: 'Vienas tiekėjas — visa sistema',
+      description: 'Produktai, mokymai, logistika ir palaikymas iš vienos vietos. Jokio chaoso su keliais tiekėjais.',
     },
     {
-      title: 'Skaidri partnerystė',
-      description: 'Aiškios sąlygos, logistika ir prognozuojamas tiekimas.',
+      title: 'Skaidri partnerio kainodara',
+      description: 'Didmeninės kainos nuo pirmos dienos. Aiškios sąlygos be staigmenų ir paslėptų mokesčių.',
     },
   ],
   brandCards: ESTETINE_BRANDS,
+  brandsCtaLabel: 'Visi prekių ženklai',
   starter: {
     eyebrowLabel: 'Specialus pasiūlymas',
     headingLight: 'Startinis paketas ',
-    headingBold: 'estetinės medicinos klinikai.',
-    description: 'Nežinote nuo ko pradėti? Paruošėme rinkinį lengvam startui.',
+    headingBold: 'estetinės dermatologijos klinikoms.',
+    description: 'Paruošėme rinkinį, kad galėtumėte pradėti dirbti su patikimais produktais greitai ir be komplikacijų.',
     benefits: [
-      'Produktai procedūroms ir namų priežiūrai po vizito',
-      'Vadybininko rekomendacija pagal klinikos profilį',
-      'Protokolai ir mokymo medžiaga komandai',
-      'Galimybė keisti pagal poreikius',
+      'Pre- ir postprocedūrinės priežiūros produktai',
+      'Detalūs darbo protokolai kiekvienam produktui',
+      'Vadybininko konsultacija pagal Jūsų klinikos profilį',
+      'Galimybė keisti rinkinį pagal procedūrų specifiką',
     ],
     imageSrc: '/Female_aesthetician_consulting_202604110817.jpeg',
     imageAlt: 'Gydytoja konsultuoja pacientę estetinėje klinikoje',
+    starterPrice: '950 €',
   },
   spotlight: {
-    statBadge: '+41% pakartotinių procedūrų',
-    quote:
-      '„Mums svarbu, kad produktai po procedūrų būtų ne tik efektyvūs, bet ir saugūs derinant su mūsų protokolais. UNICOS komanda padeda išlaikyti vienodą kokybę visuose kabinetuose.“',
-    authorName: 'Gintarė Vaitkutė',
-    authorMeta: 'Klinikos vadovė, Vilnius',
-    portraitSrc: '/estetines.jpg',
-    portraitAlt: 'Gintarė Vaitkutė',
+    statBadge: '+35% pajamų augimas',
+    quote: UNICOS_KAZLAUSKIENE_QUOTE,
+    authorName: 'Dr. Ieva Kazlauskienė',
+    authorMeta: 'Dermatovenerologė, Vilnius',
+    portraitSrc: '/mega-menu/3.jpeg',
+    portraitAlt: 'Dr. Ieva Kazlauskienė',
     footnote: 'Portretinė partnerio ar kliento nuotrauka — citatai patikimumas ir žmogiškumas.',
   },
 };
 
-const VAISTINE_BRANDS: readonly BrandCarouselCard[] = [
+const VAISTINE_BRANDS: readonly BrandCarouselCard[] = ODOS_BRANDS.slice(0, 4);
+
+const VAISTINE_CHALLENGES: Challenges3 = [
   {
-    id: 'v-neostrata',
-    title: 'Neostrata',
-    description: 'Dermatologinė linija konsultacijoms ir savitarnos lentynoms.',
-    image: '/farmacija.jpg',
+    label: 'Nežinote, kuo pasitikėti',
+    paragraph:
+      'Rinkoje šimtai prekių ženklų, bet niekur neparašyta, kurie tikrai veikia ir tinka profesionaliam rekomendavimui.',
   },
   {
-    id: 'v-exuviance',
-    title: 'Exuviance',
-    description: 'Švelnūs sprendimai jautriai odai su aiškia komunikacija klientui.',
-    image: '/mega-menu/2.jpeg',
+    label: 'Trūksta profesinio palaikymo',
+    paragraph:
+      'Parduodate produktus, bet neturite nei mokymų, nei protokolų, nei žmogaus, kurio galėtumėte paklausti.',
   },
   {
-    id: 'v-comfort',
-    title: '[ comfort zone ]',
-    description: 'Tvari filosofija ir saloninės linijos, pritaikomos vaistinės aplinkai.',
-    image: '/mega-menu/3.jpeg',
-    logoSvg: '/comfort zone.svg',
-  },
-  {
-    id: 'v-guinot',
-    title: 'Guinot',
-    description: 'Profesionali odos priežiūra ir namų ritualai iš vieno šaltinio.',
-    image: '/mega-menu/1.jpeg',
-    logoSvg: '/Guinot logo.svg',
-  },
-  {
-    id: 'v-mary',
-    title: 'Mary Cohr',
-    description: 'Prabangūs rinkiniai dovanoms ir sezoninėms kampanijoms.',
-    image: '/mega-menu/4.jpeg',
-    logoSvg: '/Mary Cohr logo.svg',
-  },
-  {
-    id: 'v-environ',
-    title: 'Environ',
-    description: 'Žingsninė vitaminų A sistema ilgalaikei kliento kelionei.',
-    image: '/cover/farmacy_minimal_202604131347.jpeg',
+    label: 'Sunku pradėti be didelių investicijų',
+    paragraph:
+      'Daugelis tiekėjų reikalauja didelių minimumų. Norite pradėti mažais žingsniais ir augti palaipsniui.',
   },
 ];
 
 export const vaistinemsIrFarmacijosSpecialistamsLandingConfig: SprendimaiSolutionLandingConfig = {
   htmlIdPrefix: 'vaistines-farmacija',
-  breadcrumbLabel: 'Vaistinėms ir farmacijos specialistams',
+  breadcrumbLabel: 'Dermakosmetikos konsultantams ir farmacininkams',
   heroImageSrc: '/farmacija.jpg',
   heroImageAlt: 'Vaistinės konsultacija dėl odos priežiūros',
-  heroH1Light: 'Profesionalūs sprendimai ',
+  heroH1Light: 'Dermakosmetikos sprendimai ',
   heroH1Bold: 'vaistinėms ir farmacijos specialistams',
+  heroH1MaxWidthClass: 'max-w-[min(100%,52rem)]',
   heroLead:
-    'Dermokosmetika, mokymai ir palaikymas konsultantams — kad kiekviena rekomendacija būtų pagrįsta ir lengvai paaiškinama klientui.',
+    'Mokymai, bendruomenė ir lankstūs sprendimai — viskas, ko reikia, kad Jūsų karjera ir pajamos augtų nuosekliai.',
+  heroPrice: '150 €',
+  heroCta2Microcopy: 'Padėsime rasti tinkamiausią kelią.',
   audienceConsultTitle: 'Reikia konsultacijos?',
-  audienceConsultBody: 'Padėsime parinkti asortimentą pagal Jūsų parduotuvės formatą ir srautus.',
+  audienceConsultBody: 'Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.',
+  audienceSubheading: 'Jei atpažįstate save — esame tam ir sukurti.',
+  challenges: VAISTINE_CHALLENGES,
+  responsibleSubheading: 'Gausite ne tik produktus, bet ir aplinką profesionaliam augimui.',
+  brandsHeadingLight: 'Prekių ženklai, atrinkti ',
+  brandsHeadingBold: 'Jūsų sričiai.',
+  brandsSubheading: 'Atpažįstami, patikimi ženklai, kuriuos galėsite drąsiai rekomenduoti.',
   audienceCards: [
     {
       id: 'f1',
       bg: '/farmacija.jpg',
-      heading: 'Nepriklausomoms vaistinėms',
-      body: 'Norite išplėsti dermokosmetikos lentyną su patikimais prekių ženklais.',
+      heading: 'Dermakosmetikos konsultantams',
+      body: 'Rekomenduojate produktus klientams ir norite dirbti su patikimais, profesionaliais prekių ženklais.',
     },
     {
       id: 'f2',
       bg: '/cover/farmacy_minimal_202604131347.jpeg',
-      heading: 'Tinklų vaistinėms',
-      body: 'Vieningas asortimentas, mokymų programa ir prognozuojamas tiekimas.',
+      heading: 'Farmacininkams ir vaistinėms',
+      body: 'Ieškote dermokosmetikos asortimento su aiškiomis rekomendacijomis ir profesiniu palaikymu.',
     },
     {
       id: 'f3',
       bg: '/mega-menu/4.jpeg',
-      heading: 'Farmacijos specialistams',
-      body: 'Aiški produktų informacija ir įrankiai kasdienėms konsultacijoms.',
+      heading: 'Savarankiškai dirbantiems specialistams',
+      body: 'Kuriate asmeninį prekių ženklą ir norite tvirtų pagrindų be didelių investicijų.',
     },
     {
       id: 'f4',
       bg: '/mega-menu/1.jpeg',
-      heading: 'Naujiems konsultantams',
-      body: 'Medžiaga ir palaikymas, padedantys drąsiai rekomenduoti nuo pirmų dienų.',
+      heading: 'Pradedantiesiems',
+      body: 'Dar tik žengiate pirmus žingsnius dermakosmetikoje ir norite mokytis iš profesionalų.',
     },
   ],
   solutionCards: [
     {
-      title: 'Atrinktos dermokosmetikos linijos',
-      description: 'Prekių ženklai, tinkami vaistinės aplinkai ir konsultaciniam pardavimui.',
+      title: 'Lankstus užsakymų valdymas',
+      description: 'Pradėkite nuo 150 € ir užsakinėkite tada, kai reikia, be priverstinių minimumų.',
     },
     {
-      title: 'Konsultacijų įrankiai',
-      description: 'Santraukos, palyginimai ir gairės, kad pokalbis su klientu būtų aiškus.',
+      title: 'Profesinė bendruomenė',
+      description: 'Tapkite bendruomenės dalimi, kurioje specialistai dalijasi patirtimi ir auga kartu.',
+    },
+    {
+      title: 'Nuolatinis kvalifikacijos kėlimas',
+      description: 'Reguliarūs seminarai, produktų pristatymai ir praktinės dirbtuvės Jūsų tobulėjimui.',
     },
     {
       title: 'Asmeninis vadybininkas',
-      description: 'Vienas kontaktas užsakymams, akcijoms ir naujienų komunikacijai.',
+      description: 'Kontaktinis asmuo, kuris padės pasirinkti asortimentą ir atsakys į kasdienius klausimus.',
     },
     {
-      title: 'Mokymai komandai',
-      description: 'Sesijos produktų žinioms ir klientų scenarijams spręsti.',
+      title: 'Rekomendavimo gairės',
+      description: 'Kiekvienam produktui aiškios instrukcijos, ką ir kaip rekomenduoti skirtingiems odos tipams.',
     },
     {
-      title: 'Startinis paketas',
-      description: 'Paruoštas rinkinys lentynos atnaujinimui ar naujos zonos paleidimui.',
-    },
-    {
-      title: 'Skaidri kainodara',
-      description: 'Aiškios didmeninės sąlygos ir logistikos parametrai.',
+      title: 'Startinis rinkinys',
+      description: 'Paruoštas paketas susipažinimui su populiariausiais produktais ir vadybininko rekomendacija.',
     },
   ],
   brandCards: VAISTINE_BRANDS,
   starter: {
     eyebrowLabel: 'Specialus pasiūlymas',
     headingLight: 'Startinis paketas ',
-    headingBold: 'vaistinėms ir farmacijos specialistams.',
-    description: 'Nežinote nuo ko pradėti? Paruošėme rinkinį lengvam startui.',
+    headingBold: 'konsultantams ir farmacininkams.',
+    description: 'Pradėkite be rizikos — paruošėme rinkinį, kad pirmieji žingsniai būtų lengvi ir pelningi.',
     benefits: [
-      'Populiariausi produktai konsultacijoms ir savitarnai',
-      'Vadybininko rekomendacija pagal parduotuvės profilį',
-      'Mokymo medžiaga ir pardavimų įrankiai',
-      'Galimybė keisti pagal poreikius',
+      'Populiariausi produktai namų priežiūrai',
+      'Rekomendavimo gairės kiekvienam produktui',
+      'Vadybininko konsultacija pagal Jūsų klientų profilį',
+      'Galimybė keisti ir plėsti asortimentą augant',
     ],
     imageSrc: '/cover/farmacy_minimal_202604131347.jpeg',
     imageAlt: 'Farmacijos specialistė konsultuoja pirkėją',
+    starterPrice: '150 €',
   },
   spotlight: {
-    statBadge: '+19% dermokosmetikos kategorija',
-    quote:
-      '„Kai konsultantai gauna struktūruotą medžiagą, klientai dažniau grįžta už papildomų produktų. UNICOS padeda išlaikyti lentynos istoriją nuosekliai visose vietose.“',
-    authorName: 'Mindaugas Jonaitis',
-    authorMeta: 'Vaistinių tinklo asortimento vadovas',
-    portraitSrc: '/farmacija.jpg',
-    portraitAlt: 'Mindaugas Jonaitis',
+    statBadge: '+35% pajamų augimas',
+    quote: UNICOS_KAZLAUSKIENE_QUOTE,
+    authorName: 'Dr. Ieva Kazlauskienė',
+    authorMeta: 'Dermatovenerologė, Vilnius',
+    portraitSrc: '/mega-menu/3.jpeg',
+    portraitAlt: 'Dr. Ieva Kazlauskienė',
     footnote: 'Portretinė partnerio ar kliento nuotrauka — citatai patikimumas ir žmogiškumas.',
   },
 };

@@ -90,7 +90,19 @@ function useInView<T extends HTMLElement>(threshold = 0.1) {
   return { ref, visible };
 }
 
-export function OdosBrandsSection({ cards = defaultBrandCards }: { cards?: readonly BrandCarouselCard[] } = {}) {
+export function OdosBrandsSection({
+  cards = defaultBrandCards,
+  headingLight = 'Prekių ženklai, atrinkti ',
+  headingBold = 'Jūsų sričiai.',
+  subheading = 'Oficialiai atstovaujami, su mokymų programa ir logistikos palaikymu.',
+  brandsCtaLabel = 'Visi prekių ženklai →',
+}: {
+  cards?: readonly BrandCarouselCard[];
+  headingLight?: string;
+  headingBold?: string;
+  subheading?: string;
+  brandsCtaLabel?: string;
+} = {}) {
   const headerInView = useInView<HTMLDivElement>(0.08);
   const trackInView = useInView<HTMLDivElement>(0.06);
   const scrollerRef = React.useRef<HTMLDivElement>(null);
@@ -122,16 +134,22 @@ export function OdosBrandsSection({ cards = defaultBrandCards }: { cards?: reado
                 fontWeight: 300,
               }}
             >
-              <span className="font-light">Prekių ženklai, atrinkti </span>
-              <span className="font-medium">Jūsų sričiai.</span>
+              {headingBold ? (
+                <>
+                  <span className="font-light">{headingLight}</span>
+                  <span className="font-medium">{headingBold}</span>
+                </>
+              ) : (
+                <span className="font-medium">{headingLight}</span>
+              )}
             </h2>
             <p className="m-0 text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}>
-              Oficialiai atstovaujami, su mokymų programa ir logistikos palaikymu.
+              {subheading}
             </p>
           </div>
 
           <CtaLink href="#" variant="secondary" className="shrink-0">
-            Visi prekių ženklai
+            {brandsCtaLabel}
           </CtaLink>
         </div>
       </div>

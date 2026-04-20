@@ -2,33 +2,33 @@
 
 import * as React from 'react';
 import { SfChatScience, SfLayers, SfShield } from '@/components/icons/feather';
+import type { Challenges3 } from '@/config/sprendimaiSolutionLanding';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
 
-const items = [
+const defaultChallenges: Challenges3 = [
   {
     label: 'Per daug pasirinkimų, per mažai aiškumo',
     paragraph:
       'Šimtai ženklų, niekur neparašyta, kas veikia profesionalioje procedūroje, gaištate bandydami ir klysdami.',
-    Icon: SfLayers,
   },
   {
     label: 'Produktas be palaikymo',
     paragraph:
       'Nusipirkote, bet negavote nei protokolo, nei mokymo, dirbate intuicija ir rizikuojate reputacija.',
-    Icon: SfShield,
   },
   {
     label: 'Tiekėjas, o ne partneris',
     paragraph:
       'Reikia ne tik dėžučių, bet ir atsakymo, žmogaus, kuris supranta kasdienybę ir padeda augti.',
-    Icon: SfChatScience,
   },
-] as const;
+];
 
-export function OdosChallengesSection() {
+const challengeIcons = [SfLayers, SfShield, SfChatScience] as const;
+
+export function OdosChallengesSection({ items = defaultChallenges }: { items?: Challenges3 } = {}) {
   const [openIndexes, setOpenIndexes] = React.useState<number[]>([0]);
   const cardRef = React.useRef<HTMLDivElement>(null);
   const [cardVisible, setCardVisible] = React.useState(false);
@@ -82,6 +82,7 @@ export function OdosChallengesSection() {
             <div className="flex w-full max-w-[530px] flex-col gap-4 max-[767px]:gap-3">
               {items.map((item, i) => {
                 const isOpen = openIndexes.includes(i);
+                const Icon = challengeIcons[i % challengeIcons.length];
                 return (
                   <div
                     key={item.label}
@@ -91,7 +92,7 @@ export function OdosChallengesSection() {
                     <div className="flex items-center justify-between gap-6 border-b border-[#EFE8DB]/16 pb-4 max-[767px]:gap-4 max-[767px]:pb-3">
                       <div className="flex items-center gap-4 max-[767px]:gap-3">
                         <div className="flex h-6 w-6 flex-none items-center justify-center text-[#EFE8DB] max-[767px]:h-5 max-[767px]:w-5">
-                          <item.Icon size={20} className="text-current" aria-hidden />
+                          <Icon size={20} className="text-current" aria-hidden />
                         </div>
                         <div
                           className="m-0 text-[#EFE8DB]"
