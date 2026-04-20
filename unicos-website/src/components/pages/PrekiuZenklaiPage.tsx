@@ -44,7 +44,7 @@ export function PrekiuZenklaiPage() {
       >
         <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
           <div className="flex w-full flex-row items-stretch gap-16 max-[991px]:flex-col max-[991px]:gap-12">
-            <div className="flex min-w-0 flex-1 flex-col pb-8 max-[991px]:pb-0">
+            <div className="flex min-w-0 flex-1 flex-col justify-center">
               <nav className="mb-0" aria-label="Breadcrumb">
                 <div className="flex items-center gap-3">
                   <span
@@ -159,7 +159,7 @@ export function PrekiuZenklaiPage() {
               {visibleBrands.map((brand) => (
                 <article
                   key={brand.id}
-                  className="flex flex-col border border-[#1A1010]/10 bg-[#EFE8DB] text-[#1A1010]"
+                  className="group/card flex flex-col border border-[#1A1010]/10 bg-[#EFE8DB] text-[#1A1010] transition-[border-color,background-color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#64151F]/30"
                   style={{ borderRadius: '0px' }}
                 >
                   <div className="relative h-[220px] w-full overflow-hidden border-b border-[#1A1010]/10">
@@ -167,8 +167,18 @@ export function PrekiuZenklaiPage() {
                       src={brand.imageSrc}
                       alt={brand.imageAlt}
                       loading="lazy"
-                      className="h-full w-full object-cover"
+                      className="h-full w-full scale-100 object-cover transition-transform duration-[1000ms] ease-[cubic-bezier(0.22,1,0.45,1)] group-hover/card:scale-[1.055]"
                     />
+                    <div
+                      className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,16,0.04),rgba(26,16,16,0.36))] transition-[opacity,background] duration-[900ms] ease-[cubic-bezier(0.22,1,0.45,1)] group-hover/card:opacity-[0.88] group-hover/card:bg-[linear-gradient(180deg,rgba(26,16,16,0.02),rgba(26,16,16,0.28))]"
+                      aria-hidden
+                    />
+                    <div
+                      className="absolute left-4 top-4 inline-flex w-fit border border-[#64151F]/25 bg-[#64151F] px-2.5 py-1.5 uppercase text-[#EFE8DB]"
+                      style={{ ...BODY, fontSize: '10px', fontWeight: 500, letterSpacing: '0.12em', borderRadius: '0px' }}
+                    >
+                      {brand.badge}
+                    </div>
                   </div>
                   <div className="flex flex-col gap-4 p-6 max-[767px]:p-5">
                     <h3 className="m-0 text-[#64151F]" style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: '1.35rem', fontWeight: 500 }}>
@@ -177,12 +187,6 @@ export function PrekiuZenklaiPage() {
                     <p className="m-0 text-[#1A1010]/78" style={{ ...BODY, fontSize: '15px', lineHeight: 1.5, fontWeight: 400 }}>
                       {brand.description}
                     </p>
-                    <div
-                      className="inline-flex w-fit border border-[#64151F]/25 bg-[#64151F] px-2.5 py-1.5 uppercase text-[#EFE8DB]"
-                      style={{ ...BODY, fontSize: '10px', fontWeight: 500, letterSpacing: '0.12em', borderRadius: '0px' }}
-                    >
-                      {brand.badge}
-                    </div>
                     <div className="flex flex-wrap gap-2">
                       {brand.categoryLabels.map((label) => (
                         <span
@@ -212,8 +216,8 @@ export function PrekiuZenklaiPage() {
                         </dd>
                       </div>
                     </dl>
-                    <CtaLink href={brand.href} variant="secondary" className="mt-1 w-full justify-center sm:w-auto">
-                      Plačiau
+                    <CtaLink href={brand.href} variant="primary" className="mt-1 w-full justify-center sm:w-auto">
+                      Sužinokite daugiau
                     </CtaLink>
                   </div>
                 </article>
