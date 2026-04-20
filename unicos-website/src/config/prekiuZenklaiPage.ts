@@ -1,3 +1,5 @@
+import type { UnicosWhyBubble } from '@/components/sections/UnicosWhySection';
+
 export type PrekiuZenklaiFilterId = 'all' | 'odos' | 'plaukai' | 'estetine' | 'derma';
 
 export const PREKIU_ZENKLAI_FILTERS: readonly { id: PrekiuZenklaiFilterId; label: string }[] = [
@@ -152,3 +154,18 @@ export const PREKIU_ZENKLAI_ECOSYSTEM_CARDS = [
     description: 'Asmeninis vadybininkas, konsultacijos ir marketingo medžiaga Jūsų verslui.',
   },
 ] as const;
+
+const PREKIU_ZENKLAI_ECOSYSTEM_BUBBLE_META: readonly Pick<UnicosWhyBubble, 'icon' | 'hoverBg' | 'hoverFg' | 'border'>[] = [
+  { icon: '/Icon.svg', hoverBg: '#64151F', hoverFg: '#EFE8DB', border: 'rgba(100,21,31,0.38)' },
+  { icon: '/Icon-1.svg', hoverBg: '#3B443A', hoverFg: '#EFE8DB', border: 'rgba(59,68,58,0.34)' },
+  { icon: '/Icon-2.svg', hoverBg: '#1A1010', hoverFg: '#EFE8DB', border: 'rgba(26,16,16,0.32)' },
+] as const;
+
+/** „Daugiau nei tiekimas“ — tie patys burbulai kaip „Kodėl Unicos?“ (ikonos / hover). */
+export const PREKIU_ZENKLAI_ECOSYSTEM_BUBBLES: readonly UnicosWhyBubble[] = PREKIU_ZENKLAI_ECOSYSTEM_CARDS.map(
+  (card, i) => ({
+    title: card.title,
+    body: card.description,
+    ...PREKIU_ZENKLAI_ECOSYSTEM_BUBBLE_META[i]!,
+  })
+);

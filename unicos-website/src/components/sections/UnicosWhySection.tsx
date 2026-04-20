@@ -30,11 +30,49 @@ function useRevealOnce<T extends HTMLElement>(options?: IntersectionObserverInit
   return [ref, visible] as const;
 }
 
+export type UnicosWhyBubble = {
+  title: string;
+  body: string;
+  icon: string;
+  hoverBg: string;
+  hoverFg: string;
+  border: string;
+};
+
 type UnicosWhySectionProps = {
   heading?: React.ReactNode;
   subheading?: string;
   showHighlights?: boolean;
+  /** Jei nenurodyta — numatytieji 3 burbulai kaip pagrindiniame puslapyje. */
+  bubbles?: readonly UnicosWhyBubble[];
 };
+
+const DEFAULT_BUBBLES: readonly UnicosWhyBubble[] = [
+  {
+    title: 'Atrinkta Jums',
+    body: 'Kiekvieną produktą pirmiausia išbandome patys. Siūlome tik tai, kuo patys tikime ir kas tikrai veikia.',
+    icon: '/Icon.svg',
+    hoverBg: '#64151F',
+    hoverFg: '#EFE8DB',
+    border: 'rgba(100,21,31,0.38)',
+  },
+  {
+    title: 'Žinios, kurios įkvepia',
+    body: 'Dalijamės ne sausais protokolais, o realia patirtimi. Mūsų akademija – erdvė, kurioje galite drąsiai tobulėti.',
+    icon: '/Icon-1.svg',
+    hoverBg: '#3B443A',
+    hoverFg: '#EFE8DB',
+    border: 'rgba(59,68,58,0.34)',
+  },
+  {
+    title: 'Augame kartu',
+    body: 'Šiame kelyje Jūs ne vieni. Padedame susidėlioti asortimentą ir kainodarą taip, kad Jūsų verslas klestėtų.',
+    icon: '/Icon-2.svg',
+    hoverBg: '#1A1010',
+    hoverFg: '#EFE8DB',
+    border: 'rgba(26,16,16,0.32)',
+  },
+];
 
 export function UnicosWhySection({
   heading = (
@@ -45,6 +83,7 @@ export function UnicosWhySection({
   ),
   subheading = '„Sugihara Pro“ tapo Unicos, kad būtume dar arčiau Jūsų. Mūsų tikslas – ne tik pristatyti užsakymus, bet ir būti Jūsų kokybės filtru bei ramybės garantu.',
   showHighlights = true,
+  bubbles,
 }: UnicosWhySectionProps = {}) {
   const [headlineRef, headlineVisible] = useRevealOnce<HTMLDivElement>();
   const [gridRef, gridVisible] = useRevealOnce<HTMLDivElement>({ threshold: 0.3, rootMargin: '0px 0px -18% 0px' });
@@ -71,32 +110,7 @@ export function UnicosWhySection({
     { Icon: SfArrowCounterclockwise, label: 'Lankstus grąžinimas' },
   ] as const;
 
-  const values = [
-    {
-      title: 'Atrinkta Jums',
-      body: 'Kiekvieną produktą pirmiausia išbandome patys. Siūlome tik tai, kuo patys tikime ir kas tikrai veikia.',
-      icon: '/Icon.svg',
-      hoverBg: '#64151F',
-      hoverFg: '#EFE8DB',
-      border: 'rgba(100,21,31,0.38)',
-    },
-    {
-      title: 'Žinios, kurios įkvepia',
-      body: 'Dalijamės ne sausais protokolais, o realia patirtimi. Mūsų akademija – erdvė, kurioje galite drąsiai tobulėti.',
-      icon: '/Icon-1.svg',
-      hoverBg: '#3B443A',
-      hoverFg: '#EFE8DB',
-      border: 'rgba(59,68,58,0.34)',
-    },
-    {
-      title: 'Augame kartu',
-      body: 'Šiame kelyje Jūs ne vieni. Padedame susidėlioti asortimentą ir kainodarą taip, kad Jūsų verslas klestėtų.',
-      icon: '/Icon-2.svg',
-      hoverBg: '#1A1010',
-      hoverFg: '#EFE8DB',
-      border: 'rgba(26,16,16,0.32)',
-    },
-  ] as const;
+  const values = bubbles ?? DEFAULT_BUBBLES;
 
   return (
     <section className="relative z-[2] overflow-x-clip bg-[#EFE8DB] pt-16 pb-28 max-[767px]:pt-12 max-[767px]:pb-20">
@@ -170,7 +184,7 @@ export function UnicosWhySection({
           <div className="flex items-center justify-center max-[991px]:justify-start max-[767px]:flex-col max-[767px]:items-center">
             {values.map((v, i) => (
               <div
-                key={v.title}
+                key={`${v.title}-${i}`}
                 className={`relative ${i === 0 ? '' : 'min-[768px]:-ml-14 max-[767px]:-mt-7'}`}
                 onMouseEnter={() => setHoveredBubble(i)}
                 onMouseLeave={() => setHoveredBubble(null)}
