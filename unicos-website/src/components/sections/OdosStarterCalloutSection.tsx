@@ -83,18 +83,18 @@ export function OdosStarterCalloutSection() {
                 <div className="flex flex-col items-start gap-2.5">
                   <div className="flex items-end gap-3">
                     <div
-                      className="uppercase text-[#64151F]/70"
+                      className="uppercase text-[#3B443A]/65"
                       style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1, paddingBottom: '6px' }}
                     >
                       STARTAS NUO
                     </div>
                     <div
+                      className="text-[#3B443A]"
                       style={{
                         fontFamily: "'Quiche Sans', Georgia, serif",
                         fontSize: 'clamp(2.3rem, 4vw, 3.2rem)',
                         lineHeight: 1,
                         fontWeight: 300,
-                        color: '#64151F',
                       }}
                     >
                       950 €
