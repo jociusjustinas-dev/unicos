@@ -69,11 +69,14 @@ export function ResponsibleBeautySection({
   heading,
   subheading,
   cards,
+  surfaceClassName = 'bg-white',
 }: {
   eyebrowLabel?: string | null;
   heading?: React.ReactNode;
   subheading?: string | null;
   cards?: BeautyCard[];
+  /** Sekcijos fonas (AGENTS: šviesus paviršiai → #EFE8DB ant kreminio puslapio). */
+  surfaceClassName?: string;
 }) {
   const gridRef = React.useRef<HTMLDivElement>(null);
   const [gridVisible, setGridVisible] = React.useState(false);
@@ -130,7 +133,7 @@ export function ResponsibleBeautySection({
   }, [cards]);
 
   return (
-    <section className="relative z-[2] bg-white py-20 max-[767px]:py-14 text-[#1A1010]">
+    <section className={`relative z-[2] py-20 max-[767px]:py-14 text-[#1A1010] ${surfaceClassName}`}>
       <div className="relative z-[2] w-full max-w-[1800px] mx-auto px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div className="flex flex-col gap-16 max-[767px]:gap-12 mx-auto max-w-[1028px]">
           <div
@@ -190,7 +193,7 @@ export function ResponsibleBeautySection({
               return (
               <div
                 key={feature.title}
-                className={`group flex w-full flex-col items-center gap-6 border border-[#1A1010]/10 bg-white p-8 text-center ease-out hover:bg-[#3B443A] hover:border-[#3B443A] max-[767px]:gap-5 max-[767px]:p-6 ${
+                className={`group flex w-full flex-col items-center gap-6 border border-[#1A1010]/10 bg-[#ECE2D3] p-8 text-center ease-out hover:bg-[#3B443A] hover:border-[#3B443A] max-[767px]:gap-5 max-[767px]:p-6 ${
                   gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ borderRadius: '0px', transition: cardTransition }}

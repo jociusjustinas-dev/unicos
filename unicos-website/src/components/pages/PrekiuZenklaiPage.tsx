@@ -28,34 +28,7 @@ const BODY: React.CSSProperties = {
 const SPOTLIGHT_QUOTE =
   '„Su UNICOS pagalba optimizavome produktų krepšelį ir tai tiesiogiai atsispindėjo mūsų klinikos pelningume jau po pirmo ketvirčio. Svarbiausia — oficialus atstovavimas ir struktūruoti protokolai suteikia ramybę kiekvieną dieną.“';
 
-const ECOSYSTEM_BUBBLE_META = [
-  { hoverBg: '#64151F', hoverFg: '#EFE8DB', border: 'rgba(100,21,31,0.38)' },
-  { hoverBg: '#3B443A', hoverFg: '#EFE8DB', border: 'rgba(59,68,58,0.34)' },
-  { hoverBg: '#1A1010', hoverFg: '#EFE8DB', border: 'rgba(26,16,16,0.32)' },
-] as const;
-
-function useRevealOnce<T extends HTMLElement>(options?: IntersectionObserverInit) {
-  const ref = React.useRef<T | null>(null);
-  const [visible, setVisible] = React.useState(false);
-
-  React.useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px', ...options }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  return [ref, visible] as const;
-}
+const EASE_HALDEN = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
 function ecosystemIconForTitle(title: string, size = 22) {
   const common = { size, className: 'block shrink-0 overflow-visible text-current', 'aria-hidden': true as const };
@@ -64,75 +37,76 @@ function ecosystemIconForTitle(title: string, size = 22) {
   return <SfPhone {...common} />;
 }
 
-function PrekiuZenklaiEcosystemOverlapGrid() {
-  const [gridRef, gridVisible] = useRevealOnce<HTMLDivElement>({ threshold: 0.3, rootMargin: '0px 0px -18% 0px' });
-  const [hoveredBubble, setHoveredBubble] = React.useState<number | null>(null);
-  const gridReveal = gridVisible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]';
+function PrekiuZenklaiEcosystemFeatureGrid() {
+  const gridRef = React.useRef<HTMLDivElement>(null);
+  const [gridVisible, setGridVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setGridVisible(true);
+      return;
+    }
+    const el = gridRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setGridVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -6% 0px' }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <div
       ref={gridRef}
-      className={`mx-auto max-w-[1144px] transition-all duration-700 ease-out motion-reduce:opacity-100 motion-reduce:blur-0 ${gridReveal}`}
+      className="mx-auto grid w-full max-w-[1028px] grid-cols-1 gap-4 md:grid-cols-3 max-[991px]:grid-cols-2 max-[479px]:grid-cols-1 max-[767px]:gap-3"
     >
-      <div className="flex items-center justify-center max-[991px]:justify-start max-[767px]:flex-col max-[767px]:items-center">
-        {PREKIU_ZENKLAI_ECOSYSTEM_CARDS.map((card, i) => {
-          const theme = ECOSYSTEM_BUBBLE_META[i] ?? ECOSYSTEM_BUBBLE_META[2];
-          const isHovered = hoveredBubble === i;
-          const bubbleBg = isHovered ? theme.hoverBg : 'rgba(239,232,219,0.36)';
-          const bubbleFg = isHovered ? theme.hoverFg : '#1A1010';
-          return (
+      {PREKIU_ZENKLAI_ECOSYSTEM_CARDS.map((card, i) => {
+        const entranceDelay = `${i * 100}ms`;
+        const cardTransition = [
+          `opacity 0.7s ${EASE_HALDEN} ${entranceDelay}`,
+          `transform 0.7s ${EASE_HALDEN} ${entranceDelay}`,
+          'background-color 0.22s cubic-bezier(0.4, 0, 0.2, 1)',
+          'border-color 0.22s cubic-bezier(0.4, 0, 0.2, 1)',
+        ].join(', ');
+        return (
+          <div
+            key={card.title}
+            className={`group flex w-full flex-col items-start gap-6 border border-[#1A1010]/10 bg-[#ECE2D3]/90 p-8 text-left ease-out hover:bg-[#3B443A] hover:border-[#3B443A] max-[767px]:gap-5 max-[767px]:p-6 motion-reduce:opacity-100 motion-reduce:translate-y-0 ${
+              gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ borderRadius: '0px', transition: cardTransition }}
+          >
             <div
-              key={card.title}
-              className={`relative ${i === 0 ? '' : 'min-[768px]:-ml-14 max-[767px]:-mt-7'}`}
-              onMouseEnter={() => setHoveredBubble(i)}
-              onMouseLeave={() => setHoveredBubble(null)}
-              style={{
-                zIndex: i === 2 ? 40 : 20 + i,
-                opacity: gridVisible ? 1 : 0,
-                transform: gridVisible ? 'translateX(0)' : 'translateX(-28px)',
-                transition: `opacity 1s cubic-bezier(0.22,1,0.36,1) ${i * 140}ms, transform 1s cubic-bezier(0.22,1,0.36,1) ${i * 140}ms`,
-              }}
+              className="relative flex h-14 w-14 shrink-0 overflow-visible border border-[#3B443A]/20 bg-[rgba(59,68,58,0.08)] p-2 text-[#3B443A] transition-[background-color,border-color,color] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:border-[#EFE8DB]/35 group-hover:bg-[rgba(239,232,219,0.14)] group-hover:text-[#EFE8DB] max-[767px]:h-12 max-[767px]:w-12 max-[767px]:p-1.5 motion-reduce:transition-none"
+              style={{ borderRadius: '0px' }}
             >
-              <div
-                className="group flex h-[388px] w-[388px] flex-col justify-center px-20 transition-[background-color,color,border-color,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] max-[991px]:h-[340px] max-[991px]:w-[340px] max-[991px]:px-14 max-[767px]:h-auto max-[767px]:w-[min(92vw,388px)] max-[767px]:items-center max-[767px]:px-10 max-[767px]:py-10"
-                style={{
-                  borderRadius: '100vw',
-                  backgroundColor: bubbleBg,
-                  color: bubbleFg,
-                  border: `1px solid ${theme.border}`,
-                  backdropFilter: isHovered ? 'blur(0px)' : 'blur(10px)',
-                  WebkitBackdropFilter: isHovered ? 'blur(0px)' : 'blur(10px)',
-                  boxShadow: isHovered ? 'none' : 'inset 0 1px 0 rgba(255,255,255,0.2)',
-                }}
-              >
-                <h3
-                  className="m-0 text-[clamp(1.25rem,1.65vw,1.8rem)] leading-[1.12] tracking-[-0.02em] max-[991px]:text-[clamp(1.18rem,1.5vw,1.6rem)] max-[767px]:text-center"
-                  style={{ ...BODY, fontWeight: 500 }}
-                >
-                  {card.title}
-                </h3>
-                <div className="mt-5 mb-5 flex h-[84px] w-[84px] shrink-0 items-center justify-center text-current max-[991px]:h-[72px] max-[991px]:w-[72px]">
-                  <span
-                    className="flex items-center justify-center transition-[opacity,transform] duration-400 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                    style={{
-                      opacity: isHovered ? 0.95 : 0.72,
-                      transform: isHovered ? 'scale(1.04)' : 'scale(1)',
-                    }}
-                  >
-                    {ecosystemIconForTitle(card.title, 52)}
-                  </span>
-                </div>
-                <p
-                  className="m-0 max-w-[26ch] text-[15px] leading-[1.45] max-[991px]:text-[14px] max-[767px]:text-center"
-                  style={{ ...BODY, fontWeight: 400 }}
-                >
-                  {card.description}
-                </p>
-              </div>
+              <span className="pointer-events-none flex h-7 w-7 items-center justify-center">
+                {ecosystemIconForTitle(card.title, 22)}
+              </span>
             </div>
-          );
-        })}
-      </div>
+            <div className="flex flex-col gap-2">
+              <div
+                className="text-base font-medium leading-6 text-[#1A1010] transition-colors duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:text-[#EFE8DB] motion-reduce:transition-none max-[767px]:text-[15px] max-[767px]:leading-[1.4]"
+                style={{ ...BODY, fontWeight: 500 }}
+              >
+                {card.title}
+              </div>
+              <p
+                className="m-0 text-sm leading-5 text-[#1A1010]/70 transition-colors duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:text-[#EFE8DB]/88"
+                style={BODY}
+              >
+                {card.description}
+              </p>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -170,9 +144,9 @@ export function PrekiuZenklaiPage() {
                   className={`border px-5 py-2.5 transition-colors duration-200 ${
                     active
                       ? 'border-[#64151F] bg-[#64151F] text-[#EFE8DB]'
-                      : 'border-[#1A1010]/10 bg-white/40 text-[#1A1010] hover:border-[#64151F]/45'
+                      : 'border-[#1A1010]/10 bg-[#ECE2D3]/75 text-[#1A1010] hover:border-[#64151F]/45'
                   }`}
-                  style={{ ...BODY, fontSize: '13px', fontWeight: 500, borderRadius: '100vw' }}
+                  style={{ ...BODY, fontSize: '13px', fontWeight: 500, borderRadius: '0px' }}
                 >
                   {f.label}
                 </button>
@@ -204,7 +178,7 @@ export function PrekiuZenklaiPage() {
                           <span
                             key={label}
                             className="border border-[#1A1010]/14 px-2.5 py-1 text-[#1A1010]/78"
-                            style={{ ...BODY, fontSize: '12px', fontWeight: 400, borderRadius: '100vw' }}
+                            style={{ ...BODY, fontSize: '12px', fontWeight: 400, borderRadius: '0px' }}
                           >
                             {label}
                           </span>
@@ -238,6 +212,7 @@ export function PrekiuZenklaiPage() {
       </section>
 
       <ResponsibleBeautySection
+        surfaceClassName="bg-[#EFE8DB]"
         eyebrowLabel={null}
         heading={
           <>
@@ -284,7 +259,7 @@ export function PrekiuZenklaiPage() {
             </p>
           </div>
 
-          <PrekiuZenklaiEcosystemOverlapGrid />
+          <PrekiuZenklaiEcosystemFeatureGrid />
         </div>
       </section>
 

@@ -41,7 +41,7 @@ export function BrandShowcaseCard({
   const isGreen = tone === 'green';
   const cardClass = isGreen
     ? 'border-[#3B443A]/16 bg-[#E8EDE9]/70 hover:border-[#3B443A]/35'
-    : 'border-[#1A1010]/10 bg-white/40 hover:border-[#64151F]/20';
+    : 'border-[#1A1010]/10 bg-[#ECE2D3]/90 hover:border-[#64151F]/25';
   const titleClass = isGreen ? 'text-[#3B443A]' : 'text-[#1A1010]';
   const badgeClass = isGreen
     ? 'border-[#3B443A]/25 bg-[#3B443A] text-[#EFE8DB]'
