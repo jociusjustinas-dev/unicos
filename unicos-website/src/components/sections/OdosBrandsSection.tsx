@@ -138,7 +138,7 @@ export function OdosBrandsSection() {
           </div>
 
           <CtaLink href="#" variant="primary" className="shrink-0">
-            Visi prekių ženklai →
+            Visi prekių ženklai
           </CtaLink>
         </div>
       </div>
@@ -214,8 +214,8 @@ export function OdosBrandsSection() {
             ))}
           </div>
 
-          {/* Rodyklės po karuselės juosta, lygiuojamos su kairiniu turinio kraštu */}
-          <div className="mx-auto mt-8 flex max-w-[1800px] items-center gap-2 px-16 max-[767px]:mt-6 max-[767px]:px-6 max-[479px]:px-4">
+          {/* Rodyklės po karuselės juosta — dešinėje (pagal turinio konteinerį) */}
+          <div className="mx-auto mt-8 flex max-w-[1800px] items-center justify-end gap-2 px-16 max-[767px]:mt-6 max-[767px]:px-6 max-[479px]:px-4">
             <button
               type="button"
               onClick={() => scrollBrands('prev')}
