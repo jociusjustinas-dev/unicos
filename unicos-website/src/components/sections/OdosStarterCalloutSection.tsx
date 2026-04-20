@@ -51,13 +51,11 @@ export function OdosStarterCalloutSection() {
           <div className="grid grid-cols-2 gap-x-[132px] gap-y-[132px] p-12 text-[#1A1010] max-[991px]:grid-cols-1 max-[991px]:gap-x-12 max-[991px]:gap-y-12 max-[767px]:gap-8 max-[767px]:p-8">
             <div className="flex max-w-[640px] flex-col items-start justify-between gap-8 max-[767px]:gap-6">
               <div className="flex flex-col items-start gap-8 max-[767px]:gap-6">
-                <div
-                  className="inline-flex items-center border border-[#3B443A]/22 bg-[#3B443A]/[0.06] px-2 py-1"
-                  style={{ borderRadius: '0px' }}
-                >
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
                   <span
                     className="uppercase text-[#3B443A]"
-                    style={{ ...BODY, fontSize: '10px', lineHeight: '12px', fontWeight: 500, letterSpacing: '0.12em' }}
+                    style={{ ...BODY, fontSize: '11px', lineHeight: '14px', fontWeight: 500, letterSpacing: '0.12em' }}
                   >
                     Specialus pasiūlymas
                   </span>
@@ -82,12 +80,26 @@ export function OdosStarterCalloutSection() {
                   Nežinote nuo ko pradėti? Paruošėme rinkinį lengvam startui.
                 </p>
 
-                <div
-                  className="inline-flex items-center gap-2 uppercase text-[#3B443A]"
-                  style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}
-                >
-                  <span className="h-2 w-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
-                  Startas nuo 950 €
+                <div className="flex flex-col items-start gap-2.5">
+                  <div className="flex items-end gap-3">
+                    <div
+                      className="uppercase text-[#64151F]/70"
+                      style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1, paddingBottom: '6px' }}
+                    >
+                      STARTAS NUO
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: "'Quiche Sans', Georgia, serif",
+                        fontSize: 'clamp(2.3rem, 4vw, 3.2rem)',
+                        lineHeight: 1,
+                        fontWeight: 300,
+                        color: '#64151F',
+                      }}
+                    >
+                      950 €
+                    </div>
+                  </div>
                 </div>
 
                 <div className="h-px w-full bg-[#1A1010]/10" aria-hidden />
