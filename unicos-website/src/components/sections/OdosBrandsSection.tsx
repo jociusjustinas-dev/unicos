@@ -198,7 +198,7 @@ export function OdosBrandsSection({
               <BrandShowcaseCard
                 key={card.id}
                 dataBrandCard
-                className="w-[min(100%,clamp(240px,26vw,300px))] shrink-0 snap-start max-[767px]:w-[min(100%,280px)] max-[767px]:max-w-[88vw]"
+                className="w-[min(100%,clamp(320px,31vw,420px))] shrink-0 snap-start max-[767px]:w-[min(100%,320px)] max-[767px]:max-w-[88vw]"
                 imageClassName="h-[380px]"
                 tone="green"
                 title={card.title}
@@ -209,6 +209,7 @@ export function OdosBrandsSection({
                 badge={DEFAULT_BADGE}
                 ctaHref="/prekiu-zenklai"
                 ctaLabel="Sužinokite daugiau"
+                ctaVariant="secondary"
                 meta={
                   <>
                     <div className="flex flex-wrap gap-2">

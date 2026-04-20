@@ -21,6 +21,7 @@ export function BrandShowcaseCard({
   imageClassName = 'h-[220px]',
   dataBrandCard = false,
   tone = 'maroon',
+  ctaVariant,
 }: {
   title: string;
   description: string;
@@ -35,6 +36,7 @@ export function BrandShowcaseCard({
   imageClassName?: string;
   dataBrandCard?: boolean;
   tone?: 'maroon' | 'green';
+  ctaVariant?: 'primary' | 'secondary';
 }) {
   const isGreen = tone === 'green';
   const cardClass = isGreen
@@ -44,6 +46,8 @@ export function BrandShowcaseCard({
   const badgeClass = isGreen
     ? 'border-[#3B443A]/25 bg-[#3B443A] text-[#EFE8DB]'
     : 'border-[#64151F]/25 bg-[#64151F] text-[#EFE8DB]';
+
+  const resolvedCtaVariant = ctaVariant ?? (isGreen ? 'secondary' : 'primary');
 
   return (
     <article
@@ -89,7 +93,7 @@ export function BrandShowcaseCard({
         {meta}
 
         {ctaHref && ctaLabel ? (
-          <CtaLink href={ctaHref} variant="primary" className="mt-1 w-full justify-center sm:w-auto">
+          <CtaLink href={ctaHref} variant={resolvedCtaVariant} className="mt-1 w-full justify-center sm:w-auto">
             {ctaLabel}
           </CtaLink>
         ) : null}
