@@ -258,7 +258,7 @@ export function TapkitePartneriuHeroSection() {
   };
 
   return (
-    <section className="relative z-[2] overflow-x-clip bg-[#EFE8DB] border-b border-[#1A1010]/10 pt-40 pb-20 max-[767px]:pt-24 max-[767px]:pb-12">
+    <section className="relative z-[2] overflow-x-clip border-b border-[#1A1010]/10 bg-white pt-40 pb-20 max-[767px]:pt-24 max-[767px]:pb-12">
       <div className="mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           className="grid grid-cols-2 max-[991px]:grid-cols-1"

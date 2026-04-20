@@ -8,7 +8,7 @@ const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
 
-/** Šviesiai žalia juosta — be bordo; hover tamsesnis žalias. */
+/** Ant balto (ResponsibleBeauty) — žalios rodyklės, be bordo. */
 const brandsCarouselNavBtnClass =
   'group flex h-12 w-12 shrink-0 items-center justify-center overflow-visible border border-[#3B443A]/22 bg-transparent p-0 text-[#3B443A] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#2f362e] hover:text-[#EFE8DB] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3B443A] disabled:pointer-events-none disabled:opacity-35';
 
@@ -111,7 +111,7 @@ export function OdosBrandsSection() {
   };
 
   return (
-    <section className="relative z-[2] overflow-x-visible bg-[#E8EDE9] py-20 max-[767px]:py-14">
+    <section className="relative z-[2] overflow-x-visible bg-white py-20 max-[767px]:py-14">
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headerInView.ref}
@@ -143,7 +143,7 @@ export function OdosBrandsSection() {
         </div>
       </div>
 
-      <div className="relative left-1/2 z-[1] w-screen max-w-none -translate-x-1/2 bg-[#E8EDE9]">
+      <div className="relative left-1/2 z-[1] w-screen max-w-none -translate-x-1/2 bg-white">
         <div
           ref={trackInView.ref}
           style={{
@@ -154,7 +154,7 @@ export function OdosBrandsSection() {
         >
           <div
             ref={scrollerRef}
-            className="flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain bg-[#E8EDE9] pb-1 pl-4 [-ms-overflow-style:none] [scrollbar-width:none] max-[767px]:scroll-pl-6 max-[767px]:pl-6 max-[479px]:scroll-pl-4 max-[479px]:pl-4 min-[768px]:scroll-pl-16 min-[768px]:pl-16 [&::-webkit-scrollbar]:hidden"
+            className="flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain bg-white pb-1 pl-4 [-ms-overflow-style:none] [scrollbar-width:none] max-[767px]:scroll-pl-6 max-[767px]:pl-6 max-[479px]:scroll-pl-4 max-[479px]:pl-4 min-[768px]:scroll-pl-16 min-[768px]:pl-16 [&::-webkit-scrollbar]:hidden"
             style={{ scrollPaddingRight: 0, paddingRight: 0 }}
           >
             {cards.map((card) => (
@@ -162,7 +162,7 @@ export function OdosBrandsSection() {
                 key={card.id}
                 data-brand-card
                 href="#"
-                className="group/card flex w-[min(100%,clamp(240px,26vw,300px))] shrink-0 snap-start cursor-pointer flex-col gap-5 bg-[#E8EDE9] max-[767px]:w-[min(100%,280px)] max-[767px]:max-w-[88vw] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3B443A]"
+                className="group/card flex w-[min(100%,clamp(240px,26vw,300px))] shrink-0 snap-start cursor-pointer flex-col gap-5 bg-white max-[767px]:w-[min(100%,280px)] max-[767px]:max-w-[88vw] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3B443A]"
                 style={{
                   borderRadius: '0px',
                   textDecoration: 'none',
@@ -184,7 +184,7 @@ export function OdosBrandsSection() {
                     aria-hidden
                   />
                 </div>
-                <div className="flex max-w-[min(100%,clamp(240px,26vw,300px))] flex-col gap-5 bg-[#E8EDE9] pr-4 max-[767px]:max-w-[min(100%,280px)]">
+                <div className="flex max-w-[min(100%,clamp(240px,26vw,300px))] flex-col gap-5 bg-white pr-4 max-[767px]:max-w-[min(100%,280px)]">
                   <div className="flex h-5 items-center">
                     {card.logoSvg ? (
                       <img
@@ -213,7 +213,7 @@ export function OdosBrandsSection() {
             ))}
           </div>
 
-          <div className="mx-auto mt-8 flex max-w-[1800px] items-center justify-end gap-2 bg-[#E8EDE9] px-16 pb-1 max-[767px]:mt-6 max-[767px]:px-6 max-[479px]:px-4">
+          <div className="mx-auto mt-8 flex max-w-[1800px] items-center justify-end gap-2 bg-white px-16 pb-1 max-[767px]:mt-6 max-[767px]:px-6 max-[479px]:px-4">
             <button
               type="button"
               onClick={() => scrollBrands('prev')}
