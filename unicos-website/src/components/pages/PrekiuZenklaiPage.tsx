@@ -166,7 +166,7 @@ export function PrekiuZenklaiPage() {
         subheading="Su kiekvienu ženklu gausite visą ekosistemą."
         showHighlights={false}
         bubbles={PREKIU_ZENKLAI_ECOSYSTEM_BUBBLES}
-        withFooterVideoBackdrop={false}
+        backdropTone="mint"
       />
 
       <OdosPartnerSpotlightSection

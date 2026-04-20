@@ -39,6 +39,9 @@ export type UnicosWhyBubble = {
   border: string;
 };
 
+/** `mint` — kaip OdosStarterCalloutSection vidinis paviršius (#E8EDE9), žalia antraštė. */
+export type UnicosWhyBackdropTone = 'warmCream' | 'mint';
+
 type UnicosWhySectionProps = {
   heading?: React.ReactNode;
   subheading?: string;
@@ -50,6 +53,8 @@ type UnicosWhySectionProps = {
    * kad video atmosfera liktų tik hero viršuje).
    */
   withFooterVideoBackdrop?: boolean;
+  /** Fono / gradientų / antraštės tonas; `mint` derina su žaliu callout bloku virš sekcijos. */
+  backdropTone?: UnicosWhyBackdropTone;
 };
 
 const DEFAULT_BUBBLES: readonly UnicosWhyBubble[] = [
@@ -90,6 +95,7 @@ export function UnicosWhySection({
   showHighlights = true,
   bubbles,
   withFooterVideoBackdrop = true,
+  backdropTone = 'warmCream',
 }: UnicosWhySectionProps = {}) {
   const [headlineRef, headlineVisible] = useRevealOnce<HTMLDivElement>();
   const [gridRef, gridVisible] = useRevealOnce<HTMLDivElement>({ threshold: 0.3, rootMargin: '0px 0px -18% 0px' });
@@ -119,14 +125,34 @@ export function UnicosWhySection({
 
   const values = bubbles ?? DEFAULT_BUBBLES;
 
-  const bubbleIdleBg = withFooterVideoBackdrop ? 'rgba(239,232,219,0.36)' : 'rgba(255,255,255,0.22)';
+  const isMint = backdropTone === 'mint';
+  const bubbleIdleBg = !withFooterVideoBackdrop
+    ? 'rgba(255,255,255,0.22)'
+    : isMint
+      ? 'rgba(232,237,233,0.42)'
+      : 'rgba(239,232,219,0.36)';
+
+  const sectionBgClass = !withFooterVideoBackdrop
+    ? 'bg-transparent'
+    : isMint
+      ? 'bg-[#E8EDE9]'
+      : 'bg-[#EFE8DB]';
+
+  const gradientTop =
+    withFooterVideoBackdrop && isMint
+      ? 'linear-gradient(180deg, rgba(232,237,233,0.92), rgba(232,237,233,0))'
+      : 'linear-gradient(180deg, rgba(239,232,219,0.86), rgba(239,232,219,0))';
+  const gradientBottom =
+    withFooterVideoBackdrop && isMint
+      ? 'linear-gradient(0deg, rgba(232,237,233,0.94), rgba(232,237,233,0))'
+      : 'linear-gradient(0deg, rgba(239,232,219,0.9), rgba(239,232,219,0))';
+
+  const headingColorClass = isMint ? 'text-[#3B443A]' : 'text-[#64151F]';
+  const highlightColorClass = isMint ? 'text-[#3B443A]' : 'text-[#64151F]';
+  const separatorClass = isMint ? 'bg-[#3B443A]/18' : 'bg-[#1A1010]/15';
 
   return (
-    <section
-      className={`relative z-[2] overflow-x-clip pt-16 pb-28 max-[767px]:pt-12 max-[767px]:pb-20 ${
-        withFooterVideoBackdrop ? 'bg-[#EFE8DB]' : 'bg-transparent'
-      }`}
-    >
+    <section className={`relative z-[2] overflow-x-clip pt-16 pb-28 max-[767px]:pt-12 max-[767px]:pb-20 ${sectionBgClass}`}>
       {withFooterVideoBackdrop ? (
         <>
           <div className="pointer-events-none absolute inset-0 z-0 flex opacity-[0.42]" aria-hidden>
@@ -148,12 +174,12 @@ export function UnicosWhySection({
           </div>
           <div
             className="pointer-events-none absolute top-0 left-0 right-0 z-[1] h-[22%]"
-            style={{ backgroundImage: 'linear-gradient(180deg, rgba(239,232,219,0.86), rgba(239,232,219,0))' }}
+            style={{ backgroundImage: gradientTop }}
             aria-hidden
           />
           <div
             className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-[38%]"
-            style={{ backgroundImage: 'linear-gradient(0deg, rgba(239,232,219,0.9), rgba(239,232,219,0))' }}
+            style={{ backgroundImage: gradientBottom }}
             aria-hidden
           />
         </>
@@ -164,7 +190,7 @@ export function UnicosWhySection({
           className={`flex flex-col items-center text-center mx-auto mb-20 max-w-[720px] max-[767px]:mb-14 max-[767px]:gap-5 gap-6 transition-all duration-700 ease-out ${headlineReveal}`}
         >
           <h2
-            className="m-0 text-[#64151F] text-center tracking-[-2px] text-[clamp(36px,4vw,48px)] leading-[1.08] max-[767px]:tracking-[-1.5px]"
+            className={`m-0 text-center tracking-[-2px] text-[clamp(36px,4vw,48px)] leading-[1.08] max-[767px]:tracking-[-1.5px] ${headingColorClass}`}
             style={{ fontFamily: "'Quiche Sans', Georgia, serif" }}
           >
             {heading}
@@ -182,11 +208,11 @@ export function UnicosWhySection({
               {highlights.map(({ Icon, label }) => (
                 <span
                   key={label}
-                  className="inline-flex items-center gap-3 text-[#64151F]"
+                  className={`inline-flex items-center gap-3 ${highlightColorClass}`}
                   style={BODY}
                 >
                   <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center">
-                    <Icon size={18} strokeWidth={1.75} className="block shrink-0 overflow-visible text-[#64151F]" aria-hidden />
+                    <Icon size={18} strokeWidth={1.75} className={`block shrink-0 overflow-visible ${highlightColorClass}`} aria-hidden />
                   </span>
                   <span className="text-[13px] font-medium leading-snug normal-case sm:text-[14px]">{label}</span>
                 </span>
@@ -194,7 +220,7 @@ export function UnicosWhySection({
             </div>
           ) : null}
 
-          <div className="w-full max-w-[200px] h-px bg-[#1A1010]/15 mt-2" role="separator" aria-hidden />
+          <div className={`w-full max-w-[200px] h-px mt-2 ${separatorClass}`} role="separator" aria-hidden />
         </div>
 
         <div ref={gridRef} className={`mx-auto max-w-[1144px] transition-all duration-700 ease-out ${gridReveal}`}>
