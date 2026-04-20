@@ -41,7 +41,7 @@ export const PREKIU_ZENKLAI_BRANDS: readonly PrekiuZenklaiBrandCard[] = [
     country: 'Prancūzija',
     imageSrc: '/mega-menu/1.jpeg',
     imageAlt: 'Guinot profesionali kosmetika',
-    href: '#',
+    href: '/prekiu-zenklai/guinot',
   },
   {
     id: 'neostrata',

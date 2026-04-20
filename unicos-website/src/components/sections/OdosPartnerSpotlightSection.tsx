@@ -129,9 +129,11 @@ export function OdosPartnerSpotlightSection({
               <img src={portraitSrc} alt={portraitAlt} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[center_25%]" />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,16,0.05),rgba(26,16,16,0.35))]" aria-hidden />
             </div>
-            <p className="mt-4 m-0 text-[#EFE8DB]/58" style={{ ...BODY, fontSize: '13px', lineHeight: 1.5, fontWeight: 400 }}>
-              {footnote}
-            </p>
+            {footnote ? (
+              <p className="mt-4 m-0 text-[#EFE8DB]/58" style={{ ...BODY, fontSize: '13px', lineHeight: 1.5, fontWeight: 400 }}>
+                {footnote}
+              </p>
+            ) : null}
           </div>
         </div>
       </div>

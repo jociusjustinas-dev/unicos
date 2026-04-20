@@ -71,6 +71,7 @@ export function ResponsibleBeautySection({
   cards,
   surfaceClassName = 'bg-white',
   accent = 'green',
+  showGuidanceRow = true,
 }: {
   eyebrowLabel?: string | null;
   heading?: React.ReactNode;
@@ -80,6 +81,8 @@ export function ResponsibleBeautySection({
   surfaceClassName?: string;
   /** Ant kreminio fono žalia antraštė blogai skaitosi — naudokite `maroon`. */
   accent?: 'green' | 'maroon';
+  /** Apatinė konsultacijos juosta su avataru ir CTA. */
+  showGuidanceRow?: boolean;
 }) {
   const isMaroon = accent === 'maroon';
   const gridRef = React.useRef<HTMLDivElement>(null);
@@ -127,12 +130,13 @@ export function ResponsibleBeautySection({
   const resolvedSubheading = subheading === null ? null : subheading ?? 'Mums svarbu ne tik galutinis rezultatas, bet ir kelias, kuriuo jis pasiekiamas. Renkamės partnerius, kuriems, kaip ir mums, rūpi tvarumas, etika ir atsakingas požiūris į aplinką.';
 
   const resolvedFeatures: BeautyFeature[] = React.useMemo(() => {
-    const src = cards && cards.length ? cards : defaultFeatures.map(({ title, description }) => ({ title, description }));
-    const normalized: BeautyCard[] = new Array(6).fill(null).map((_, i) => src[i] ?? defaultFeatures[i] ?? { title: '', description: '' });
-    return normalized.map((c, i) => ({
+    if (!cards?.length) {
+      return defaultFeatures.map(({ title, description, Icon }) => ({ title, description, Icon }));
+    }
+    return cards.map((c, i) => ({
       title: c.title,
       description: c.description,
-      Icon: defaultFeatures[i]?.Icon ?? SfSparkles,
+      Icon: defaultFeatures[i % defaultFeatures.length]?.Icon ?? SfSparkles,
     }));
   }, [cards]);
 
@@ -206,7 +210,7 @@ export function ResponsibleBeautySection({
                 : 'border-[#3B443A]/20 bg-[rgba(59,68,58,0.08)] text-[#3B443A] group-hover:border-[#EFE8DB]/35 group-hover:bg-[rgba(239,232,219,0.14)] group-hover:text-[#EFE8DB]';
               return (
               <div
-                key={feature.title}
+                key={`${feature.title}-${i}`}
                 className={`group flex w-full flex-col items-center gap-6 border border-[#1A1010]/10 bg-white p-8 text-center ease-out ${cardHover} max-[767px]:gap-5 max-[767px]:p-6 ${
                   gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
@@ -239,38 +243,40 @@ export function ResponsibleBeautySection({
             })}
           </div>
 
-          <div
-            ref={guidanceRef}
-            className="mx-auto flex w-full max-w-[56rem] flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3 md:gap-4"
-          >
-            <div className={`flex shrink-0 justify-center ${guidanceEase} delay-0 ${guidanceHidden}`}>
-              <div className="h-12 w-12 shrink-0 overflow-hidden max-[479px]:h-10 max-[479px]:w-10" style={{ borderRadius: '0px' }}>
-                <img
-                  src={contactAvatar.src}
-                  loading="lazy"
-                  alt={contactAvatar.alt}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-
+          {showGuidanceRow ? (
             <div
-              className={`max-w-[min(20rem,100%)] shrink text-left ${guidanceEase} delay-[80ms] ${guidanceHidden}`}
+              ref={guidanceRef}
+              className="mx-auto flex w-full max-w-[56rem] flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3 md:gap-4"
             >
-              <div className="text-sm font-medium leading-5 text-[#1A1010]" style={BODY}>
-                Reikia konsultacijos?
+              <div className={`flex shrink-0 justify-center ${guidanceEase} delay-0 ${guidanceHidden}`}>
+                <div className="h-12 w-12 shrink-0 overflow-hidden max-[479px]:h-10 max-[479px]:w-10" style={{ borderRadius: '0px' }}>
+                  <img
+                    src={contactAvatar.src}
+                    loading="lazy"
+                    alt={contactAvatar.alt}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
-              <div className="text-sm leading-5 text-[#1A1010]/65" style={BODY}>
-                Visada mielai padėsime.
-              </div>
-            </div>
 
-            <div className={`shrink-0 ${guidanceEase} delay-[160ms] ${guidanceHidden}`}>
-              <CtaLink href="#kontaktai" variant="secondary">
-                Susisiekite
-              </CtaLink>
+              <div
+                className={`max-w-[min(20rem,100%)] shrink text-left ${guidanceEase} delay-[80ms] ${guidanceHidden}`}
+              >
+                <div className="text-sm font-medium leading-5 text-[#1A1010]" style={BODY}>
+                  Reikia konsultacijos?
+                </div>
+                <div className="text-sm leading-5 text-[#1A1010]/65" style={BODY}>
+                  Visada mielai padėsime.
+                </div>
+              </div>
+
+              <div className={`shrink-0 ${guidanceEase} delay-[160ms] ${guidanceHidden}`}>
+                <CtaLink href="#kontaktai" variant="secondary">
+                  Susisiekite
+                </CtaLink>
+              </div>
             </div>
-          </div>
+          ) : null}
         </div>
       </div>
     </section>
