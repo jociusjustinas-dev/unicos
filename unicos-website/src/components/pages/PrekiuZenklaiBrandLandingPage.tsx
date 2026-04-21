@@ -15,6 +15,7 @@ import { OdosChallengesSection } from '@/components/sections/OdosChallengesSecti
 import { OdosPartnerSpotlightSection } from '@/components/sections/OdosPartnerSpotlightSection';
 import { BrandStatsMarqueeSection } from '@/components/sections/BrandStatsMarqueeSection';
 import { BrandMedicalStandardsSection } from '@/components/sections/BrandMedicalStandardsSection';
+import { BrandPartnerConsultStrip } from '@/components/sections/BrandPartnerConsultStrip';
 import { CtaLink } from '@/components/ui/CtaLink';
 
 const BODY: React.CSSProperties = {
@@ -132,8 +133,6 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
         cards={config.why.cards}
         tallImageSrc={config.why.bentoTallImageSrc}
         tallImageAlt={config.why.bentoTallImageAlt}
-        bandImageSrc={config.why.bentoBandImageSrc}
-        bandImageAlt={config.why.bentoBandImageAlt}
         smallImageSrc={config.why.bentoSmallImageSrc}
         smallImageAlt={config.why.bentoSmallImageAlt}
         topRightImageSrc={config.why.bentoTopRightImageSrc}
@@ -162,6 +161,8 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
         accent="green"
         showGuidanceRow={false}
       />
+
+      <BrandPartnerConsultStrip strip={config.partner.consultStrip} />
 
       <BrandStatsMarqueeSection items={config.stats.items} />
 

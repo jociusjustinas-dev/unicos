@@ -17,8 +17,6 @@ type Props = {
   cards: readonly PrekiuZenklaiBrandTextCard[];
   tallImageSrc: string;
   tallImageAlt: string;
-  bandImageSrc: string;
-  bandImageAlt: string;
   smallImageSrc: string;
   smallImageAlt: string;
   topRightImageSrc: string;
@@ -100,8 +98,6 @@ export function BrandWhyBentoSection({
   cards,
   tallImageSrc,
   tallImageAlt,
-  bandImageSrc,
-  bandImageAlt,
   smallImageSrc,
   smallImageAlt,
   topRightImageSrc,
@@ -153,13 +149,6 @@ export function BrandWhyBentoSection({
             <BentoTile card={c} index={2} tone={tone(2)} className="lg:col-start-3 lg:row-start-2" />
             <BentoTile card={d} index={3} tone={tone(3)} className="lg:col-start-4 lg:row-start-2" />
           </div>
-
-          <BentoFigure
-            src={bandImageSrc}
-            alt={bandImageAlt}
-            minHeightClass="min-h-[220px] lg:min-h-[260px]"
-            className="w-full"
-          />
         </div>
       </div>
     </section>

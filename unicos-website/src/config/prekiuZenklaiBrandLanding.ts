@@ -30,8 +30,6 @@ export type PrekiuZenklaiBrandLandingConfig = {
     cards: readonly PrekiuZenklaiBrandTextCard[];
     bentoTallImageSrc: string;
     bentoTallImageAlt: string;
-    bentoBandImageSrc: string;
-    bentoBandImageAlt: string;
     bentoSmallImageSrc: string;
     bentoSmallImageAlt: string;
     bentoTopRightImageSrc: string;
@@ -53,6 +51,13 @@ export type PrekiuZenklaiBrandLandingConfig = {
     headingBold: string;
     subheading: string;
     cards: readonly PrekiuZenklaiBrandTextCard[];
+    consultStrip: {
+      title: string;
+      body: string;
+      portraitSrc: string;
+      portraitAlt: string;
+      cta: { href: string; label: string };
+    };
   };
   stats: {
     items: readonly [PrekiuZenklaiBrandStatItem, PrekiuZenklaiBrandStatItem, PrekiuZenklaiBrandStatItem];
@@ -131,8 +136,6 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
     ],
     bentoTallImageSrc: '/mega-menu/4.jpeg',
     bentoTallImageAlt: 'Guinot Hydradermie procedūra',
-    bentoBandImageSrc: '/mega-menu/2.jpeg',
-    bentoBandImageAlt: 'Guinot procedūros kabinete',
     bentoSmallImageSrc: '/mega-menu/3.jpeg',
     bentoSmallImageAlt: 'Guinot produktai ir procedūros',
     bentoTopRightImageSrc: '/mega-menu/1.jpeg',
@@ -217,6 +220,14 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
         description: 'Padės sudėlioti asortimentą ir suplanuoti pardavimus.',
       },
     ],
+    consultStrip: {
+      title: 'Konsultacija su vadybininku',
+      body:
+        'Turite klausimų apie Guinot partnerystę, kainas ar asortimentą? Mūsų vadybininkas atsakys ir padės suplanuoti kitus žingsnis — nuo pirmo kontakto iki užsakymo.',
+      portraitSrc: 'https://byqsupply-components.netlify.app/haldenmiller/images/ContactAvatar-3.webp',
+      portraitAlt: 'UNICOS vadybininkas — Guinot partnerystė',
+      cta: { href: '/kontaktai', label: 'Rašyti vadybininkui' },
+    },
   },
   stats: {
     items: [
