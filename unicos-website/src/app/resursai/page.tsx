@@ -3,11 +3,9 @@
 import * as React from 'react';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
 import { FooterSection } from '@/components/sections/FooterSection';
-import { PlatformSplitSection } from '@/components/sections/PlatformSplitSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { CtaButton } from '@/components/ui/CtaButton';
 import {
-  SfClock,
   SfActivity,
   SfLayers,
   SfAward,
@@ -97,8 +95,11 @@ const EXTRA_PLACEHOLDERS: ResourceCard[] = Array.from({ length: 6 }).map((_, i) 
   ctaIcon: i % 3 === 0 ? 'download' : i % 3 === 1 ? 'lock' : 'arrow',
 }));
 
-function Container({ children }: { children: React.ReactNode }) {
-  return <div className="mx-auto w-full max-w-[1440px] px-8 max-[767px]:px-6 max-[479px]:px-4">{children}</div>;
+/** Kaip kiti marketing puslapiai (akademija, kontaktai): vienas plotis ir šoniniai paddingai. */
+const PAGE_SHELL = 'mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4';
+
+function Shell({ children }: { children: React.ReactNode }) {
+  return <div className={PAGE_SHELL}>{children}</div>;
 }
 
 export default function ResursaiPage() {
@@ -110,8 +111,8 @@ export default function ResursaiPage() {
   return (
     <main className="bg-[#EFE8DB] text-[#1A1010]">
       <NavigationBarSection forceLightSurface />
-      <section className="pt-40 pb-24 max-[767px]:pt-28 max-[767px]:pb-16 max-[479px]:pt-24">
-        <Container>
+      <section className="pt-32 pb-16 max-[767px]:pt-24 max-[767px]:pb-12 min-[768px]:pt-40 min-[768px]:pb-20">
+        <Shell>
           <div className="grid grid-cols-1 gap-10 min-[992px]:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] min-[992px]:items-center">
             <div>
               <span
@@ -152,11 +153,11 @@ export default function ResursaiPage() {
               </div>
             </div>
           </div>
-        </Container>
+        </Shell>
       </section>
 
-      <section className="sticky top-0 z-20 border-b border-solid border-[#1A1010]/10 bg-[#EFE8DB] py-4">
-        <Container>
+      <section className="sticky top-0 z-20 border-b border-solid border-[#1A1010]/10 bg-[#EFE8DB] py-3 min-[768px]:py-4">
+        <Shell>
           <div className="flex flex-wrap items-center gap-3">
             <span className="flex items-center gap-1.5 text-[#1A1010]/50" style={{ ...BODY, fontSize: '14px' }}>
               <SfSearch size={14} className="-mt-px" strokeWidth={2.5} /> Filtruoti:
@@ -188,11 +189,11 @@ export default function ResursaiPage() {
               />
             </div>
           </div>
-        </Container>
+        </Shell>
       </section>
 
-      <section id="resursai-turinys" className="py-24 max-[767px]:py-16">
-        <Container>
+      <section id="resursai-turinys" className="py-16 min-[768px]:py-24">
+        <Shell>
           <div className="grid grid-cols-1 gap-4 min-[992px]:grid-cols-3 min-[768px]:grid-cols-2">
             {resources.map((card, idx) => {
               const badgeClass =
@@ -243,11 +244,11 @@ export default function ResursaiPage() {
               <SfChevronDown size={14} strokeWidth={2.5} className={`transition-transform duration-300 ${showMore ? 'rotate-180' : ''}`} />
             </CtaButton>
           </div>
-        </Container>
+        </Shell>
       </section>
 
-      <section className="bg-[#3B443A] py-24 max-[767px]:py-16">
-        <Container>
+      <section className="bg-[#3B443A] py-16 min-[768px]:py-24">
+        <Shell>
           <div className="mx-auto max-w-[860px] text-center">
             <div className="mx-auto flex h-12 w-12 items-center justify-center border border-solid border-[#EFE8DB]/30 text-[#EFE8DB]" style={{ ...BODY, fontSize: '18px', borderRadius: '999px' }}>
               <SfLock size={20} strokeWidth={2.5} className="-mt-0.5" />
@@ -267,37 +268,35 @@ export default function ResursaiPage() {
               </CtaLink>
             </div>
           </div>
-        </Container>
+        </Shell>
       </section>
 
-      <section className="py-24 max-[767px]:py-16">
-        <Container>
-          <div className="border-t border-solid border-[#1A1010]/10 pt-10">
-            <div className="grid grid-cols-1 gap-4 min-[992px]:grid-cols-3">
-              {[
-                { label: 'CENTRALIZUOTA BAZĖ', body: 'Visi dokumentai vienoje vietoje, pasiekiami 24/7.', Icon: SfLayers },
-                { label: 'NUOLATINIS ATNAUJINIMAS', body: 'Naujausi protokolai tiesiai iš gamintojų.', Icon: SfActivity },
-                { label: 'PATIKRINTA EKSPERTŲ', body: 'Tik saugios ir patvirtintos metodikos.', Icon: SfCheck },
-              ].map(({ label, body, Icon }, idx) => (
-                <div key={label} className={`px-6 py-10 text-center ${idx < 2 ? 'min-[992px]:border-r min-[992px]:border-solid min-[992px]:border-[#1A1010]/10' : ''}`}>
-                  <div className="mx-auto flex h-10 w-10 items-center justify-center bg-[#64151F]" style={{ borderRadius: '0px' }}>
-                    <Icon size={20} strokeWidth={2} className="text-[#EFE8DB]" />
-                  </div>
-                  <p className="m-0 mt-4 uppercase text-[#1A1010]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.1em', fontWeight: 600 }}>
-                    {label}
-                  </p>
-                  <p className="m-0 mt-3 text-[#1A1010]/72" style={{ ...BODY, fontSize: '15px', lineHeight: 1.6 }}>
-                    {body}
-                  </p>
+      <section className="border-t border-solid border-[#1A1010]/10 py-16 min-[768px]:py-24">
+        <Shell>
+          <div className="grid grid-cols-1 gap-4 min-[992px]:grid-cols-3">
+            {[
+              { label: 'CENTRALIZUOTA BAZĖ', body: 'Visi dokumentai vienoje vietoje, pasiekiami 24/7.', Icon: SfLayers },
+              { label: 'NUOLATINIS ATNAUJINIMAS', body: 'Naujausi protokolai tiesiai iš gamintojų.', Icon: SfActivity },
+              { label: 'PATIKRINTA EKSPERTŲ', body: 'Tik saugios ir patvirtintos metodikos.', Icon: SfCheck },
+            ].map(({ label, body, Icon }, idx) => (
+              <div key={label} className={`px-6 py-10 text-center ${idx < 2 ? 'min-[992px]:border-r min-[992px]:border-solid min-[992px]:border-[#1A1010]/10' : ''}`}>
+                <div className="mx-auto flex h-10 w-10 items-center justify-center bg-[#64151F]" style={{ borderRadius: '0px' }}>
+                  <Icon size={20} strokeWidth={2} className="text-[#EFE8DB]" />
                 </div>
-              ))}
-            </div>
+                <p className="m-0 mt-4 uppercase text-[#1A1010]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.1em', fontWeight: 600 }}>
+                  {label}
+                </p>
+                <p className="m-0 mt-3 text-[#1A1010]/72" style={{ ...BODY, fontSize: '15px', lineHeight: 1.6 }}>
+                  {body}
+                </p>
+              </div>
+            ))}
           </div>
-        </Container>
+        </Shell>
       </section>
 
-      <section className="py-24 max-[767px]:py-16">
-        <Container>
+      <section className="pt-16 pb-20 min-[768px]:pt-24 min-[768px]:pb-28">
+        <Shell>
           <div className="mx-auto max-w-[560px] text-center">
             <div className="mx-auto flex justify-center text-[#64151F]">
               <SfEnvelope size={32} strokeWidth={2} />
@@ -323,7 +322,7 @@ export default function ResursaiPage() {
               Skirta tik profesionalams
             </p>
           </div>
-        </Container>
+        </Shell>
       </section>
       <FooterSection />
     </main>
