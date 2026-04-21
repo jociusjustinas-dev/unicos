@@ -8,6 +8,7 @@ import { ProcessSection } from '@/components/sections/ProcessSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { PlatformSplitSection } from '@/components/sections/PlatformSplitSection';
+import { UnicosWhySection, type UnicosWhyBubble } from '@/components/sections/UnicosWhySection';
 import { SfClock, SfActivity, SfLayers, SfAward } from '@/components/icons/feather';
 
 const BODY = {
@@ -76,31 +77,39 @@ export default function PartnerystePage() {
         </Container>
       </section>
 
-      <section className="py-24 max-[767px]:py-16">
-        <Container>
-          <SectionTitle
-            title="Ka reiskia buti UNICOS partneriu?"
-            subtitle="Tai daugiau nei tiekejo ir pirkejo santykis. Tai sistema, sukurta Jusu augimui."
-          />
-          <div className="mt-8 grid grid-cols-1 gap-4 min-[992px]:grid-cols-3">
-            {[
-              ['Atrinka Jums', 'Mes ne sandelys. Atrenkame tik tai, kas patikrinta, atsakinga ir tinkama profesionaliam darbui. Jus negaistate laiko rinkdamiesi - mes jau tai padareme.'],
-              ['Zinios pries pardavima', 'Produktas be ziniu yra rizika. Investuojame i mokymus, protokolus ir aisku supratima, kad dirbtumete saugiai ir uztikrintai.'],
-              ['Augame kartu', 'Asmenine vadyba, konsultacijos ir palaikymas kasdieniuose sprendimuose. Jus nesate vieni.'],
-            ].map(([title, description]) => (
-              <article key={title} className="border border-solid border-[#1A1010]/15 p-10" style={{ borderRadius: '0px' }}>
-                <div className="h-6 w-6 bg-[#64151F]" style={{ borderRadius: '0px' }} />
-                <h3 className="m-0 mt-5 text-[#1A1010]" style={{ ...BODY, fontSize: '22px', lineHeight: 1.2, fontWeight: 600 }}>
-                  {title}
-                </h3>
-                <p className="m-0 mt-3 text-[#1A1010]/75" style={{ ...BODY, fontSize: '15px', lineHeight: 1.65 }}>
-                  {description}
-                </p>
-              </article>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <UnicosWhySection
+        heading="Ką reiškia būti UNICOS partneriu?"
+        subheading="Tai daugiau nei tiekėjo ir pirkėjo santykis. Tai sistema, sukurta Jūsų augimui."
+        showHighlights={false}
+        withFooterVideoBackdrop={false}
+        backdropTone="warmCream"
+        bubbles={[
+          {
+            title: 'Atrinka Jums',
+            body: 'Mes ne sandėlys. Atrenkame tik tai, kas patikrinta, atsakinga ir tinkama profesionaliam darbui. Jūs negaištate laiko rinkdamiesi — mes jau tai padarėme.',
+            icon: '/Icon.svg',
+            hoverBg: '#64151F',
+            hoverFg: '#EFE8DB',
+            border: 'rgba(100,21,31,0.38)',
+          },
+          {
+            title: 'Žinios prieš pardavimą',
+            body: 'Produktas be žinių yra rizika. Investuojame į mokymus, protokolus ir aiškų supratimą, kad dirbtumėte saugiai ir užtikrintai.',
+            icon: '/Icon-1.svg',
+            hoverBg: '#3B443A',
+            hoverFg: '#EFE8DB',
+            border: 'rgba(59,68,58,0.34)',
+          },
+          {
+            title: 'Augame kartu',
+            body: 'Asmeninė vadyba, konsultacijos ir palaikymas kasdieniuose sprendimuose. Jūs nesate vieni.',
+            icon: '/Icon-2.svg',
+            hoverBg: '#1A1010',
+            hoverFg: '#EFE8DB',
+            border: 'rgba(26,16,16,0.32)',
+          },
+        ]}
+      />
 
       <section className="py-24 max-[767px]:py-16">
         <Container>
