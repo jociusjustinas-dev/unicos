@@ -76,11 +76,11 @@ export default function NeostrataPilingaiPage() {
       <div className="pt-24 md:pt-32">
         <div className={PAGE_SHELL}>
           <div className="grid min-h-0 grid-cols-1 items-start gap-y-10 md:grid-cols-2 md:gap-x-16 md:gap-y-0 lg:gap-x-24">
-            {/* Kairė: lipnus hero — kremo dėžė su įdubimais nuo viewport (horizontaliai ir vertikaliai), ne pilnas aukštis */}
+            {/* Kairė: lipnus hero — fonas per visą stulpelio plotį; turinys su 64px (md:p-16) paddingu */}
             <aside
-              className="relative min-h-0 w-full self-start bg-[var(--color-cream-panel)] text-[#1A1010] md:sticky md:z-[1] md:mx-4 md:mt-0 md:overflow-y-auto md:overscroll-y-contain md:transition-[top,max-height] md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:top-[calc(var(--site-sticky-top,8rem)+1.25rem)] md:max-h-[calc(100svh-var(--site-sticky-top,8rem)-2.5rem)] lg:mx-6"
+              className="relative min-h-0 w-full self-start bg-[var(--color-cream-panel)] text-[#1A1010] md:sticky md:z-[1] md:overflow-y-auto md:overscroll-y-contain md:transition-[top,max-height] md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:top-[calc(var(--site-sticky-top,8rem)+1.25rem)] md:max-h-[calc(100svh-var(--site-sticky-top,8rem)-2.5rem)]"
             >
-              <div className="flex flex-col gap-4 py-6 md:gap-5 md:pr-1">
+              <div className="flex flex-col gap-4 p-6 md:gap-5 md:p-16">
                   <nav className="mb-0" aria-label="Breadcrumb">
                     <ol className="m-0 flex list-none flex-wrap items-center gap-3 p-0">
                       <li>
