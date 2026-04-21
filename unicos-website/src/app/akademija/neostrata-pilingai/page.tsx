@@ -39,11 +39,7 @@ const NEOSTRATA_EVENT: AkademijaEvent = (() => {
 const PAGE_SHELL =
   'mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4';
 
-/** Pilnas fono bleed į kairį viewport kraštą — atitinka PAGE_SHELL px (4 / 6 / 16). */
-const HERO_ASIDE_BLEED =
-  '-ml-4 pl-4 min-[480px]:-ml-6 min-[480px]:pl-6 min-[768px]:-ml-16 min-[768px]:pl-16';
-
-/** Lipniam stulpeliui: `md:top-32` ir `max-h` atimtis turi sutapti su šio wrapperio `md:pt-32` (8rem), kitaip lipdant atsiranda plyšys po headeriu. */
+/** Lipniam stulpeliui: `md:pt-32` sutampa su nav aukščiu; lipnaus `top`/`max-h` įdubimai nuo viewport (žr. aside). */
 function Container({ children }: { children: React.ReactNode }) {
   return <div className="w-full">{children}</div>;
 }
@@ -80,9 +76,9 @@ export default function NeostrataPilingaiPage() {
       <div className="pt-24 md:pt-32">
         <div className={PAGE_SHELL}>
           <div className="grid min-h-0 grid-cols-1 items-start gap-y-10 md:grid-cols-2 md:gap-x-16 md:gap-y-0 lg:gap-x-24">
-            {/* Kairė: lipnus hero — fonas iki kairio krašto (HERO_ASIDE_BLEED), vertikalus padding vienodas */}
+            {/* Kairė: lipnus hero — kremo dėžė su įdubimais nuo viewport (horizontaliai ir vertikaliai), ne pilnas aukštis */}
             <aside
-              className={`relative min-h-0 w-full self-start bg-[var(--color-cream-panel)] text-[#1A1010] ${HERO_ASIDE_BLEED} md:sticky md:top-[var(--site-sticky-top,8rem)] md:z-[1] md:max-h-[calc(100svh-var(--site-sticky-top,8rem))] md:overflow-y-auto md:overscroll-y-contain md:transition-[top,max-height] md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)]`}
+              className="relative min-h-0 w-full self-start bg-[var(--color-cream-panel)] text-[#1A1010] md:sticky md:z-[1] md:mx-4 md:mt-0 md:overflow-y-auto md:overscroll-y-contain md:transition-[top,max-height] md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:top-[calc(var(--site-sticky-top,8rem)+1.25rem)] md:max-h-[calc(100svh-var(--site-sticky-top,8rem)-2.5rem)] lg:mx-6"
             >
               <div className="flex flex-col gap-4 py-6 md:gap-5 md:pr-1">
                   <nav className="mb-0" aria-label="Breadcrumb">
@@ -362,7 +358,7 @@ export default function NeostrataPilingaiPage() {
                   ).map(({ Icon, title, body }) => (
                     <div
                       key={title}
-                      className="flex items-start gap-4 border border-solid border-[#1A1010]/15 bg-[#EFE8DB] p-6 max-[479px]:p-5"
+                      className="flex flex-col items-center gap-4 border border-solid border-[#1A1010]/15 bg-[#EFE8DB] p-6 text-center max-[479px]:p-5"
                       style={R0}
                     >
                       <div
@@ -372,7 +368,7 @@ export default function NeostrataPilingaiPage() {
                       >
                         <Icon size={20} className="text-[#64151F]" strokeWidth={1.5} aria-hidden />
                       </div>
-                      <div className="flex min-w-0 flex-1 flex-col gap-2">
+                      <div className="flex w-full min-w-0 flex-col gap-2">
                         <h3
                           className="m-0 text-[#64151F]"
                           style={{
