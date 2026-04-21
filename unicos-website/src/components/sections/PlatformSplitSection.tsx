@@ -158,7 +158,7 @@ export function PlatformSplitSection({
               </div>
 
               {ctaLabel ? (
-                <CtaLink href={ctaHref} variant={isDark ? 'primary' : 'secondary'} labelMode="slide">
+                <CtaLink href={ctaHref} variant={isDark ? 'primary' : isMaroon ? 'primary' : 'secondary'} labelMode="slide">
                   {ctaLabel}
                 </CtaLink>
               ) : null}

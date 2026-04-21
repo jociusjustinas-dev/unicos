@@ -138,7 +138,7 @@ export default function PartnerystePage() {
       />
 
       <BrandStatsMarqueeSection
-        theme="dark"
+        theme="light"
         items={[
           { value: '500+', label: 'partnerių', description: 'Augančių su mumis' },
           { value: '25 metai', label: '', description: 'Patirties rinkoje' },
@@ -156,9 +156,9 @@ export default function PartnerystePage() {
           </>
         }
         bodyText="Sukūrėme įrankį, kuris paverčia užsakymus malonumu."
-        surfaceClassName="bg-[#3B443A]"
-        accent="green"
-        theme="dark"
+        surfaceClassName="bg-white"
+        accent="maroon"
+        theme="light"
         ctaLabel="Tapti partneriu ir gauti prieigą"
         ctaHref="#tapti-partneriu"
         features={[
@@ -194,7 +194,7 @@ export default function PartnerystePage() {
           </>
         }
         subheading="Kuo ilgiau dirbame kartu - tuo daugiau naudos Jūsų verslui."
-        surfaceClassName="bg-[#EFE8DB]"
+        surfaceClassName="bg-white"
         accent="maroon"
         cards={[
           { title: 'Augančios nuolaidos', description: 'Partnerio kainodara gerėja su kiekvienu ketvirčiu.', Icon: SfActivity },
