@@ -86,7 +86,7 @@ export function ResponsibleBeautySection({
   eyebrowLabel?: string | null;
   heading?: React.ReactNode;
   subheading?: string | null;
-  cards?: BeautyCard[];
+  cards?: readonly BeautyCard[];
   /** Sekcijos fonas (AGENTS: šviesus paviršiai → #EFE8DB ant kreminio puslapio). */
   surfaceClassName?: string;
   /** Ant kreminio fono žalia antraštė blogai skaitosi — naudokite `maroon`. */

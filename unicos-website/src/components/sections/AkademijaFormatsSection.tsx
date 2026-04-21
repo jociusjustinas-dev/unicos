@@ -17,6 +17,7 @@ export function AkademijaFormatsSection() {
       }
       imageSrc="/mega-menu/1.jpeg"
       imageAlt="UNICOS akademijos mokymai ir seminarai"
+      belowAccordionHasDivider={false}
       belowAccordion={
         <Link
           href="/kontaktai"

@@ -34,6 +34,7 @@ export function OdosChallengesSection({
   imageSrc = '/mega-menu/2.jpeg',
   imageAlt = 'Specialistės darbas su klientu',
   belowAccordion,
+  belowAccordionHasDivider = true,
 }: {
   items?: Challenges3;
   /** Numatyta: „Pažįstama situacija?“. */
@@ -43,6 +44,8 @@ export function OdosChallengesSection({
   imageAlt?: string;
   /** Po akordeono sąrašu (pvz. nuoroda į kontaktus). */
   belowAccordion?: React.ReactNode;
+  /** Ar rodyti skyriklį virš `belowAccordion`. */
+  belowAccordionHasDivider?: boolean;
 } = {}) {
   const [openIndexes, setOpenIndexes] = React.useState<number[]>([0]);
   const cardRef = React.useRef<HTMLDivElement>(null);
@@ -151,7 +154,11 @@ export function OdosChallengesSection({
                 );
               })}
               {belowAccordion ? (
-                <div className="w-full border-t border-[#EFE8DB]/16 pt-8 max-[767px]:pt-6">{belowAccordion}</div>
+                <div
+                  className={`w-full pt-8 max-[767px]:pt-6 ${belowAccordionHasDivider ? 'border-t border-[#EFE8DB]/16' : ''}`}
+                >
+                  {belowAccordion}
+                </div>
               ) : null}
             </div>
           </div>
