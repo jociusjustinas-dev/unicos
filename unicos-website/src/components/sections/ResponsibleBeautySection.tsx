@@ -277,16 +277,16 @@ export function ResponsibleBeautySection({
           {showGuidanceRow ? (
             <div
               ref={guidanceRef}
-              className={`mx-auto grid w-full grid-cols-1 items-center gap-8 border-t border-[#1A1010]/10 pt-10 max-[767px]:pt-8 max-[639px]:gap-6 sm:grid-cols-2 sm:gap-10 ${guidanceEase} ${guidanceReveal}`}
+              className={`mx-auto flex w-full max-w-[960px] flex-col items-center justify-center gap-6 text-center sm:flex-row sm:flex-wrap sm:gap-8 sm:text-left ${guidanceEase} ${guidanceReveal}`}
             >
-              <div className="flex min-w-0 items-center gap-5 max-[479px]:gap-4">
+              <div className="flex min-w-0 max-w-full flex-col items-center gap-5 max-[479px]:gap-4 sm:flex-row sm:items-center">
                 <div
                   className="h-14 w-14 shrink-0 overflow-hidden border border-[#1A1010]/10 bg-[#EFE8DB]/60 max-[479px]:h-12 max-[479px]:w-12"
                   style={{ borderRadius: '0px' }}
                 >
                   <img src={stripPortraitSrc} loading="lazy" alt={stripPortraitAlt} className="h-full w-full object-cover" />
                 </div>
-                <div className="min-w-0 flex-1 text-left">
+                <div className="min-w-0 max-w-[min(100%,28rem)] text-center sm:text-left">
                   <p className="m-0 font-medium leading-snug text-[#1A1010]" style={{ ...BODY, fontSize: '15px' }}>
                     {stripTitle}
                   </p>
@@ -295,8 +295,8 @@ export function ResponsibleBeautySection({
                   </p>
                 </div>
               </div>
-              <div className="flex w-full justify-stretch sm:justify-end">
-                <CtaLink href={stripCtaHref} variant="secondary" labelMode="static" className="min-w-[180px] justify-center max-[639px]:w-full">
+              <div className="flex w-full shrink-0 justify-center sm:w-auto">
+                <CtaLink href={stripCtaHref} variant="secondary" labelMode="static" className="min-w-[180px] justify-center max-[639px]:w-full sm:max-w-none sm:w-auto">
                   {stripCtaLabel}
                 </CtaLink>
               </div>
