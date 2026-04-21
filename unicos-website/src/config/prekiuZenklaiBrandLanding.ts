@@ -36,9 +36,6 @@ export type PrekiuZenklaiBrandLandingConfig = {
     bentoSmallImageAlt: string;
     bentoTopRightImageSrc: string;
     bentoTopRightImageAlt: string;
-    /** Tekstas po viršutine dešine procedūros nuotrauka (1 eil.). */
-    bentoAfterFacialTitle: string;
-    bentoAfterFacialBody: string;
   };
   productLines: {
     headingLight: string;
@@ -140,9 +137,6 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
     bentoSmallImageAlt: 'Guinot produktai ir procedūros',
     bentoTopRightImageSrc: '/mega-menu/1.jpeg',
     bentoTopRightImageAlt: 'Profesionali Guinot odos priežiūra',
-    bentoAfterFacialTitle: 'Hydradermie kabinete',
-    bentoAfterFacialBody:
-      'Aparatinė procedūra, skirta švelniai odos atgaivinimui ir matomam rezultatui jau po pirmo vizito — tinka ir jautriai odai.',
   },
   productLines: {
     headingLight: 'Guinot ',

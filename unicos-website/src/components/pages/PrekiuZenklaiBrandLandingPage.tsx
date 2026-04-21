@@ -138,8 +138,6 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
         smallImageAlt={config.why.bentoSmallImageAlt}
         topRightImageSrc={config.why.bentoTopRightImageSrc}
         topRightImageAlt={config.why.bentoTopRightImageAlt}
-        afterFacialTitle={config.why.bentoAfterFacialTitle}
-        afterFacialBody={config.why.bentoAfterFacialBody}
       />
 
       <BrandProductLinesTabsSection

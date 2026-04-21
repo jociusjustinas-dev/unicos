@@ -23,8 +23,6 @@ type Props = {
   smallImageAlt: string;
   topRightImageSrc: string;
   topRightImageAlt: string;
-  afterFacialTitle: string;
-  afterFacialBody: string;
 };
 
 function BentoFigure({
@@ -108,8 +106,6 @@ export function BrandWhyBentoSection({
   smallImageAlt,
   topRightImageSrc,
   topRightImageAlt,
-  afterFacialTitle,
-  afterFacialBody,
 }: Props) {
   const quad = cards.slice(0, 4);
   const [a, b, c, d] = quad;
@@ -146,24 +142,11 @@ export function BrandWhyBentoSection({
 
             <BentoTile card={b} index={1} tone={tone(1)} className="lg:col-start-3 lg:row-start-1" />
 
-            <div className="flex min-h-0 flex-col gap-3 lg:col-start-4 lg:row-start-1">
-              <BentoFigure
-                src={topRightImageSrc}
-                alt={topRightImageAlt}
-                className="min-h-[200px] w-full flex-1 lg:min-h-[180px]"
-              />
-              <div
-                className="border border-[#1A1010]/10 bg-[#E8E0D4] px-5 py-4"
-                style={{ borderRadius: '0px' }}
-              >
-                <p className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '12px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                  {afterFacialTitle}
-                </p>
-                <p className="m-0 mt-2 text-[#1A1010]/78" style={{ ...BODY, fontSize: '13px', lineHeight: 1.5, fontWeight: 400 }}>
-                  {afterFacialBody}
-                </p>
-              </div>
-            </div>
+            <BentoFigure
+              src={topRightImageSrc}
+              alt={topRightImageAlt}
+              className="min-h-[220px] w-full lg:col-start-4 lg:row-start-1 lg:min-h-[240px]"
+            />
 
             <BentoFigure src={smallImageSrc} alt={smallImageAlt} className="lg:col-start-1 lg:row-start-2 min-h-[200px]" />
 
