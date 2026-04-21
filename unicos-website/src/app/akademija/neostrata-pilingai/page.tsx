@@ -43,11 +43,11 @@ export default function NeostrataPilingaiPage() {
 
       <div className="pt-28 max-[991px]:pt-24 md:pt-32">
         <div className="grid min-h-0 grid-cols-1 items-start md:grid-cols-2">
-          {/* Kairė: juodas hero — tik turinio aukštis (be fono „nutęsimo“ per visą kairį stulpelį), lipnus md+. */}
-          <aside className="relative w-full self-start bg-black text-[#EFE8DB] md:border-r md:border-solid md:border-[#1A1010]/20">
+          {/* Kairė: hero (#EFE8DB), lipnus md+ */}
+          <aside className="relative w-full self-start bg-[#EFE8DB] text-[#1A1010] md:border-r md:border-solid md:border-[#1A1010]/10">
             <div className="md:sticky md:top-28 md:max-h-[calc(100dvh-7rem)] md:overflow-y-auto md:self-start">
               <div className="flex flex-col gap-6 px-6 py-[clamp(2rem,5dvh,4.5rem)] md:px-8 md:py-[clamp(2.5rem,6dvh,5rem)]">
-                <p className="m-0 uppercase text-[#EFE8DB]/60" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
+                <p className="m-0 uppercase text-[#1A1010]/40" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
                   AKADEMIJA / NEOSTRATA RŪGŠTINIŲ PILINGŲ MEISTRIŠKUMAS
                 </p>
 
@@ -59,13 +59,13 @@ export default function NeostrataPilingaiPage() {
                     DERMATOLOGIJA
                   </span>
                   <span
-                    className="border border-solid border-[#EFE8DB]/50 px-2 py-1 text-[#EFE8DB]"
+                    className="border border-solid border-[#1A1010]/30 bg-transparent px-2 py-1 text-[#1A1010]"
                     style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500, ...R0 }}
                   >
                     Gyvai
                   </span>
                   <span
-                    className="border border-solid border-[#EFE8DB]/50 px-2 py-1 text-[#EFE8DB]"
+                    className="border border-solid border-[#1A1010]/30 bg-transparent px-2 py-1 text-[#1A1010]"
                     style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500, ...R0 }}
                   >
                     LT
@@ -73,27 +73,27 @@ export default function NeostrataPilingaiPage() {
                 </div>
 
                 <h1
-                  className="m-0 text-[#EFE8DB]"
-                  style={{ ...HEADING, fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.05, fontWeight: 300 }}
+                  className="m-0 text-[36px] leading-[1.05] text-[#1A1010] md:text-[56px]"
+                  style={{ ...HEADING, fontWeight: 300 }}
                 >
                   Neostrata rūgštinių pilingų meistriškumas.
                 </h1>
 
-                <p className="m-0 max-w-[52ch] text-[#EFE8DB]/85" style={{ ...BODY, fontSize: '17px', lineHeight: 1.55 }}>
+                <p className="m-0 max-w-[52ch] text-[#1A1010]" style={{ ...BODY, fontSize: '17px', lineHeight: 1.55 }}>
                   Išmokite atlikti profesionalius cheminius pilingus saugiai ir efektyviai. Praktinis seminaras su tarptautiniu sertifikatu.
                 </p>
 
-                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[#EFE8DB]/88" style={{ ...BODY, fontSize: '15px', lineHeight: 1.5 }}>
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[#1A1010]" style={{ ...BODY, fontSize: '15px', lineHeight: 1.5 }}>
                   <span className="flex items-center gap-1.5">
-                    <SfCalendar size={16} className="text-[#EFE8DB]" aria-hidden />
+                    <SfCalendar size={16} className="text-[#1A1010]" aria-hidden />
                     Spalio 24
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <SfClock size={16} className="text-[#EFE8DB]" aria-hidden />
+                    <SfClock size={16} className="text-[#1A1010]" aria-hidden />
                     10:00–16:00
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <SfMapPin size={16} className="text-[#EFE8DB]" aria-hidden />
+                    <SfMapPin size={16} className="text-[#1A1010]" aria-hidden />
                     Vilnius, UNICOS Akademija
                   </span>
                 </div>
@@ -101,36 +101,30 @@ export default function NeostrataPilingaiPage() {
                 <div className="flex flex-wrap items-center gap-3">
                   <button
                     type="button"
-                    className="h-12 border-0 bg-[#64151F] px-6 text-[#EFE8DB] transition-colors hover:bg-[#4a0f17]"
+                    className="h-[52px] border-0 bg-[#64151F] px-8 text-[#EFE8DB] transition-colors hover:bg-[#4a0f17]"
                     style={{ ...BODY, fontSize: '15px', fontWeight: 500, ...R0 }}
                   >
-                    Registruotis
+                    Registruotis — 49 €
                   </button>
-                  <span
-                    className="inline-flex h-12 items-center border border-solid border-[#EFE8DB]/35 bg-[#1A1010]/25 px-4 text-[#EFE8DB]"
-                    style={{ ...BODY, fontSize: '15px', fontWeight: 500, ...R0 }}
-                  >
-                    49 €
-                  </span>
                 </div>
-                <p className="m-0 text-[#EFE8DB]/55" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45 }}>
+                <p className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45 }}>
                   Vieta garantuojama tik po apmokėjimo.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-3">
                   <button
                     type="button"
-                    className="h-12 border border-solid border-[#EFE8DB] bg-transparent px-6 text-[#EFE8DB] transition-colors hover:bg-[#EFE8DB]/10"
+                    className="h-[52px] border border-solid border-[#64151F] bg-transparent px-6 text-[#64151F] transition-colors hover:bg-[#64151F]/[0.06]"
                     style={{ ...BODY, fontSize: '15px', fontWeight: 500, ...R0 }}
                   >
                     Gauti priminimą
                   </button>
-                  <p className="m-0 text-[#EFE8DB]/55" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45 }}>
+                  <p className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45 }}>
                     Atsiųsime el. paštu.
                   </p>
                 </div>
 
-                <p className="m-0 uppercase text-[#EFE8DB]/80" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.1em', fontWeight: 600 }}>
+                <p className="m-0 uppercase text-[#64151F]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.1em', fontWeight: 600 }}>
                   Liko 4 vietos
                 </p>
               </div>
@@ -139,6 +133,16 @@ export default function NeostrataPilingaiPage() {
 
           {/* Dešinė: likęs turinys */}
           <div className="min-w-0 bg-[#EFE8DB] text-left">
+            <div
+              className="flex min-h-[480px] items-center justify-center bg-[#3B443A] px-6"
+              style={R0}
+              aria-hidden
+            >
+              <span className="text-[#EFE8DB]/30" style={{ ...BODY, fontSize: '15px', letterSpacing: '0.06em' }}>
+                Neostrata Training
+              </span>
+            </div>
+
             <section className="py-16 max-[767px]:py-12">
               <Container>
                 <div className="max-w-[720px] text-left">
