@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
+import { AkademijaEventCard } from '@/components/sections/AkademijaTrainingSection';
 import { FooterSection } from '@/components/sections/FooterSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 import {
@@ -9,7 +10,6 @@ import {
   SfClock,
   SfMapPin,
   SfCheck,
-  SfArrowRight,
   SfCreditCard,
   SfAward,
   SfPhone,
@@ -19,6 +19,8 @@ import {
   SfActivity,
 } from '@/components/icons/feather';
 import { AKADEMIJA_EVENTS, type AkademijaEvent } from '@/config/akademijaPage';
+
+const OTHER_EVENTS_FOR_STRIP = AKADEMIJA_EVENTS.filter((e) => e.id !== 'evt-1');
 
 const BODY = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -39,6 +41,7 @@ const NEOSTRATA_EVENT: AkademijaEvent = (() => {
 const PAGE_SHELL =
   'mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4';
 
+/** Lipniam stulpeliui: `md:top-32` ir `max-h` atimtis turi sutapti su šio wrapperio `md:pt-32` (8rem), kitaip lipdant atsiranda plyšys po headeriu. */
 function Container({ children }: { children: React.ReactNode }) {
   return <div className="w-full">{children}</div>;
 }
@@ -68,15 +71,17 @@ export default function NeostrataPilingaiPage() {
   const event = NEOSTRATA_EVENT;
 
   return (
+    <>
     <main className="bg-[#EFE8DB] text-[#1A1010]">
       <NavigationBarSection forceLightSurface />
 
-      <div className="pt-28 max-[991px]:pt-24 md:pt-32">
+      {/* md:pt-32 = md:top-32 lipniame stulpelyje — kitaip ~16px plyšys po headeriu */}
+      <div className="pt-24 md:pt-32">
         <div className={PAGE_SHELL}>
           <div className="grid min-h-0 grid-cols-1 items-start gap-y-10 md:grid-cols-2 md:gap-x-16 md:gap-y-0 lg:gap-x-24">
-            {/* Kairė: hero (#EFE8DB), lipnus md+ — ribojamas viewport aukščiui, kad blokas visada tilptų po headeriu */}
-            <aside className="relative min-h-0 w-full self-start bg-[#EFE8DB] text-[#1A1010] md:sticky md:top-28 md:z-[1] md:max-h-[calc(100svh-7rem)] md:overflow-y-auto md:overscroll-y-contain [scrollbar-gutter:stable]">
-              <div className="flex flex-col gap-6 py-[clamp(2rem,5dvh,4.5rem)] md:py-[clamp(2.5rem,6dvh,5rem)] md:pr-1">
+            {/* Kairė: lipnus hero — fonas iš tokens.css (--color-nougat), švelnus skirtumas nuo puslapio #EFE8DB */}
+            <aside className="relative min-h-0 w-full self-start bg-[var(--color-nougat)] text-[#1A1010] md:sticky md:top-32 md:z-[1] md:max-h-[calc(100svh-8rem)] md:overflow-y-auto md:overscroll-y-contain">
+              <div className="flex flex-col gap-4 py-5 md:gap-5 md:py-6 md:pr-1">
                   <nav className="mb-0" aria-label="Breadcrumb">
                     <ol className="m-0 flex list-none flex-wrap items-center gap-3 p-0">
                       <li>
@@ -108,7 +113,7 @@ export default function NeostrataPilingaiPage() {
                       {event.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="border-[1px] border-solid border-[#1A1010]/18 bg-[#EFE8DB]/80 px-2 py-1 uppercase text-[#1A1010]"
+                          className="border-[1px] border-solid border-[#1A1010]/18 bg-white/20 px-2 py-1 uppercase text-[#1A1010]"
                           style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500, lineHeight: '12px', ...R0 }}
                         >
                           {tag}
@@ -126,13 +131,13 @@ export default function NeostrataPilingaiPage() {
                   </div>
 
                   <h1
-                    className="m-0 text-[36px] leading-[1.05] text-[#64151F] md:text-[56px]"
+                    className="m-0 text-[30px] leading-[1.08] text-[#64151F] md:text-[44px] lg:text-[50px]"
                     style={{ ...HEADING, fontWeight: 300 }}
                   >
                     <NeostrataHeroHeading title={event.title} />
                   </h1>
 
-                  <p className="m-0 max-w-[52ch] text-[#1A1010]" style={{ ...BODY, fontSize: '17px', lineHeight: 1.55 }}>
+                  <p className="m-0 max-w-[52ch] text-[#1A1010]" style={{ ...BODY, fontSize: '16px', lineHeight: 1.5 }}>
                     Išmokite atlikti profesionalius cheminius pilingus saugiai ir efektyviai. Praktinis seminaras su tarptautiniu sertifikatu.
                   </p>
 
@@ -157,9 +162,9 @@ export default function NeostrataPilingaiPage() {
                     </span>
                   </div>
 
-                  <div className="flex flex-col gap-3 border-t-[1px] border-solid border-[#1A1010]/10 pt-4 sm:flex-row sm:items-center sm:gap-4">
+                  <div className="flex flex-col gap-2.5 border-t-[1px] border-solid border-[#1A1010]/10 pt-3 sm:flex-row sm:items-center sm:gap-3">
                     <div
-                      className="h-14 w-14 shrink-0 overflow-hidden border-[1px] border-solid border-[#1A1010]/12 bg-[#EFE8DB]/80"
+                      className="h-14 w-14 shrink-0 overflow-hidden border-[1px] border-solid border-[#1A1010]/12 bg-white/20"
                       style={R0}
                       aria-hidden
                     >
@@ -177,7 +182,7 @@ export default function NeostrataPilingaiPage() {
                     </div>
                   </div>
 
-                  <div className="border-t-[1px] border-solid border-[#1A1010]/10 pt-4">
+                  <div className="border-t-[1px] border-solid border-[#1A1010]/10 pt-3">
                     <CtaLink
                       href={event.href}
                       variant="primary"
@@ -247,13 +252,13 @@ export default function NeostrataPilingaiPage() {
                       'Praktinis darbas: pilingo atlikimas ant modelio žingsnis po žingsnio.',
                       'Postprocedūrinė priežiūra ir namų priežiūros rekomendacijos pacientui.',
                     ].map((item) => (
-                      <div key={item} className="flex items-start gap-3 border-b border-solid border-[#1A1010]/10 py-4">
-                        <span className="mt-1 shrink-0 text-[#64151F]">
-                          <SfCheck size={18} strokeWidth={2.5} aria-hidden />
-                        </span>
+                      <div key={item} className="flex flex-col gap-2 border-b border-solid border-[#1A1010]/10 py-4">
                         <p className="m-0 text-[#1A1010]/85" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55 }}>
                           {item}
                         </p>
+                        <span className="inline-flex shrink-0 text-[#64151F]" aria-hidden>
+                          <SfCheck size={18} strokeWidth={2.5} />
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -266,13 +271,13 @@ export default function NeostrataPilingaiPage() {
                 <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
                   Kam skirtas šis seminaras?
                 </h2>
-                <div className="mt-8 grid grid-cols-1 gap-4 min-[992px]:grid-cols-3">
+                <div className="mt-8 flex max-w-[900px] flex-col gap-4">
                   {[
                     { title: 'Dermatovenerologams', body: 'Norite praplėsti procedūrų arsenalą mokslu pagrįstais pilingais.', Icon: SfFaceSmile },
                     { title: 'Kosmetologams', body: 'Dirbate su odos priežiūra ir norite gilesnio supratimo apie cheminius pilingus.', Icon: SfLayers },
                     { title: 'Estetinės medicinos specialistams', body: 'Ieškote papildomų neinvazinių procedūrų savo klinikai.', Icon: SfActivity },
                   ].map(({ title, body, Icon }) => (
-                    <div key={title} className="border border-solid border-[#1A1010]/15 bg-[#EFE8DB] p-8" style={R0}>
+                    <div key={title} className="border border-solid border-[#1A1010]/15 bg-[#EFE8DB] p-6 max-[479px]:p-5" style={R0}>
                       <div
                         className="mb-5 flex h-10 w-10 items-center justify-center border border-solid border-[#64151F] bg-[rgba(100,21,31,0.06)]"
                         style={R0}
@@ -287,26 +292,6 @@ export default function NeostrataPilingaiPage() {
                       </p>
                     </div>
                   ))}
-                </div>
-              </Container>
-            </section>
-
-            <section className="border-y border-solid border-[#1A1010]/10 bg-[#3B443A] py-16 text-left text-[#EFE8DB] max-[767px]:py-12">
-              <Container>
-                <div className="max-w-[900px]">
-                  <h2 className="m-0 text-[#EFE8DB]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
-                    Lektorė.
-                  </h2>
-                  <div className="mt-6 h-20 w-20 bg-[#EFE8DB]/20" style={R0} />
-                  <h3 className="m-0 mt-5 text-[#EFE8DB]" style={{ ...HEADING, fontSize: '31px', lineHeight: 1.1, fontWeight: 400 }}>
-                    Dr. Rūta Gancevičienė
-                  </h3>
-                  <p className="m-0 mt-2 text-[#EFE8DB]/60" style={{ ...BODY, fontSize: '16px', lineHeight: 1.45 }}>
-                    Dermatovenerologė
-                  </p>
-                  <p className="m-0 mt-5 max-w-[70ch] text-[#EFE8DB]/80" style={{ ...BODY, fontSize: '16px', lineHeight: 1.65 }}>
-                    Tarptautinę patirtį turinti dermatovenerologė, Neostrata klinikinių protokolų ekspertė. Reguliariai veda profesionalius seminarus Lietuvoje ir užsienyje. Mokslinių publikacijų autorė dermatologijos srityje.
-                  </p>
                 </div>
               </Container>
             </section>
@@ -382,71 +367,6 @@ export default function NeostrataPilingaiPage() {
               </Container>
             </section>
 
-            <section className="py-16 max-[767px]:py-12">
-              <Container>
-                <div className="flex flex-wrap items-end justify-between gap-4">
-                  <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
-                    Kiti artimiausi renginiai.
-                  </h2>
-                  <Link href="/akademija" className="inline-flex items-center gap-1 text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '15px', fontWeight: 500 }}>
-                    Visi renginiai <SfArrowRight size={14} strokeWidth={2.5} aria-hidden />
-                  </Link>
-                </div>
-                <div className="mt-8 grid grid-cols-1 gap-4 min-[992px]:grid-cols-2">
-                  {[
-                    {
-                      badge: 'KOSMETOLOGIJA',
-                      title: 'Guinot aparatinės procedūros: Hydradermie',
-                      location: 'Kaunas',
-                      price: 'Nemokama',
-                      priceColor: '#3B443A',
-                      date: 'Lapkričio 05',
-                    },
-                    {
-                      badge: 'ESTETINĖ MEDICINA',
-                      title: 'Fillmed mezoterapijos protokolai',
-                      location: 'Vilnius',
-                      price: '79 €',
-                      priceColor: '#64151F',
-                      date: 'Gruodžio 03',
-                    },
-                  ].map((card) => (
-                    <article key={card.title} className="border border-solid border-[#1A1010]/15 bg-[#EFE8DB] p-6" style={R0}>
-                      <div className="mb-4 flex flex-wrap gap-2">
-                        <span
-                          className="border border-solid border-[#64151F] bg-[#64151F] px-2 py-1 text-[#EFE8DB]"
-                          style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500, ...R0 }}
-                        >
-                          {card.badge}
-                        </span>
-                        <span
-                          className="border border-solid border-[#64151F] px-2 py-1 text-[#64151F]"
-                          style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500, ...R0 }}
-                        >
-                          Gyvai
-                        </span>
-                      </div>
-                      <h3 className="m-0 text-[#1A1010]" style={{ ...HEADING, fontSize: '28px', lineHeight: 1.15, fontWeight: 400 }}>
-                        {card.title}
-                      </h3>
-                      <p className="m-0 mt-3 text-[#1A1010]/74" style={{ ...BODY, fontSize: '15px' }}>
-                        {card.location}
-                      </p>
-                      <p className="m-0 mt-2" style={{ ...BODY, fontSize: '18px', fontWeight: 600, color: card.priceColor }}>
-                        {card.price}
-                      </p>
-                      <p className="m-0 mt-2 text-[#1A1010]/74" style={{ ...BODY, fontSize: '15px' }}>
-                        {card.date}
-                      </p>
-                      <Link href="/akademija" className="mt-5 inline-flex items-center gap-1 text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '15px', fontWeight: 500 }}>
-                        Plačiau <SfArrowRight size={14} strokeWidth={2.5} aria-hidden />
-                      </Link>
-                    </article>
-                  ))}
-                </div>
-              </Container>
-            </section>
-
             <section className="bg-[#64151F] py-16 text-left max-[767px]:py-12">
               <Container>
                 <div className="max-w-[980px]">
@@ -498,5 +418,40 @@ export default function NeostrataPilingaiPage() {
 
       <FooterSection />
     </main>
+
+      <section
+        className="relative z-[1] border-t border-solid border-[#1A1010]/10 bg-[#EFE8DB] py-16 text-[#1A1010] max-[767px]:py-12"
+        aria-labelledby="neostrata-kiti-renginiai-heading"
+      >
+        <div className={PAGE_SHELL}>
+          <div className="mb-2 flex items-center gap-2">
+            <span className="h-2 w-2 shrink-0 bg-[#64151F]" style={R0} aria-hidden />
+            <span
+              className="uppercase text-[#64151F]"
+              style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
+            >
+              Kalendorius
+            </span>
+          </div>
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-4 max-[767px]:mb-8">
+            <h2
+              id="neostrata-kiti-renginiai-heading"
+              className="m-0 text-[#64151F]"
+              style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}
+            >
+              Kiti artimiausi renginiai.
+            </h2>
+            <CtaLink href="/akademija" variant="primary" labelMode="static" className="rounded-none" style={R0}>
+              Visi renginiai
+            </CtaLink>
+          </div>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+            {OTHER_EVENTS_FOR_STRIP.map((e) => (
+              <AkademijaEventCard key={e.id} event={e} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

@@ -113,6 +113,26 @@ export const AKADEMIJA_EVENTS: AkademijaEvent[] = [
     imageSrc: '/mega-menu/3.jpeg',
     href: '/kontaktai',
   },
+  {
+    id: 'evt-4',
+    topic: 'estetika',
+    format: 'gyvai',
+    monthKey: '2026-12',
+    tags: ['ESTETINĖ MEDICINA', 'GYVAI', 'LT'],
+    datetime: 'Gruodžio 03, 10:00–14:00',
+    title: 'Fillmed mezoterapijos protokolai',
+    rowLeft: 'Vilnius, UNICOS Akademija',
+    rowRight: 'Dalyvio diplomas',
+    speaker: 'Erika Vaitkūnaitė',
+    speakerRole: 'Estetinės medicinos specialistė',
+    speakerAvatar: 'https://byqsupply-components.netlify.app/haldenmiller/images/ContactAvatar-3.webp',
+    statusLine: 'Liko 8 vietos',
+    statusTone: 'maroon',
+    statusMuted: true,
+    price: '79 €',
+    imageSrc: '/mega-menu/4.jpeg',
+    href: '/kontaktai',
+  },
 ];
 
 export const AKADEMIJA_WHY_CARDS = [

@@ -110,7 +110,7 @@ function FilterDropdown<T extends string>({
   );
 }
 
-function AkademijaEventCard({ event }: { event: AkademijaEvent }) {
+export function AkademijaEventCard({ event }: { event: AkademijaEvent }) {
   const LocIcon = event.onlineVenue ? SfMonitor : SfMapPin;
   const statusTone =
     event.statusTone === 'green'
