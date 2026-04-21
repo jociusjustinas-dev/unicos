@@ -10,6 +10,7 @@ import { CtaSection } from '@/components/sections/CtaSection';
 import { PlatformSplitSection } from '@/components/sections/PlatformSplitSection';
 import { UnicosWhySection, type UnicosWhyBubble } from '@/components/sections/UnicosWhySection';
 import { ValueFeaturesSection } from '@/components/sections/ValueFeaturesSection';
+import { BrandStatsMarqueeSection, type BrandStatsMarqueeItem } from '@/components/sections/BrandStatsMarqueeSection';
 import { HOME_PAGE_VALUE_FEATURE_IMAGES } from '@/config/homePageImages';
 import {
   SfClock,
@@ -135,32 +136,14 @@ export default function PartnerystePage() {
         ]}
       />
 
-      <section className="bg-[#3B443A] py-24 max-[767px]:py-16">
-        <Container>
-          <div className="grid grid-cols-1 gap-8 text-center min-[992px]:grid-cols-4 min-[768px]:grid-cols-2">
-            {[
-              ['500+', 'partneriu', 'Auganciu su mumis'],
-              ['25 metai', 'Patirties rinkoje', ''],
-              ['12 prekiu zenklu', 'Atrinktu profesionalams', ''],
-              ['24h pristatymas', 'Visoje Lietuvoje', ''],
-            ].map(([value, label, desc]) => (
-              <div key={value}>
-                <p className="m-0 text-[#EFE8DB]" style={{ ...HEADING, fontSize: 'clamp(2rem, 3vw, 3rem)', lineHeight: 1.05, fontWeight: 300 }}>
-                  {value}
-                </p>
-                <p className="m-0 mt-2 text-[#EFE8DB]/70" style={{ ...BODY, fontSize: '15px', lineHeight: 1.45 }}>
-                  {label}
-                </p>
-                {desc ? (
-                  <p className="m-0 mt-1 text-[#EFE8DB]/70" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45 }}>
-                    {desc}
-                  </p>
-                ) : null}
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <BrandStatsMarqueeSection
+        items={[
+          { value: '500+', label: 'partnerių', description: 'Augančių su mumis' },
+          { value: '25 metai', label: '', description: 'Patirties rinkoje' },
+          { value: '12 prekių ženklų', label: '', description: 'Atrinktų profesionalams' },
+          { value: '24h pristatymas', label: '', description: 'Visoje Lietuvoje' },
+        ]}
+      />
 
       <PlatformSplitSection
         eyebrow={null}
