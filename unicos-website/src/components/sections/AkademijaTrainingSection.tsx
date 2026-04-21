@@ -172,7 +172,10 @@ export function AkademijaTrainingSection() {
     }`;
 
   return (
-    <section id="mokymu-kalendorius" className="relative z-[2] scroll-mt-24 bg-[#EFE8DB] py-16 max-[767px]:py-12">
+    <section
+      id="mokymu-kalendorius"
+      className="relative z-[2] scroll-mt-24 bg-[#EFE8DB] pb-16 pt-32 max-[767px]:pb-12 max-[767px]:pt-24 max-[479px]:pt-20"
+    >
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div className="mb-10 flex max-w-[720px] flex-col gap-4 max-[767px]:mb-8">
           <div className="flex items-center gap-2">

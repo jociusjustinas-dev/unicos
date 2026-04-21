@@ -6,7 +6,6 @@ import { FooterSection } from '@/components/sections/FooterSection';
 import { FaqSection } from '@/components/sections/FaqSection';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { OdosPartnerSpotlightSection } from '@/components/sections/OdosPartnerSpotlightSection';
-import { AkademijaHeroSection } from '@/components/sections/AkademijaHeroSection';
 import { AkademijaTrainingSection } from '@/components/sections/AkademijaTrainingSection';
 import { AkademijaWhySection } from '@/components/sections/AkademijaWhySection';
 import { AkademijaFormatsSection } from '@/components/sections/AkademijaFormatsSection';
@@ -24,7 +23,6 @@ export function AkademijaPage() {
     <main className="bg-[#ECE2D3]">
       <NavigationBarSection forceLightSurface />
 
-      <AkademijaHeroSection />
       <AkademijaTrainingSection />
       <AkademijaNewsletterSection />
       <AkademijaWhySection />
