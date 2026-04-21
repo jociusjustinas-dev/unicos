@@ -45,32 +45,38 @@ When you see any BYQ default color — replace as follows:
 ## Carousel row navigation (horizontalūs „prev/next“ mygtukai)
 Ant šviesių fonų (#EFE8DB ir pan., pvz. prekių ženklų sekcijos): rodyklių mygtukų **hover / filled** būsena — **maroon** (`#64151F` rėmelis, hover užpildymas `#4a0f17`, tekstas `#EFE8DB`). **Nenaudoti** čia antrinės žalios (`#3B443A`) — žalia lieka tik tamsiems antriniams blokams (pvz. atskiri žali CTA kontekstai).
 
-## Buttons / CTA (privaloma — CtaLink ir CtaButton)
+## Buttons / CTA (privaloma)
 
-**Visada naudokite `CtaLink` arba `CtaButton`** su `variant` — ne savo `<button>` / `<a>` su atsitiktinėmis klasėmis, nebent eksplicitiai kitaip pasakyta.
+Ši taisyklė taikoma **UNICOS CTA paviršiams** (prekės ženklo mygtukai / nuorodos-stiliaus veiksmai: hero, sekcijų CTA, header/footer „Tapti partneriu“ ir pan.). **Ne visi** puslapio interaktyvūs elementai yra to paties tipo: horizontalios karuselės rodyklės, ikonų mygtukai, skirtukai, `input type="file"` trigeriai, grynų formų submit be CTA stiliaus — turi atskiras taisykles ar komponentus; žr. sekciją „Carousel row navigation“ ir konkretų komponentą.
 
-### Bendras elgesys (kaip header navigacijoje)
-- **Tipografija:** vienas rinkinys per CSS kintamuosius (`tokens.css`): `--btn-font-size` (13px), `--btn-font-weight` (500), `--btn-letter-spacing`, `font-family: var(--font-body)`.
-- **Hover — „slide“:** numatytai `labelMode="slide"` (ir ant `<a>`, ir ant `<button>`). Tekstas dubliuojamas `text-shadow` ir pakyla (`translateY`), atsiranda antras „sluoksnis“ — **tas pats efektas visur**.
-- **`labelMode="static"`** — tik išimtims (retai); vis tiek tie patys dydis/storis kaip slide.
+### Kada `CtaLink`, kada `CtaButton`
+- **`CtaLink`** — kai veiksmas yra **nuoroda** (`href`: vidinis ar išorinis kelias). Tai `<a>`, be Next `Link` wrapperio viduje (nebent projekte nuspręsta kitaip — laikykis esamo importo).
+- **`CtaButton`** — kai reikia **`<button>`** (`onClick`, `type="submit"`, `disabled`, forma). Vizualiai tie patys variantai ir `labelMode` kaip `CtaLink`.
+- Abu naudoja tą patį korpusą, foną ir etiketę per **`ctaShared.tsx`** — naują CTA **ne** kurk iš atskirų `className` rinkinių.
 
-### Variantai
-| Variant | Hover fonas | Hover tekstas (su slide) |
-|--------|-------------|---------------------------|
-| **primary** (filled) | šiek tiek **šviesesnis** maroon (`--color-maroon-hover-bright`) | tas pats kremas + slide |
-| **outline** (ghost) | užsipildo `#64151F` | iš bordo į kremą + slide |
-| **glass** | šviesesnis „stiklas“ (daugiau `#EFE8DB` alfa, rėmelis ryškesnis) | kremas + slide |
-| **secondary** | tamsesnis žalias | kremas + slide |
-| **outlineLight / lightFill / lightNeutral** | pagal esamą `CtaBackground` | slide kaip kiti |
+### „Slide“ ir `labelMode`
+- **`labelMode="slide"`** (numatytasis): ant hover teksto **slankiojantis** efektas — dubliuota eilutė per `text-shadow`, `translateY` (`CtaFace` + `ctaSlideInnerClass` / `ctaSlideShadowFor` faile `ctaShared.tsx`). Tai **vienas** numatytasis CTA elgesys visoje svetainėje.
+- **`labelMode="static"`** — be judesio, tas pats šrifto kešas (`ctaStaticLabelClass`); naudok tik kur slide trikdo išdėstymą (pvz. labai ilgas tekstas) arba dizaino išimtis.
 
-### Techninis
-- Bendras kodas: `src/components/ui/ctaShared.tsx` (`CtaBackground`, `CtaFace`).
-- **Nekeiskite** atskirai „vieno mygtuko“ šrifto be `--btn-*` atnaujinimo visur.
+### Variantai (`CtaSurfaceVariant`, `CtaBackground`)
+Vienas `variant` visada — fonas + numatytos etiketės spalvos (su slide atitinkamas šešėlio tonas). Lentelė sutampa su `src/components/ui/ctaShared.tsx`.
 
-### Seni žodiniai atitikmenys (spalvos)
-Primary: bg #64151F, text #EFE8DB, border-radius 0px  
-Ghost (outline): border 1px solid #64151F, hover užpildymas maroon  
-Dark variant (secondary): bg #3B443A, text #EFE8DB
+| `variant` | Paskirtis / fonas (santrauka) | Etiketė (slide) |
+|-----------|------------------------------|-----------------|
+| **primary** | Užpildymas maroon (`--color-maroon`), hover šviesesnis maroon | kremo tonas, slide su kremo šešėliu |
+| **secondary** | Užpildymas žalias (`--color-green`), hover tamsesnis žalias | kremo tonas + slide |
+| **outline** | Rėmelis maroon, skaidrus; hover užsipildo maroon | pradžioje bordo, hover kremas + slide |
+| **glass** | „Stiklas“ ant tamsaus (rėmelis, blur, šviesi alfa); hover ryškesnis stiklas | kremo tekstas + slide |
+| **lightFill** | Fondas `#EFE8DB`, hover baltas | maroon tekstas + slide |
+| **outlineLight** | Rėmelis kremo ant tamsaus, hover lengvas fill | kremo tekstas + slide |
+| **lightNeutral** | Kremo paviršius + subtilus rėmelis, hover šiek tiek tamsesnis nougat | tamsus tekstas + slide |
+
+### Vieninga tipografija ir ne „vienkartiniai“ mygtukai
+- Matmenys ir šriftas: **`tokens.css`** kintamieji `--btn-height`, `--btn-padding-x`, `--btn-font-size`, `--btn-font-weight`, `--btn-letter-spacing`, `--btn-radius` ir t. t. Pakeitimas vienoje vietoje = visi `CtaLink` / `CtaButton`.
+- **Pirminė implementacija** (fonas, veidas, tipai): `src/components/ui/ctaShared.tsx` — `CtaBackground`, `CtaFace`, `CTA_SHELL_CLASS_BASE`. Čia plėtojami visi variantai; `CtaLink.tsx` ir `CtaButton.tsx` tik perduoda `variant` / `labelMode`.
+
+### Spalvų atsarginė santrauka (žinomos hex)
+`primary`: #64151F / kremo tekstas; `outline`: rėmelis #64151F, hover fill maroon; `secondary`: #3B443A / kremo tekstas; šviesiems paviršiams — #EFE8DB ir body #1A1010 kur taikoma `lightNeutral`.
 
 ## Labels/badges
 Background: #64151F
