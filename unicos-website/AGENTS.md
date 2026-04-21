@@ -45,11 +45,32 @@ When you see any BYQ default color — replace as follows:
 ## Carousel row navigation (horizontalūs „prev/next“ mygtukai)
 Ant šviesių fonų (#EFE8DB ir pan., pvz. prekių ženklų sekcijos): rodyklių mygtukų **hover / filled** būsena — **maroon** (`#64151F` rėmelis, hover užpildymas `#4a0f17`, tekstas `#EFE8DB`). **Nenaudoti** čia antrinės žalios (`#3B443A`) — žalia lieka tik tamsiems antriniams blokams (pvz. atskiri žali CTA kontekstai).
 
-## Buttons
-Primary: bg #64151F, text #EFE8DB, border-radius 0px, hover bg #4a0f17
-Ghost: border 1px solid #64151F, transparent bg, text #64151F, 
-       border-radius 0px, hover bg #64151F hover text #EFE8DB
-Dark variant: bg #3B443A, text #EFE8DB, border-radius 0px
+## Buttons / CTA (privaloma — CtaLink ir CtaButton)
+
+**Visada naudokite `CtaLink` arba `CtaButton`** su `variant` — ne savo `<button>` / `<a>` su atsitiktinėmis klasėmis, nebent eksplicitiai kitaip pasakyta.
+
+### Bendras elgesys (kaip header navigacijoje)
+- **Tipografija:** vienas rinkinys per CSS kintamuosius (`tokens.css`): `--btn-font-size` (13px), `--btn-font-weight` (500), `--btn-letter-spacing`, `font-family: var(--font-body)`.
+- **Hover — „slide“:** numatytai `labelMode="slide"` (ir ant `<a>`, ir ant `<button>`). Tekstas dubliuojamas `text-shadow` ir pakyla (`translateY`), atsiranda antras „sluoksnis“ — **tas pats efektas visur**.
+- **`labelMode="static"`** — tik išimtims (retai); vis tiek tie patys dydis/storis kaip slide.
+
+### Variantai
+| Variant | Hover fonas | Hover tekstas (su slide) |
+|--------|-------------|---------------------------|
+| **primary** (filled) | šiek tiek **šviesesnis** maroon (`--color-maroon-hover-bright`) | tas pats kremas + slide |
+| **outline** (ghost) | užsipildo `#64151F` | iš bordo į kremą + slide |
+| **glass** | šviesesnis „stiklas“ (daugiau `#EFE8DB` alfa, rėmelis ryškesnis) | kremas + slide |
+| **secondary** | tamsesnis žalias | kremas + slide |
+| **outlineLight / lightFill / lightNeutral** | pagal esamą `CtaBackground` | slide kaip kiti |
+
+### Techninis
+- Bendras kodas: `src/components/ui/ctaShared.tsx` (`CtaBackground`, `CtaFace`).
+- **Nekeiskite** atskirai „vieno mygtuko“ šrifto be `--btn-*` atnaujinimo visur.
+
+### Seni žodiniai atitikmenys (spalvos)
+Primary: bg #64151F, text #EFE8DB, border-radius 0px  
+Ghost (outline): border 1px solid #64151F, hover užpildymas maroon  
+Dark variant (secondary): bg #3B443A, text #EFE8DB
 
 ## Labels/badges
 Background: #64151F

@@ -260,36 +260,45 @@ export default function ResursaiPage() {
             })}
             </div>
 
+            {/* Paywall: store „stiklo“+tamsinimas ant kortelių, tekstas ant vientiso tamsaus bloko (skaitoma). */}
             <div
-              className="absolute inset-x-0 bottom-0 z-[2] flex h-[min(520px,62%)] items-end justify-center border-t border-solid border-[#EFE8DB]/18 p-6 min-[768px]:h-[min(420px,48%)] min-[768px]:p-10"
+              className="absolute inset-x-0 bottom-0 z-[2] flex min-h-[min(520px,70%)] flex-col justify-end min-[768px]:min-h-[min(440px,58%)]"
               role="region"
               aria-label="Pilna metodinė bazė skirta partneriams"
             >
               <div
-                className="absolute inset-0 bg-gradient-to-t from-[#3B443A]/78 via-[#3B443A]/40 to-transparent shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl backdrop-saturate-150 [mask-image:linear-gradient(to_top,rgba(0,0,0,1)_0%,rgba(0,0,0,0.55)_52%,rgba(0,0,0,0)_100%)] [-webkit-mask-image:linear-gradient(to_top,rgba(0,0,0,1)_0%,rgba(0,0,0,0.55)_52%,rgba(0,0,0,0)_100%)]"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f120f] via-[#0f120f]/88 to-[#0f120f]/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-2xl backdrop-saturate-100"
                 aria-hidden
               />
 
-              <div className="relative z-[1] mx-auto w-full max-w-[860px] text-center pointer-events-auto">
-                <div
-                  className="mx-auto flex h-12 w-12 items-center justify-center border border-solid border-[#EFE8DB]/30 text-[#EFE8DB]"
-                  style={{ ...BODY, fontSize: '18px', borderRadius: '999px' }}
-                >
-                  <SfLock size={20} strokeWidth={2.5} className="-mt-0.5" />
-                </div>
-                <h2 className="m-0 mt-5 text-[#EFE8DB]" style={{ ...HEADING, fontSize: 'clamp(2rem, 3.4vw, 3rem)', lineHeight: 1.06, fontWeight: 300 }}>
-                  Norite pilnos metodinės bazės?
-                </h2>
-                <p className="m-0 mt-4 text-[#EFE8DB]/85" style={{ ...BODY, fontSize: '16px', lineHeight: 1.65 }}>
-                  Partneriams suteikiame prieigą prie išplėstinių protokolų, video mokymų medžiagos ir praktinių darbo sistemų, kurios atnaujinamos kas ketvirtį.
-                </p>
-                <div className="mt-7 flex flex-wrap justify-center gap-4">
-                  <CtaLink href="/tapkite-partneriu" variant="primary" labelMode="static" className="justify-center px-6">
-                    Tapti partneriu
-                  </CtaLink>
-                  <CtaLink href="/kontaktai" variant="outlineLight" labelMode="static" className="justify-center px-6">
-                    Gauti konsultaciją
-                  </CtaLink>
+              <div className="relative z-[1] w-full border-t-2 border-[#EFE8DB]/25 bg-[#3B443A] px-4 py-8 shadow-[0_-20px_50px_rgba(0,0,0,0.45)] min-[768px]:px-10 min-[768px]:py-10">
+                <div className="mx-auto w-full max-w-[860px] text-center">
+                  <div
+                    className="mx-auto flex h-12 w-12 items-center justify-center border border-solid border-[#EFE8DB]/40 bg-[#1A1010]/25 text-[#EFE8DB]"
+                    style={{ ...BODY, fontSize: '18px', borderRadius: '999px' }}
+                  >
+                    <SfLock size={20} strokeWidth={2.5} className="-mt-0.5" />
+                  </div>
+                  <h2
+                    className="m-0 mt-5 text-balance text-[#EFE8DB] [text-shadow:0_1px_2px_rgba(0,0,0,0.25)]"
+                    style={{ ...HEADING, fontSize: 'clamp(1.75rem, 3.2vw, 2.75rem)', lineHeight: 1.1, fontWeight: 400 }}
+                  >
+                    Norite pilnos metodinės bazės?
+                  </h2>
+                  <p
+                    className="m-0 mt-4 max-w-[58ch] text-[#EFE8DB] [text-shadow:0_1px_1px_rgba(0,0,0,0.2)] md:mx-auto"
+                    style={{ ...BODY, fontSize: '16px', lineHeight: 1.6 }}
+                  >
+                    Partneriams suteikiame prieigą prie išplėstinių protokolų, video mokymų medžiagos ir praktinių darbo sistemų, kurios atnaujinamos kas ketvirtį.
+                  </p>
+                  <div className="mt-7 flex flex-wrap justify-center gap-4">
+                    <CtaLink href="/tapkite-partneriu" variant="primary" labelMode="static" className="justify-center px-6">
+                      Tapti partneriu
+                    </CtaLink>
+                    <CtaLink href="/kontaktai" variant="outlineLight" labelMode="static" className="justify-center px-6">
+                      Gauti konsultaciją
+                    </CtaLink>
+                  </div>
                 </div>
               </div>
             </div>
