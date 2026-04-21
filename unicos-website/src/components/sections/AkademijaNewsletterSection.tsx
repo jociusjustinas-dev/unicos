@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { CtaButton } from '@/components/ui/CtaButton';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -49,13 +50,9 @@ export function AkademijaNewsletterSection() {
                 className="h-12 w-full border border-solid border-[rgba(26,16,16,0.18)] bg-[rgba(26,16,16,0.05)] px-4 py-3 text-base text-[#1A1010] placeholder:text-[rgba(26,16,16,0.45)] focus:border-[#64151F] focus:outline-none max-[479px]:text-sm"
                 style={{ ...BODY, borderRadius: '0px' }}
               />
-              <button
-                type="submit"
-                className="h-12 w-full border-0 bg-[#64151F] px-6 text-[15px] font-medium text-[#EFE8DB] transition-colors hover:bg-[#521220]"
-                style={{ ...BODY, borderRadius: '0px' }}
-              >
+              <CtaButton type="submit" variant="primary" className="w-full justify-center">
                 Prenumeruoti
-              </button>
+              </CtaButton>
               <p className="m-0 text-[#1A1010]/55 max-[991px]:text-center min-[992px]:text-left" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45, fontWeight: 400 }}>
                 Sutinku gauti informaciją apie renginius. Duomenys tvarkomi pagal{' '}
                 <a href="#" className="text-[#64151F] underline underline-offset-2">

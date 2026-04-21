@@ -262,7 +262,7 @@ export function ValueFeaturesSection({
                       variant="primary"
                       className="mt-1"
                       labelClassName="whitespace-nowrap"
-                      slideWrapperClassName="!h-6"
+                      labelMode="static"
                     >
                       {activeData.cta}
                     </CtaLink>

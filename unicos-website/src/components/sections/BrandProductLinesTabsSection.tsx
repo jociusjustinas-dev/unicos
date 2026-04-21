@@ -182,7 +182,7 @@ export function BrandProductLinesTabsSection({
                     <p className="m-0 text-[#1A1010]/65" style={{ ...BODY, fontSize: '13px', lineHeight: 1.45, fontWeight: 400 }}>
                       {consultBody}
                     </p>
-                    <CtaLink href="/kontaktai" variant="primary" className="mt-2" labelClassName="whitespace-nowrap" slideWrapperClassName="!h-6">
+                    <CtaLink href="/kontaktai" variant="primary" className="mt-2" labelClassName="whitespace-nowrap" labelMode="static">
                       Rašyti vadybininkui
                     </CtaLink>
                   </div>

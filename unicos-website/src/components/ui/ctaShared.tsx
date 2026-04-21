@@ -56,10 +56,19 @@ export function CtaBackground({ variant }: { variant: CtaSurfaceVariant }) {
 }
 
 export function ctaSlideInnerClass(v: CtaSurfaceVariant, labelClassName: string) {
-  const motion =
-    'text-[length:var(--btn-font-size)] font-medium normal-case [letter-spacing:var(--btn-letter-spacing)] transition-transform duration-300 ease-[var(--btn-ease)] group-hover/cta:-translate-y-[1.5em]';
+  const motionBase =
+    'text-[length:var(--btn-font-size)] font-medium normal-case [letter-spacing:var(--btn-letter-spacing)] ' +
+    'transition-[color,transform,text-shadow] duration-300 ease-[var(--btn-ease)] group-hover/cta:-translate-y-[1.5em]';
+  if (v === 'outline') {
+    return (
+      `${motionBase} ` +
+      `text-[var(--color-maroon)] [text-shadow:0_1.5em_0_var(--color-maroon)] ` +
+      `group-hover/cta:text-[#F1E8DA] group-hover/cta:[text-shadow:0_1.5em_0_#F1E8DA] ` +
+      `${labelClassName}`.trim()
+    );
+  }
   const color =
-    v === 'outline' || v === 'lightFill'
+    v === 'lightFill'
       ? 'text-[var(--color-maroon)]'
       : v === 'outlineLight'
         ? 'text-[#EFE8DB]'
@@ -68,7 +77,7 @@ export function ctaSlideInnerClass(v: CtaSurfaceVariant, labelClassName: string)
           : v === 'lightNeutral'
             ? 'text-[#1A1010]'
             : 'text-[var(--color-nougat)]';
-  return `${color} ${motion} ${labelClassName}`.trim();
+  return `${color} ${motionBase} ${labelClassName}`.trim();
 }
 
 export function ctaSlideShadowFor(v: CtaSurfaceVariant) {
@@ -114,6 +123,7 @@ export function CtaFace({ variant, labelMode, labelClassName = '', slideWrapperC
   const slideShadow = ctaSlideShadowFor(v);
 
   if (labelMode === 'slide') {
+    const shadowInline = v === 'outline' ? undefined : slideShadow;
     return (
       <div
         className={`relative z-[1] flex min-h-0 items-center justify-center overflow-hidden text-center pointer-events-none [height:var(--btn-label-track-height)] ${slideWrapperClassName}`.trim()}
@@ -123,7 +133,7 @@ export function CtaFace({ variant, labelMode, labelClassName = '', slideWrapperC
           style={{
             fontFamily: 'var(--font-body)',
             fontWeight: 'var(--btn-font-weight)',
-            textShadow: slideShadow,
+            ...(shadowInline ? { textShadow: shadowInline } : {}),
           }}
         >
           {children}
