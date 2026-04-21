@@ -364,7 +364,7 @@ function MobileMenu({ open }: { open: boolean }) {
 
         {[
           { label: 'Prekių ženklai', href: '/prekiu-zenklai' },
-          { label: 'Akademija', href: '#' },
+          { label: 'Akademija', href: '/akademija' },
           { label: 'Partnerystė', href: '/tapkite-partneriu' },
           { label: 'Apie Unicos', href: '/apie-unicos' },
           { label: 'Kontaktai', href: '/kontaktai' },
@@ -584,7 +584,7 @@ export function NavigationBarSection({
 
             {/* Plain links */}
             {[
-              { label: 'Akademija', href: '#' },
+              { label: 'Akademija', href: '/akademija' },
               { label: 'Partnerystė', href: '/tapkite-partneriu' },
               { label: 'Apie Unicos', href: '/apie-unicos' },
             ].map((item) => (

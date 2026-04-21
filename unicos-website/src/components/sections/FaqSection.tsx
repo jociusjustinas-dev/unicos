@@ -8,7 +8,9 @@ const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
 
-const faqs = [
+export type FaqEntry = { id: string; question: string; answer: string };
+
+const DEFAULT_FAQS: readonly FaqEntry[] = [
   {
     id: 'faq-partner',
     question: 'Kaip tapti partneriu?',
@@ -48,10 +50,19 @@ const contactAvatar = {
 export function FaqSection({
   backgroundClassName = 'bg-white',
   accent = 'green',
+  faqEntries,
+  faqIntro,
 }: {
   backgroundClassName?: string;
   accent?: 'green' | 'maroon';
+  /** Jei nenurodytas — numatytieji DUK kaip home / prekių ženklai. */
+  faqEntries?: readonly FaqEntry[];
+  faqIntro?: string;
 }) {
+  const faqs = faqEntries ?? DEFAULT_FAQS;
+  const intro =
+    faqIntro ??
+    'Surinkome atsakymus į dažniausiai kylančius klausimus, kad viskas būtų aišku nuo pat pradžių.';
   const [openIndexes, setOpenIndexes] = React.useState<number[]>([]);
   const [wrapRef, visible] = useInViewOnce<HTMLDivElement>({ threshold: 0.08, rootMargin: '0px 0px -10% 0px' });
 
@@ -115,7 +126,7 @@ export function FaqSection({
               </h2>
 
               <p className="m-0 max-w-[46ch] text-[#1A1010]/82" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>
-                Surinkome atsakymus į dažniausiai kylančius klausimus, kad viskas būtų aišku nuo pat pradžių.
+                {intro}
               </p>
             </div>
 

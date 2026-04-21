@@ -167,7 +167,7 @@ export function FooterSection({
               title="Navigacija"
               links={[
                 { label: 'Prekių ženklai', href: '/prekiu-zenklai' },
-                { label: 'Akademija', href: '#' },
+                { label: 'Akademija', href: '/akademija' },
                 { label: 'Sprendimai', href: '/sprendimai/odos-specialistams' },
                 { label: 'Platforma', href: '#' },
               ]}
@@ -175,7 +175,7 @@ export function FooterSection({
             <FooterColumn
               title="Pagalba"
               links={[
-                { label: 'Mokymai', href: '#mokymai-renginiai' },
+                { label: 'Mokymai', href: '/akademija#mokymu-kalendorius' },
                 { label: 'Logistika', href: '#' },
                 { label: 'D.U.K.', href: '#duk' },
                 { label: 'Privatumas', href: '#' },
