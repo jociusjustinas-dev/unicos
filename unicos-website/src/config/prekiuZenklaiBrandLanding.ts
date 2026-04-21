@@ -1,3 +1,5 @@
+import type { AudienceCards4, Challenges3 } from '@/config/sprendimaiSolutionLanding';
+
 export type PrekiuZenklaiBrandTextCard = {
   title: string;
   description: string;
@@ -17,8 +19,6 @@ export type PrekiuZenklaiBrandLandingConfig = {
     h1Light: string;
     h1Bold: string;
     lead: string;
-    metaPrimary: string;
-    metaSecondary: string;
     heroImageSrc: string;
     heroImageAlt: string;
     ctaPrimary: { href: string; label: string; microcopy: string };
@@ -33,12 +33,12 @@ export type PrekiuZenklaiBrandLandingConfig = {
     headingLight: string;
     headingBold: string;
     subheading: string;
-    cards: readonly PrekiuZenklaiBrandTextCard[];
+    audienceCards: AudienceCards4;
   };
   fitFor: {
     headingLight: string;
     headingBold: string;
-    cards: readonly PrekiuZenklaiBrandTextCard[];
+    situationItems: Challenges3;
   };
   partner: {
     headingLight: string;
@@ -86,8 +86,6 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
     h1Bold: 'prancūziškos odos priežiūros meistriškumas.',
     lead:
       'Daugiau nei 50 metų patirties profesionalioje kosmetikoje. Unikalios aparatinės procedūros, kurių rezultatai kalba patys už save.',
-    metaPrimary: 'Prancūzija',
-    metaSecondary: 'Oficialus atstovas Lietuvoje',
     heroImageSrc: '/mega-menu/1.jpeg',
     heroImageAlt: 'Guinot profesionali odos priežiūra',
     ctaPrimary: {
@@ -127,40 +125,48 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
     headingLight: 'Guinot ',
     headingBold: 'produktų linijos.',
     subheading: 'Platus profesionalus asortimentas procedūroms ir namų priežiūrai.',
-    cards: [
+    audienceCards: [
       {
-        title: 'Procedūrinė linija',
-        description: 'Profesionalios priemonės aparatinėms ir rankinėms procedūroms kabinete.',
+        id: 'guinot-line-procedural',
+        bg: '/mega-menu/1.jpeg',
+        heading: 'Procedūrinė linija',
+        body: 'Profesionalios priemonės aparatinėms ir rankinėms procedūroms kabinete.',
       },
       {
-        title: 'Namų priežiūros linija',
-        description: 'Produktai, kuriuos rekomenduojate klientams tęsti priežiūrą namuose.',
+        id: 'guinot-line-home',
+        bg: '/mega-menu/2.jpeg',
+        heading: 'Namų priežiūros linija',
+        body: 'Produktai, kuriuos rekomenduojate klientams tęsti priežiūrą namuose.',
       },
       {
-        title: 'Anti-age programa',
-        description: 'Intensyvūs atjauninimo sprendimai brandžiai odai.',
+        id: 'guinot-line-antiage',
+        bg: '/mega-menu/3.jpeg',
+        heading: 'Anti-age programa',
+        body: 'Intensyvūs atjauninimo sprendimai brandžiai odai.',
       },
       {
-        title: 'Hydradermie sistema',
-        description: 'Unikalus Guinot aparatinis metodas giliam odos valymui ir drėkinimui.',
+        id: 'guinot-line-hydradermie',
+        bg: '/mega-menu/4.jpeg',
+        heading: 'Hydradermie sistema',
+        body: 'Unikalus Guinot aparatinis metodas giliam odos valymui ir drėkinimui.',
       },
     ],
   },
   fitFor: {
     headingLight: 'Kam tinka ',
     headingBold: 'Guinot?',
-    cards: [
+    situationItems: [
       {
-        title: 'Kosmetologijos kabinetams',
-        description: 'Norite pasiūlyti aparatines procedūras, kurios išskiria Jus iš konkurentų.',
+        label: 'Kosmetologijos kabinetams',
+        paragraph: 'Norite pasiūlyti aparatines procedūras, kurios išskiria Jus iš konkurentų.',
       },
       {
-        title: 'Grožio salonams',
-        description: 'Ieškote premium odos priežiūros linijos šalia plaukų paslaugų.',
+        label: 'Grožio salonams',
+        paragraph: 'Ieškote premium odos priežiūros linijos šalia plaukų paslaugų.',
       },
       {
-        title: 'SPA centrams',
-        description: 'Reikia aukščiausios klasės procedūrų ir namų priežiūros produktų svečiams.',
+        label: 'SPA centrams',
+        paragraph: 'Reikia aukščiausios klasės procedūrų ir namų priežiūros produktų svečiams.',
       },
     ],
   },

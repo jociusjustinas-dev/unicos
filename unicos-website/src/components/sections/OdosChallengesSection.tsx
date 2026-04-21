@@ -28,7 +28,14 @@ const defaultChallenges: Challenges3 = [
 
 const challengeIcons = [SfLayers, SfShield, SfChatScience] as const;
 
-export function OdosChallengesSection({ items = defaultChallenges }: { items?: Challenges3 } = {}) {
+export function OdosChallengesSection({
+  items = defaultChallenges,
+  heading,
+}: {
+  items?: Challenges3;
+  /** Numatyta: „Pažįstama situacija?“. */
+  heading?: React.ReactNode;
+} = {}) {
   const [openIndexes, setOpenIndexes] = React.useState<number[]>([0]);
   const cardRef = React.useRef<HTMLDivElement>(null);
   const [cardVisible, setCardVisible] = React.useState(false);
@@ -75,8 +82,12 @@ export function OdosChallengesSection({ items = defaultChallenges }: { items?: C
                 fontWeight: 300,
               }}
             >
-              <span className="font-light">Pažįstama </span>
-              <span className="font-medium">situacija?</span>
+              {heading ?? (
+                <>
+                  <span className="font-light">Pažįstama </span>
+                  <span className="font-medium">situacija?</span>
+                </>
+              )}
             </h2>
 
             <div className="flex w-full max-w-[530px] flex-col gap-4 max-[767px]:gap-3">

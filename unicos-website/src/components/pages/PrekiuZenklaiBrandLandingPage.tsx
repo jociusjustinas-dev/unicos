@@ -9,6 +9,8 @@ import { CmsGridSection } from '@/components/sections/CmsGridSection';
 import { FaqSection } from '@/components/sections/FaqSection';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
+import { OdosAudienceSection } from '@/components/sections/OdosAudienceSection';
+import { OdosChallengesSection } from '@/components/sections/OdosChallengesSection';
 import { OdosPartnerSpotlightSection } from '@/components/sections/OdosPartnerSpotlightSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 
@@ -87,24 +89,7 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
                 {h.lead}
               </p>
 
-              <dl className="m-0 mt-8 flex flex-col gap-2 border-t border-[#1A1010]/10 pt-8 max-[767px]:mt-7 max-[767px]:pt-7">
-                <div>
-                  <dt className="sr-only">Šalis</dt>
-                  <dd className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '14px', fontWeight: 500, letterSpacing: '0.04em' }}>
-                    {h.metaPrimary}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="sr-only">Statusas</dt>
-                  <dd className="m-0 text-[#1A1010]/78" style={{ ...BODY, fontSize: '14px', fontWeight: 400 }}>
-                    {h.metaSecondary}
-                  </dd>
-                </div>
-              </dl>
-
-              <div className="my-8 h-px w-full bg-[#1A1010]/10 max-[767px]:my-7" aria-hidden />
-
-              <div className="flex flex-wrap items-start gap-8">
+              <div className="mt-10 flex flex-wrap items-start gap-8 max-[767px]:mt-8">
                 <div className="flex flex-col items-start gap-2.5">
                   <CtaLink href={h.ctaPrimary.href} variant="primary" className="min-w-[240px] justify-center">
                     {h.ctaPrimary.label}
@@ -149,24 +134,17 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
         showGuidanceRow={false}
       />
 
-      <ResponsibleBeautySection
-        eyebrowLabel={null}
+      <OdosAudienceSection
+        cards={config.productLines.audienceCards}
         heading={<SplitHeading light={config.productLines.headingLight} bold={config.productLines.headingBold} />}
         subheading={config.productLines.subheading}
-        cards={[...config.productLines.cards]}
-        surfaceClassName="bg-[#EFE8DB]"
-        accent="maroon"
-        showGuidanceRow={false}
+        consultTitle="Reikia Guinot asortimento konsultacijos?"
+        consultBody="Padėsime išsirinkti linijas procedūroms ir namų priežiūrai."
       />
 
-      <ResponsibleBeautySection
-        eyebrowLabel={null}
+      <OdosChallengesSection
+        items={config.fitFor.situationItems}
         heading={<SplitHeading light={config.fitFor.headingLight} bold={config.fitFor.headingBold} />}
-        subheading={null}
-        cards={[...config.fitFor.cards]}
-        surfaceClassName="bg-white"
-        accent="maroon"
-        showGuidanceRow={false}
       />
 
       <ResponsibleBeautySection
