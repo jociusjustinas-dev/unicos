@@ -214,16 +214,24 @@ export default function NeostrataPilingaiPage() {
                 </div>
             </aside>
 
-            {/* Dešinė: likęs turinys */}
+            {/* Dešinė: hero nuotrauka kortelėje; žemiau — likęs turinys */}
             <div className="min-h-0 min-w-0 bg-[#EFE8DB] text-left">
-              <div className="relative aspect-[16/10] w-full overflow-hidden max-[767px]:aspect-[5/4]" style={R0}>
-                <img
-                  src={event.imageSrc}
-                  alt=""
-                  className="h-full w-full object-cover"
-                  sizes="(max-width: 767px) 100vw, 50vw"
-                  loading="eager"
-                />
+              <div
+                className="border border-solid border-[#64151F] bg-[#EAE3D6] p-3 shadow-[0_1px_0_rgba(26,16,16,0.04)] md:p-4"
+                style={{ borderRadius: '8px' }}
+              >
+                <div
+                  className="relative aspect-[16/10] w-full overflow-hidden max-[767px]:aspect-[5/4]"
+                  style={{ borderRadius: '6px' }}
+                >
+                  <img
+                    src={event.imageSrc}
+                    alt=""
+                    className="h-full w-full object-cover"
+                    sizes="(max-width: 767px) 100vw, 50vw"
+                    loading="eager"
+                  />
+                </div>
               </div>
 
             <AkademijaDetailSection>

@@ -155,8 +155,18 @@ export function FooterSection({
                     </div>
                   </div>
                 </div>
-                <p className="text-sm font-medium leading-[142%] tracking-[-0.01em] text-[#EFE8DB]/50 max-[479px]:text-xs m-0" style={BODY}>
-                  Prenumeruodami sutinkate gauti UNICOS naujienas (edukaciją, pasiūlymus) 1–2 k./mėn. Jūsų duomenys saugūs — skaitykite mūsų privatumo politiką.
+                <p
+                  className="m-0 w-full max-w-[304px] text-[11px] font-normal leading-[1.45] text-[#EFE8DB]/45 max-[479px]:max-w-full max-[479px]:text-[10px]"
+                  style={BODY}
+                >
+                  Prenumeruodami sutinkate gauti UNICOS naujienas (edukaciją, pasiūlymus) 1–2 k./mėn. Jūsų duomenys saugūs — skaitykite mūsų{' '}
+                  <a
+                    href="#"
+                    className="text-[#EFE8DB]/60 underline underline-offset-[3px] transition-opacity hover:opacity-80"
+                  >
+                    privatumo politiką
+                  </a>
+                  .
                 </p>
               </form>
             </div>

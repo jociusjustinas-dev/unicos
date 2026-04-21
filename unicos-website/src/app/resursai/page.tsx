@@ -124,7 +124,11 @@ export default function ResursaiPage() {
                 className="m-0 mt-6 text-[#64151F]"
                 style={{ ...HEADING, fontSize: 'clamp(2.3rem, 4.5vw, 4rem)', lineHeight: 1.03, fontWeight: 300 }}
               >
-                Naudinga informacija profesionalams
+                Naudinga
+                <br />
+                informacija
+                <br />
+                profesionalams
               </h1>
               <p className="m-0 mt-5 max-w-[64ch] text-[#1A1010]/80" style={{ ...BODY, fontSize: '17px', lineHeight: 1.6 }}>
                 Protokolai, metodikos ir praktinės gairės, skirtos saugiam ir užtikrintam darbui.
@@ -139,17 +143,14 @@ export default function ResursaiPage() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-4">
-              <div className="min-h-[360px] border border-solid border-[#3B443A] bg-[#3B443A] p-6" style={{ borderRadius: '0px' }}>
-                <div className="h-3 w-[78%] bg-[#EFE8DB]/20" style={{ borderRadius: '0px' }} />
-                <div className="mt-3 h-3 w-[65%] bg-[#EFE8DB]/20" style={{ borderRadius: '0px' }} />
-                <div className="mt-3 h-3 w-[82%] bg-[#EFE8DB]/20" style={{ borderRadius: '0px' }} />
-                <div className="mt-3 h-3 w-[58%] bg-[#EFE8DB]/20" style={{ borderRadius: '0px' }} />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="min-h-[96px] border border-solid border-[#1A1010]/15 bg-[#EFE8DB]" style={{ borderRadius: '0px' }} />
-                <div className="min-h-[96px] border border-solid border-[#1A1010]/15 bg-[#EFE8DB]" style={{ borderRadius: '0px' }} />
-              </div>
+            <div className="relative min-h-[280px] w-full overflow-hidden border border-solid border-[#1A1010]/15 min-[992px]:min-h-[360px]" style={{ borderRadius: '0px' }}>
+              <img
+                src="/Professional Woman Indoors.png"
+                alt=""
+                className="h-full w-full min-h-[280px] object-cover min-[992px]:min-h-[360px]"
+                loading="eager"
+                sizes="(max-width: 991px) 100vw, 42vw"
+              />
             </div>
           </div>
         </Shell>
@@ -198,7 +199,7 @@ export default function ResursaiPage() {
 
       <section id="resursai-turinys" className="py-16 min-[768px]:py-24">
         <Shell>
-          <div className="relative isolate">
+          <div className="relative isolate overflow-hidden">
             <div className="grid grid-cols-1 gap-4 min-[992px]:grid-cols-3 min-[768px]:grid-cols-2">
             {resources.map((card, idx) => {
               const badgeClass =
@@ -260,11 +261,16 @@ export default function ResursaiPage() {
             </div>
 
             <div
-              className="absolute inset-0 z-[2] flex items-center justify-center border border-solid border-[#EFE8DB]/20 bg-[#3B443A]/50 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl backdrop-saturate-150 min-[768px]:p-10"
+              className="absolute inset-x-0 bottom-0 z-[2] flex h-[min(520px,62%)] items-end justify-center border-t border-solid border-[#EFE8DB]/18 p-6 min-[768px]:h-[min(420px,48%)] min-[768px]:p-10"
               role="region"
               aria-label="Pilna metodinė bazė skirta partneriams"
             >
-              <div className="mx-auto max-w-[860px] text-center">
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-[#3B443A]/78 via-[#3B443A]/40 to-transparent shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl backdrop-saturate-150 [mask-image:linear-gradient(to_top,rgba(0,0,0,1)_0%,rgba(0,0,0,0.55)_52%,rgba(0,0,0,0)_100%)] [-webkit-mask-image:linear-gradient(to_top,rgba(0,0,0,1)_0%,rgba(0,0,0,0.55)_52%,rgba(0,0,0,0)_100%)]"
+                aria-hidden
+              />
+
+              <div className="relative z-[1] mx-auto w-full max-w-[860px] text-center pointer-events-auto">
                 <div
                   className="mx-auto flex h-12 w-12 items-center justify-center border border-solid border-[#EFE8DB]/30 text-[#EFE8DB]"
                   style={{ ...BODY, fontSize: '18px', borderRadius: '999px' }}
