@@ -34,21 +34,19 @@ export type AkademijaEvent = {
   format: 'gyvai' | 'online';
   /** YYYY-MM renginio mėnuo (filtrui „Šis mėnuo“). */
   monthKey: string;
-  categoryLabel: string;
-  languageLabel: string;
-  dateLabel: string;
-  timeLabel: string;
-  formatLabel: string;
+  tags: string[];
+  datetime: string;
   title: string;
-  venue: string;
-  extraInfo: string;
+  rowLeft: string;
+  rowRight: string;
+  onlineVenue?: boolean;
   speaker: string;
   speakerRole: string;
+  speakerAvatar?: string;
   statusLine: string;
   statusTone: 'green' | 'maroon';
   statusMuted?: boolean;
   price: string;
-  priceNote: string;
   imageSrc: string;
   href: string;
 };
@@ -59,67 +57,59 @@ export const AKADEMIJA_EVENTS: AkademijaEvent[] = [
     topic: 'dermatologija',
     format: 'gyvai',
     monthKey: '2026-10',
-    categoryLabel: 'Dermatologija',
-    languageLabel: 'LT',
-    dateLabel: 'Spalio 24',
-    timeLabel: '10:00–16:00',
-    formatLabel: 'Gyvai',
+    tags: ['DERMATOLOGIJA', 'GYVAI', 'LT'],
+    datetime: 'Spalio 24, 10:00–16:00',
     title: 'Neostrata rūgštinių pilingų meistriškumas',
-    venue: 'Vilnius, UNICOS Akademija',
-    extraInfo: 'Tarptautinis sertifikatas',
+    rowLeft: 'Vilnius, UNICOS Akademija',
+    rowRight: 'Tarptautinis sertifikatas',
     speaker: 'Dr. Rūta Gancevičienė',
     speakerRole: 'Dermatovenerologė',
+    speakerAvatar: 'https://byqsupply-components.netlify.app/haldenmiller/images/ContactAvatar-3.webp',
     statusLine: 'Liko 4 vietos',
     statusTone: 'maroon',
     statusMuted: true,
     price: '49 €',
-    priceNote: 'Be PVM',
     imageSrc: '/mega-menu/1.jpeg',
-    href: '/akademija/renginiai/evt-1',
+    href: '/kontaktai',
   },
   {
     id: 'evt-2',
     topic: 'kosmetologija',
     format: 'gyvai',
     monthKey: '2026-11',
-    categoryLabel: 'Kosmetologija',
-    languageLabel: 'LT',
-    dateLabel: 'Lapkričio 05',
-    timeLabel: '11:00–15:00',
-    formatLabel: 'Gyvai',
+    tags: ['KOSMETOLOGIJA', 'GYVAI', 'LT'],
+    datetime: 'Lapkričio 05, 11:00–15:00',
     title: 'Guinot aparatinės procedūros: Hydradermie',
-    venue: 'Kaunas, viešbutis „Moxy“',
-    extraInfo: 'Dalyvio diplomas',
+    rowLeft: 'Kaunas, viešbutis „Moxy“',
+    rowRight: 'Dalyvio diplomas',
     speaker: 'Laura Simanavičiūtė',
     speakerRole: 'Guinot trenerė',
+    speakerAvatar: 'https://byqsupply-components.netlify.app/haldenmiller/images/ContactAvatar-3.webp',
     statusLine: 'Registracija atvira',
     statusTone: 'green',
     price: 'Nemokama',
-    priceNote: '',
     imageSrc: '/mega-menu/2.jpeg',
-    href: '/akademija/renginiai/evt-2',
+    href: '/kontaktai',
   },
   {
     id: 'evt-3',
     topic: 'verslas',
     format: 'online',
     monthKey: '2026-11',
-    categoryLabel: 'Verslas',
-    languageLabel: 'LT/EN',
-    dateLabel: 'Lapkričio 12',
-    timeLabel: '09:00–11:00',
-    formatLabel: 'Online',
+    tags: ['VERSLAS', 'ONLINE', 'LT-EN'],
+    datetime: 'Lapkričio 12, 09:00–11:00',
     title: 'Verslo augimo pusryčiai: Kainodara',
-    venue: 'Online / Zoom',
-    extraInfo: 'Nėra',
+    rowLeft: 'Online / Zoom',
+    rowRight: 'Nėra',
+    onlineVenue: true,
     speaker: 'Tomas Misiukonis',
     speakerRole: 'Verslo konsultantas',
+    speakerAvatar: 'https://byqsupply-components.netlify.app/haldenmiller/images/ContactAvatar-3.webp',
     statusLine: 'Neribota',
     statusTone: 'green',
     price: '29 €',
-    priceNote: 'Be PVM',
     imageSrc: '/mega-menu/3.jpeg',
-    href: '/akademija/renginiai/evt-3',
+    href: '/kontaktai',
   },
 ];
 
