@@ -177,7 +177,7 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
         footnote=""
       />
 
-      <CmsGridSection />
+      <CmsGridSection trainings={config.trainings} />
 
       <FaqSection backgroundClassName="bg-[#EFE8DB]" accent="maroon" />
       <CtaSection />

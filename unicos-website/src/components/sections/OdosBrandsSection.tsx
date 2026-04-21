@@ -118,7 +118,7 @@ export function OdosBrandsSection({
   headingLight = 'Prekių ženklai, atrinkti ',
   headingBold = 'Jūsų sričiai.',
   subheading = 'Oficialiai atstovaujami, su mokymų programa ir logistikos palaikymu.',
-  brandsCtaLabel = 'Visi prekių ženklai →',
+  brandsCtaLabel = 'Visi prekių ženklai',
 }: {
   cards?: readonly BrandCarouselCard[];
   headingLight?: string;

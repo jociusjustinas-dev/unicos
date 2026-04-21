@@ -654,7 +654,7 @@ export function TapkitePartneriuHeroSection() {
                           className="block text-[14px] font-medium leading-[1.5em] transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:-translate-y-[1.5em]"
                           style={{ ...BODY, textShadow: '0 1.5em 0 #1A1010' }}
                         >
-                          {isSubmitting ? 'Pateikiama…' : 'Pateikti paraišką →'}
+                          {isSubmitting ? 'Pateikiama…' : 'Pateikti paraišką'}
                         </span>
                       </span>
                     </button>

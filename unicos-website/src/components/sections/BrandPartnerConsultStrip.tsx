@@ -2,15 +2,20 @@
 
 import * as React from 'react';
 import { CtaLink } from '@/components/ui/CtaLink';
-import type { PrekiuZenklaiBrandLandingConfig } from '@/config/prekiuZenklaiBrandLanding';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
 
-type ConsultStrip = NonNullable<PrekiuZenklaiBrandLandingConfig['partner']['consultStrip']>;
+export type ConsultStripContent = {
+  title: string;
+  body: string;
+  portraitSrc: string;
+  portraitAlt: string;
+  cta: { href: string; label: string };
+};
 
-export function BrandPartnerConsultStrip({ strip }: { strip: ConsultStrip }) {
+export function BrandPartnerConsultStrip({ strip }: { strip: ConsultStripContent }) {
   return (
     <section className="relative z-[2] border-t border-[#1A1010]/10 bg-[#EFE8DB] py-16 max-[767px]:py-14" style={BODY}>
       <div className="relative z-[2] mx-auto grid w-full max-w-[1800px] grid-cols-1 items-center gap-10 px-16 max-[991px]:gap-8 max-[767px]:px-6 max-[479px]:px-4 lg:grid-cols-[1fr_minmax(280px,0.42fr)] lg:gap-16">

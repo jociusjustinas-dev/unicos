@@ -5,6 +5,18 @@ import { SfAward, SfClock, SfMapPin, SfMonitor } from '@/components/icons/feathe
 import { ChevronLeftIcon, ChevronRightIcon } from '@/components/ui/ChevronArrows';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
 import { CtaLink } from '@/components/ui/CtaLink';
+import type { PrekiuZenklaiBrandLandingConfig } from '@/config/prekiuZenklaiBrandLanding';
+
+export type CmsGridTrainingsCopy = PrekiuZenklaiBrandLandingConfig['trainings'];
+
+const DEFAULT_TRAININGS: CmsGridTrainingsCopy = {
+  headingLight: 'Mokymai ir ',
+  headingBold: 'renginiai',
+  body:
+    'Tikime, kad augti galima tik nuolat mokantis. Kviečiame į praktinius seminarus, produktų pristatymus ir verslo dirbtuves, kurios įkvėps naujiems pasiekimams.',
+  ctaHref: '#',
+  ctaLabel: 'Visi renginiai',
+};
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -99,7 +111,7 @@ const metaIconWrap = 'inline-flex h-5 w-5 shrink-0 items-center justify-center';
 const carouselNavBtnClass =
   'group flex h-12 w-12 shrink-0 items-center justify-center overflow-visible border border-[#1A1010]/18 bg-transparent p-0 text-[#1A1010] transition-[background-color,color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#3B443A] hover:bg-[#3B443A] hover:text-[#EFE8DB] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64151F] disabled:pointer-events-none disabled:opacity-35';
 
-function EventCard({ card }: { card: EventCardData }) {
+function EventCard({ card, registerLabel }: { card: EventCardData; registerLabel: string }) {
   const LocIcon = card.onlineVenue ? SfMonitor : SfMapPin;
 
   return (
@@ -229,7 +241,7 @@ function EventCard({ card }: { card: EventCardData }) {
             </p>
           </div>
           <CtaLink href="#kontaktai" variant="primary" className="self-start sm:self-auto">
-            Registruotis →
+            {registerLabel}
           </CtaLink>
         </div>
       </div>
@@ -239,7 +251,7 @@ function EventCard({ card }: { card: EventCardData }) {
 
 const revealEase = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
-function EventCardReveal({ card }: { card: EventCardData }) {
+function EventCardReveal({ card, registerLabel }: { card: EventCardData; registerLabel: string }) {
   const [ref, visible] = useInViewOnce<HTMLDivElement>({
     threshold: 0.08,
     rootMargin: '0px 0px -10% 0px',
@@ -267,12 +279,20 @@ function EventCardReveal({ card }: { card: EventCardData }) {
 
   return (
     <div ref={ref} className="min-w-0 max-[767px]:min-w-[86%] max-[479px]:min-w-[92%] max-[767px]:snap-start" style={style}>
-      <EventCard card={card} />
+      <EventCard card={card} registerLabel={registerLabel} />
     </div>
   );
 }
 
-export function CmsGridSection() {
+type CmsGridSectionProps = {
+  /** Jei nenurodyta — bendra UNICOS mokymų sekcija. Brand puslapiams perduokite `config.trainings`. */
+  trainings?: CmsGridTrainingsCopy;
+  /** Pagrindinis CTA ant renginio kortelės (be rodyklių). */
+  registerCtaLabel?: string;
+};
+
+export function CmsGridSection({ trainings, registerCtaLabel = 'Registruotis' }: CmsGridSectionProps = {}) {
+  const t = { ...DEFAULT_TRAININGS, ...trainings };
   const [sidebarRef, sidebarVisible] = useInViewOnce<HTMLDivElement>({
     threshold: 0.08,
     rootMargin: '0px 0px -8% 0px',
@@ -332,16 +352,16 @@ export function CmsGridSection() {
                   fontWeight: 300,
                 }}
               >
-                <span className="font-light">Mokymai ir </span>
-                <span className="font-medium">renginiai</span>
+                <span className="font-light">{t.headingLight}</span>
+                <span className="font-medium">{t.headingBold}</span>
               </h2>
 
               <p className="m-0 max-w-[48ch] text-[#1A1010]/82" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>
-                Tikime, kad augti galima tik nuolat mokantis. Kviečiame į praktinius seminarus, produktų pristatymus ir verslo dirbtuves, kurios įkvėps naujiems pasiekimams.
+                {t.body}
               </p>
 
-              <CtaLink href="#" variant="primary" className="w-fit">
-                Visi renginiai →
+              <CtaLink href={t.ctaHref} variant="primary" className="w-fit">
+                {t.ctaLabel}
               </CtaLink>
             </div>
 
@@ -400,7 +420,7 @@ export function CmsGridSection() {
             className="flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto pb-0 pr-1 max-[767px]:-mx-1 max-[767px]:px-1 min-[768px]:grid min-[768px]:grid-cols-2 min-[768px]:gap-x-8 min-[768px]:gap-y-10 min-[992px]:gap-x-10 min-[992px]:gap-y-12 min-[768px]:overflow-visible min-[768px]:snap-none min-[768px]:p-0 min-[768px]:pr-0"
           >
             {events.map((card) => (
-              <EventCardReveal key={card.id} card={card} />
+              <EventCardReveal key={card.id} card={card} registerLabel={registerCtaLabel} />
             ))}
           </div>
 

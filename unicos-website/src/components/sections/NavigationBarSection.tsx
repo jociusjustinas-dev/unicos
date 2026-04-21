@@ -140,13 +140,7 @@ function SprendimaiPanel({
                 className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 style={{ background: 'linear-gradient(180deg, rgba(100,21,31,0.28) 0%, rgba(26,16,16,0.8) 100%)' }}
               />
-              <div className="relative z-10 flex h-full flex-col justify-between p-6">
-                <span
-                  className="self-end translate-x-0 transition-transform duration-300 group-hover:translate-x-1"
-                  style={{ ...NAV_FONT, fontSize: '24px', lineHeight: 1, color: '#EFE8DB' }}
-                >
-                  →
-                </span>
+              <div className="relative z-10 flex h-full flex-col justify-end p-6">
                 <h3
                   style={{
                     ...NAV_FONT,
@@ -229,7 +223,7 @@ function PrekesZenklaiPanel({
               className="inline-flex items-center no-underline hover:opacity-60 transition-opacity duration-200"
               style={{ ...NAV_FONT, fontSize: '13px', fontWeight: 500, color: '#EFE8DB' }}
             >
-              Žiūrėti visus →
+              Žiūrėti visus
             </a>
           </div>
 
@@ -301,7 +295,7 @@ function ResursaiPanel({
               className="inline-flex items-center no-underline hover:opacity-60 transition-opacity duration-200"
               style={{ ...NAV_FONT, fontSize: '13px', fontWeight: 500, color: '#EFE8DB' }}
             >
-              Atidaryti resursus →
+              Atidaryti resursus
             </a>
           </div>
         </div>

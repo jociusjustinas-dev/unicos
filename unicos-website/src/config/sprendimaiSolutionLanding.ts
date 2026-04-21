@@ -73,7 +73,7 @@ export type SprendimaiSolutionLandingConfig = {
   brandsHeadingLight: string;
   brandsHeadingBold: string;
   brandsSubheading: string;
-  /** Numatyta: „Visi prekių ženklai →“. */
+  /** Numatyta: „Visi prekių ženklai“. */
   brandsCtaLabel?: string;
   starter: StarterCalloutConfig;
   spotlight: PartnerSpotlightConfig;
