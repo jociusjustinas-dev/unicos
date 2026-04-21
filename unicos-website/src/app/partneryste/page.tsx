@@ -157,7 +157,7 @@ export default function PartnerystePage() {
         }
         bodyText="Sukūrėme įrankį, kuris paverčia užsakymus malonumu."
         surfaceClassName="bg-white"
-        accent="maroon"
+        accent="green"
         theme="light"
         ctaLabel="Tapti partneriu ir gauti prieigą"
         ctaHref="#tapti-partneriu"
@@ -195,7 +195,7 @@ export default function PartnerystePage() {
         }
         subheading="Kuo ilgiau dirbame kartu - tuo daugiau naudos Jūsų verslui."
         surfaceClassName="bg-white"
-        accent="maroon"
+        accent="green"
         cards={[
           { title: 'Augančios nuolaidos', description: 'Partnerio kainodara gerėja su kiekvienu ketvirčiu.', Icon: SfActivity },
           { title: 'Pirmenybė naujienoms', description: 'Pirmieji sužinote apie naujus produktus ir mokymus.', Icon: SfCheck },
