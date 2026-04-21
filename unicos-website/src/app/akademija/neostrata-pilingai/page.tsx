@@ -38,7 +38,7 @@ export default function NeostrataPilingaiPage() {
   return (
     <main className="bg-[#EFE8DB] text-[#1A1010]">
       <NavigationBarSection forceLightSurface />
-      <section className="py-24 max-[767px]:py-16">
+      <section className="pt-40 pb-24 max-[767px]:pt-28 max-[767px]:pb-16 max-[479px]:pt-24">
         <Container>
           <div className="grid grid-cols-1 gap-10 min-[992px]:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] min-[992px]:items-start">
             <div className="flex flex-col gap-6">

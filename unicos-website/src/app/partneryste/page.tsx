@@ -51,7 +51,7 @@ export default function PartnerystePage() {
   return (
     <main className="bg-[#EFE8DB] text-[#1A1010]">
       <NavigationBarSection forceLightSurface />
-      <section className="py-24 max-[767px]:py-16">
+      <section className="pt-40 pb-24 max-[767px]:pt-28 max-[767px]:pb-16 max-[479px]:pt-24">
         <Container>
           <div className="mx-auto flex max-w-[920px] flex-col items-center text-center">
             <span className="inline-flex border border-solid border-[#64151F] bg-[#64151F] px-2 py-1 text-[#EFE8DB]" style={{ ...BODY, fontSize: '10px', fontWeight: 500, letterSpacing: '0.12em', borderRadius: '0px' }}>
