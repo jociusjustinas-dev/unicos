@@ -72,9 +72,7 @@ export function BrandStatsMarqueeSection({ items }: { items: readonly [BrandStat
 
           <div className="brand-stats-marquee-track flex w-max items-center py-8 max-[767px]:py-7">
             <MarqueeUnit items={items} />
-            <MarqueeSep />
             <MarqueeUnit items={items} />
-            <MarqueeSep />
             <MarqueeUnit items={items} />
           </div>
         </div>
