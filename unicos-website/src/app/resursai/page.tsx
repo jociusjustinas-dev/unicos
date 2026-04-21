@@ -165,24 +165,29 @@ export default function ResursaiPage() {
               ['segmentas', 'Segmentas'],
               ['zenklas', 'Prekės ženklas'],
               ['lygis', 'Lygis'],
-            ].map(([id, label]) => (
+            ].map(([id, label]) => {
+              const isActive = activeFilter === id;
+              return (
               <button
                 key={id}
                 type="button"
                 onClick={() => setActiveFilter((prev) => (prev === id ? null : (id as 'tipas' | 'segmentas' | 'zenklas' | 'lygis')))}
-                className={`flex items-center gap-1.5 border border-solid px-4 py-2 text-sm transition-colors ${
-                  activeFilter === id ? 'border-[#64151F] bg-[#64151F]/8 text-[#64151F]' : 'border-[#1A1010]/20 bg-transparent text-[#1A1010]'
+                className={`flex h-[40px] items-center gap-1.5 border border-solid px-4 text-sm transition-colors ${
+                  isActive
+                    ? 'border-[#64151F] bg-[#64151F] text-[#EFE8DB]'
+                    : 'border-[rgba(26,16,16,0.25)] bg-transparent text-[#1A1010]'
                 }`}
                 style={{ ...BODY, borderRadius: '0px' }}
               >
                 {label} <SfChevronDown size={14} strokeWidth={2.5} className="-mt-px" />
               </button>
-            ))}
+              );
+            })}
             <div className="ml-auto min-w-[240px] flex-1 max-w-[340px]">
               <input
                 type="text"
                 placeholder="Ieškoti dokumento..."
-                className="h-[42px] w-full border border-solid border-[#1A1010]/20 bg-transparent px-3 text-[#1A1010] placeholder:text-[#1A1010]/45 focus:border-[#64151F] focus:outline-none"
+                className="h-[40px] w-full border border-solid border-[rgba(26,16,16,0.25)] bg-[#EFE8DB] px-3 text-[#1A1010] placeholder:text-[#1A1010]/40 focus:border-[#64151F] focus:outline-none"
                 style={{ ...BODY, fontSize: '14px', borderRadius: '0px' }}
               />
             </div>
@@ -192,7 +197,8 @@ export default function ResursaiPage() {
 
       <section id="resursai-turinys" className="py-16 min-[768px]:py-24">
         <Shell>
-          <div className="grid grid-cols-1 gap-4 min-[992px]:grid-cols-3 min-[768px]:grid-cols-2">
+          <div className="relative isolate">
+            <div className="grid grid-cols-1 gap-4 min-[992px]:grid-cols-3 min-[768px]:grid-cols-2">
             {resources.map((card, idx) => {
               const badgeClass =
                 card.access === 'NEMOKAMA'
@@ -250,8 +256,39 @@ export default function ResursaiPage() {
                 </article>
               );
             })}
+            </div>
+
+            <div
+              className="absolute inset-0 z-[2] flex items-center justify-center border border-solid border-[#EFE8DB]/20 bg-[#3B443A]/50 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl backdrop-saturate-150 min-[768px]:p-10"
+              role="region"
+              aria-label="Pilna metodinė bazė skirta partneriams"
+            >
+              <div className="mx-auto max-w-[860px] text-center">
+                <div
+                  className="mx-auto flex h-12 w-12 items-center justify-center border border-solid border-[#EFE8DB]/30 text-[#EFE8DB]"
+                  style={{ ...BODY, fontSize: '18px', borderRadius: '999px' }}
+                >
+                  <SfLock size={20} strokeWidth={2.5} className="-mt-0.5" />
+                </div>
+                <h2 className="m-0 mt-5 text-[#EFE8DB]" style={{ ...HEADING, fontSize: 'clamp(2rem, 3.4vw, 3rem)', lineHeight: 1.06, fontWeight: 300 }}>
+                  Norite pilnos metodinės bazės?
+                </h2>
+                <p className="m-0 mt-4 text-[#EFE8DB]/85" style={{ ...BODY, fontSize: '16px', lineHeight: 1.65 }}>
+                  Partneriams suteikiame prieigą prie išplėstinių protokolų, video mokymų medžiagos ir praktinių darbo sistemų, kurios atnaujinamos kas ketvirtį.
+                </p>
+                <div className="mt-7 flex flex-wrap justify-center gap-4">
+                  <CtaLink href="/tapkite-partneriu" variant="primary" labelMode="static" className="justify-center px-6">
+                    Tapti partneriu
+                  </CtaLink>
+                  <CtaLink href="/kontaktai" variant="outlineLight" labelMode="static" className="justify-center px-6">
+                    Gauti konsultaciją
+                  </CtaLink>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="mt-8 text-center">
+
+          <div className="relative z-[3] mt-8 text-center">
             <CtaButton
               type="button"
               variant="outline"
@@ -261,30 +298,6 @@ export default function ResursaiPage() {
               {showMore ? 'Rodyti mažiau' : 'Rodyti daugiau'}
               <SfChevronDown size={14} strokeWidth={2.5} className={`transition-transform duration-300 ${showMore ? 'rotate-180' : ''}`} />
             </CtaButton>
-          </div>
-        </Shell>
-      </section>
-
-      <section className="bg-[#3B443A] py-16 min-[768px]:py-24">
-        <Shell>
-          <div className="mx-auto max-w-[860px] text-center">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center border border-solid border-[#EFE8DB]/30 text-[#EFE8DB]" style={{ ...BODY, fontSize: '18px', borderRadius: '999px' }}>
-              <SfLock size={20} strokeWidth={2.5} className="-mt-0.5" />
-            </div>
-            <h2 className="m-0 mt-5 text-[#EFE8DB]" style={{ ...HEADING, fontSize: 'clamp(2rem, 3.4vw, 3rem)', lineHeight: 1.06, fontWeight: 300 }}>
-              Norite pilnos metodinės bazės?
-            </h2>
-            <p className="m-0 mt-4 text-[#EFE8DB]/70" style={{ ...BODY, fontSize: '16px', lineHeight: 1.65 }}>
-              Partneriams suteikiame prieigą prie išplėstinių protokolų, video mokymų medžiagos ir praktinių darbo sistemų, kurios atnaujinamos kas ketvirtį.
-            </p>
-            <div className="mt-7 flex flex-wrap justify-center gap-4">
-              <CtaLink href="/tapkite-partneriu" variant="primary" labelMode="static" className="justify-center px-6">
-                Tapti partneriu
-              </CtaLink>
-              <CtaLink href="/kontaktai" variant="outlineLight" labelMode="static" className="justify-center px-6">
-                Gauti konsultaciją
-              </CtaLink>
-            </div>
           </div>
         </Shell>
       </section>
