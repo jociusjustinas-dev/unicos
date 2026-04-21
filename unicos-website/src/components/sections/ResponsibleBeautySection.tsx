@@ -30,6 +30,7 @@ type BeautyFeature = {
 type BeautyCard = {
   title: string;
   description: string;
+  Icon?: React.ComponentType<any>;
 };
 
 const defaultFeatures: BeautyFeature[] = [
@@ -153,7 +154,7 @@ export function ResponsibleBeautySection({
     return cards.map((c, i) => ({
       title: c.title,
       description: c.description,
-      Icon: defaultFeatures[i % defaultFeatures.length]?.Icon ?? SfSparkles,
+      Icon: c.Icon ?? defaultFeatures[i % defaultFeatures.length]?.Icon ?? SfSparkles,
     }));
   }, [cards]);
 
