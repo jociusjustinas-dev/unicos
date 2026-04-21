@@ -83,32 +83,6 @@ export default function PartnerystePage() {
         showHighlights={false}
         withFooterVideoBackdrop={false}
         backdropTone="warmCream"
-        bubbles={[
-          {
-            title: 'Atrinka Jums',
-            body: 'Mes ne sandėlys. Atrenkame tik tai, kas patikrinta, atsakinga ir tinkama profesionaliam darbui. Jūs negaištate laiko rinkdamiesi — mes jau tai padarėme.',
-            icon: '/Icon.svg',
-            hoverBg: '#64151F',
-            hoverFg: '#EFE8DB',
-            border: 'rgba(100,21,31,0.38)',
-          },
-          {
-            title: 'Žinios prieš pardavimą',
-            body: 'Produktas be žinių yra rizika. Investuojame į mokymus, protokolus ir aiškų supratimą, kad dirbtumėte saugiai ir užtikrintai.',
-            icon: '/Icon-1.svg',
-            hoverBg: '#3B443A',
-            hoverFg: '#EFE8DB',
-            border: 'rgba(59,68,58,0.34)',
-          },
-          {
-            title: 'Augame kartu',
-            body: 'Asmeninė vadyba, konsultacijos ir palaikymas kasdieniuose sprendimuose. Jūs nesate vieni.',
-            icon: '/Icon-2.svg',
-            hoverBg: '#1A1010',
-            hoverFg: '#EFE8DB',
-            border: 'rgba(26,16,16,0.32)',
-          },
-        ]}
       />
 
       <section className="py-24 max-[767px]:py-16">
