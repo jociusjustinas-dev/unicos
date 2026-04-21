@@ -12,7 +12,7 @@ export function AkademijaNewsletterSection() {
   };
 
   return (
-    <section className="relative z-[2] border-t border-solid border-[#1A1010]/10 bg-[#EFE8DB] py-16 max-[991px]:py-14">
+    <section className="relative z-[2] bg-[#EFE8DB] py-16 max-[991px]:py-14">
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div className="grid grid-cols-1 items-start gap-10 min-[992px]:grid-cols-2 min-[992px]:items-center min-[992px]:gap-[min(4rem,6vw)]">
           <div className="flex min-w-0 flex-col gap-4 max-[991px]:mx-auto max-[991px]:max-w-[36rem] max-[991px]:text-center min-[992px]:max-w-[46ch] min-[992px]:text-left">

@@ -72,7 +72,7 @@ function FilterDropdown<T extends string>({
       <button
         type="button"
         onClick={open ? onClose : onOpen}
-        className={`flex h-11 w-full items-center justify-between border border-solid bg-white px-3 text-left transition-colors ${
+        className={`flex h-11 w-full items-center justify-between border border-solid bg-transparent px-3 text-left transition-colors ${
           open ? 'border-[#64151F]' : 'border-[#1A1010]/16 hover:border-[#64151F]/45'
         }`}
         style={{ ...BODY, borderRadius: '0px', fontSize: '14px', lineHeight: 1.2, fontWeight: 400 }}
@@ -317,10 +317,7 @@ export function AkademijaTrainingSection() {
             }}
           >
             <span className="font-light">Mokymų </span>
-            <span className="font-medium">kalendorius.</span>{' '}
-            <span className="text-[#1A1010]/56" style={{ ...BODY, fontSize: 'clamp(1rem, 1.5vw, 1.25rem)', fontWeight: 400 }}>
-              {filtered.length} {filtered.length === 1 ? 'renginys' : 'renginiai'}
-            </span>
+            <span className="font-medium">kalendorius.</span>
           </h2>
           <p className="m-0 max-w-[48ch] text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>
             Raskite Jums tinkamiausią renginį.
@@ -329,7 +326,7 @@ export function AkademijaTrainingSection() {
 
         <div
           ref={filterBarRef}
-          className={`z-[8] mb-10 bg-[#EFE8DB]/94 p-4 backdrop-blur-[2px] transition-[box-shadow,background-color] ${
+          className={`z-[8] mb-10 bg-[#EFE8DB]/94 backdrop-blur-[2px] transition-[box-shadow,background-color] ${
             filtersSticky ? 'sticky top-0 shadow-[0_8px_18px_rgba(26,16,16,0.12)]' : 'sticky top-0 shadow-none'
           }`}
           style={{ borderRadius: '0px' }}
@@ -337,7 +334,7 @@ export function AkademijaTrainingSection() {
           <button
             type="button"
             onClick={() => setMobileFiltersOpen((p) => !p)}
-            className="hidden w-full items-center justify-between border border-solid border-[#1A1010]/14 bg-white px-3 py-2 text-left max-[767px]:flex"
+            className="hidden w-full items-center justify-between border border-solid border-[#1A1010]/14 bg-transparent px-3 py-2 text-left max-[767px]:flex"
             style={{ ...BODY, borderRadius: '0px', fontSize: '14px' }}
           >
             <span className="font-medium text-[#1A1010]">Filtrai</span>
