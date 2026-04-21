@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
+import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
 import { FooterSection } from '@/components/sections/FooterSection';
 import { PAGE_SHELL_CLASS } from '@/config/pageShell';
 import { CtaLink } from '@/components/ui/CtaLink';
@@ -302,29 +303,31 @@ export default function ResursaiPage() {
         </Shell>
       </section>
 
-      <section className="border-t border-solid border-[#1A1010]/10 py-16 min-[768px]:py-24">
-        <Shell>
-          <div className="grid grid-cols-1 gap-4 min-[992px]:grid-cols-3">
-            {[
-              { label: 'CENTRALIZUOTA BAZĖ', body: 'Visi dokumentai vienoje vietoje, pasiekiami 24/7.', Icon: SfLayers },
-              { label: 'NUOLATINIS ATNAUJINIMAS', body: 'Naujausi protokolai tiesiai iš gamintojų.', Icon: SfActivity },
-              { label: 'PATIKRINTA EKSPERTŲ', body: 'Tik saugios ir patvirtintos metodikos.', Icon: SfCheck },
-            ].map(({ label, body, Icon }, idx) => (
-              <div key={label} className={`px-6 py-10 text-center ${idx < 2 ? 'min-[992px]:border-r min-[992px]:border-solid min-[992px]:border-[#1A1010]/10' : ''}`}>
-                <div className="mx-auto flex h-10 w-10 items-center justify-center bg-[#64151F]" style={{ borderRadius: '0px' }}>
-                  <Icon size={20} strokeWidth={2} className="text-[#EFE8DB]" />
-                </div>
-                <p className="m-0 mt-4 uppercase text-[#1A1010]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.1em', fontWeight: 600 }}>
-                  {label}
-                </p>
-                <p className="m-0 mt-3 text-[#1A1010]/72" style={{ ...BODY, fontSize: '15px', lineHeight: 1.6 }}>
-                  {body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Shell>
-      </section>
+      <div className="border-t border-solid border-[#1A1010]/10">
+        <ResponsibleBeautySection
+          cardsOnly
+          showGuidanceRow={false}
+          surfaceClassName="bg-[#EFE8DB]"
+          accent="maroon"
+          cards={[
+            {
+              title: 'CENTRALIZUOTA BAZĖ',
+              description: 'Visi dokumentai vienoje vietoje, pasiekiami 24/7.',
+              Icon: SfLayers,
+            },
+            {
+              title: 'NUOLATINIS ATNAUJINIMAS',
+              description: 'Naujausi protokolai tiesiai iš gamintojų.',
+              Icon: SfActivity,
+            },
+            {
+              title: 'PATIKRINTA EKSPERTŲ',
+              description: 'Tik saugios ir patvirtintos metodikos.',
+              Icon: SfCheck,
+            },
+          ]}
+        />
+      </div>
 
       <section className="pt-16 pb-20 min-[768px]:pt-24 min-[768px]:pb-28">
         <Shell>

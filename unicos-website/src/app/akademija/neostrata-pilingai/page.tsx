@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
-import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
 import { FooterSection } from '@/components/sections/FooterSection';
 import { AkademijaDetailH2 } from '@/components/sections/akademija/AkademijaDetailH2';
 import { AkademijaDetailSection } from '@/components/sections/akademija/AkademijaDetailSection';
@@ -18,7 +17,6 @@ import {
   SfFaceSmile,
   SfLayers,
   SfActivity,
-  SfCheck,
 } from '@/components/icons/feather';
 import { AKADEMIJA_EVENTS, type AkademijaEvent } from '@/config/akademijaPage';
 
@@ -69,38 +67,38 @@ export default function NeostrataPilingaiPage() {
       {/* md:pt-32 sutampa su nav; kairė be vidinio scroll — tik puslapio scroll */}
       <div className="pt-24 md:pt-32">
         <div className={PAGE_SHELL_CLASS}>
+          <nav className="mb-6 md:mb-8" aria-label="Breadcrumb">
+            <ol className="m-0 flex list-none flex-wrap items-center gap-3 p-0">
+              <li>
+                <Link
+                  href="/akademija"
+                  className="uppercase text-[#64151F] transition-opacity hover:opacity-80"
+                  style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
+                >
+                  Akademija
+                </Link>
+              </li>
+              <li className="text-[#1A1010]/45" style={{ ...BODY, fontSize: '11px', fontWeight: 400 }}>
+                /
+              </li>
+              <li>
+                <span
+                  className="uppercase text-[#64151F]"
+                  style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
+                  aria-current="page"
+                >
+                  Neostrata pilingai
+                </span>
+              </li>
+            </ol>
+          </nav>
+
           <div className="grid min-h-0 grid-cols-1 items-start gap-y-10 md:grid-cols-2 md:items-start md:gap-x-16 md:gap-y-0 lg:gap-x-24">
-            {/* Kairė: lipnus hero — md:pt-0 kad viršus sutaptų su dešinės nuotraukos viršumi */}
+            {/* Kairė: lipnus hero; turinys vertikaliai centruotas kremo plokštumoje */}
             <aside
               className="relative w-full self-start bg-[var(--color-cream-panel)] text-[#1A1010] md:sticky md:z-[1] md:top-[var(--site-sticky-top,8rem)] md:transition-[top] md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)]"
             >
-              <div className="flex flex-col gap-3 px-6 pb-6 pt-6 md:gap-4 md:px-12 md:pb-12 md:pt-0">
-                  <nav className="mb-0" aria-label="Breadcrumb">
-                    <ol className="m-0 flex list-none flex-wrap items-center gap-3 p-0">
-                      <li>
-                        <Link
-                          href="/akademija"
-                          className="uppercase text-[#64151F] transition-opacity hover:opacity-80"
-                          style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
-                        >
-                          Akademija
-                        </Link>
-                      </li>
-                      <li className="text-[#1A1010]/45" style={{ ...BODY, fontSize: '11px', fontWeight: 400 }}>
-                        /
-                      </li>
-                      <li>
-                        <span
-                          className="uppercase text-[#64151F]"
-                          style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
-                          aria-current="page"
-                        >
-                          Neostrata pilingai
-                        </span>
-                      </li>
-                    </ol>
-                  </nav>
-
+              <div className="flex min-h-[min(520px,calc(100svh-7rem))] flex-col justify-center gap-3 px-6 py-8 md:min-h-[min(580px,calc(100vh-9rem))] md:gap-4 md:px-12 md:py-12">
                   <div className="flex min-w-0 flex-wrap items-center justify-between gap-x-4 gap-y-2">
                     <div className="flex min-w-0 flex-wrap items-center gap-2">
                       {event.tags.map((tag) => (
@@ -319,30 +317,6 @@ export default function NeostrataPilingaiPage() {
           </div>
         </div>
       </div>
-
-      <ResponsibleBeautySection
-        cardsOnly
-        showGuidanceRow={false}
-        surfaceClassName="bg-[#EFE8DB]"
-        accent="maroon"
-        cards={[
-          {
-            title: 'CENTRALIZUOTA BAZĖ',
-            description: 'Visi dokumentai vienoje vietoje, pasiekiami 24/7.',
-            Icon: SfLayers,
-          },
-          {
-            title: 'NUOLATINIS ATNAUJINIMAS',
-            description: 'Naujausi protokolai tiesiai iš gamintojų.',
-            Icon: SfActivity,
-          },
-          {
-            title: 'PATIKRINTA EKSPERTŲ',
-            description: 'Tik saugios ir patvirtintos metodikos.',
-            Icon: SfCheck,
-          },
-        ]}
-      />
 
       <AkademijaMaroonEventCtaBand
         ariaLabelledBy="neostrata-cta-heading"
