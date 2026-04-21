@@ -54,6 +54,8 @@ export type PrekiuZenklaiBrandLandingConfig = {
     consultStrip: {
       title: string;
       body: string;
+      /** Trumpas tekstas apatinėje juostoje (kaip home); jei nenurodytas — naudojama `body`. */
+      stripSubtitle?: string;
       portraitSrc: string;
       portraitAlt: string;
       cta: { href: string; label: string };
@@ -223,7 +225,9 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
     consultStrip: {
       title: 'Konsultacija su vadybininku',
       body:
-        'Turite klausimų apie Guinot partnerystę, kainas ar asortimentą? Mūsų vadybininkas atsakys ir padės suplanuoti kitus žingsnis — nuo pirmo kontakto iki užsakymo.',
+        'Turite klausimų apie Guinot partnerystę, kainas ar asortimentą? Mūsų vadybininkas atsakys ir padės suplanuoti kitus žingsnius — nuo pirmo kontakto iki užsakymo.',
+      stripSubtitle:
+        'Turite klausimų dėl kainų, asortimento ar žingsnių? Vadybininkas atsakys ir padės suplanuoti tolesnę eigą.',
       portraitSrc: 'https://byqsupply-components.netlify.app/haldenmiller/images/ContactAvatar-3.webp',
       portraitAlt: 'UNICOS vadybininkas — Guinot partnerystė',
       cta: { href: '/kontaktai', label: 'Rašyti vadybininkui' },

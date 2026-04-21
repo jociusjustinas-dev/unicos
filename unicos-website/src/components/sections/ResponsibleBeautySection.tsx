@@ -64,6 +64,15 @@ function useInView(threshold = 0.1, rootMargin = '0px 0px -6% 0px') {
 
 const EASE_HALDEN = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
+/** Pasirinktinis apatinės juostos turinys (pvz. brand „Partnerystės privalumai“); kitaip – home numatytasis. */
+export type ResponsibleBeautyGuidanceStrip = {
+  title: string;
+  subtitle: string;
+  portraitSrc: string;
+  portraitAlt: string;
+  cta: { href: string; label: string };
+};
+
 export function ResponsibleBeautySection({
   eyebrowLabel,
   heading,
@@ -72,6 +81,7 @@ export function ResponsibleBeautySection({
   surfaceClassName = 'bg-white',
   accent = 'green',
   showGuidanceRow = true,
+  guidanceStrip,
 }: {
   eyebrowLabel?: string | null;
   heading?: React.ReactNode;
@@ -83,6 +93,8 @@ export function ResponsibleBeautySection({
   accent?: 'green' | 'maroon';
   /** Apatinė konsultacijos juosta su avataru ir CTA. */
   showGuidanceRow?: boolean;
+  /** Jei nurodyta, juostoje rodomas šis tekstas ir CTA vietoj numatyto „Reikia konsultacijos?“. */
+  guidanceStrip?: ResponsibleBeautyGuidanceStrip;
 }) {
   const isMaroon = accent === 'maroon';
   const gridRef = React.useRef<HTMLDivElement>(null);
@@ -138,6 +150,13 @@ export function ResponsibleBeautySection({
       Icon: defaultFeatures[i % defaultFeatures.length]?.Icon ?? SfSparkles,
     }));
   }, [cards]);
+
+  const stripTitle = guidanceStrip?.title ?? 'Reikia konsultacijos?';
+  const stripSubtitle = guidanceStrip?.subtitle ?? 'Visada mielai padėsime.';
+  const stripPortraitSrc = guidanceStrip?.portraitSrc ?? contactAvatar.src;
+  const stripPortraitAlt = guidanceStrip?.portraitAlt ?? contactAvatar.alt;
+  const stripCtaHref = guidanceStrip?.cta.href ?? '/kontaktai';
+  const stripCtaLabel = guidanceStrip?.cta.label ?? 'Susisiekite';
 
   return (
     <section className={`relative z-[2] py-20 max-[767px]:py-14 text-[#1A1010] ${surfaceClassName}`}>
@@ -252,25 +271,20 @@ export function ResponsibleBeautySection({
                   className="h-14 w-14 shrink-0 overflow-hidden border border-[#1A1010]/10 bg-[#EFE8DB]/60 max-[479px]:h-12 max-[479px]:w-12"
                   style={{ borderRadius: '0px' }}
                 >
-                  <img
-                    src={contactAvatar.src}
-                    loading="lazy"
-                    alt={contactAvatar.alt}
-                    className="h-full w-full object-cover"
-                  />
+                  <img src={stripPortraitSrc} loading="lazy" alt={stripPortraitAlt} className="h-full w-full object-cover" />
                 </div>
                 <div className="min-w-0 flex-1 text-left">
                   <p className="m-0 font-medium leading-snug text-[#1A1010]" style={{ ...BODY, fontSize: '15px' }}>
-                    Reikia konsultacijos?
+                    {stripTitle}
                   </p>
                   <p className="m-0 mt-1 leading-relaxed text-[#1A1010]/65" style={{ ...BODY, fontSize: '14px', lineHeight: 1.5 }}>
-                    Visada mielai padėsime.
+                    {stripSubtitle}
                   </p>
                 </div>
               </div>
               <div className="flex w-full justify-stretch sm:justify-end">
-                <CtaLink href="/kontaktai" variant="secondary" labelMode="static" className="min-w-[180px] justify-center max-[639px]:w-full">
-                  Susisiekite
+                <CtaLink href={stripCtaHref} variant="secondary" labelMode="static" className="min-w-[180px] justify-center max-[639px]:w-full">
+                  {stripCtaLabel}
                 </CtaLink>
               </div>
             </div>

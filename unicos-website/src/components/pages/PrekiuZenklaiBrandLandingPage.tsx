@@ -15,7 +15,6 @@ import { OdosChallengesSection } from '@/components/sections/OdosChallengesSecti
 import { OdosPartnerSpotlightSection } from '@/components/sections/OdosPartnerSpotlightSection';
 import { BrandStatsMarqueeSection } from '@/components/sections/BrandStatsMarqueeSection';
 import { BrandMedicalStandardsSection } from '@/components/sections/BrandMedicalStandardsSection';
-import { BrandPartnerConsultStrip } from '@/components/sections/BrandPartnerConsultStrip';
 import { CtaLink } from '@/components/ui/CtaLink';
 
 const BODY: React.CSSProperties = {
@@ -157,10 +156,15 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
         cards={[...config.partner.cards]}
         surfaceClassName="bg-white"
         accent="green"
-        showGuidanceRow={false}
+        showGuidanceRow
+        guidanceStrip={{
+          title: config.partner.consultStrip.title,
+          subtitle: config.partner.consultStrip.stripSubtitle ?? config.partner.consultStrip.body,
+          portraitSrc: config.partner.consultStrip.portraitSrc,
+          portraitAlt: config.partner.consultStrip.portraitAlt,
+          cta: config.partner.consultStrip.cta,
+        }}
       />
-
-      <BrandPartnerConsultStrip strip={config.partner.consultStrip} />
 
       <BrandStatsMarqueeSection items={config.stats.items} />
 
