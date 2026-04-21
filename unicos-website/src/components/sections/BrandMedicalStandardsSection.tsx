@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { SfActivity, SfAward, SfQualityRibbon, SfShield, SfSparkles } from '@/components/icons/feather';
+import { SfActivity, SfArrowRight, SfAward, SfQualityRibbon, SfShield } from '@/components/icons/feather';
 import type { PrekiuZenklaiBrandLandingConfig } from '@/config/prekiuZenklaiBrandLanding';
 
 const BODY: React.CSSProperties = {
@@ -11,7 +11,7 @@ const BODY: React.CSSProperties = {
 const GREEN = '#3B443A';
 
 const docLinkClass =
-  'inline-flex w-full max-w-full items-center justify-center border border-[#EFE8DB]/35 bg-transparent px-4 py-2.5 text-center text-[14px] font-medium leading-snug text-[#EFE8DB] no-underline transition-[background-color,border-color] duration-200 hover:border-[#EFE8DB]/55 hover:bg-[#EFE8DB]/[0.08] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EFE8DB]/50 sm:w-auto sm:justify-start sm:text-left';
+  'flex w-full min-w-0 items-center justify-between gap-4 border border-[#EFE8DB]/35 bg-transparent px-4 py-3 text-left text-[14px] font-medium leading-snug text-[#EFE8DB] no-underline transition-[background-color,border-color] duration-200 hover:border-[#EFE8DB]/55 hover:bg-[#EFE8DB]/[0.08] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EFE8DB]/50';
 
 type Quality = PrekiuZenklaiBrandLandingConfig['quality'];
 
@@ -21,8 +21,8 @@ export function BrandMedicalStandardsSection({ quality }: { quality: Quality }) 
   return (
     <section className="relative z-[2] bg-white py-20 max-[767px]:py-14">
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-x-[min(8.25rem,7vw)] lg:gap-y-0">
-          <div className="flex min-w-0 flex-col gap-8 max-[991px]:gap-7">
+        <div className="grid grid-cols-1 items-stretch gap-12 lg:grid-cols-2 lg:gap-x-[min(8.25rem,7vw)] lg:gap-y-0">
+          <div className="flex min-h-0 min-w-0 flex-col gap-8 max-[991px]:gap-7">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
               <span
@@ -51,13 +51,13 @@ export function BrandMedicalStandardsSection({ quality }: { quality: Quality }) 
               {quality.subheading}
             </p>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4">
+            <div className="flex flex-col gap-10 max-[767px]:gap-8">
               {quality.cards.map((card, i) => {
                 const Icon = CARD_ICONS[i % CARD_ICONS.length]!;
                 return (
                   <div
                     key={card.title}
-                    className="flex flex-row items-start gap-4 border border-[#3B443A]/18 bg-[rgba(59,68,58,0.06)] p-5 max-[767px]:gap-3 max-[767px]:p-4"
+                    className="flex flex-row items-center gap-4 border border-[#3B443A]/18 bg-[rgba(59,68,58,0.06)] p-5 max-[479px]:gap-3 max-[767px]:p-4"
                     style={{ borderRadius: '0px' }}
                   >
                     <div
@@ -82,25 +82,28 @@ export function BrandMedicalStandardsSection({ quality }: { quality: Quality }) 
             </div>
           </div>
 
-          <aside className="w-full min-w-0">
+          <aside className="flex h-full min-h-0 w-full min-w-0 flex-col">
             <div
-              className="flex min-h-[min(360px,55vw)] w-full flex-col border border-[#1A1010]/12 bg-[#3B443A] p-8 text-[#EFE8DB] max-[767px]:min-h-0 max-[767px]:p-6 lg:min-h-[min(640px,72vh)] lg:p-9"
+              className="flex h-full min-h-[280px] w-full flex-col border border-[#1A1010]/12 bg-[#3B443A] p-8 text-[#EFE8DB] max-[767px]:p-6 lg:min-h-0 lg:p-9"
               style={{ borderRadius: '0px' }}
             >
               <div className="flex flex-col gap-5">
-                <div className="flex items-start gap-2.5">
-                  <SfSparkles size={20} className="mt-0.5 shrink-0 text-[#EFE8DB]/85" aria-hidden />
-                  <h3
-                    className="m-0 text-[#EFE8DB]"
-                    style={{ ...BODY, fontSize: '15px', fontWeight: 600, letterSpacing: '0.02em', lineHeight: 1.35 }}
-                  >
-                    {quality.extraTitle}
-                  </h3>
-                </div>
+                <h3
+                  className="m-0 text-[#EFE8DB] tracking-[-0.02em]"
+                  style={{
+                    fontFamily: "'Quiche Sans', Georgia, serif",
+                    fontSize: 'clamp(1.5rem, 2.4vw, 1.85rem)',
+                    fontWeight: 400,
+                    lineHeight: 1.12,
+                  }}
+                >
+                  {quality.extraTitle}
+                </h3>
                 <nav className="flex flex-col gap-2.5" aria-label="Klinikinė dokumentacija">
                   {quality.extraDocLinks.map((link) => (
                     <a key={link.label} href={link.href} className={docLinkClass}>
-                      {link.label}
+                      <span className="min-w-0 flex-1 pr-2">{link.label}</span>
+                      <SfArrowRight size={18} className="shrink-0 text-[#EFE8DB]/90" aria-hidden />
                     </a>
                   ))}
                 </nav>
