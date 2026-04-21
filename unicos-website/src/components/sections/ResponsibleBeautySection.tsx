@@ -85,6 +85,8 @@ export function ResponsibleBeautySection({
   guidanceStrip,
   cardsPerRowDesktop = 3,
   contentMaxWidthClass = 'max-w-[1028px]',
+  /** Tik kortelių tinklelis be eyebrow / H2 / įžangos (kaip atskira juosta). */
+  cardsOnly = false,
 }: {
   eyebrowLabel?: string | null;
   heading?: React.ReactNode;
@@ -102,8 +104,10 @@ export function ResponsibleBeautySection({
   cardsPerRowDesktop?: 2 | 3 | 4;
   /** Vidinio turinio maksimalus plotis. */
   contentMaxWidthClass?: string;
+  cardsOnly?: boolean;
 }) {
   const isMaroon = accent === 'maroon';
+  const cardsOnlyLayout = Boolean(cardsOnly);
   const gridRef = React.useRef<HTMLDivElement>(null);
   const [gridVisible, setGridVisible] = React.useState(false);
 
@@ -174,7 +178,10 @@ export function ResponsibleBeautySection({
   return (
     <section className={`relative z-[2] py-20 max-[767px]:py-14 text-[#1A1010] ${surfaceClassName}`}>
       <div className="relative z-[2] w-full max-w-[1800px] mx-auto px-16 max-[767px]:px-6 max-[479px]:px-4">
-        <div className={`mx-auto flex flex-col gap-16 max-[767px]:gap-12 ${contentMaxWidthClass}`}>
+        <div
+          className={`mx-auto flex flex-col ${cardsOnlyLayout ? 'gap-0' : 'gap-16 max-[767px]:gap-12'} ${contentMaxWidthClass}`}
+        >
+          {!cardsOnlyLayout ? (
           <div
             ref={headerRef}
             className={`flex flex-col items-center text-center gap-5 max-[767px]:gap-4 transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0 ${headerReveal}`}
@@ -219,6 +226,7 @@ export function ResponsibleBeautySection({
               </p>
             ) : null}
           </div>
+          ) : null}
 
           <div
             ref={gridRef}

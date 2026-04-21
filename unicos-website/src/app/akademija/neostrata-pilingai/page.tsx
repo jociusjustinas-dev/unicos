@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
+import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
 import { FooterSection } from '@/components/sections/FooterSection';
 import { AkademijaDetailH2 } from '@/components/sections/akademija/AkademijaDetailH2';
 import { AkademijaDetailSection } from '@/components/sections/akademija/AkademijaDetailSection';
@@ -17,6 +18,7 @@ import {
   SfFaceSmile,
   SfLayers,
   SfActivity,
+  SfCheck,
 } from '@/components/icons/feather';
 import { AKADEMIJA_EVENTS, type AkademijaEvent } from '@/config/akademijaPage';
 
@@ -317,6 +319,30 @@ export default function NeostrataPilingaiPage() {
           </div>
         </div>
       </div>
+
+      <ResponsibleBeautySection
+        cardsOnly
+        showGuidanceRow={false}
+        surfaceClassName="bg-[#EFE8DB]"
+        accent="maroon"
+        cards={[
+          {
+            title: 'CENTRALIZUOTA BAZĖ',
+            description: 'Visi dokumentai vienoje vietoje, pasiekiami 24/7.',
+            Icon: SfLayers,
+          },
+          {
+            title: 'NUOLATINIS ATNAUJINIMAS',
+            description: 'Naujausi protokolai tiesiai iš gamintojų.',
+            Icon: SfActivity,
+          },
+          {
+            title: 'PATIKRINTA EKSPERTŲ',
+            description: 'Tik saugios ir patvirtintos metodikos.',
+            Icon: SfCheck,
+          },
+        ]}
+      />
 
       <AkademijaMaroonEventCtaBand
         ariaLabelledBy="neostrata-cta-heading"
