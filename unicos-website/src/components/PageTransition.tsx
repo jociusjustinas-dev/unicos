@@ -18,7 +18,8 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
       key={pathname}
       style={{
         opacity: entered ? 1 : 0,
-        transform: entered ? 'translateY(0px)' : 'translateY(8px)',
+        /* `translateY(0)` vis tiek kuria containing block ir sulaužo `position: sticky` / `fixed` vaikus. */
+        transform: entered ? 'none' : 'translateY(8px)',
         transition: 'opacity 320ms cubic-bezier(0.22,1,0.36,1), transform 320ms cubic-bezier(0.22,1,0.36,1)',
       }}
     >

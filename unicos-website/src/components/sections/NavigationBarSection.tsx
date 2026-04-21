@@ -70,6 +70,23 @@ const NAV_FONT: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
 
+/** Kai `true` — header'yje jokios nuorodos neveda į puslapius (tik `#` + preventDefault). Įjunkite `false`, kai norėsite vėl įjungti maršrutus. */
+export const NAV_HEADER_URLS_DISABLED = true;
+
+function navAnchorAttrs(
+  href: string
+): Pick<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'onClick'> {
+  if (!NAV_HEADER_URLS_DISABLED) {
+    return { href };
+  }
+  return {
+    href: '#',
+    onClick(e) {
+      e.preventDefault();
+    },
+  };
+}
+
 // ---------------------------------------------------------------------------
 // Sub-components
 // ---------------------------------------------------------------------------
@@ -126,7 +143,7 @@ function SprendimaiPanel({
           {SPRENDIMAI_NAV_SEGMENTS.map((segment) => (
             <a
               key={segment.title}
-              href={segment.href}
+              {...navAnchorAttrs(segment.href)}
               className="group relative min-h-[236px] overflow-hidden border border-[rgba(26,16,16,0.14)] no-underline"
             >
               <div
@@ -197,7 +214,7 @@ function PrekesZenklaiPanel({
                 {col.items.map((item) => (
                   <a
                     key={item.title}
-                    href={item.href}
+                    {...navAnchorAttrs(item.href)}
                     className="no-underline py-1 hover:opacity-60 transition-opacity duration-200"
                     style={{ ...NAV_FONT, fontSize: '14px', fontWeight: 500, color: '#1A1010' }}
                   >
@@ -219,7 +236,7 @@ function PrekesZenklaiPanel({
               Atstovaujame 30+ pasaulinių profesionalios kosmetikos prekių ženklų Baltijos šalyse.
             </p>
             <a
-              href="/prekiu-zenklai"
+              {...navAnchorAttrs('/prekiu-zenklai')}
               className="inline-flex items-center no-underline hover:opacity-60 transition-opacity duration-200"
               style={{ ...NAV_FONT, fontSize: '13px', fontWeight: 500, color: '#EFE8DB' }}
             >
@@ -261,7 +278,7 @@ function ResursaiPanel({
               <ColumnLabel>{col.label}</ColumnLabel>
               <div className="flex flex-col gap-4">
                 {col.items.map((item) => (
-                  <a key={item.title} href={item.href} className="flex flex-col gap-1 no-underline group">
+                  <a key={item.title} {...navAnchorAttrs(item.href)} className="flex flex-col gap-1 no-underline group">
                     <span
                       className="group-hover:opacity-60 transition-opacity duration-200"
                       style={{ ...NAV_FONT, fontSize: '14px', fontWeight: 500, color: '#1A1010' }}
@@ -291,7 +308,7 @@ function ResursaiPanel({
               Viskas vienoje vietoje: mokomoji medžiaga, praktiniai failai ir partneriams aktuali informacija.
             </p>
             <a
-              href="#"
+              {...navAnchorAttrs('#')}
               className="inline-flex items-center no-underline hover:opacity-60 transition-opacity duration-200"
               style={{ ...NAV_FONT, fontSize: '13px', fontWeight: 500, color: '#EFE8DB' }}
             >
@@ -350,7 +367,7 @@ function MobileMenu({ open }: { open: boolean }) {
                 {SPRENDIMAI_NAV_SEGMENTS.map((segment) => (
                   <a
                     key={segment.title}
-                    href={segment.href}
+                    {...navAnchorAttrs(segment.href)}
                     className="no-underline py-2 pl-3 pr-2 [overflow-wrap:anywhere]"
                     style={{ ...NAV_FONT, fontSize: '14px', fontWeight: 400, color: 'rgba(26,16,16,0.72)' }}
                   >
@@ -372,7 +389,7 @@ function MobileMenu({ open }: { open: boolean }) {
         ].map((item) => (
           <a
             key={item.label}
-            href={item.href}
+            {...navAnchorAttrs(item.href)}
             className="no-underline py-3 pr-2 border-b border-[rgba(26,16,16,0.07)] hover:opacity-60 transition-opacity duration-200 [overflow-wrap:anywhere]"
             style={{ ...NAV_FONT, fontSize: '15px', fontWeight: 500, color: '#1A1010' }}
           >
@@ -381,13 +398,13 @@ function MobileMenu({ open }: { open: boolean }) {
         ))}
         <div className="mt-6 flex flex-col gap-3">
           <a
-            href="#"
+            {...navAnchorAttrs('#')}
             className="no-underline py-2"
             style={{ ...NAV_FONT, fontSize: '14px', fontWeight: 500, color: 'rgba(26,16,16,0.56)' }}
           >
             Prisijungti
           </a>
-          <CtaLink href="/tapkite-partneriu" variant="secondary" className="self-center">
+          <CtaLink {...navAnchorAttrs('/tapkite-partneriu')} variant="secondary" className="self-center">
             Tapti partneriu
           </CtaLink>
         </div>
@@ -488,7 +505,7 @@ export function NavigationBarSection({
           {/* LEFT — hamburger + logo */}
           <div className="flex items-center gap-3">
             {logoOnly ? (
-              <a href="/" className="no-underline flex items-start self-start">
+              <a {...navAnchorAttrs('/')} className="no-underline flex items-start self-start">
                 <img
                   src="/unicos-logo.svg"
                   alt="Unicos"
@@ -515,7 +532,7 @@ export function NavigationBarSection({
                 </button>
 
                 <div className="inline-flex flex-col items-start gap-0">
-                  <a href="/" className="no-underline flex items-start self-start">
+                  <a {...navAnchorAttrs('/')} className="no-underline flex items-start self-start">
                     <img
                       src="/unicos-logo.svg"
                       alt="Unicos"
@@ -590,7 +607,7 @@ export function NavigationBarSection({
             ].map((item) => (
               <a
                 key={item.label}
-                href={item.href}
+                {...navAnchorAttrs(item.href)}
                 className={`px-4 py-2 border border-transparent no-underline transition-all duration-300 hover:bg-[rgba(59,68,58,0.88)] hover:text-[#EFE8DB] ${
                   useLightNavSurface
                     ? 'text-[#1A1010] hover:border-transparent'
@@ -622,7 +639,7 @@ export function NavigationBarSection({
             </div>
 
             <a
-              href="/kontaktai"
+              {...navAnchorAttrs('/kontaktai')}
               className={`px-4 py-2 border border-transparent no-underline transition-all duration-300 hover:bg-[rgba(59,68,58,0.88)] hover:text-[#EFE8DB] ${
                 useLightNavSurface
                   ? 'text-[#1A1010] hover:border-transparent'
@@ -639,7 +656,7 @@ export function NavigationBarSection({
           {logoOnly ? null : (
             <div className="flex items-center gap-4">
             {/* Prisijungti — text slide */}
-            <a href="#" className="group relative no-underline overflow-hidden max-[767px]:hidden">
+            <a {...navAnchorAttrs('#')} className="group relative no-underline overflow-hidden max-[767px]:hidden">
               <div
                 className="transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:-translate-y-[1.5em]"
                 style={{
@@ -654,7 +671,7 @@ export function NavigationBarSection({
               </div>
             </a>
 
-            <CtaLink href="/tapkite-partneriu" variant="secondary" className="whitespace-nowrap">
+            <CtaLink {...navAnchorAttrs('/tapkite-partneriu')} variant="secondary" className="whitespace-nowrap">
               Tapti partneriu
             </CtaLink>
             </div>

@@ -41,12 +41,12 @@ export default function NeostrataPilingaiPage() {
     <main className="bg-[#EFE8DB] text-[#1A1010]">
       <NavigationBarSection forceLightSurface />
 
-      <div className="pt-28 max-[991px]:pt-24 lg:pt-32">
-        <div className="grid min-h-0 grid-cols-1 lg:grid-cols-2">
-          {/* Kairė: hero — tamsus fonas, lipnus desktop'e */}
-          <aside className="relative border-[#1A1010]/10 bg-[#3B443A] text-[#EFE8DB] lg:border-r lg:border-solid">
-            <div className="lg:sticky lg:top-28 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
-              <div className="flex flex-col gap-6 px-6 py-10 max-[991px]:pb-8 max-[991px]:pt-6 lg:px-8 lg:py-12">
+      <div className="pt-28 max-[991px]:pt-24 md:pt-32">
+        <div className="grid min-h-0 grid-cols-1 items-start md:grid-cols-2">
+          {/* Kairė: juodas hero — tik turinio aukštis (be fono „nutęsimo“ per visą kairį stulpelį), lipnus md+. */}
+          <aside className="relative w-full self-start bg-black text-[#EFE8DB] md:border-r md:border-solid md:border-[#1A1010]/20">
+            <div className="md:sticky md:top-28 md:max-h-[calc(100dvh-7rem)] md:overflow-y-auto md:self-start">
+              <div className="flex flex-col gap-6 px-6 py-[clamp(2rem,5dvh,4.5rem)] md:px-8 md:py-[clamp(2.5rem,6dvh,5rem)]">
                 <p className="m-0 uppercase text-[#EFE8DB]/60" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
                   AKADEMIJA / NEOSTRATA RŪGŠTINIŲ PILINGŲ MEISTRIŠKUMAS
                 </p>
@@ -138,19 +138,10 @@ export default function NeostrataPilingaiPage() {
           </aside>
 
           {/* Dešinė: likęs turinys */}
-          <div className="min-w-0 bg-[#EFE8DB]">
-            <div className="flex flex-col gap-4 border-b border-solid border-[#1A1010]/10 px-6 py-8 max-[991px]:pt-6 lg:px-8 lg:py-10">
-              <div className="flex min-h-[220px] items-center justify-center bg-[#3B443A]/12 text-[#1A1010]/55" style={{ ...BODY, ...R0, fontSize: '15px', letterSpacing: '0.06em' }}>
-                Neostrata Training
-              </div>
-              <div className="flex min-h-[100px] items-center justify-center bg-[#64151F]/10 text-[#64151F]" style={{ ...BODY, ...R0, fontSize: '14px', letterSpacing: '0.06em' }}>
-                Neostrata Pro System
-              </div>
-            </div>
-
+          <div className="min-w-0 bg-[#EFE8DB] text-left">
             <section className="py-16 max-[767px]:py-12">
               <Container>
-                <div className="mx-auto max-w-[720px] text-center">
+                <div className="max-w-[720px] text-left">
                   <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
                     Apie seminarą.
                   </h2>
@@ -163,8 +154,8 @@ export default function NeostrataPilingaiPage() {
 
             <section className="py-16 max-[767px]:py-12">
               <Container>
-                <div className="mx-auto max-w-[900px]">
-                  <h2 className="m-0 text-center text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
+                <div className="max-w-[900px] text-left">
+                  <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
                     Ką išmoksite?
                   </h2>
                   <div className="mt-8">
@@ -191,7 +182,7 @@ export default function NeostrataPilingaiPage() {
 
             <section className="py-16 max-[767px]:py-12">
               <Container>
-                <h2 className="m-0 text-center text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
+                <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
                   Kam skirtas šis seminaras?
                 </h2>
                 <div className="mt-8 grid grid-cols-1 gap-4 min-[992px]:grid-cols-3">
@@ -219,9 +210,9 @@ export default function NeostrataPilingaiPage() {
               </Container>
             </section>
 
-            <section className="border-y border-solid border-[#1A1010]/10 bg-[#3B443A] py-16 text-[#EFE8DB] max-[767px]:py-12">
+            <section className="border-y border-solid border-[#1A1010]/10 bg-[#3B443A] py-16 text-left text-[#EFE8DB] max-[767px]:py-12">
               <Container>
-                <div className="mx-auto max-w-[900px]">
+                <div className="max-w-[900px]">
                   <h2 className="m-0 text-[#EFE8DB]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
                     Lektorė.
                   </h2>
@@ -241,8 +232,8 @@ export default function NeostrataPilingaiPage() {
 
             <section className="py-16 max-[767px]:py-12">
               <Container>
-                <div className="mx-auto max-w-[720px]">
-                  <h2 className="m-0 text-center text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
+                <div className="max-w-[720px] text-left">
+                  <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
                     Seminaro programa.
                   </h2>
                   <div className="mt-8">
@@ -274,10 +265,10 @@ export default function NeostrataPilingaiPage() {
 
             <section className="py-16 max-[767px]:py-12">
               <Container>
-                <h2 className="m-0 text-center text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
+                <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
                   Praktinė informacija.
                 </h2>
-                <div className="mx-auto mt-8 grid max-w-[1000px] grid-cols-1 gap-4 min-[768px]:grid-cols-2">
+                <div className="mt-8 grid max-w-[1000px] grid-cols-1 gap-4 min-[768px]:grid-cols-2">
                   {[
                     [<SfMapPin key="map" className="mr-2 inline -mt-1" size={18} strokeWidth={2} />, 'Vieta', 'Vilnius, UNICOS Akademija'],
                     [<SfCalendar key="cal" className="mr-2 inline -mt-1" size={18} strokeWidth={2} />, 'Data ir laikas', '2026 m. spalio 24 d., 10:00–16:00.'],
@@ -295,7 +286,7 @@ export default function NeostrataPilingaiPage() {
                     </div>
                   ))}
                 </div>
-                <div className="mx-auto mt-6 max-w-[1000px] border border-solid border-[#1A1010]/15 bg-[#EFE8DB]" style={R0}>
+                <div className="mt-6 max-w-[1000px] border border-solid border-[#1A1010]/15 bg-[#EFE8DB]" style={R0}>
                   <details>
                     <summary className="cursor-pointer list-none px-6 py-4 text-[#64151F]" style={{ ...BODY, fontSize: '16px', fontWeight: 600 }}>
                       Registracijos sąlygos.
@@ -375,9 +366,9 @@ export default function NeostrataPilingaiPage() {
               </Container>
             </section>
 
-            <section className="bg-[#64151F] py-16 max-[767px]:py-12">
+            <section className="bg-[#64151F] py-16 text-left max-[767px]:py-12">
               <Container>
-                <div className="mx-auto max-w-[980px]">
+                <div className="max-w-[980px]">
                   <h2 className="m-0 text-[#EFE8DB]" style={{ ...HEADING, fontSize: 'clamp(2rem, 3.4vw, 3rem)', lineHeight: 1.06, fontWeight: 300 }}>
                     Užtikrinkite savo vietą.
                   </h2>
