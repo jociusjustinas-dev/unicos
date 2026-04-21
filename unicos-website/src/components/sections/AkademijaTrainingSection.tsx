@@ -12,7 +12,6 @@ import {
   type AkademijaTimeId,
   type AkademijaTopicId,
 } from '@/config/akademijaPage';
-import { HOME_PAGE_IMAGE_POOL } from '@/config/homePageImages';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -26,7 +25,7 @@ function currentMonthKey() {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
 }
 
-function AkademijaEventCard({ event, imageSrc }: { event: AkademijaEvent; imageSrc: string }) {
+function AkademijaEventCard({ event }: { event: AkademijaEvent }) {
   const statusTone =
     event.statusTone === 'green'
       ? 'border-[#3B443A]/35 bg-[#3B443A]/92 text-[#EFE8DB]'
@@ -38,7 +37,7 @@ function AkademijaEventCard({ event, imageSrc }: { event: AkademijaEvent; imageS
       style={{ borderRadius: '0px' }}
     >
       <div className="relative aspect-[16/10] w-full overflow-hidden" style={{ borderRadius: '0px' }}>
-        <img src={imageSrc} alt={event.title} className="h-full w-full object-cover" loading="lazy" />
+        <img src={event.imageSrc} alt={event.title} className="h-full w-full object-cover" loading="lazy" />
         {event.statusLine ? (
           <div
             className={`pointer-events-none absolute right-3 top-3 z-[1] inline-flex max-w-[calc(100%-1.5rem)] items-center border border-solid px-3 py-[7px] ${statusTone}`}
@@ -154,16 +153,6 @@ export function AkademijaTrainingSection() {
   const [topic, setTopic] = React.useState<AkademijaTopicId>('all');
   const [format, setFormat] = React.useState<AkademijaFormatId>('all');
   const [time, setTime] = React.useState<AkademijaTimeId>('all');
-  const [randomImagesByEventId, setRandomImagesByEventId] = React.useState<Record<string, string>>({});
-
-  React.useEffect(() => {
-    const next: Record<string, string> = {};
-    for (const event of AKADEMIJA_EVENTS) {
-      const idx = Math.floor(Math.random() * HOME_PAGE_IMAGE_POOL.length);
-      next[event.id] = HOME_PAGE_IMAGE_POOL[idx]!;
-    }
-    setRandomImagesByEventId(next);
-  }, []);
 
   const filtered = React.useMemo(() => {
     const mk = currentMonthKey();
@@ -277,7 +266,7 @@ export function AkademijaTrainingSection() {
         ) : (
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
             {filtered.map((e) => (
-              <AkademijaEventCard key={e.id} event={e} imageSrc={randomImagesByEventId[e.id] ?? HOME_PAGE_IMAGE_POOL[0]!} />
+              <AkademijaEventCard key={e.id} event={e} />
             ))}
           </div>
         )}
