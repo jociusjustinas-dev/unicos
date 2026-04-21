@@ -6,7 +6,7 @@ export type AkademijaTopicId = 'all' | 'dermatologija' | 'kosmetologija' | 'plau
 
 export type AkademijaFormatId = 'all' | 'gyvai' | 'online';
 
-export type AkademijaTimeId = 'all' | 'thisMonth';
+export type AkademijaTimeId = 'all' | 'thisMonth' | 'nextMonth' | 'thisQuarter';
 
 export const AKADEMIJA_TOPIC_FILTERS: { id: AkademijaTopicId; label: string }[] = [
   { id: 'all', label: 'Visi' },
@@ -26,6 +26,8 @@ export const AKADEMIJA_FORMAT_FILTERS: { id: AkademijaFormatId; label: string }[
 export const AKADEMIJA_TIME_FILTERS: { id: AkademijaTimeId; label: string }[] = [
   { id: 'all', label: 'Visi' },
   { id: 'thisMonth', label: 'Šis mėnuo' },
+  { id: 'nextMonth', label: 'Kitas mėnuo' },
+  { id: 'thisQuarter', label: 'Šis ketvirtis' },
 ];
 
 export type AkademijaEvent = {

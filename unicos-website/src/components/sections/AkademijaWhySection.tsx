@@ -15,6 +15,7 @@ export function AkademijaWhySection() {
       }
       subheading={null}
       cards={AKADEMIJA_WHY_CARDS}
+      cardsPerRowDesktop={4}
       surfaceClassName="bg-white"
       accent="green"
       showGuidanceRow={false}

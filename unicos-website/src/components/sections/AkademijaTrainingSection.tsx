@@ -26,6 +26,90 @@ function currentMonthKey() {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
 }
 
+function nextMonthKey() {
+  const d = new Date();
+  d.setMonth(d.getMonth() + 1);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+}
+
+function monthInCurrentQuarter(monthKey: string) {
+  const [yearStr, monthStr] = monthKey.split('-');
+  const year = Number(yearStr);
+  const month = Number(monthStr);
+  if (!Number.isFinite(year) || !Number.isFinite(month)) return false;
+  const now = new Date();
+  const currentQuarter = Math.floor(now.getMonth() / 3);
+  return year === now.getFullYear() && Math.floor((month - 1) / 3) === currentQuarter;
+}
+
+type FilterOption<T extends string> = { id: T; label: string };
+
+function FilterDropdown<T extends string>({
+  id,
+  label,
+  value,
+  options,
+  open,
+  onOpen,
+  onClose,
+  onChange,
+}: {
+  id: string;
+  label: string;
+  value: T;
+  options: readonly FilterOption<T>[];
+  open: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  onChange: (v: T) => void;
+}) {
+  const current = options.find((o) => o.id === value) ?? options[0];
+  return (
+    <div className="relative min-w-0 flex-1" data-filter-dropdown={id}>
+      <div className="mb-1 text-[11px] font-medium uppercase tracking-[0.08em] text-[#1A1010]/55" style={BODY}>
+        {label}
+      </div>
+      <button
+        type="button"
+        onClick={open ? onClose : onOpen}
+        className={`flex h-11 w-full items-center justify-between border border-solid bg-white px-3 text-left transition-colors ${
+          open ? 'border-[#64151F]' : 'border-[#1A1010]/16 hover:border-[#64151F]/45'
+        }`}
+        style={{ ...BODY, borderRadius: '0px', fontSize: '14px', lineHeight: 1.2, fontWeight: 400 }}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <span className="truncate text-[#1A1010]">{current?.label}</span>
+        <span className={`ml-3 text-[12px] transition-transform ${open ? 'rotate-180 text-[#64151F]' : 'text-[#1A1010]/58'}`}>▾</span>
+      </button>
+      {open ? (
+        <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-20 border border-solid border-[#1A1010]/16 bg-white shadow-[0_8px_24px_rgba(26,16,16,0.12)]" style={{ borderRadius: '0px' }}>
+          <ul role="listbox" aria-label={label} className="m-0 max-h-64 list-none overflow-auto p-1">
+            {options.map((o) => (
+              <li key={o.id}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onChange(o.id);
+                    onClose();
+                  }}
+                  className={`flex w-full items-center justify-between px-3 py-2 text-left transition-colors ${
+                    o.id === value ? 'bg-[#64151F]/7 text-[#64151F]' : 'text-[#1A1010] hover:bg-[#1A1010]/5'
+                  }`}
+                  style={{ ...BODY, borderRadius: '0px', fontSize: '14px', lineHeight: 1.3 }}
+                >
+                  <span>{o.label}</span>
+                  <span className={`${o.id === value ? 'opacity-100 text-[#64151F]' : 'opacity-0'}`}>✓</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 function AkademijaEventCard({ event }: { event: AkademijaEvent }) {
   const LocIcon = event.onlineVenue ? SfMonitor : SfMapPin;
   const statusTone =
@@ -153,23 +237,61 @@ export function AkademijaTrainingSection() {
   const [topic, setTopic] = React.useState<AkademijaTopicId>('all');
   const [format, setFormat] = React.useState<AkademijaFormatId>('all');
   const [time, setTime] = React.useState<AkademijaTimeId>('all');
+  const [openDropdown, setOpenDropdown] = React.useState<string | null>(null);
+  const [mobileFiltersOpen, setMobileFiltersOpen] = React.useState(false);
+  const [filtersSticky, setFiltersSticky] = React.useState(false);
+  const [cardsVisible, setCardsVisible] = React.useState(true);
+  const headingRef = React.useRef<HTMLDivElement>(null);
+  const filterBarRef = React.useRef<HTMLDivElement>(null);
 
   const filtered = React.useMemo(() => {
     const mk = currentMonthKey();
+    const nextMk = nextMonthKey();
     return AKADEMIJA_EVENTS.filter((e) => {
       if (topic !== 'all' && e.topic !== topic) return false;
       if (format !== 'all' && e.format !== format) return false;
       if (time === 'thisMonth' && e.monthKey !== mk) return false;
+      if (time === 'nextMonth' && e.monthKey !== nextMk) return false;
+      if (time === 'thisQuarter' && !monthInCurrentQuarter(e.monthKey)) return false;
       return true;
     });
   }, [topic, format, time]);
 
-  const chip = (active: boolean) =>
-    `border px-5 py-2.5 transition-colors duration-200 ${
-      active
-        ? 'border-[#64151F] bg-[#64151F] text-[#EFE8DB]'
-        : 'border-[#1A1010]/10 bg-[#ECE2D3]/75 text-[#1A1010] hover:border-[#64151F]/45'
-    }`;
+  const anyFilterActive = topic !== 'all' || format !== 'all' || time !== 'all';
+
+  React.useEffect(() => {
+    const onPointer = (event: MouseEvent) => {
+      if (!openDropdown) return;
+      const target = event.target as HTMLElement;
+      if (!filterBarRef.current?.contains(target)) setOpenDropdown(null);
+    };
+    const onEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpenDropdown(null);
+    };
+    document.addEventListener('mousedown', onPointer);
+    document.addEventListener('keydown', onEsc);
+    return () => {
+      document.removeEventListener('mousedown', onPointer);
+      document.removeEventListener('keydown', onEsc);
+    };
+  }, [openDropdown]);
+
+  React.useEffect(() => {
+    const el = headingRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => setFiltersSticky(!entry.isIntersecting),
+      { rootMargin: '-16px 0px 0px 0px', threshold: 0 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  React.useEffect(() => {
+    setCardsVisible(false);
+    const id = window.requestAnimationFrame(() => setCardsVisible(true));
+    return () => window.cancelAnimationFrame(id);
+  }, [topic, format, time]);
 
   return (
     <section
@@ -177,7 +299,7 @@ export function AkademijaTrainingSection() {
       className="relative z-[2] scroll-mt-24 bg-[#EFE8DB] pb-16 pt-32 max-[767px]:pb-12 max-[767px]:pt-24 max-[479px]:pt-20"
     >
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
-        <div className="mb-10 flex max-w-[720px] flex-col gap-4 max-[767px]:mb-8">
+        <div ref={headingRef} className="mb-10 flex max-w-[760px] flex-col gap-4 max-[767px]:mb-8">
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
             <span
@@ -197,74 +319,94 @@ export function AkademijaTrainingSection() {
             }}
           >
             <span className="font-light">Mokymų </span>
-            <span className="font-medium">kalendorius.</span>
+            <span className="font-medium">kalendorius.</span>{' '}
+            <span className="text-[#1A1010]/56" style={{ ...BODY, fontSize: 'clamp(1rem, 1.5vw, 1.25rem)', fontWeight: 400 }}>
+              ({filtered.length} renginiai)
+            </span>
           </h2>
           <p className="m-0 max-w-[48ch] text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>
             Raskite Jums tinkamiausią renginį.
           </p>
         </div>
 
-        <div className="mb-4">
-          <p className="m-0 mb-2 text-[#1A1010]/55" style={{ ...BODY, fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em' }}>
-            TEMA
-          </p>
-          <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filtras pagal temą">
-            {AKADEMIJA_TOPIC_FILTERS.map((f) => (
-              <button
-                key={f.id}
-                type="button"
-                role="tab"
-                aria-selected={topic === f.id}
-                onClick={() => setTopic(f.id)}
-                className={chip(topic === f.id)}
-                style={{ ...BODY, fontSize: '13px', fontWeight: 500, borderRadius: '0px' }}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-        </div>
+        <div
+          ref={filterBarRef}
+          className={`z-[8] mb-10 border border-solid border-[#1A1010]/10 bg-[#EFE8DB]/94 p-4 backdrop-blur-[2px] transition-[box-shadow,background-color] ${
+            filtersSticky ? 'sticky top-0 shadow-[0_8px_18px_rgba(26,16,16,0.12)]' : 'sticky top-0 shadow-none'
+          }`}
+          style={{ borderRadius: '0px' }}
+        >
+          <button
+            type="button"
+            onClick={() => setMobileFiltersOpen((p) => !p)}
+            className="hidden w-full items-center justify-between border border-solid border-[#1A1010]/14 bg-white px-3 py-2 text-left max-[767px]:flex"
+            style={{ ...BODY, borderRadius: '0px', fontSize: '14px' }}
+          >
+            <span className="font-medium text-[#1A1010]">Filtrai</span>
+            <span className={`text-[12px] text-[#64151F] transition-transform ${mobileFiltersOpen ? 'rotate-180' : ''}`}>▾</span>
+          </button>
 
-        <div className="mb-10">
-          <p className="m-0 mb-2 text-[#1A1010]/55" style={{ ...BODY, fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em' }}>
-            FORMATAS / LAIKAS
-          </p>
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Filtras pagal formatą">
-            {AKADEMIJA_FORMAT_FILTERS.map((f) => (
-              <button
-                key={f.id}
-                type="button"
-                aria-pressed={format === f.id}
-                onClick={() => setFormat(f.id)}
-                className={chip(format === f.id)}
-                style={{ ...BODY, fontSize: '13px', fontWeight: 500, borderRadius: '0px' }}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-          <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Filtras pagal laiką">
-            {AKADEMIJA_TIME_FILTERS.map((f) => (
-              <button
-                key={f.id}
-                type="button"
-                aria-pressed={time === f.id}
-                onClick={() => setTime(f.id)}
-                className={chip(time === f.id)}
-                style={{ ...BODY, fontSize: '13px', fontWeight: 500, borderRadius: '0px' }}
-              >
-                {f.label}
-              </button>
-            ))}
+          <div className={`${mobileFiltersOpen ? 'block' : 'hidden'} min-[768px]:block max-[767px]:mt-3 max-[767px]:space-y-3`}>
+            <div className="flex items-end gap-3 max-[991px]:gap-2 max-[767px]:flex-col max-[767px]:items-stretch">
+              <FilterDropdown
+                id="topic"
+                label="Tema"
+                value={topic}
+                options={AKADEMIJA_TOPIC_FILTERS}
+                open={openDropdown === 'topic'}
+                onOpen={() => setOpenDropdown('topic')}
+                onClose={() => setOpenDropdown(null)}
+                onChange={setTopic}
+              />
+              <FilterDropdown
+                id="format"
+                label="Formatas"
+                value={format}
+                options={AKADEMIJA_FORMAT_FILTERS}
+                open={openDropdown === 'format'}
+                onOpen={() => setOpenDropdown('format')}
+                onClose={() => setOpenDropdown(null)}
+                onChange={setFormat}
+              />
+              <FilterDropdown
+                id="time"
+                label="Laikas"
+                value={time}
+                options={AKADEMIJA_TIME_FILTERS}
+                open={openDropdown === 'time'}
+                onOpen={() => setOpenDropdown('time')}
+                onClose={() => setOpenDropdown(null)}
+                onChange={setTime}
+              />
+              {anyFilterActive ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setTopic('all');
+                    setFormat('all');
+                    setTime('all');
+                    setOpenDropdown(null);
+                  }}
+                  className="h-11 shrink-0 px-1 text-[13px] text-[#64151F] underline underline-offset-2 transition-opacity hover:opacity-70 max-[767px]:h-auto max-[767px]:self-start max-[767px]:px-0"
+                  style={BODY}
+                >
+                  Išvalyti filtrus
+                </button>
+              ) : null}
+            </div>
           </div>
         </div>
 
         {filtered.length === 0 ? (
           <p className="m-0 text-[#1A1010]/65" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55 }}>
-            Pagal pasirinktus filtrus renginių nerasta. Pakeiskite filtrus arba susisiekite dėl individualių mokymų.
+            Šiuo metu renginių pagal pasirinktus filtrus nėra. Išvalykite filtrus arba prenumeruokite naujienlaiškį, kad sužinotumėte apie naujus mokymus pirmieji.
           </p>
         ) : (
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <div
+            className={`grid grid-cols-1 gap-8 transition-[opacity,transform] duration-300 ease-out md:grid-cols-2 xl:grid-cols-3 ${
+              cardsVisible ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
+            }`}
+          >
             {filtered.map((e) => (
               <AkademijaEventCard key={e.id} event={e} />
             ))}

@@ -82,6 +82,7 @@ export function ResponsibleBeautySection({
   accent = 'green',
   showGuidanceRow = true,
   guidanceStrip,
+  cardsPerRowDesktop = 3,
 }: {
   eyebrowLabel?: string | null;
   heading?: React.ReactNode;
@@ -95,6 +96,8 @@ export function ResponsibleBeautySection({
   showGuidanceRow?: boolean;
   /** Jei nurodyta, juostoje rodomas šis tekstas ir CTA vietoj numatyto „Reikia konsultacijos?“. */
   guidanceStrip?: ResponsibleBeautyGuidanceStrip;
+  /** Kortelių skaičius eilutėje desktop'e (2, 3 arba 4). */
+  cardsPerRowDesktop?: 2 | 3 | 4;
 }) {
   const isMaroon = accent === 'maroon';
   const gridRef = React.useRef<HTMLDivElement>(null);
@@ -157,6 +160,12 @@ export function ResponsibleBeautySection({
   const stripPortraitAlt = guidanceStrip?.portraitAlt ?? contactAvatar.alt;
   const stripCtaHref = guidanceStrip?.cta.href ?? '/kontaktai';
   const stripCtaLabel = guidanceStrip?.cta.label ?? 'Susisiekite';
+  const desktopGridColsClass =
+    cardsPerRowDesktop === 4
+      ? 'min-[992px]:grid-cols-4'
+      : cardsPerRowDesktop === 2
+        ? 'min-[992px]:grid-cols-2'
+        : 'min-[992px]:grid-cols-3';
 
   return (
     <section className={`relative z-[2] py-20 max-[767px]:py-14 text-[#1A1010] ${surfaceClassName}`}>
@@ -209,7 +218,7 @@ export function ResponsibleBeautySection({
 
           <div
             ref={gridRef}
-            className="grid grid-cols-3 gap-4 max-[991px]:grid-cols-2 max-[479px]:grid-cols-1 max-[767px]:gap-3"
+            className={`grid grid-cols-1 gap-4 max-[767px]:gap-3 min-[480px]:grid-cols-2 ${desktopGridColsClass}`}
           >
             {resolvedFeatures.map((feature, i) => {
               /* Halden reference: 700ms, ~100ms stagger kortelėms */
