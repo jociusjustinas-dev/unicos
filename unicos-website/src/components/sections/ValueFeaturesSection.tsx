@@ -10,20 +10,22 @@ const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
 
-type FeatureTab = {
+export type FeatureTab = {
   label: string;
-  price: string;
+  price?: string;
+  pricePrefix?: string;
   heading: string;
   body: string;
-  bullets: string[];
-  cta: string;
+  bullets?: string[];
+  cta?: string;
   image: string;
 };
 
-const tabs: FeatureTab[] = [
+const defaultTabs: FeatureTab[] = [
   {
     label: 'Odos priežiūros specialistams',
     price: '950 €',
+    pricePrefix: 'Startas nuo',
     heading: 'Odos priežiūros specialistams',
     body: 'Profesionalūs, oficialiai atstovaujami prekių ženklai ir struktūruotas palaikymas, padedantis užtikrinti procedūrų kokybę ir klientų pasitikėjimą.',
     bullets: [
@@ -37,6 +39,7 @@ const tabs: FeatureTab[] = [
   {
     label: 'Plaukų priežiūros specialistams',
     price: '450 €',
+    pricePrefix: 'Startas nuo',
     heading: 'Plaukų priežiūros specialistams',
     body: 'Aukštos kokybės profesionalūs produktai ir praktiniai sprendimai, padedantys stiprinti klientų lojalumą ir didinti paslaugų vertę.',
     bullets: [
@@ -50,6 +53,7 @@ const tabs: FeatureTab[] = [
   {
     label: 'Estetinės dermatologijos specialistams',
     price: '950 €',
+    pricePrefix: 'Startas nuo',
     heading: 'Estetinės dermatologijos specialistams',
     body: 'Tarptautiniu mastu pripažinti profesionalūs prekių ženklai ir aiški partnerystės struktūra, skirta aukštiems paslaugų standartams užtikrinti.',
     bullets: [
@@ -63,6 +67,7 @@ const tabs: FeatureTab[] = [
   {
     label: 'Dermakosmetikos konsultantams ir vaistininkams',
     price: '150 €',
+    pricePrefix: 'Startas nuo',
     heading: 'Dermakosmetikos konsultantams ir vaistininkams',
     body: 'Profesionalūs mokymai ir bendruomenė, skirta Jūsų asmeniniam tobulėjimui.',
     bullets: [
@@ -75,7 +80,24 @@ const tabs: FeatureTab[] = [
   },
 ];
 
-export function ValueFeaturesSection() {
+type Props = {
+  eyebrow?: string | null;
+  heading?: React.ReactNode;
+  intro?: string | null;
+  tabs?: FeatureTab[];
+};
+
+export function ValueFeaturesSection({
+  eyebrow = 'Visiems segmentams paruošėme startinius paketus',
+  heading = (
+    <>
+      <span className="font-light">Sprendimai </span>
+      <span className="font-medium">kiekvienam etapui</span>
+    </>
+  ),
+  intro = 'Nesvarbu, kokį verslo modelį vystote – mes pasiruošę Jums padėti. Pasirinkite sritį, kuri Jums aktualiausia.',
+  tabs = defaultTabs,
+}: Props = {}) {
   const [activeTab, setActiveTab] = React.useState(0);
   const [tabContentVisible, setTabContentVisible] = React.useState(true);
   const [sectionRef, sectionVisible] = useInViewOnce<HTMLDivElement>({ threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
@@ -134,24 +156,27 @@ export function ValueFeaturesSection() {
               style={leftColumnStyle}
             >
               <div className="flex flex-col gap-6">
-                <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} />
-                  <span className="whitespace-nowrap uppercase text-[#1A1010]/65" style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em' }}>
-                    Visiems segmentams paruošėme startinius paketus
-                  </span>
-                </div>
+                {eyebrow ? (
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} />
+                    <span className="whitespace-nowrap uppercase text-[#1A1010]/65" style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em' }}>
+                      {eyebrow}
+                    </span>
+                  </div>
+                ) : null}
 
                 <h2
                   className="m-0 text-[48px] leading-[48px] tracking-[-2px] max-[767px]:text-[36px] max-[767px]:leading-[40px] max-[767px]:tracking-[-1.5px] text-[#64151F]"
                   style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontWeight: 300 }}
                 >
-                  <span className="font-light">Sprendimai </span>
-                  <span className="font-medium">kiekvienam etapui</span>
+                  {heading}
                 </h2>
 
-                <p className="m-0 text-[#1A1010]/72" style={{ ...BODY, fontSize: '16px', lineHeight: 1.5, fontWeight: 400 }}>
-                  Nesvarbu, kokį verslo modelį vystote – mes pasiruošę Jums padėti. Pasirinkite sritį, kuri Jums aktualiausia.
-                </p>
+                {intro ? (
+                  <p className="m-0 text-[#1A1010]/72" style={{ ...BODY, fontSize: '16px', lineHeight: 1.5, fontWeight: 400 }}>
+                    {intro}
+                  </p>
+                ) : null}
               </div>
 
               <div className="flex w-full flex-col border-t border-[#1A1010]/18 max-[767px]:mt-1">
@@ -198,13 +223,15 @@ export function ValueFeaturesSection() {
                 </div>
 
                 <div className="flex flex-1 flex-col items-start justify-center gap-6 max-[767px]:gap-4" style={tabTextTransitionStyle}>
-                  <div
-                    className="inline-flex items-center gap-2 uppercase text-[#64151F]"
-                    style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
-                  >
-                    <span className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
-                    Startas nuo {activeData.price}
-                  </div>
+                  {activeData.price ? (
+                    <div
+                      className="inline-flex items-center gap-2 uppercase text-[#64151F]"
+                      style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
+                    >
+                      <span className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
+                      {activeData.pricePrefix ? `${activeData.pricePrefix} ` : ''}{activeData.price}
+                    </div>
+                  ) : null}
 
                   <div className="flex flex-col items-start gap-4 max-[767px]:gap-3">
                     <h3
@@ -218,24 +245,28 @@ export function ValueFeaturesSection() {
                     </p>
                   </div>
 
-                  <div className="flex flex-col gap-2">
-                    {activeData.bullets.map((bullet) => (
-                      <div key={bullet} className="flex items-start gap-2 text-[#1A1010]/86">
-                        <SfCheckboxCheck size={16} className="mt-[1px] text-[#64151F] shrink-0" aria-hidden />
-                        <span style={{ ...BODY, fontSize: '14px', lineHeight: '1.35', fontWeight: 400 }}>{bullet}</span>
-                      </div>
-                    ))}
-                  </div>
+                  {activeData.bullets && activeData.bullets.length > 0 ? (
+                    <div className="flex flex-col gap-2">
+                      {activeData.bullets.map((bullet) => (
+                        <div key={bullet} className="flex items-start gap-2 text-[#1A1010]/86">
+                          <SfCheckboxCheck size={16} className="mt-[1px] text-[#64151F] shrink-0" aria-hidden />
+                          <span style={{ ...BODY, fontSize: '14px', lineHeight: '1.35', fontWeight: 400 }}>{bullet}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
 
-                  <CtaLink
-                    href="#kontaktai"
-                    variant="primary"
-                    className="mt-1"
-                    labelClassName="whitespace-nowrap"
-                    slideWrapperClassName="!h-6"
-                  >
-                    {activeData.cta}
-                  </CtaLink>
+                  {activeData.cta ? (
+                    <CtaLink
+                      href="#kontaktai"
+                      variant="primary"
+                      className="mt-1"
+                      labelClassName="whitespace-nowrap"
+                      slideWrapperClassName="!h-6"
+                    >
+                      {activeData.cta}
+                    </CtaLink>
+                  ) : null}
                 </div>
               </div>
             </div>

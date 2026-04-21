@@ -9,6 +9,8 @@ import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { PlatformSplitSection } from '@/components/sections/PlatformSplitSection';
 import { UnicosWhySection, type UnicosWhyBubble } from '@/components/sections/UnicosWhySection';
+import { ValueFeaturesSection } from '@/components/sections/ValueFeaturesSection';
+import { HOME_PAGE_VALUE_FEATURE_IMAGES } from '@/config/homePageImages';
 import {
   SfClock,
   SfActivity,
@@ -92,39 +94,46 @@ export default function PartnerystePage() {
         showHighlights={false}
       />
 
-      <section className="py-24 max-[767px]:py-16">
-        <Container>
-          <SectionTitle
-            title="Kas gali tapti partneriu?"
-            subtitle="UNICOS skirtas profesionalams, dirbantiems grozio ir sveikatos srityje."
-          />
-          <div className="mt-8 grid grid-cols-1 gap-4 min-[992px]:grid-cols-4 min-[768px]:grid-cols-2">
-            {[
-              { title: 'Kosmetologijos kabinetai ir klinikos', description: 'Odos prieziuros proceduros ir namu prieziuros rekomendacijos.', Icon: SfFaceSmile },
-              { title: 'Grozio salonai ir kirpyklos', description: 'Profesionaliu plauku ir odos produktu pardavimas ir naudojimas.', Icon: SfLayers },
-              { title: 'Estetines dermatologijos klinikos', description: 'Injekciju, lazerines ir aparatine proceduros.', Icon: SfActivity },
-              { title: 'Dermakosmetikos konsultantai ir vaistines', description: 'Profesionalus produktu rekomendavimas klientams.', Icon: SfShield },
-            ].map(({ title, description, Icon }) => (
-              <article key={title} className="border border-solid border-[#1A1010]/15 p-8" style={{ borderRadius: '0px' }}>
-                <div className="flex h-10 w-10 items-center justify-center border border-solid border-[#64151F]" style={{ borderRadius: '0px' }}>
-                  <Icon size={20} strokeWidth={1.75} className="text-[#64151F]" />
-                </div>
-                <h3 className="m-0 mt-5 text-[#1A1010]" style={{ ...BODY, fontSize: '18px', lineHeight: 1.35, fontWeight: 600 }}>
-                  {title}
-                </h3>
-                <p className="m-0 mt-3 text-[#1A1010]/75" style={{ ...BODY, fontSize: '14px', lineHeight: 1.6 }}>
-                  {description}
-                </p>
-              </article>
-            ))}
-          </div>
-          <div className="mt-6 text-center">
-            <Link href="/sprendimai/odos-specialistams" className="inline-flex items-center gap-1 text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '15px', fontWeight: 500 }}>
-              Raskite savo sprendima <SfArrowRight size={14} strokeWidth={2.5} />
-            </Link>
-          </div>
-        </Container>
-      </section>
+      <ValueFeaturesSection
+        eyebrow={null}
+        heading={
+          <>
+            <span className="font-light">Kas gali tapti </span>
+            <span className="font-medium">partneriu?</span>
+          </>
+        }
+        intro="UNICOS skirtas profesionalams, dirbantiems grožio ir sveikatos srityje."
+        tabs={[
+          {
+            label: 'Kosmetologijos kabinetai ir klinikos',
+            heading: 'Kosmetologijos kabinetai ir klinikos',
+            body: 'Odos priežiūros procedūros ir namų priežiūros rekomendacijos.',
+            image: HOME_PAGE_VALUE_FEATURE_IMAGES[0],
+            cta: 'Raskite savo sprendimą',
+          },
+          {
+            label: 'Grožio salonai ir kirpyklos',
+            heading: 'Grožio salonai ir kirpyklos',
+            body: 'Profesionalių plaukų ir odos produktų pardavimas ir naudojimas.',
+            image: HOME_PAGE_VALUE_FEATURE_IMAGES[1],
+            cta: 'Raskite savo sprendimą',
+          },
+          {
+            label: 'Estetinės dermatologijos klinikos',
+            heading: 'Estetinės dermatologijos klinikos',
+            body: 'Injekcijų, lazerinės ir aparatinė procedūros.',
+            image: HOME_PAGE_VALUE_FEATURE_IMAGES[2],
+            cta: 'Raskite savo sprendimą',
+          },
+          {
+            label: 'Dermakosmetikos konsultantai ir vaistinės',
+            heading: 'Dermakosmetikos konsultantai ir vaistinės',
+            body: 'Profesionalus produktų rekomendavimas klientams.',
+            image: HOME_PAGE_VALUE_FEATURE_IMAGES[3],
+            cta: 'Raskite savo sprendimą',
+          },
+        ]}
+      />
 
       <section className="bg-[#3B443A] py-24 max-[767px]:py-16">
         <Container>
