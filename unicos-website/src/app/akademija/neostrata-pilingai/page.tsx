@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
 import { FooterSection } from '@/components/sections/FooterSection';
+import { CtaLink } from '@/components/ui/CtaLink';
 import {
   SfCalendar,
   SfClock,
@@ -17,6 +18,7 @@ import {
   SfLayers,
   SfActivity,
 } from '@/components/icons/feather';
+import { AKADEMIJA_EVENTS, type AkademijaEvent } from '@/config/akademijaPage';
 
 const BODY = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -28,120 +30,183 @@ const HEADING = {
 
 const R0 = { borderRadius: '0px' } as const;
 
+const labelClass =
+  'text-[10px] font-medium uppercase leading-3 tracking-[0.08em] text-[#1A1010]/55';
+
+const NEOSTRATA_EVENT: AkademijaEvent = (() => {
+  const e = AKADEMIJA_EVENTS.find((x) => x.id === 'evt-1');
+  if (!e) throw new Error('Akademija: evt-1 (Neostrata) nerastas konfigūracijoje');
+  return e;
+})();
+
+const PAGE_SHELL =
+  'mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4';
+
 function Container({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="mx-auto w-full max-w-[1440px] px-8 max-[767px]:px-6 max-[479px]:px-4">
-      {children}
-    </div>
-  );
+  return <div className="w-full">{children}</div>;
 }
 
 export default function NeostrataPilingaiPage() {
+  const event = NEOSTRATA_EVENT;
+  const statusTone =
+    event.statusTone === 'green'
+      ? 'border-[#3B443A]/35 bg-[#3B443A]/92 text-[#EFE8DB]'
+      : 'border-[#64151F]/35 bg-[#64151F]/92 ' + (event.statusMuted ? 'text-[#EFE8DB]/86' : 'text-[#EFE8DB]');
+
   return (
     <main className="bg-[#EFE8DB] text-[#1A1010]">
       <NavigationBarSection forceLightSurface />
 
       <div className="pt-28 max-[991px]:pt-24 md:pt-32">
-        <div className="grid min-h-0 grid-cols-1 items-start md:grid-cols-2">
-          {/* Kairė: hero (#EFE8DB), lipnus md+ */}
-          <aside className="relative w-full self-start bg-[#EFE8DB] text-[#1A1010] md:border-r md:border-solid md:border-[#1A1010]/10">
-            <div className="md:sticky md:top-28 md:max-h-[calc(100dvh-7rem)] md:overflow-y-auto md:self-start">
-              <div className="flex flex-col gap-6 px-6 py-[clamp(2rem,5dvh,4.5rem)] md:px-8 md:py-[clamp(2.5rem,6dvh,5rem)]">
-                <p className="m-0 uppercase text-[#1A1010]/40" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
-                  AKADEMIJA / NEOSTRATA RŪGŠTINIŲ PILINGŲ MEISTRIŠKUMAS
-                </p>
+        <div className={PAGE_SHELL}>
+          <div className="grid min-h-0 grid-cols-1 items-start md:grid-cols-2">
+            {/* Kairė: hero (#EFE8DB), lipnus md+ */}
+            <aside className="relative w-full self-start bg-[#EFE8DB] text-[#1A1010] md:border-r md:border-solid md:border-[#1A1010]/10">
+              <div className="md:sticky md:top-28 md:max-h-[calc(100dvh-7rem)] md:overflow-y-auto md:self-start">
+                <div className="flex flex-col gap-6 py-[clamp(2rem,5dvh,4.5rem)] md:py-[clamp(2.5rem,6dvh,5rem)]">
+                  <nav className="mb-0" aria-label="Breadcrumb">
+                    <ol className="m-0 flex list-none flex-wrap items-center gap-3 p-0">
+                      <li>
+                        <Link
+                          href="/akademija"
+                          className="uppercase text-[#64151F] transition-opacity hover:opacity-80"
+                          style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
+                        >
+                          Akademija
+                        </Link>
+                      </li>
+                      <li className="text-[#1A1010]/45" style={{ ...BODY, fontSize: '11px', fontWeight: 400 }}>
+                        /
+                      </li>
+                      <li>
+                        <span
+                          className="uppercase text-[#64151F]"
+                          style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
+                          aria-current="page"
+                        >
+                          Neostrata pilingai
+                        </span>
+                      </li>
+                    </ol>
+                  </nav>
 
-                <div className="flex flex-wrap gap-2">
-                  <span
-                    className="border border-solid border-[#64151F] bg-[#64151F] px-2 py-1 text-[#EFE8DB]"
-                    style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500, ...R0 }}
+                  <div className="flex flex-wrap items-center gap-2">
+                    {event.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="border-[1px] border-solid border-[#1A1010]/18 bg-[#EFE8DB]/80 px-2 py-1 uppercase text-[#1A1010]"
+                        style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500, lineHeight: '12px', ...R0 }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <h1
+                    className="m-0 text-[36px] leading-[1.05] text-[#1A1010] md:text-[56px]"
+                    style={{ ...HEADING, fontWeight: 300 }}
                   >
-                    DERMATOLOGIJA
-                  </span>
-                  <span
-                    className="border border-solid border-[#1A1010]/30 bg-transparent px-2 py-1 text-[#1A1010]"
-                    style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500, ...R0 }}
-                  >
-                    Gyvai
-                  </span>
-                  <span
-                    className="border border-solid border-[#1A1010]/30 bg-transparent px-2 py-1 text-[#1A1010]"
-                    style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500, ...R0 }}
-                  >
-                    LT
-                  </span>
-                </div>
+                    {event.title}.
+                  </h1>
 
-                <h1
-                  className="m-0 text-[36px] leading-[1.05] text-[#1A1010] md:text-[56px]"
-                  style={{ ...HEADING, fontWeight: 300 }}
-                >
-                  Neostrata rūgštinių pilingų meistriškumas.
-                </h1>
-
-                <p className="m-0 max-w-[52ch] text-[#1A1010]" style={{ ...BODY, fontSize: '17px', lineHeight: 1.55 }}>
-                  Išmokite atlikti profesionalius cheminius pilingus saugiai ir efektyviai. Praktinis seminaras su tarptautiniu sertifikatu.
-                </p>
-
-                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[#1A1010]" style={{ ...BODY, fontSize: '15px', lineHeight: 1.5 }}>
-                  <span className="flex items-center gap-1.5">
-                    <SfCalendar size={16} className="text-[#1A1010]" aria-hidden />
-                    Spalio 24
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <SfClock size={16} className="text-[#1A1010]" aria-hidden />
-                    10:00–16:00
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <SfMapPin size={16} className="text-[#1A1010]" aria-hidden />
-                    Vilnius, UNICOS Akademija
-                  </span>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3">
-                  <button
-                    type="button"
-                    className="h-[52px] border-0 bg-[#64151F] px-8 text-[#EFE8DB] transition-colors hover:bg-[#4a0f17]"
-                    style={{ ...BODY, fontSize: '15px', fontWeight: 500, ...R0 }}
-                  >
-                    Registruotis — 49 €
-                  </button>
-                </div>
-                <p className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45 }}>
-                  Vieta garantuojama tik po apmokėjimo.
-                </p>
-
-                <div className="flex flex-wrap items-center gap-3">
-                  <button
-                    type="button"
-                    className="h-[52px] border border-solid border-[#64151F] bg-transparent px-6 text-[#64151F] transition-colors hover:bg-[#64151F]/[0.06]"
-                    style={{ ...BODY, fontSize: '15px', fontWeight: 500, ...R0 }}
-                  >
-                    Gauti priminimą
-                  </button>
-                  <p className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45 }}>
-                    Atsiųsime el. paštu.
+                  <p className="m-0 max-w-[52ch] text-[#1A1010]" style={{ ...BODY, fontSize: '17px', lineHeight: 1.55 }}>
+                    Išmokite atlikti profesionalius cheminius pilingus saugiai ir efektyviai. Praktinis seminaras su tarptautiniu sertifikatu.
                   </p>
+
+                  <div className="flex flex-col items-start gap-2.5 text-[#1A1010]/82" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45 }}>
+                    <span className="inline-flex max-w-full items-center gap-2">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center">
+                        <SfClock className="block shrink-0 text-[#1A1010]/55 !overflow-visible" size={16} strokeWidth={1.75} aria-hidden />
+                      </span>
+                      <span className="min-w-0 break-words">{event.datetime}</span>
+                    </span>
+                    <span className="inline-flex max-w-full items-center gap-2">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center">
+                        <SfMapPin className="block shrink-0 text-[#1A1010]/55 !overflow-visible" size={16} strokeWidth={1.75} aria-hidden />
+                      </span>
+                      <span className="min-w-0 break-words">{event.rowLeft}</span>
+                    </span>
+                    <span className="inline-flex max-w-full items-center gap-2">
+                      <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center">
+                        <SfAward className="block shrink-0 text-[#1A1010]/55 !overflow-visible" size={16} strokeWidth={1.75} aria-hidden />
+                      </span>
+                      <span className="min-w-0 break-words">{event.rowRight}</span>
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col gap-3 border-t-[1px] border-solid border-[#1A1010]/10 pt-4 sm:flex-row sm:items-center sm:gap-4">
+                    <div
+                      className="h-14 w-14 shrink-0 overflow-hidden border-[1px] border-solid border-[#1A1010]/12 bg-[#EFE8DB]/80"
+                      style={R0}
+                      aria-hidden
+                    >
+                      {event.speakerAvatar ? (
+                        <img src={event.speakerAvatar} alt="" className="h-full w-full object-cover" loading="lazy" />
+                      ) : null}
+                    </div>
+                    <div className="flex min-w-0 flex-col gap-1">
+                      <span className="text-[#1A1010]" style={{ ...BODY, fontSize: '15px', fontWeight: 500, lineHeight: 1.4 }}>
+                        {event.speaker}
+                      </span>
+                      <span className="text-[#1A1010]/60" style={{ ...BODY, fontSize: '14px', fontWeight: 400, lineHeight: 1.4 }}>
+                        {event.speakerRole}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-4 border-t-[1px] border-solid border-[#1A1010]/10 pt-4 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <div className={labelClass} style={BODY}>
+                        KAINA
+                      </div>
+                      <p className="m-0 mt-1 text-[#64151F]" style={{ ...BODY, fontSize: '20px', fontWeight: 500, lineHeight: 1.2 }}>
+                        {event.price}
+                      </p>
+                    </div>
+                    <CtaLink href={event.href} variant="primary" className="self-start sm:self-auto">
+                      Registruotis
+                    </CtaLink>
+                  </div>
+
+                  <p className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45 }}>
+                    Vieta garantuojama tik po apmokėjimo.
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-3">
+                    <button
+                      type="button"
+                      className="h-[52px] border border-solid border-[#64151F] bg-transparent px-6 text-[#64151F] transition-colors hover:bg-[#64151F]/[0.06]"
+                      style={{ ...BODY, fontSize: '15px', fontWeight: 500, ...R0 }}
+                    >
+                      Gauti priminimą
+                    </button>
+                    <p className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45 }}>
+                      Atsiųsime el. paštu.
+                    </p>
+                  </div>
                 </div>
-
-                <p className="m-0 uppercase text-[#64151F]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.1em', fontWeight: 600 }}>
-                  Liko 4 vietos
-                </p>
               </div>
-            </div>
-          </aside>
+            </aside>
 
-          {/* Dešinė: likęs turinys */}
-          <div className="min-w-0 bg-[#EFE8DB] text-left">
-            <div
-              className="flex min-h-[480px] items-center justify-center bg-[#3B443A] px-6"
-              style={R0}
-              aria-hidden
-            >
-              <span className="text-[#EFE8DB]/30" style={{ ...BODY, fontSize: '15px', letterSpacing: '0.06em' }}>
-                Neostrata Training
-              </span>
-            </div>
+            {/* Dešinė: likęs turinys */}
+            <div className="min-w-0 bg-[#EFE8DB] text-left">
+              <div className="relative aspect-[16/10] w-full overflow-hidden max-[767px]:aspect-[5/4]" style={R0}>
+                <img
+                  src={event.imageSrc}
+                  alt=""
+                  className="h-full w-full object-cover"
+                  sizes="(max-width: 767px) 100vw, 50vw"
+                  loading="eager"
+                />
+                {event.statusLine ? (
+                  <div
+                    className={`pointer-events-none absolute right-3 top-3 z-[1] inline-flex max-w-[calc(100%-1.5rem)] items-center border border-solid px-3 py-[7px] ${statusTone}`}
+                    style={{ ...BODY, fontSize: '13px', lineHeight: 1, fontWeight: 500, letterSpacing: '0.02em', ...R0 }}
+                  >
+                    {event.statusLine}
+                  </div>
+                ) : null}
+              </div>
 
             <section className="py-16 max-[767px]:py-12">
               <Container>
@@ -414,6 +479,7 @@ export default function NeostrataPilingaiPage() {
                 </div>
               </Container>
             </section>
+            </div>
           </div>
         </div>
       </div>
