@@ -54,12 +54,10 @@ export type PrekiuZenklaiBrandLandingConfig = {
     headingBold: string;
     subheading: string;
     splitEyebrow: string;
-    splitImageSrc: string;
-    splitImageAlt: string;
     splitPrimaryCta: { href: string; label: string };
     cards: readonly PrekiuZenklaiBrandTextCard[];
     extraTitle: string;
-    extraBullets: readonly string[];
+    extraDocLinks: readonly { href: string; label: string }[];
     certificationTitle: string;
     certificationBody: string;
     certificationCta: { href: string; label: string };
@@ -221,8 +219,6 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
     subheading:
       'Mums rūpi ne tik gražus rezultatas, bet, svarbiausia, Jūsų ir Jūsų pacientų saugumas. Todėl visa mūsų įranga bei produktai atitinka aukščiausius ES kokybės standartus.',
     splitEyebrow: 'Medicininė kokybė',
-    splitImageSrc: '/estetines.jpg',
-    splitImageAlt: 'Profesionali medicininė ir estetinė aplinka',
     splitPrimaryCta: { href: '/kontaktai', label: 'Gauti konsultaciją' },
     cards: [
       {
@@ -243,10 +239,10 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
       },
     ],
     extraTitle: 'Klinikinė dokumentacija ir palaikymas',
-    extraBullets: [
-      'Saugos duomenų lapai (MSDS)',
-      'Naudojimo instrukcijos (IFU)',
-      'Kontraindikacijų gidas',
+    extraDocLinks: [
+      { href: '/kontaktai', label: 'Saugos duomenų lapai (MSDS)' },
+      { href: '/kontaktai', label: 'Naudojimo instrukcijos (IFU)' },
+      { href: '/kontaktai', label: 'Kontraindikacijų gidas' },
     ],
     certificationTitle: 'Akredituoti mokymai',
     certificationBody:

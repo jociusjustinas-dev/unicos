@@ -1,13 +1,23 @@
 'use client';
 
 import * as React from 'react';
-import { SfActivity, SfArrowRight, SfAward, SfQualityRibbon, SfShield } from '@/components/icons/feather';
+import {
+  SfActivity,
+  SfArrowRight,
+  SfAward,
+  SfQualityRibbon,
+  SfShield,
+  SfSparkles,
+} from '@/components/icons/feather';
 import { CtaLink } from '@/components/ui/CtaLink';
 import type { PrekiuZenklaiBrandLandingConfig } from '@/config/prekiuZenklaiBrandLanding';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
 };
+
+const docLinkClass =
+  'inline-flex w-full max-w-full items-center justify-center rounded-full border border-transparent bg-[#EFE8DB] px-4 py-2.5 text-center text-[14px] font-medium leading-snug text-[#1A1010] no-underline transition-[background-color,color] duration-200 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EFE8DB] sm:w-auto sm:justify-start sm:text-left';
 
 type Quality = PrekiuZenklaiBrandLandingConfig['quality'];
 
@@ -18,7 +28,7 @@ export function BrandMedicalStandardsSection({ quality }: { quality: Quality }) 
     <section className="relative z-[2] bg-[#EFE8DB] py-20 max-[767px]:py-14">
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="flex min-w-0 flex-col gap-8 max-[991px]:gap-7">
+          <div className="order-1 flex min-w-0 flex-col gap-8 max-[991px]:gap-7 lg:order-2">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
               <span
@@ -87,51 +97,61 @@ export function BrandMedicalStandardsSection({ quality }: { quality: Quality }) 
             </div>
           </div>
 
-          <div
-            className="relative min-h-[min(360px,55vw)] w-full overflow-hidden border border-[#1A1010]/10 lg:min-h-[min(640px,72vh)]"
-            style={{ borderRadius: '0px' }}
-          >
-            <img
-              src={quality.splitImageSrc}
-              alt={quality.splitImageAlt}
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,16,0.06),rgba(26,16,16,0.2))]" aria-hidden />
-          </div>
-        </div>
-
-        <div className="mx-auto mt-16 max-w-[920px] border-t border-[#1A1010]/10 pt-14 max-[767px]:mt-12 max-[767px]:pt-10">
-          <h3
-            className="m-0 text-[#64151F]"
-            style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: 'clamp(1.35rem, 2.2vw, 1.65rem)', fontWeight: 300, lineHeight: 1.15 }}
-          >
-            {quality.extraTitle}
-          </h3>
-          <ul className="m-0 mt-5 list-none space-y-2 p-0" style={BODY}>
-            {quality.extraBullets.map((line) => (
-              <li key={line} className="relative pl-5 text-[#1A1010]/82" style={{ fontSize: '15px', lineHeight: 1.5 }}>
-                <span className="absolute left-0 top-[0.55em] h-1.5 w-1.5 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
-                {line}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-10 border-t border-[#1A1010]/10 pt-10">
-            <h4
-              className="m-0 text-[#64151F]"
-              style={{ ...BODY, fontSize: '13px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}
+          <aside className="order-2 w-full min-w-0 lg:order-1">
+            <div
+              className="flex min-h-[min(360px,55vw)] w-full flex-col border border-[#0f1612]/40 bg-[#1c2621] p-8 text-[#F7F2EA] shadow-[0_24px_60px_rgba(26,16,16,0.12)] max-[767px]:min-h-0 max-[767px]:p-6 lg:min-h-[min(640px,72vh)] lg:p-9"
+              style={{ borderRadius: '20px' }}
             >
-              {quality.certificationTitle}
-            </h4>
-            <p className="m-0 mt-3 text-[#1A1010]/78" style={{ ...BODY, fontSize: '15px', lineHeight: 1.55 }}>
-              {quality.certificationBody}
-            </p>
-            <div className="mt-6">
-              <CtaLink href={quality.certificationCta.href} variant="outline" labelMode="static" className="min-w-[220px] justify-center">
-                {quality.certificationCta.label}
-              </CtaLink>
+              <div className="flex flex-col gap-5">
+                <div className="flex items-start gap-2.5">
+                  <SfSparkles size={20} className="mt-0.5 shrink-0 text-[#EFE8DB]/75" aria-hidden />
+                  <h3
+                    className="m-0 text-[#F7F2EA]"
+                    style={{ ...BODY, fontSize: '15px', fontWeight: 600, letterSpacing: '0.02em', lineHeight: 1.35 }}
+                  >
+                    {quality.extraTitle}
+                  </h3>
+                </div>
+                <nav className="flex flex-col gap-2.5" aria-label="Klinikinė dokumentacija">
+                  {quality.extraDocLinks.map((link) => (
+                    <a key={link.label} href={link.href} className={docLinkClass}>
+                      {link.label}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+
+              <div className="my-8 h-px w-full shrink-0 bg-[#F7F2EA]/12" aria-hidden />
+
+              <div className="flex flex-1 flex-col gap-3">
+                <h4
+                  className="m-0 text-[#F7F2EA] tracking-[-0.02em]"
+                  style={{
+                    fontFamily: "'Quiche Sans', Georgia, serif",
+                    fontSize: 'clamp(1.5rem, 2.4vw, 1.85rem)',
+                    fontWeight: 400,
+                    lineHeight: 1.12,
+                  }}
+                >
+                  {quality.certificationTitle}
+                </h4>
+                <p className="m-0 text-[#F7F2EA]/78" style={{ ...BODY, fontSize: '14px', lineHeight: 1.55, fontWeight: 400 }}>
+                  {quality.certificationBody}
+                </p>
+              </div>
+
+              <div className="my-8 h-px w-full shrink-0 bg-[#F7F2EA]/12" aria-hidden />
+
+              <div className="mt-auto pt-0">
+                <a
+                  href={quality.certificationCta.href}
+                  className={`${docLinkClass} min-h-[48px] px-6 py-3 text-[15px]`}
+                >
+                  {quality.certificationCta.label}
+                </a>
+              </div>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
