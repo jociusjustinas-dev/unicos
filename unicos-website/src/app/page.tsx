@@ -9,7 +9,6 @@ import { ProcessSection } from '@/components/sections/ProcessSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { CmsGridSection } from '@/components/sections/CmsGridSection';
 import { UnicosWhySection } from '@/components/sections/UnicosWhySection';
-import { BrandPartnerConsultStrip } from '@/components/sections/BrandPartnerConsultStrip';
 import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
 import { FaqSection } from '@/components/sections/FaqSection';
 import { CtaSection } from '@/components/sections/CtaSection';
@@ -25,16 +24,6 @@ export default function Home() {
       <IntroTextSection />
       <UnicosWhySection />
       <ResponsibleBeautySection />
-      <BrandPartnerConsultStrip
-        strip={{
-          title: 'Konsultacija su vadybininku',
-          body:
-            'Turite klausimų apie partnerystę, prekių ženklus ar pirmus žingsnius? Mūsų vadybininkas atsakys ir padės suplanuoti kelią — nuo pirmo kontakto iki užsakymo.',
-          portraitSrc: 'https://byqsupply-components.netlify.app/haldenmiller/images/ContactAvatar-3.webp',
-          portraitAlt: 'UNICOS vadybininkas',
-          cta: { href: '/kontaktai', label: 'Rašyti vadybininkui' },
-        }}
-      />
       <PlatformSplitSection />
       <ProcessSection />
       <TestimonialsSection />

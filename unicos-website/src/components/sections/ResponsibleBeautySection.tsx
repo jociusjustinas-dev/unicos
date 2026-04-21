@@ -113,12 +113,11 @@ export function ResponsibleBeautySection({
     ? 'opacity-100 translate-y-0'
     : 'opacity-0 translate-y-[1.25rem]';
 
-  /** Kaip reference: 700ms, pakopinis įėjimas (ms). */
+  const guidanceReveal = guidanceVisible
+    ? 'opacity-100 translate-y-0'
+    : 'opacity-0 translate-y-3 motion-reduce:opacity-100 motion-reduce:translate-y-0';
   const guidanceEase =
     'transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none';
-  const guidanceHidden = guidanceVisible
-    ? 'opacity-100 translate-y-0'
-    : 'opacity-0 translate-y-4 motion-reduce:opacity-100 motion-reduce:translate-y-0';
 
   const resolvedEyebrow = eyebrowLabel === null ? null : eyebrowLabel ?? 'Mūsų standartas';
   const resolvedHeading =
@@ -246,10 +245,13 @@ export function ResponsibleBeautySection({
           {showGuidanceRow ? (
             <div
               ref={guidanceRef}
-              className="mx-auto flex w-full max-w-[56rem] flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3 md:gap-4"
+              className={`mx-auto flex w-full flex-col items-stretch gap-6 border-t border-[#1A1010]/10 pt-10 max-[767px]:pt-8 max-[639px]:gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-10 ${guidanceEase} ${guidanceReveal}`}
             >
-              <div className={`flex shrink-0 justify-center ${guidanceEase} delay-0 ${guidanceHidden}`}>
-                <div className="h-12 w-12 shrink-0 overflow-hidden max-[479px]:h-10 max-[479px]:w-10" style={{ borderRadius: '0px' }}>
+              <div className="flex min-w-0 flex-1 items-center gap-5 max-[479px]:gap-4">
+                <div
+                  className="h-14 w-14 shrink-0 overflow-hidden border border-[#1A1010]/10 bg-[#EFE8DB]/60 max-[479px]:h-12 max-[479px]:w-12"
+                  style={{ borderRadius: '0px' }}
+                >
                   <img
                     src={contactAvatar.src}
                     loading="lazy"
@@ -257,21 +259,17 @@ export function ResponsibleBeautySection({
                     className="h-full w-full object-cover"
                   />
                 </div>
-              </div>
-
-              <div
-                className={`max-w-[min(20rem,100%)] shrink text-left ${guidanceEase} delay-[80ms] ${guidanceHidden}`}
-              >
-                <div className="text-sm font-medium leading-5 text-[#1A1010]" style={BODY}>
-                  Reikia konsultacijos?
-                </div>
-                <div className="text-sm leading-5 text-[#1A1010]/65" style={BODY}>
-                  Visada mielai padėsime.
+                <div className="min-w-0 flex-1 text-left">
+                  <p className="m-0 font-medium leading-snug text-[#1A1010]" style={{ ...BODY, fontSize: '15px' }}>
+                    Reikia konsultacijos?
+                  </p>
+                  <p className="m-0 mt-1 leading-relaxed text-[#1A1010]/65" style={{ ...BODY, fontSize: '14px', lineHeight: 1.5 }}>
+                    Visada mielai padėsime.
+                  </p>
                 </div>
               </div>
-
-              <div className={`shrink-0 ${guidanceEase} delay-[160ms] ${guidanceHidden}`}>
-                <CtaLink href="#kontaktai" variant="secondary">
+              <div className="shrink-0 max-[639px]:w-full max-[639px]:[&>a]:w-full max-[639px]:[&>a]:justify-center">
+                <CtaLink href="/kontaktai" variant="secondary" labelMode="static" className="min-w-[180px] justify-center">
                   Susisiekite
                 </CtaLink>
               </div>

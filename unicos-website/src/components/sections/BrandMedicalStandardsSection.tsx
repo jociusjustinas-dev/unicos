@@ -1,7 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { SfActivity, SfArrowRight, SfAward, SfQualityRibbon, SfShield } from '@/components/icons/feather';
+import { SfActivity, SfAward, SfQualityRibbon, SfShield } from '@/components/icons/feather';
+import { ChevronRightIcon } from '@/components/ui/ChevronArrows';
 import type { PrekiuZenklaiBrandLandingConfig } from '@/config/prekiuZenklaiBrandLanding';
 
 const BODY: React.CSSProperties = {
@@ -102,7 +103,7 @@ export function BrandMedicalStandardsSection({ quality }: { quality: Quality }) 
                   {quality.extraDocLinks.map((link) => (
                     <a key={link.label} href={link.href} className={docLinkClass}>
                       <span className="min-w-0 flex-1 pr-2">{link.label}</span>
-                      <SfArrowRight size={16} className="shrink-0 text-[#EFE8DB]/75" aria-hidden />
+                      <ChevronRightIcon className="h-[18px] w-[18px] shrink-0 text-[#EFE8DB]/82" />
                     </a>
                   ))}
                 </nav>
