@@ -3,6 +3,8 @@
 import * as React from 'react';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
 import { FooterSection } from '@/components/sections/FooterSection';
+import { PlatformSplitSection } from '@/components/sections/PlatformSplitSection';
+import { SfClock, SfActivity, SfLayers, SfAward } from '@/components/icons/feather';
 
 const BODY = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",

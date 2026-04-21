@@ -1,11 +1,14 @@
 'use client';
 
+import * as React from 'react';
 import Link from 'next/link';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
 import { FooterSection } from '@/components/sections/FooterSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { CtaSection } from '@/components/sections/CtaSection';
+import { PlatformSplitSection } from '@/components/sections/PlatformSplitSection';
+import { SfClock, SfActivity, SfLayers, SfAward } from '@/components/icons/feather';
 
 const BODY = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -158,43 +161,47 @@ export default function PartnerystePage() {
         </Container>
       </section>
 
-      <section className="py-24 max-[767px]:py-16">
-        <Container>
-          <div className="grid grid-cols-1 gap-10 min-[992px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] min-[992px]:items-center">
-            <div>
-              <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(2rem, 3.4vw, 3rem)', lineHeight: 1.06, fontWeight: 300 }}>
-                UNICOS platforma - daugiau laiko Jums.
-              </h2>
-              <p className="m-0 mt-4 text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.6 }}>
-                Sukureme iranki, kuris pavercia uzsakymus malonumu.
-              </p>
-              <div className="mt-6 flex flex-col gap-3">
-                {[
-                  'Uzsakymai bet kuriuo paros metu - be skambuciu ir laukimo.',
-                  'Likuciu stebejimas realiu laiku - visada zinote, kas sandelyje.',
-                  'Patogi uzsakymu istorija - pakartokite megstama krepseli vienu paspaudimu.',
-                  'Asmenines kainos ir akcijos - viskas matoma is karto.',
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <span className="mt-[1px] text-[#64151F]" style={{ ...BODY, fontSize: '16px', fontWeight: 700 }}>
-                      ✓
-                    </span>
-                    <p className="m-0 text-[#1A1010]/82" style={{ ...BODY, fontSize: '15px', lineHeight: 1.6 }}>
-                      {item}
-                    </p>
-                  </div>
-                ))}
-              </div>
-              <button className="mt-7 h-[52px] border-0 bg-[#64151F] px-6 text-[#EFE8DB]" style={{ ...BODY, borderRadius: '0px', fontSize: '15px', fontWeight: 500 }}>
-                Tapti partneriu ir gauti prieiga →
-              </button>
-            </div>
-            <div className="flex min-h-[400px] items-center justify-center bg-[#3B443A] text-[#EFE8DB]/40" style={{ ...BODY, borderRadius: '0px', fontSize: '14px', letterSpacing: '0.06em' }}>
-              Platform Dashboard Mockup
-            </div>
+      <PlatformSplitSection
+        eyebrow={null}
+        heading={
+          <>
+            <span className="font-light">UNICOS platforma - </span>
+            <span className="font-medium">daugiau laiko Jums.</span>
+          </>
+        }
+        bodyText="Sukūrėme įrankį, kuris paverčia užsakymus malonumu."
+        surfaceClassName="bg-[#EFE8DB]"
+        accent="maroon"
+        ctaLabel="Tapti partneriu ir gauti prieigą →"
+        ctaHref="#tapti-partneriu"
+        features={[
+          {
+            Icon: SfClock,
+            title: 'Užsakymai bet kuriuo paros metu',
+            body: 'be skambučių ir laukimo.',
+          },
+          {
+            Icon: SfActivity,
+            title: 'Likučių stebėjimas realiu laiku',
+            body: 'visada žinote, kas sandėlyje.',
+          },
+          {
+            Icon: SfLayers,
+            title: 'Patogi užsakymų istorija',
+            body: 'pakartokite mėgstamą krepšelį vienu paspaudimu.',
+          },
+          {
+            Icon: SfAward,
+            title: 'Asmeninės kainos ir akcijos',
+            body: 'viskas matoma iš karto.',
+          },
+        ]}
+        imageContent={
+          <div className="flex h-full min-h-[400px] w-full items-center justify-center bg-[#3B443A] text-[#EFE8DB]/40" style={{ ...BODY, borderRadius: '0px', fontSize: '14px', letterSpacing: '0.06em' }}>
+            Platform Dashboard Mockup
           </div>
-        </Container>
-      </section>
+        }
+      />
 
       <section className="py-24 max-[767px]:py-16">
         <Container>

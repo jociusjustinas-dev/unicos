@@ -11,7 +11,13 @@ const BODY: React.CSSProperties = {
 
 const IMAGE_SRC = '/device.webp';
 
-const features = [
+export type PlatformFeature = {
+  Icon: React.ComponentType<any>;
+  title: string;
+  body: string;
+};
+
+const defaultFeatures: readonly PlatformFeature[] = [
   {
     Icon: SfClock,
     title: 'Užsakymai bet kuriuo paros metu',
@@ -27,9 +33,32 @@ const features = [
     title: 'Patogi užsakymų istorija',
     body: 'Vienoje vietoje — užsakymai, dokumentai ir atsakymai klientams.',
   },
-] as const;
+];
 
-export function PlatformSplitSection() {
+export type PlatformSplitSectionProps = {
+  eyebrow?: string | null;
+  heading?: React.ReactNode;
+  bodyText?: string;
+  features?: readonly PlatformFeature[];
+  ctaLabel?: string;
+  ctaHref?: string;
+  surfaceClassName?: string;
+  accent?: 'green' | 'maroon';
+  imageContent?: React.ReactNode;
+};
+
+export function PlatformSplitSection({
+  eyebrow = 'Platforma verslui',
+  heading,
+  bodyText = 'Sukūrėme platformą, kuri paverčia užsakymus malonumu. Pamirškite sudėtingą administravimą.',
+  features = defaultFeatures,
+  ctaLabel = 'Kaip veikia platforma?',
+  ctaHref = '#platform-ypatybes',
+  surfaceClassName = 'bg-white',
+  accent = 'green',
+  imageContent,
+}: PlatformSplitSectionProps) {
+  const isMaroon = accent === 'maroon';
   const [headlineRef, headlineVisible] = useInViewOnce<HTMLDivElement>();
   const [imageRef, imageVisible] = useInViewOnce<HTMLDivElement>();
   const featureRefs = React.useRef<(HTMLDivElement | null)[]>([]);
@@ -56,7 +85,7 @@ export function PlatformSplitSection() {
       cleanups.push(() => obs.disconnect());
     });
     return () => cleanups.forEach((fn) => fn());
-  }, []);
+  }, [features.length]);
 
   const headlineStyle: React.CSSProperties = {
     opacity: headlineVisible ? 1 : 0,
@@ -72,7 +101,7 @@ export function PlatformSplitSection() {
   };
 
   return (
-    <section id="platforma" className="relative z-[2] overflow-x-clip bg-white py-16 max-[767px]:py-14">
+    <section id="platforma" className={`relative z-[2] overflow-x-clip py-16 max-[767px]:py-14 ${surfaceClassName}`}>
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div className="grid grid-cols-1 items-stretch gap-12 lg:grid-cols-2 lg:gap-x-[min(8.25rem,7vw)] lg:gap-y-0">
           {/* Kairė: antraštė + ypatybės */}
@@ -84,45 +113,52 @@ export function PlatformSplitSection() {
               className="flex flex-col items-start gap-6 max-[767px]:gap-4"
               style={headlineStyle}
             >
-              <div className="flex items-center gap-2">
-                <div className="h-2 w-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
-                <span
-                  className="uppercase text-[#3B443A]"
-                  style={{
-                    fontSize: '11px',
-                    fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
-                    fontWeight: 500,
-                    letterSpacing: '0.12em',
-                  }}
-                >
-                  Platforma verslui
-                </span>
-              </div>
+              {eyebrow !== null ? (
+                <div className="flex items-center gap-2">
+                  <div className={`h-2 w-2 shrink-0 ${isMaroon ? 'bg-[#64151F]' : 'bg-[#3B443A]'}`} style={{ borderRadius: '0px' }} aria-hidden />
+                  <span
+                    className={`uppercase ${isMaroon ? 'text-[#64151F]' : 'text-[#3B443A]'}`}
+                    style={{
+                      fontSize: '11px',
+                      fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
+                      fontWeight: 500,
+                      letterSpacing: '0.12em',
+                    }}
+                  >
+                    {eyebrow}
+                  </span>
+                </div>
+              ) : null}
 
               <div className="flex flex-col gap-5" style={{ gap: '20px' }}>
                 <h2
-                  className="m-0 max-[767px]:text-[32px] max-[767px]:leading-[1.12] max-[767px]:tracking-[-0.5px]"
+                  className={`m-0 max-[767px]:text-[32px] max-[767px]:leading-[1.12] max-[767px]:tracking-[-0.5px] ${isMaroon ? 'text-[#64151F]' : 'text-[#3B443A]'}`}
                   style={{
                     fontFamily: "'Quiche Sans', Georgia, serif",
                     fontSize: 'clamp(32px, 3.2vw, 40px)',
                     lineHeight: '1.12',
                     letterSpacing: '-1px',
-                    color: '#3B443A',
                   }}
                 >
-                  <span className="font-medium">Daugiau laiko </span>
-                  <span className="font-medium">Jums</span>
-                  <br />
-                  <span className="font-light">ir Jūsų klientams.</span>
+                  {heading ?? (
+                    <>
+                      <span className="font-medium">Daugiau laiko </span>
+                      <span className="font-medium">Jums</span>
+                      <br />
+                      <span className="font-light">ir Jūsų klientams.</span>
+                    </>
+                  )}
                 </h2>
                 <p className="m-0 max-w-[52ch] text-[#1A1010]/80" style={{ ...BODY, fontSize: '16px', lineHeight: '1.55', fontWeight: 400 }}>
-                  Sukūrėme platformą, kuri paverčia užsakymus malonumu. Pamirškite sudėtingą administravimą.
+                  {bodyText}
                 </p>
               </div>
 
-              <CtaLink href="#platform-ypatybes" variant="secondary" labelMode="slide">
-                Kaip veikia platforma?
-              </CtaLink>
+              {ctaLabel ? (
+                <CtaLink href={ctaHref} variant="secondary" labelMode="slide">
+                  {ctaLabel}
+                </CtaLink>
+              ) : null}
             </div>
 
             <div id="platform-ypatybes" className="flex flex-col gap-10">
@@ -144,7 +180,9 @@ export function PlatformSplitSection() {
                     }}
                   >
                     <div
-                      className="grid h-14 w-14 shrink-0 place-items-center overflow-visible border border-[#3B443A]/20 bg-[rgba(59,68,58,0.1)] p-2 text-[#3B443A] max-[767px]:h-12 max-[767px]:w-12 max-[767px]:p-1.5"
+                      className={`grid h-14 w-14 shrink-0 place-items-center overflow-visible border p-2 max-[767px]:h-12 max-[767px]:w-12 max-[767px]:p-1.5 ${
+                        isMaroon ? 'border-[#64151F]/20 bg-[rgba(100,21,31,0.1)] text-[#64151F]' : 'border-[#3B443A]/20 bg-[rgba(59,68,58,0.1)] text-[#3B443A]'
+                      }`}
                       style={{ borderRadius: '0px' }}
                     >
                       <span className="inline-flex h-[22px] w-[22px] shrink-0 items-center justify-center overflow-visible">
@@ -171,16 +209,20 @@ export function PlatformSplitSection() {
           {/* Dešinė: aukštis = kairiojo stulpelio eilutės aukštis (grid stretch) */}
           <div
             ref={imageRef}
-            className="relative min-h-[280px] w-full overflow-hidden bg-[rgba(59,68,58,0.08)] lg:min-h-0 lg:h-full"
+            className={`relative min-h-[280px] w-full overflow-hidden lg:min-h-0 lg:h-full ${
+              imageContent ? '' : 'bg-[rgba(59,68,58,0.08)]'
+            }`}
             style={{ ...imageStyle, borderRadius: '0px' }}
           >
-            <img
-              src={IMAGE_SRC}
-              alt="Platformos įrenginio vaizdas."
-              className="absolute inset-0 z-[1] h-full w-full object-cover object-center"
-              loading="lazy"
-              decoding="async"
-            />
+            {imageContent ?? (
+              <img
+                src={IMAGE_SRC}
+                alt="Platformos įrenginio vaizdas."
+                className="absolute inset-0 z-[1] h-full w-full object-cover object-center"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
           </div>
         </div>
       </div>
