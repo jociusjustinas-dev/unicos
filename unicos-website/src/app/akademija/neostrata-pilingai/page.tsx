@@ -30,9 +30,6 @@ const HEADING = {
 
 const R0 = { borderRadius: '0px' } as const;
 
-const labelClass =
-  'text-[10px] font-medium uppercase leading-3 tracking-[0.08em] text-[#1A1010]/55';
-
 const NEOSTRATA_EVENT: AkademijaEvent = (() => {
   const e = AKADEMIJA_EVENTS.find((x) => x.id === 'evt-1');
   if (!e) throw new Error('Akademija: evt-1 (Neostrata) nerastas konfigūracijoje');
@@ -46,12 +43,29 @@ function Container({ children }: { children: React.ReactNode }) {
   return <div className="w-full">{children}</div>;
 }
 
+function NeostrataHeroHeading({ title }: { title: string }) {
+  const parts = title.trim().split(/\s+/);
+  if (parts.length >= 4 && parts[0].toLowerCase() === 'neostrata' && parts[parts.length - 1].toLowerCase().includes('meistrišk')) {
+    const lead = `${parts[0]} `;
+    const mid = `${parts.slice(1, -1).join(' ')} `;
+    const tail = parts[parts.length - 1];
+    return (
+      <>
+        <span className="font-medium">{lead}</span>
+        <span className="font-light">{mid}</span>
+        <span className="font-medium">{tail}</span>.
+      </>
+    );
+  }
+  return (
+    <>
+      {title}.
+    </>
+  );
+}
+
 export default function NeostrataPilingaiPage() {
   const event = NEOSTRATA_EVENT;
-  const statusTone =
-    event.statusTone === 'green'
-      ? 'border-[#3B443A]/35 bg-[#3B443A]/92 text-[#EFE8DB]'
-      : 'border-[#64151F]/35 bg-[#64151F]/92 ' + (event.statusMuted ? 'text-[#EFE8DB]/86' : 'text-[#EFE8DB]');
 
   return (
     <main className="bg-[#EFE8DB] text-[#1A1010]">
@@ -59,11 +73,10 @@ export default function NeostrataPilingaiPage() {
 
       <div className="pt-28 max-[991px]:pt-24 md:pt-32">
         <div className={PAGE_SHELL}>
-          <div className="grid min-h-0 grid-cols-1 items-start md:grid-cols-2">
-            {/* Kairė: hero (#EFE8DB), lipnus md+ */}
-            <aside className="relative w-full self-start bg-[#EFE8DB] text-[#1A1010] md:border-r md:border-solid md:border-[#1A1010]/10">
-              <div className="md:sticky md:top-28 md:max-h-[calc(100dvh-7rem)] md:overflow-y-auto md:self-start">
-                <div className="flex flex-col gap-6 py-[clamp(2rem,5dvh,4.5rem)] md:py-[clamp(2.5rem,6dvh,5rem)]">
+          <div className="grid min-h-0 grid-cols-1 items-start gap-y-10 md:grid-cols-2 md:gap-x-16 md:gap-y-0 lg:gap-x-24">
+            {/* Kairė: hero (#EFE8DB), lipnus md+ — ribojamas viewport aukščiui, kad blokas visada tilptų po headeriu */}
+            <aside className="relative min-h-0 w-full self-start bg-[#EFE8DB] text-[#1A1010] md:sticky md:top-28 md:z-[1] md:max-h-[calc(100svh-7rem)] md:overflow-y-auto md:overscroll-y-contain [scrollbar-gutter:stable]">
+              <div className="flex flex-col gap-6 py-[clamp(2rem,5dvh,4.5rem)] md:py-[clamp(2.5rem,6dvh,5rem)] md:pr-1">
                   <nav className="mb-0" aria-label="Breadcrumb">
                     <ol className="m-0 flex list-none flex-wrap items-center gap-3 p-0">
                       <li>
@@ -90,23 +103,33 @@ export default function NeostrataPilingaiPage() {
                     </ol>
                   </nav>
 
-                  <div className="flex flex-wrap items-center gap-2">
-                    {event.tags.map((tag) => (
+                  <div className="flex min-w-0 flex-wrap items-center justify-between gap-x-4 gap-y-2">
+                    <div className="flex min-w-0 flex-wrap items-center gap-2">
+                      {event.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="border-[1px] border-solid border-[#1A1010]/18 bg-[#EFE8DB]/80 px-2 py-1 uppercase text-[#1A1010]"
+                          style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500, lineHeight: '12px', ...R0 }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    {event.statusLine ? (
                       <span
-                        key={tag}
-                        className="border-[1px] border-solid border-[#1A1010]/18 bg-[#EFE8DB]/80 px-2 py-1 uppercase text-[#1A1010]"
-                        style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 500, lineHeight: '12px', ...R0 }}
+                        className="shrink-0 whitespace-nowrap uppercase text-[#64151F]"
+                        style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 600, lineHeight: '12px' }}
                       >
-                        {tag}
+                        {event.statusLine}
                       </span>
-                    ))}
+                    ) : null}
                   </div>
 
                   <h1
-                    className="m-0 text-[36px] leading-[1.05] text-[#1A1010] md:text-[56px]"
+                    className="m-0 text-[36px] leading-[1.05] text-[#64151F] md:text-[56px]"
                     style={{ ...HEADING, fontWeight: 300 }}
                   >
-                    {event.title}.
+                    <NeostrataHeroHeading title={event.title} />
                   </h1>
 
                   <p className="m-0 max-w-[52ch] text-[#1A1010]" style={{ ...BODY, fontSize: '17px', lineHeight: 1.55 }}>
@@ -154,17 +177,15 @@ export default function NeostrataPilingaiPage() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-4 border-t-[1px] border-solid border-[#1A1010]/10 pt-4 sm:flex-row sm:items-end sm:justify-between">
-                    <div>
-                      <div className={labelClass} style={BODY}>
-                        KAINA
-                      </div>
-                      <p className="m-0 mt-1 text-[#64151F]" style={{ ...BODY, fontSize: '20px', fontWeight: 500, lineHeight: 1.2 }}>
-                        {event.price}
-                      </p>
-                    </div>
-                    <CtaLink href={event.href} variant="primary" className="self-start sm:self-auto">
-                      Registruotis
+                  <div className="border-t-[1px] border-solid border-[#1A1010]/10 pt-4">
+                    <CtaLink
+                      href={event.href}
+                      variant="primary"
+                      labelMode="static"
+                      className="min-h-[52px] self-start rounded-none px-8"
+                      style={{ ...BODY, ...R0 }}
+                    >
+                      Registruotis — {event.price}
                     </CtaLink>
                   </div>
 
@@ -185,11 +206,10 @@ export default function NeostrataPilingaiPage() {
                     </p>
                   </div>
                 </div>
-              </div>
             </aside>
 
             {/* Dešinė: likęs turinys */}
-            <div className="min-w-0 bg-[#EFE8DB] text-left">
+            <div className="min-h-0 min-w-0 bg-[#EFE8DB] text-left">
               <div className="relative aspect-[16/10] w-full overflow-hidden max-[767px]:aspect-[5/4]" style={R0}>
                 <img
                   src={event.imageSrc}
@@ -198,14 +218,6 @@ export default function NeostrataPilingaiPage() {
                   sizes="(max-width: 767px) 100vw, 50vw"
                   loading="eager"
                 />
-                {event.statusLine ? (
-                  <div
-                    className={`pointer-events-none absolute right-3 top-3 z-[1] inline-flex max-w-[calc(100%-1.5rem)] items-center border border-solid px-3 py-[7px] ${statusTone}`}
-                    style={{ ...BODY, fontSize: '13px', lineHeight: 1, fontWeight: 500, letterSpacing: '0.02em', ...R0 }}
-                  >
-                    {event.statusLine}
-                  </div>
-                ) : null}
               </div>
 
             <section className="py-16 max-[767px]:py-12">
