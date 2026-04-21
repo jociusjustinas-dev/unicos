@@ -2,9 +2,13 @@
 
 import Link from 'next/link';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
-import { AkademijaEventCard } from '@/components/sections/AkademijaTrainingSection';
 import { FooterSection } from '@/components/sections/FooterSection';
+import { AkademijaDetailH2 } from '@/components/sections/akademija/AkademijaDetailH2';
+import { AkademijaDetailSection } from '@/components/sections/akademija/AkademijaDetailSection';
+import { AkademijaMaroonEventCtaBand } from '@/components/sections/akademija/AkademijaMaroonEventCtaBand';
+import { AkademijaRelatedEventsSection } from '@/components/sections/akademija/AkademijaRelatedEventsSection';
 import { CtaLink } from '@/components/ui/CtaLink';
+import { PAGE_SHELL_CLASS } from '@/config/pageShell';
 import {
   SfClock,
   SfMapPin,
@@ -15,8 +19,6 @@ import {
   SfActivity,
 } from '@/components/icons/feather';
 import { AKADEMIJA_EVENTS, type AkademijaEvent } from '@/config/akademijaPage';
-
-const OTHER_EVENTS_FOR_STRIP = AKADEMIJA_EVENTS.filter((e) => e.id !== 'evt-1');
 
 const BODY = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -34,13 +36,7 @@ const NEOSTRATA_EVENT: AkademijaEvent = (() => {
   return e;
 })();
 
-const PAGE_SHELL =
-  'mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4';
-
 /** Lipniam stulpeliui: `md:pt-32` sutampa su nav aukščiu; lipnaus `top`/`max-h` įdubimai nuo viewport (žr. aside). */
-function Container({ children }: { children: React.ReactNode }) {
-  return <div className="w-full">{children}</div>;
-}
 
 function NeostrataHeroHeading({ title }: { title: string }) {
   const parts = title.trim().split(/\s+/);
@@ -72,7 +68,7 @@ export default function NeostrataPilingaiPage() {
 
       {/* md:pt-32 sutampa su lipnaus stulpelio pradžia kai nav matomas; lipnus `top` seka --site-sticky-top iš NavigationBarSection */}
       <div className="pt-24 md:pt-32">
-        <div className={PAGE_SHELL}>
+        <div className={PAGE_SHELL_CLASS}>
           <div className="grid min-h-0 grid-cols-1 items-start gap-y-10 md:grid-cols-2 md:gap-x-16 md:gap-y-0 lg:gap-x-24">
             {/* Kairė: lipnus hero — fonas per visą stulpelio plotį; turinys su 48px (md:p-12) paddingu */}
             <aside
@@ -232,186 +228,113 @@ export default function NeostrataPilingaiPage() {
                 />
               </div>
 
-            <section className="py-16 max-[767px]:py-12">
-              <Container>
-                <div className="max-w-[720px] text-left">
-                  <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
-                    Apie seminarą.
-                  </h2>
-                  <p className="m-0 mt-5 text-[#1A1010]/82" style={{ ...BODY, fontSize: '17px', lineHeight: 1.65 }}>
-                    Šešių valandų praktinis seminaras, skirtas dermatologams ir kosmetologams, norintiems gilinti žinias apie cheminius pilingus su Neostrata produktais. Dirbsite su realiomis priemonėmis, analizuosite odos tipus ir mokysitės parinkti tinkamą pilingą kiekvienam pacientui. Seminarą veda Dr. Rūta Gancevičienė — dermatovenerologė su tarptautine klinikine patirtimi.
-                  </p>
-                </div>
-              </Container>
-            </section>
+            <AkademijaDetailSection>
+              <AkademijaDetailH2>Apie seminarą.</AkademijaDetailH2>
+              <p className="m-0 mt-5 text-[#1A1010]/82" style={{ ...BODY, fontSize: '17px', lineHeight: 1.65 }}>
+                Šešių valandų praktinis seminaras, skirtas dermatologams ir kosmetologams, norintiems gilinti žinias apie cheminius pilingus su Neostrata produktais. Dirbsite su realiomis priemonėmis, analizuosite odos tipus ir mokysitės parinkti tinkamą pilingą kiekvienam pacientui. Seminarą veda Dr. Rūta Gancevičienė — dermatovenerologė su tarptautine klinikine patirtimi.
+              </p>
+            </AkademijaDetailSection>
 
-            <section className="py-16 max-[767px]:py-12">
-              <Container>
-                <div className="max-w-[900px] text-left">
-                  <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
-                    Ką išmoksite?
-                  </h2>
-                  <div className="mt-8">
-                    {[
-                      'Glikolio, polihidroksirūgščių ir retinoidų rūgščių veikimo mechanizmai.',
-                      'Odos tipo ir būklės vertinimas prieš pilingą.',
-                      'Tinkamo pilingo parinkimas pagal paciento poreikius ir jautrumą.',
-                      'Praktinis darbas: pilingo atlikimas ant modelio žingsnis po žingsnio.',
-                      'Postprocedūrinė priežiūra ir namų priežiūros rekomendacijos pacientui.',
-                    ].map((item) => (
-                      <div key={item} className="flex items-start gap-3 border-b border-solid border-[#1A1010]/10 py-4">
-                        <SfCheckboxCheck
-                          size={18}
-                          className="mt-[3px] shrink-0 text-[#64151F]"
-                          aria-hidden
-                        />
-                        <p className="m-0 min-w-0 flex-1 text-[#1A1010]/85" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55 }}>
-                          {item}
-                        </p>
-                      </div>
-                    ))}
+            <AkademijaDetailSection maxWidthClass="max-w-[900px]">
+              <AkademijaDetailH2>Ką išmoksite?</AkademijaDetailH2>
+              <div className="mt-8">
+                {[
+                  'Glikolio, polihidroksirūgščių ir retinoidų rūgščių veikimo mechanizmai.',
+                  'Odos tipo ir būklės vertinimas prieš pilingą.',
+                  'Tinkamo pilingo parinkimas pagal paciento poreikius ir jautrumą.',
+                  'Praktinis darbas: pilingo atlikimas ant modelio žingsnis po žingsnio.',
+                  'Postprocedūrinė priežiūra ir namų priežiūros rekomendacijos pacientui.',
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3 border-b border-solid border-[#1A1010]/10 py-4">
+                    <SfCheckboxCheck size={18} className="mt-[3px] shrink-0 text-[#64151F]" aria-hidden />
+                    <p className="m-0 min-w-0 flex-1 text-[#1A1010]/85" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55 }}>
+                      {item}
+                    </p>
                   </div>
-                </div>
-              </Container>
-            </section>
+                ))}
+              </div>
+            </AkademijaDetailSection>
 
-            <section className="py-16 max-[767px]:py-12">
-              <Container>
-                <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
-                  Kam skirtas šis seminaras?
-                </h2>
-                <div className="mt-8 flex max-w-[900px] flex-col gap-4">
-                  {[
-                    { title: 'Dermatovenerologams', body: 'Norite praplėsti procedūrų arsenalą mokslu pagrįstais pilingais.', Icon: SfFaceSmile },
-                    { title: 'Kosmetologams', body: 'Dirbate su odos priežiūra ir norite gilesnio supratimo apie cheminius pilingus.', Icon: SfLayers },
-                    { title: 'Estetinės medicinos specialistams', body: 'Ieškote papildomų neinvazinių procedūrų savo klinikai.', Icon: SfActivity },
-                  ].map(({ title, body, Icon }) => (
-                    <div key={title} className="border border-solid border-[#1A1010]/15 bg-[#EFE8DB] p-6 max-[479px]:p-5" style={R0}>
-                      <div
-                        className="mb-5 flex h-10 w-10 items-center justify-center border border-solid border-[#64151F] bg-[rgba(100,21,31,0.06)]"
-                        style={R0}
-                      >
-                        <Icon size={20} className="text-[#64151F]" strokeWidth={1.5} aria-hidden />
-                      </div>
-                      <h3
-                        className="m-0 text-[#64151F]"
-                        style={{
-                          ...HEADING,
-                          fontSize: 'clamp(16px, 1.85vw, 19px)',
-                          lineHeight: 1.28,
-                          fontWeight: 400,
-                        }}
-                      >
-                        {title}
-                      </h3>
-                      <p className="m-0 mt-3 text-[#1A1010]/75" style={{ ...BODY, fontSize: '15px', lineHeight: 1.6 }}>
-                        {body}
-                      </p>
+            <AkademijaDetailSection maxWidthClass="max-w-none">
+              <AkademijaDetailH2>Kam skirtas šis seminaras?</AkademijaDetailH2>
+              <div className="mt-8 flex max-w-[900px] flex-col gap-4">
+                {[
+                  { title: 'Dermatovenerologams', body: 'Norite praplėsti procedūrų arsenalą mokslu pagrįstais pilingais.', Icon: SfFaceSmile },
+                  { title: 'Kosmetologams', body: 'Dirbate su odos priežiūra ir norite gilesnio supratimo apie cheminius pilingus.', Icon: SfLayers },
+                  { title: 'Estetinės medicinos specialistams', body: 'Ieškote papildomų neinvazinių procedūrų savo klinikai.', Icon: SfActivity },
+                ].map(({ title, body, Icon }) => (
+                  <div key={title} className="border border-solid border-[#1A1010]/15 bg-[#EFE8DB] p-6 max-[479px]:p-5" style={R0}>
+                    <div
+                      className="mb-5 flex h-10 w-10 items-center justify-center border border-solid border-[#64151F] bg-[rgba(100,21,31,0.06)]"
+                      style={R0}
+                    >
+                      <Icon size={20} className="text-[#64151F]" strokeWidth={1.5} aria-hidden />
                     </div>
-                  ))}
-                </div>
-              </Container>
-            </section>
-
-            <section className="py-16 max-[767px]:py-12">
-              <Container>
-                <div className="max-w-[720px] text-left">
-                  <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
-                    Seminaro programa.
-                  </h2>
-                  <div className="mt-8">
-                    {[
-                      ['10:00–10:30', 'Registracija ir pažintis.'],
-                      ['10:30–12:00', 'Teorinė dalis: rūgščių klasifikacija, veikimo mechanizmai, indikacijos ir kontraindikacijos.'],
-                      ['12:00–12:30', 'Pertrauka.'],
-                      ['12:30–14:00', 'Praktinė dalis I: odos vertinimas ir pilingo parinkimas.'],
-                      ['14:00–14:30', 'Pietų pertrauka.'],
-                      ['14:30–15:30', 'Praktinė dalis II: pilingo atlikimas ant modelio su supervizija.'],
-                      ['15:30–16:00', 'Klausimų sesija ir sertifikatų įteikimas.'],
-                    ].map(([time, text]) => (
-                      <div
-                        key={time}
-                        className="grid grid-cols-[132px_minmax(0,1fr)] gap-4 border-b border-solid border-[#1A1010]/10 py-4 max-[639px]:grid-cols-1 max-[639px]:gap-1"
-                      >
-                        <p className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '16px', fontWeight: 700, lineHeight: 1.5 }}>
-                          {time}
-                        </p>
-                        <p className="m-0 text-[#1A1010]/84" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55 }}>
-                          {text}
-                        </p>
-                      </div>
-                    ))}
+                    <h3
+                      className="m-0 text-[#64151F]"
+                      style={{
+                        ...HEADING,
+                        fontSize: 'clamp(16px, 1.85vw, 19px)',
+                        lineHeight: 1.28,
+                        fontWeight: 400,
+                      }}
+                    >
+                      {title}
+                    </h3>
+                    <p className="m-0 mt-3 text-[#1A1010]/75" style={{ ...BODY, fontSize: '15px', lineHeight: 1.6 }}>
+                      {body}
+                    </p>
                   </div>
-                </div>
-              </Container>
-            </section>
+                ))}
+              </div>
+            </AkademijaDetailSection>
+
+            <AkademijaDetailSection>
+              <AkademijaDetailH2>Seminaro programa.</AkademijaDetailH2>
+              <div className="mt-8">
+                {[
+                  ['10:00–10:30', 'Registracija ir pažintis.'],
+                  ['10:30–12:00', 'Teorinė dalis: rūgščių klasifikacija, veikimo mechanizmai, indikacijos ir kontraindikacijos.'],
+                  ['12:00–12:30', 'Pertrauka.'],
+                  ['12:30–14:00', 'Praktinė dalis I: odos vertinimas ir pilingo parinkimas.'],
+                  ['14:00–14:30', 'Pietų pertrauka.'],
+                  ['14:30–15:30', 'Praktinė dalis II: pilingo atlikimas ant modelio su supervizija.'],
+                  ['15:30–16:00', 'Klausimų sesija ir sertifikatų įteikimas.'],
+                ].map(([time, text]) => (
+                  <div
+                    key={time}
+                    className="grid grid-cols-[132px_minmax(0,1fr)] gap-4 border-b border-solid border-[#1A1010]/10 py-4 max-[639px]:grid-cols-1 max-[639px]:gap-1"
+                  >
+                    <p className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '16px', fontWeight: 700, lineHeight: 1.5 }}>
+                      {time}
+                    </p>
+                    <p className="m-0 text-[#1A1010]/84" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55 }}>
+                      {text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </AkademijaDetailSection>
             </div>
           </div>
         </div>
       </div>
 
-      <section
-        className="w-full bg-[#64151F] py-16 text-center text-[#EFE8DB] max-[767px]:py-12"
-        aria-labelledby="neostrata-cta-heading"
-      >
-        <div className={PAGE_SHELL}>
-          <div className="mx-auto w-full max-w-[48rem]">
-            <h2
-              id="neostrata-cta-heading"
-              className="m-0 text-[#EFE8DB]"
-              style={{ ...HEADING, fontSize: 'clamp(2rem, 3.4vw, 3rem)', lineHeight: 1.06, fontWeight: 300 }}
-            >
-              Užtikrinkite savo vietą.
-            </h2>
-            <p className="m-0 mt-4 text-[#EFE8DB]/80" style={{ ...BODY, fontSize: '16px', lineHeight: 1.65 }}>
-              Dalyvių skaičius ribotas — registruokitės dabar ir gaukite tarptautinį sertifikatą.
-            </p>
+      <AkademijaMaroonEventCtaBand
+        ariaLabelledBy="neostrata-cta-heading"
+        title="Užtikrinkite savo vietą."
+        description="Dalyvių skaičius ribotas — registruokitės dabar ir gaukite tarptautinį sertifikatą."
+        registerHref={event.href}
+        registerLabel={`Registruotis — ${event.price}`}
+      />
 
-            <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-              <CtaLink href={event.href} variant="lightFill" labelMode="static" className="justify-center px-8" style={{ ...BODY, fontWeight: 600, ...R0 }}>
-                Registruotis — {event.price}
-              </CtaLink>
-              <CtaLink href="/kontaktai" variant="outlineLight" labelMode="static" className="justify-center px-6" style={{ ...BODY, ...R0 }}>
-                Gauti priminimą
-              </CtaLink>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        className="relative z-[1] border-t border-solid border-[#1A1010]/10 bg-[#EFE8DB] py-16 text-[#1A1010] max-[767px]:py-12"
-        aria-labelledby="neostrata-kiti-renginiai-heading"
-      >
-        <div className={PAGE_SHELL}>
-          <div className="mb-2 flex items-center gap-2">
-            <span className="h-2 w-2 shrink-0 bg-[#64151F]" style={R0} aria-hidden />
-            <span
-              className="uppercase text-[#64151F]"
-              style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
-            >
-              Kalendorius
-            </span>
-          </div>
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4 max-[767px]:mb-8">
-            <h2
-              id="neostrata-kiti-renginiai-heading"
-              className="m-0 text-[#64151F]"
-              style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}
-            >
-              Kiti artimiausi renginiai.
-            </h2>
-            <CtaLink href="/akademija" variant="primary" labelMode="static" className="rounded-none" style={R0}>
-              Visi renginiai
-            </CtaLink>
-          </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {OTHER_EVENTS_FOR_STRIP.map((e) => (
-              <AkademijaEventCard key={e.id} event={e} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <AkademijaRelatedEventsSection
+        excludeEventId="evt-1"
+        headingId="neostrata-kiti-renginiai-heading"
+        title="Kiti artimiausi renginiai."
+        viewAllHref="/akademija"
+        viewAllLabel="Visi renginiai"
+      />
 
       <FooterSection />
     </main>

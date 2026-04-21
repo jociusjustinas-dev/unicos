@@ -4,6 +4,7 @@ import * as React from 'react';
 import { SfAward, SfClock, SfMapPin, SfMonitor } from '@/components/icons/feather';
 import { ChevronLeftIcon, ChevronRightIcon } from '@/components/ui/ChevronArrows';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
+import { AkademijaEyebrowLabel } from '@/components/sections/akademija/AkademijaEyebrowLabel';
 import { CtaLink } from '@/components/ui/CtaLink';
 import type { PrekiuZenklaiBrandLandingConfig } from '@/config/prekiuZenklaiBrandLanding';
 
@@ -328,20 +329,7 @@ export function CmsGridSection({ trainings, registerCtaLabel = 'Registruotis' }:
             className="flex max-w-[520px] flex-col gap-10 max-[991px]:max-w-none min-[992px]:sticky min-[992px]:top-28 min-[992px]:self-start"
           >
             <div className="flex flex-col gap-5 max-[767px]:gap-4">
-              <div className="flex items-center gap-2">
-                <div className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
-                <span
-                  className="uppercase text-[#64151F]"
-                  style={{
-                    ...BODY,
-                    fontSize: '11px',
-                    fontWeight: 500,
-                    letterSpacing: '0.12em',
-                  }}
-                >
-                  Kalendorius
-                </span>
-              </div>
+              <AkademijaEyebrowLabel />
 
               <h2
                 className="m-0 tracking-[-0.02em] text-[#64151F]"

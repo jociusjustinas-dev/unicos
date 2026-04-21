@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
 import { FooterSection } from '@/components/sections/FooterSection';
+import { PAGE_SHELL_CLASS } from '@/config/pageShell';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { CtaButton } from '@/components/ui/CtaButton';
 import {
@@ -95,11 +96,8 @@ const EXTRA_PLACEHOLDERS: ResourceCard[] = Array.from({ length: 6 }).map((_, i) 
   ctaIcon: i % 3 === 0 ? 'download' : i % 3 === 1 ? 'lock' : 'arrow',
 }));
 
-/** Kaip kiti marketing puslapiai (akademija, kontaktai): vienas plotis ir šoniniai paddingai. */
-const PAGE_SHELL = 'mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4';
-
 function Shell({ children }: { children: React.ReactNode }) {
-  return <div className={PAGE_SHELL}>{children}</div>;
+  return <div className={PAGE_SHELL_CLASS}>{children}</div>;
 }
 
 export default function ResursaiPage() {

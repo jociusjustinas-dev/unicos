@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { SfAward, SfClock, SfMapPin, SfMonitor } from '@/components/icons/feather';
+import { AkademijaEyebrowLabel } from '@/components/sections/akademija/AkademijaEyebrowLabel';
 import { CtaLink } from '@/components/ui/CtaLink';
 import {
   AKADEMIJA_EVENTS,
@@ -298,15 +299,7 @@ export function AkademijaTrainingSection() {
     >
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div ref={headingRef} className="mb-10 flex max-w-[760px] flex-col gap-4 max-[767px]:mb-8">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
-            <span
-              className="uppercase text-[#64151F]"
-              style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
-            >
-              Kalendorius
-            </span>
-          </div>
+          <AkademijaEyebrowLabel />
           <h2
             className="m-0 text-[#64151F] tracking-[-0.02em]"
             style={{
