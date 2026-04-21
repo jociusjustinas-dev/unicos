@@ -155,7 +155,7 @@ export default function PartnerystePage() {
         }
         bodyText="Sukūrėme įrankį, kuris paverčia užsakymus malonumu."
         surfaceClassName="bg-[#EFE8DB]"
-        accent="maroon"
+        accent="green"
         ctaLabel="Tapti partneriu ir gauti prieigą"
         ctaHref="#tapti-partneriu"
         features={[
@@ -180,11 +180,6 @@ export default function PartnerystePage() {
             body: 'viskas matoma iš karto.',
           },
         ]}
-        imageContent={
-          <div className="flex h-full min-h-[400px] w-full items-center justify-center bg-[#3B443A] text-[#EFE8DB]/40" style={{ ...BODY, borderRadius: '0px', fontSize: '14px', letterSpacing: '0.06em' }}>
-            Platform Dashboard Mockup
-          </div>
-        }
       />
 
       <section className="py-24 max-[767px]:py-16">
