@@ -26,6 +26,7 @@ export function AkademijaPage() {
 
       <AkademijaHeroSection />
       <AkademijaTrainingSection />
+      <AkademijaNewsletterSection />
       <AkademijaWhySection />
       <AkademijaFormatsSection />
       <BrandStatsMarqueeSection items={AKADEMIJA_MARQUEE_STATS as readonly BrandStatsMarqueeItem[]} />
@@ -42,7 +43,6 @@ export function AkademijaPage() {
       />
 
       <FaqSection backgroundClassName="bg-[#EFE8DB]" accent="maroon" faqEntries={AKADEMIJA_FAQ_ENTRIES} faqIntro={AKADEMIJA_FAQ_INTRO} />
-      <AkademijaNewsletterSection />
       <CtaSection />
       <FooterSection />
     </main>
