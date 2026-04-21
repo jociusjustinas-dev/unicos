@@ -4,6 +4,7 @@ import * as React from 'react';
 import { SfCheckboxCheck } from '@/components/icons/feather';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
+import { HOME_PAGE_VALUE_FEATURE_IMAGES } from '@/config/homePageImages';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -31,7 +32,7 @@ const tabs: FeatureTab[] = [
       'Asmeninis vadybininko palaikymas',
     ],
     cta: 'Sprendimai odos specialistams',
-    image: '/odos.jpg',
+    image: HOME_PAGE_VALUE_FEATURE_IMAGES[0],
   },
   {
     label: 'Plaukų priežiūros specialistams',
@@ -44,7 +45,7 @@ const tabs: FeatureTab[] = [
       'Komandos mokymai ir konsultacijos',
     ],
     cta: 'Sprendimai plaukų specialistams',
-    image: '/plaukai.jpg',
+    image: HOME_PAGE_VALUE_FEATURE_IMAGES[1],
   },
   {
     label: 'Estetinės dermatologijos specialistams',
@@ -57,7 +58,7 @@ const tabs: FeatureTab[] = [
       'Atsakingas, ilgalaikis bendradarbiavimas',
     ],
     cta: 'Sprendimai estetinės dermatologijos specialistams',
-    image: '/estetines.jpg',
+    image: HOME_PAGE_VALUE_FEATURE_IMAGES[2],
   },
   {
     label: 'Dermakosmetikos konsultantams ir vaistininkams',
@@ -70,7 +71,7 @@ const tabs: FeatureTab[] = [
       'Nuolatinis kvalifikacijos kėlimas',
     ],
     cta: 'Sprendimai konsultantams ir vaistininkams',
-    image: '/farmacija.jpg',
+    image: HOME_PAGE_VALUE_FEATURE_IMAGES[3],
   },
 ];
 

@@ -49,7 +49,6 @@ export type AkademijaEvent = {
   statusMuted?: boolean;
   price: string;
   priceNote: string;
-  imageSrc: string;
   href: string;
 };
 
@@ -74,7 +73,6 @@ export const AKADEMIJA_EVENTS: AkademijaEvent[] = [
     statusMuted: true,
     price: '49 €',
     priceNote: 'Be PVM',
-    imageSrc: '/mega-menu/1.jpeg',
     href: '/kontaktai',
   },
   {
@@ -96,7 +94,6 @@ export const AKADEMIJA_EVENTS: AkademijaEvent[] = [
     statusTone: 'green',
     price: 'Nemokama',
     priceNote: '',
-    imageSrc: '/mega-menu/2.jpeg',
     href: '/kontaktai',
   },
   {
@@ -118,7 +115,6 @@ export const AKADEMIJA_EVENTS: AkademijaEvent[] = [
     statusTone: 'green',
     price: '29 €',
     priceNote: 'Be PVM',
-    imageSrc: '/mega-menu/3.jpeg',
     href: '/kontaktai',
   },
   {
@@ -140,7 +136,6 @@ export const AKADEMIJA_EVENTS: AkademijaEvent[] = [
     statusTone: 'green',
     price: 'Nemokama partneriams',
     priceNote: '',
-    imageSrc: '/mega-menu/2.jpeg',
     href: '/kontaktai',
   },
   {
@@ -162,7 +157,6 @@ export const AKADEMIJA_EVENTS: AkademijaEvent[] = [
     statusTone: 'green',
     price: '79 €',
     priceNote: 'Be PVM',
-    imageSrc: '/mega-menu/1.jpeg',
     href: '/kontaktai',
   },
 ];
