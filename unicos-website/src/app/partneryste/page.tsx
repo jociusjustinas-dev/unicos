@@ -9,7 +9,16 @@ import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { PlatformSplitSection } from '@/components/sections/PlatformSplitSection';
 import { UnicosWhySection, type UnicosWhyBubble } from '@/components/sections/UnicosWhySection';
-import { SfClock, SfActivity, SfLayers, SfAward } from '@/components/icons/feather';
+import {
+  SfClock,
+  SfActivity,
+  SfLayers,
+  SfAward,
+  SfArrowRight,
+  SfFaceSmile,
+  SfShield,
+  SfCheck,
+} from '@/components/icons/feather';
 
 const BODY = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -93,13 +102,15 @@ export default function PartnerystePage() {
           />
           <div className="mt-8 grid grid-cols-1 gap-4 min-[992px]:grid-cols-4 min-[768px]:grid-cols-2">
             {[
-              ['Kosmetologijos kabinetai ir klinikos', 'Odos prieziuros proceduros ir namu prieziuros rekomendacijos.'],
-              ['Grozio salonai ir kirpyklos', 'Profesionaliu plauku ir odos produktu pardavimas ir naudojimas.'],
-              ['Estetines dermatologijos klinikos', 'Injekciju, lazerines ir aparatine proceduros.'],
-              ['Dermakosmetikos konsultantai ir vaistines', 'Profesionalus produktu rekomendavimas klientams.'],
-            ].map(([title, description]) => (
+              { title: 'Kosmetologijos kabinetai ir klinikos', description: 'Odos prieziuros proceduros ir namu prieziuros rekomendacijos.', Icon: SfFaceSmile },
+              { title: 'Grozio salonai ir kirpyklos', description: 'Profesionaliu plauku ir odos produktu pardavimas ir naudojimas.', Icon: SfLayers },
+              { title: 'Estetines dermatologijos klinikos', description: 'Injekciju, lazerines ir aparatine proceduros.', Icon: SfActivity },
+              { title: 'Dermakosmetikos konsultantai ir vaistines', description: 'Profesionalus produktu rekomendavimas klientams.', Icon: SfShield },
+            ].map(({ title, description, Icon }) => (
               <article key={title} className="border border-solid border-[#1A1010]/15 p-8" style={{ borderRadius: '0px' }}>
-                <div className="h-5 w-5 border border-solid border-[#64151F]" style={{ borderRadius: '0px' }} />
+                <div className="flex h-10 w-10 items-center justify-center border border-solid border-[#64151F]" style={{ borderRadius: '0px' }}>
+                  <Icon size={20} strokeWidth={1.75} className="text-[#64151F]" />
+                </div>
                 <h3 className="m-0 mt-5 text-[#1A1010]" style={{ ...BODY, fontSize: '18px', lineHeight: 1.35, fontWeight: 600 }}>
                   {title}
                 </h3>
@@ -110,8 +121,8 @@ export default function PartnerystePage() {
             ))}
           </div>
           <div className="mt-6 text-center">
-            <Link href="/sprendimai/odos-specialistams" className="text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '15px', fontWeight: 500 }}>
-              Raskite savo sprendima →
+            <Link href="/sprendimai/odos-specialistams" className="inline-flex items-center gap-1 text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '15px', fontWeight: 500 }}>
+              Raskite savo sprendima <SfArrowRight size={14} strokeWidth={2.5} />
             </Link>
           </div>
         </Container>
@@ -155,7 +166,7 @@ export default function PartnerystePage() {
         bodyText="Sukūrėme įrankį, kuris paverčia užsakymus malonumu."
         surfaceClassName="bg-[#EFE8DB]"
         accent="maroon"
-        ctaLabel="Tapti partneriu ir gauti prieigą →"
+        ctaLabel="Tapti partneriu ir gauti prieigą"
         ctaHref="#tapti-partneriu"
         features={[
           {
@@ -191,12 +202,14 @@ export default function PartnerystePage() {
           <SectionTitle title="Lojalumo programa." subtitle="Kuo ilgiau dirbame kartu - tuo daugiau naudos Jusu verslui." />
           <div className="mt-8 grid grid-cols-1 gap-4 min-[992px]:grid-cols-3">
             {[
-              ['Augancios nuolaidos', 'Partnerio kainodara gereja su kiekvienu ketvirciu.'],
-              ['Pirmenybe naujienoms', 'Pirmieji suzinote apie naujus produktus ir mokymus.'],
-              ['Asmeniniai pasiulymai', 'Vadybininkas paruosia akcijas, pritaikytas Jusu poreikiams.'],
-            ].map(([title, body]) => (
+              { title: 'Augancios nuolaidos', body: 'Partnerio kainodara gereja su kiekvienu ketvirciu.', Icon: SfActivity },
+              { title: 'Pirmenybe naujienoms', body: 'Pirmieji suzinote apie naujus produktus ir mokymus.', Icon: SfCheck },
+              { title: 'Asmeniniai pasiulymai', body: 'Vadybininkas paruosia akcijas, pritaikytas Jusu poreikiams.', Icon: SfAward },
+            ].map(({ title, body, Icon }) => (
               <article key={title} className="border border-solid border-[#1A1010]/15 p-8" style={{ borderRadius: '0px' }}>
-                <div className="h-5 w-5 border border-solid border-[#64151F]" style={{ borderRadius: '0px' }} />
+                <div className="flex h-10 w-10 items-center justify-center border border-solid border-[#64151F]" style={{ borderRadius: '0px' }}>
+                  <Icon size={20} strokeWidth={1.75} className="text-[#64151F]" />
+                </div>
                 <h3 className="m-0 mt-4 text-[#1A1010]" style={{ ...BODY, fontSize: '20px', lineHeight: 1.25, fontWeight: 600 }}>
                   {title}
                 </h3>
@@ -207,8 +220,8 @@ export default function PartnerystePage() {
             ))}
           </div>
           <div className="mt-6 text-center">
-            <Link href="/kontaktai" className="text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '15px', fontWeight: 500 }}>
-              Suzinoti daugiau apie lojaluma →
+            <Link href="/kontaktai" className="inline-flex items-center gap-1 text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '15px', fontWeight: 500 }}>
+              Suzinoti daugiau apie lojaluma <SfArrowRight size={14} strokeWidth={2.5} />
             </Link>
           </div>
         </Container>

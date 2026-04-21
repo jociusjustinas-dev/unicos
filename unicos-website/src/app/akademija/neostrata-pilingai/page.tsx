@@ -3,6 +3,20 @@
 import Link from 'next/link';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
 import { FooterSection } from '@/components/sections/FooterSection';
+import {
+  SfCalendar,
+  SfClock,
+  SfMapPin,
+  SfCheck,
+  SfArrowRight,
+  SfCreditCard,
+  SfAward,
+  SfPhone,
+  SfMessage,
+  SfFaceSmile,
+  SfLayers,
+  SfActivity,
+} from '@/components/icons/feather';
 
 const BODY = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -53,9 +67,9 @@ export default function NeostrataPilingaiPage() {
               </p>
 
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[#1A1010]/82" style={{ ...BODY, fontSize: '15px', lineHeight: 1.5 }}>
-                <span>📅 Spalio 24</span>
-                <span>🕐 10:00-16:00</span>
-                <span>📍 Vilnius, UNICOS Akademija</span>
+                <span className="flex items-center gap-1.5"><SfCalendar size={16} className="text-[#64151F] -mt-0.5" /> Spalio 24</span>
+                <span className="flex items-center gap-1.5"><SfClock size={16} className="text-[#64151F] -mt-0.5" /> 10:00-16:00</span>
+                <span className="flex items-center gap-1.5"><SfMapPin size={16} className="text-[#64151F] -mt-0.5" /> Vilnius, UNICOS Akademija</span>
               </div>
 
               <div className="flex flex-wrap items-center gap-3">
@@ -124,8 +138,8 @@ export default function NeostrataPilingaiPage() {
                 'Post-procedurine prieziura ir namu prieziuros rekomendacijos pacientui.',
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3 border-b border-solid border-[#1A1010]/10 py-4">
-                  <span className="mt-[2px] text-[#64151F]" style={{ ...BODY, fontSize: '16px', fontWeight: 700 }}>
-                    ✓
+                  <span className="mt-1 text-[#64151F]">
+                    <SfCheck size={18} strokeWidth={2.5} />
                   </span>
                   <p className="m-0 text-[#1A1010]/85" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55 }}>
                     {item}
@@ -144,13 +158,13 @@ export default function NeostrataPilingaiPage() {
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 min-[992px]:grid-cols-3">
             {[
-              ['Dermatovenerologams', 'Norite praplest proceduru arsenala mokslu pagristais pilingais.'],
-              ['Kosmetologams', 'Dirbate su odos prieziura ir norite gilesnio supratimo apie cheminius pilingus.'],
-              ['Estetines medicinos specialistams', 'Ieskote papildomu neinvaziniu proceduru savo klinikai.'],
-            ].map(([title, body]) => (
+              { title: 'Dermatovenerologams', body: 'Norite praplest proceduru arsenala mokslu pagristais pilingais.', Icon: SfFaceSmile },
+              { title: 'Kosmetologams', body: 'Dirbate su odos prieziura ir norite gilesnio supratimo apie cheminius pilingus.', Icon: SfLayers },
+              { title: 'Estetines medicinos specialistams', body: 'Ieskote papildomu neinvaziniu proceduru savo klinikai.', Icon: SfActivity },
+            ].map(({ title, body, Icon }) => (
               <div key={title} className="border border-solid border-[#1A1010]/15 p-8" style={{ borderRadius: '0px' }}>
-                <div className="mb-5 flex h-10 w-10 items-center justify-center border border-solid border-[#64151F] bg-[#EFE8DB]" style={{ ...BODY, borderRadius: '999px', fontSize: '12px', color: '#64151F' }}>
-                  ●
+                <div className="mb-5 flex h-10 w-10 items-center justify-center border border-solid border-[#64151F] bg-[#EFE8DB]" style={{ borderRadius: '999px' }}>
+                  <Icon size={20} className="text-[#64151F]" strokeWidth={1.5} />
                 </div>
                 <h3 className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '21px', lineHeight: 1.25, fontWeight: 500 }}>
                   {title}
@@ -221,17 +235,17 @@ export default function NeostrataPilingaiPage() {
           </h2>
           <div className="mx-auto mt-8 grid max-w-[1000px] grid-cols-1 gap-4 min-[768px]:grid-cols-2">
             {[
-              ['📍 Vieta', 'Vilnius, UNICOS Akademija'],
-              ['📅 Data ir laikas', '2026 m. spalio 24 d., 10:00-16:00.'],
-              ['💳 Kaina', '49 EUR (su PVM). Partneriams - specialios salygos.'],
-              ['🏆 Sertifikatas', 'Tarptautinis Neostrata sertifikatas, patvirtinantis kompetencija atlikti profesinius pilingus.'],
-            ].map(([title, body]) => (
-              <div key={title} className="border border-solid border-[#1A1010]/15 p-6" style={{ borderRadius: '0px' }}>
+              [<SfMapPin key="map" className="inline mr-2 -mt-1" size={18} strokeWidth={2} />, 'Vieta', 'Vilnius, UNICOS Akademija'],
+              [<SfCalendar key="cal" className="inline mr-2 -mt-1" size={18} strokeWidth={2} />, 'Data ir laikas', '2026 m. spalio 24 d., 10:00-16:00.'],
+              [<SfCreditCard key="card" className="inline mr-2 -mt-1" size={18} strokeWidth={2} />, 'Kaina', '49 EUR (su PVM). Partneriams - specialios salygos.'],
+              [<SfAward key="award" className="inline mr-2 -mt-1" size={18} strokeWidth={2} />, 'Sertifikatas', 'Tarptautinis Neostrata sertifikatas, patvirtinantis kompetencija atlikti profesinius pilingus.'],
+            ].map(([icon, title, body]) => (
+              <div key={title as string} className="border border-solid border-[#1A1010]/15 p-6" style={{ borderRadius: '0px' }}>
                 <h3 className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '17px', lineHeight: 1.3, fontWeight: 600 }}>
-                  {title}
+                  {icon as React.ReactNode}{title as string}
                 </h3>
                 <p className="m-0 mt-2 text-[#1A1010]/78" style={{ ...BODY, fontSize: '15px', lineHeight: 1.6 }}>
-                  {body}
+                  {body as string}
                 </p>
               </div>
             ))}
@@ -257,8 +271,8 @@ export default function NeostrataPilingaiPage() {
             <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
               Kiti artimiausi renginiai.
             </h2>
-            <Link href="/akademija" className="text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '15px', fontWeight: 500 }}>
-              Visi renginiai →
+            <Link href="/akademija" className="flex items-center gap-1 text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '15px', fontWeight: 500 }}>
+              Visi renginiai <SfArrowRight size={14} strokeWidth={2.5} />
             </Link>
           </div>
           <div className="mt-8 grid grid-cols-1 gap-4 min-[992px]:grid-cols-2">
@@ -301,8 +315,8 @@ export default function NeostrataPilingaiPage() {
                 <p className="m-0 mt-2 text-[#1A1010]/74" style={{ ...BODY, fontSize: '15px' }}>
                   {card.date}
                 </p>
-                <Link href="/akademija" className="mt-5 inline-block text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '15px', fontWeight: 500 }}>
-                  Placiau →
+                <Link href="/akademija" className="mt-5 inline-flex items-center gap-1 text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '15px', fontWeight: 500 }}>
+                  Placiau <SfArrowRight size={14} strokeWidth={2.5} />
                 </Link>
               </article>
             ))}
@@ -336,8 +350,8 @@ export default function NeostrataPilingaiPage() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-[#EFE8DB]/60" style={{ ...BODY, fontSize: '14px', lineHeight: 1.5 }}>
-              <span>📞 +370 600 00000</span>
-              <span>💬 Live Chat</span>
+              <span className="flex items-center gap-1.5"><SfPhone size={16} /> +370 600 00000</span>
+              <span className="flex items-center gap-1.5"><SfMessage size={16} /> Live Chat</span>
             </div>
           </div>
         </Container>

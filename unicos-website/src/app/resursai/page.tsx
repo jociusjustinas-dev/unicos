@@ -4,7 +4,19 @@ import * as React from 'react';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
 import { FooterSection } from '@/components/sections/FooterSection';
 import { PlatformSplitSection } from '@/components/sections/PlatformSplitSection';
-import { SfClock, SfActivity, SfLayers, SfAward } from '@/components/icons/feather';
+import {
+  SfClock,
+  SfActivity,
+  SfLayers,
+  SfAward,
+  SfArrowDown,
+  SfChevronDown,
+  SfSearch,
+  SfLock,
+  SfArrowRight,
+  SfEnvelope,
+  SfCheck,
+} from '@/components/icons/feather';
 
 const BODY = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -19,7 +31,8 @@ type ResourceCard = {
   title: string;
   description: string;
   tags: [string, string];
-  cta: string;
+  ctaLabel: string;
+  ctaIcon: 'download' | 'lock' | 'arrow';
 };
 
 const BASE_RESOURCES: ResourceCard[] = [
@@ -28,42 +41,48 @@ const BASE_RESOURCES: ResourceCard[] = [
     title: 'Cheminio pilingo taikymo protokolas: Bazinės taisyklės',
     description: 'Pagrindiniai žingsniai ir saugumo reikalavimai atliekant paviršinius pilingus.',
     tags: ['Neostrata', 'Oda'],
-    cta: 'Atsisiųsti ↓',
+    ctaLabel: 'Atsisiųsti',
+    ctaIcon: 'download',
   },
   {
     access: 'REGISTRUOTIEMS',
     title: 'Mezoterapijos kokteilių parinkimas pagal odos tipą',
     description: 'Išsamus gidas su veikliųjų medžiagų suderinamumo lentelėmis.',
     tags: ['Fillmed', 'Estetinė'],
-    cta: 'Gauti PDF 🔒',
+    ctaLabel: 'Gauti PDF',
+    ctaIcon: 'lock',
   },
   {
     access: 'PARTNERIAMS',
     title: 'Klinikos higienos standartas ir procedūrų pasiruošimas',
     description: 'Oficialus UNICOS partnerių higienos ir darbo vietos paruošimo vadovas.',
     tags: ['UNICOS', 'Bendra'],
-    cta: 'Tapti partneriu →',
+    ctaLabel: 'Tapti partneriu',
+    ctaIcon: 'arrow',
   },
   {
     access: 'NEMOKAMA',
     title: 'NCTF 135HA: Produkto sudėties analizė',
     description: 'Techninė specifikacija ir klinikiniai tyrimai.',
     tags: ['Fillmed', 'Estetinė'],
-    cta: 'Atsisiųsti ↓',
+    ctaLabel: 'Atsisiųsti',
+    ctaIcon: 'download',
   },
   {
     access: 'PARTNERIAMS',
     title: 'Sudėtingų aknės atvejų gydymo algoritmai',
     description: 'Dermatologų patvirtintos schemos darbui su uždegimine akne.',
     tags: ['Exuviance', 'Dermatologija'],
-    cta: 'Tapti partneriu →',
+    ctaLabel: 'Tapti partneriu',
+    ctaIcon: 'arrow',
   },
   {
     access: 'REGISTRUOTIEMS',
     title: 'Plaukų slinkimo gydymo protokolai su peptidais',
     description: 'Dr. CYJ užpildų taikymo metodika ir kursų sudarymas.',
     tags: ['Caregen', 'Plaukai'],
-    cta: 'Gauti PDF 🔒',
+    ctaLabel: 'Gauti PDF',
+    ctaIcon: 'lock',
   },
 ];
 
@@ -72,7 +91,8 @@ const EXTRA_PLACEHOLDERS: ResourceCard[] = Array.from({ length: 6 }).map((_, i) 
   title: `Papildomas metodinis dokumentas ${i + 1}`,
   description: 'Atnaujinta gairių versija profesionaliam kasdieniam darbui.',
   tags: ['UNICOS', 'Metodika'],
-  cta: i % 3 === 0 ? 'Atsisiųsti ↓' : i % 3 === 1 ? 'Gauti PDF 🔒' : 'Tapti partneriu →',
+  ctaLabel: i % 3 === 0 ? 'Atsisiųsti' : i % 3 === 1 ? 'Gauti PDF' : 'Tapti partneriu',
+  ctaIcon: i % 3 === 0 ? 'download' : i % 3 === 1 ? 'lock' : 'arrow',
 }));
 
 function Container({ children }: { children: React.ReactNode }) {
@@ -136,25 +156,25 @@ export default function ResursaiPage() {
       <section className="sticky top-0 z-20 border-b border-solid border-[#1A1010]/10 bg-[#EFE8DB] py-4">
         <Container>
           <div className="flex flex-wrap items-center gap-3">
-            <span className="text-[#1A1010]/50" style={{ ...BODY, fontSize: '14px' }}>
-              ⚲ Filtruoti:
+            <span className="flex items-center gap-1.5 text-[#1A1010]/50" style={{ ...BODY, fontSize: '14px' }}>
+              <SfSearch size={14} className="-mt-px" strokeWidth={2.5} /> Filtruoti:
             </span>
             {[
-              ['tipas', 'Tipas ▾'],
-              ['segmentas', 'Segmentas ▾'],
-              ['zenklas', 'Prekės ženklas ▾'],
-              ['lygis', 'Lygis ▾'],
+              ['tipas', 'Tipas'],
+              ['segmentas', 'Segmentas'],
+              ['zenklas', 'Prekės ženklas'],
+              ['lygis', 'Lygis'],
             ].map(([id, label]) => (
               <button
                 key={id}
                 type="button"
                 onClick={() => setActiveFilter((prev) => (prev === id ? null : (id as 'tipas' | 'segmentas' | 'zenklas' | 'lygis')))}
-                className={`border border-solid px-4 py-2 text-sm transition-colors ${
+                className={`flex items-center gap-1.5 border border-solid px-4 py-2 text-sm transition-colors ${
                   activeFilter === id ? 'border-[#64151F] bg-[#64151F]/8 text-[#64151F]' : 'border-[#1A1010]/20 bg-transparent text-[#1A1010]'
                 }`}
                 style={{ ...BODY, borderRadius: '0px' }}
               >
-                {label}
+                {label} <SfChevronDown size={14} strokeWidth={2.5} className="-mt-px" />
               </button>
             ))}
             <div className="ml-auto min-w-[240px] flex-1 max-w-[340px]">
@@ -200,8 +220,9 @@ export default function ResursaiPage() {
                       <span className="uppercase text-[#1A1010]/50" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.08em', fontWeight: 500 }}>
                         {card.tags[0]} | {card.tags[1]}
                       </span>
-                      <button className="text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '14px', fontWeight: 500 }}>
-                        {card.cta}
+                      <button className="flex items-center gap-1.5 text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '14px', fontWeight: 500 }}>
+                        {card.ctaLabel}
+                        {card.ctaIcon === 'download' ? <SfArrowDown size={14} strokeWidth={2.5} className="-mt-0.5" /> : card.ctaIcon === 'lock' ? <SfLock size={14} className="-mt-0.5" /> : <SfArrowRight size={14} strokeWidth={2.5} className="-mt-0.5" />}
                       </button>
                     </div>
                   </div>
@@ -212,10 +233,11 @@ export default function ResursaiPage() {
           <div className="mt-8 text-center">
             <button
               onClick={() => setShowMore((p) => !p)}
-              className="h-[44px] border border-solid border-[#64151F] bg-transparent px-8 text-[#64151F]"
+              className="inline-flex h-[44px] items-center gap-2 border border-solid border-[#64151F] bg-transparent px-8 text-[#64151F]"
               style={{ ...BODY, fontSize: '14px', fontWeight: 500, borderRadius: '0px' }}
             >
-              {showMore ? 'Rodyti mažiau ▴' : 'Rodyti daugiau ▾'}
+              {showMore ? 'Rodyti mažiau' : 'Rodyti daugiau'}
+              <SfChevronDown size={14} strokeWidth={2.5} className={`transition-transform duration-300 ${showMore ? 'rotate-180' : ''}`} />
             </button>
           </div>
         </Container>
@@ -225,7 +247,7 @@ export default function ResursaiPage() {
         <Container>
           <div className="mx-auto max-w-[860px] text-center">
             <div className="mx-auto flex h-12 w-12 items-center justify-center border border-solid border-[#EFE8DB]/30 text-[#EFE8DB]" style={{ ...BODY, fontSize: '18px', borderRadius: '999px' }}>
-              🔒
+              <SfLock size={20} strokeWidth={2.5} className="-mt-0.5" />
             </div>
             <h2 className="m-0 mt-5 text-[#EFE8DB]" style={{ ...HEADING, fontSize: 'clamp(2rem, 3.4vw, 3rem)', lineHeight: 1.06, fontWeight: 300 }}>
               Norite pilnos metodinės bazės?
@@ -250,12 +272,14 @@ export default function ResursaiPage() {
           <div className="border-t border-solid border-[#1A1010]/10 pt-10">
             <div className="grid grid-cols-1 gap-4 min-[992px]:grid-cols-3">
               {[
-                ['CENTRALIZUOTA BAZĖ', 'Visi dokumentai vienoje vietoje, pasiekiami 24/7.'],
-                ['NUOLATINIS ATNAUJINIMAS', 'Naujausi protokolai tiesiai iš gamintojų.'],
-                ['PATIKRINTA EKSPERTŲ', 'Tik saugios ir patvirtintos metodikos.'],
-              ].map(([label, body], idx) => (
+                { label: 'CENTRALIZUOTA BAZĖ', body: 'Visi dokumentai vienoje vietoje, pasiekiami 24/7.', Icon: SfLayers },
+                { label: 'NUOLATINIS ATNAUJINIMAS', body: 'Naujausi protokolai tiesiai iš gamintojų.', Icon: SfActivity },
+                { label: 'PATIKRINTA EKSPERTŲ', body: 'Tik saugios ir patvirtintos metodikos.', Icon: SfCheck },
+              ].map(({ label, body, Icon }, idx) => (
                 <div key={label} className={`px-6 py-10 text-center ${idx < 2 ? 'min-[992px]:border-r min-[992px]:border-solid min-[992px]:border-[#1A1010]/10' : ''}`}>
-                  <div className="mx-auto h-8 w-8 bg-[#64151F]" style={{ borderRadius: '0px' }} />
+                  <div className="mx-auto flex h-10 w-10 items-center justify-center bg-[#64151F]" style={{ borderRadius: '0px' }}>
+                    <Icon size={20} strokeWidth={2} className="text-[#EFE8DB]" />
+                  </div>
                   <p className="m-0 mt-4 uppercase text-[#1A1010]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.1em', fontWeight: 600 }}>
                     {label}
                   </p>
@@ -272,8 +296,8 @@ export default function ResursaiPage() {
       <section className="py-24 max-[767px]:py-16">
         <Container>
           <div className="mx-auto max-w-[560px] text-center">
-            <div className="mx-auto text-[#64151F]" style={{ ...BODY, fontSize: '30px' }}>
-              ✉
+            <div className="mx-auto flex justify-center text-[#64151F]">
+              <SfEnvelope size={32} strokeWidth={2} />
             </div>
             <h2 className="m-0 mt-4 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(2rem, 3.4vw, 3rem)', lineHeight: 1.06, fontWeight: 300 }}>
               Gaukite naujus protokolus pirmieji
