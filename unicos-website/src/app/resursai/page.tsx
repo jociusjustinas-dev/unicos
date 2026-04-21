@@ -201,27 +201,47 @@ export default function ResursaiPage() {
                     ? 'border-[#64151F] bg-[#64151F] text-[#EFE8DB]'
                     : 'border-[#64151F] bg-[#EFE8DB] text-[#64151F]';
               return (
-                <article key={`${card.title}-${idx}`} className="border border-solid border-[#1A1010]/15 bg-[#EFE8DB] p-8" style={{ borderRadius: '0px' }}>
+                <article
+                  key={`${card.title}-${idx}`}
+                  className="group border border-solid border-[#1A1010]/15 bg-[#EFE8DB] p-8 transition-[background-color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-[#64151F] hover:bg-[#64151F] motion-reduce:transition-none"
+                  style={{ borderRadius: '0px' }}
+                >
                   <div className="flex items-center justify-between gap-3">
-                    <span className={`border border-solid px-2 py-1 ${badgeClass}`} style={{ ...BODY, fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', borderRadius: '0px' }}>
+                    <span
+                      className={`border border-solid px-2 py-1 transition-colors duration-300 ${badgeClass} group-hover:border-[#EFE8DB]/45 group-hover:bg-[#EFE8DB]/14 group-hover:text-[#EFE8DB]`}
+                      style={{ ...BODY, fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', borderRadius: '0px' }}
+                    >
                       {card.access}
                     </span>
-                    <span className="uppercase text-[#1A1010]/40" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.08em', fontWeight: 500 }}>
+                    <span
+                      className="uppercase text-[#1A1010]/40 transition-colors duration-300 group-hover:text-[#EFE8DB]/55"
+                      style={{ ...BODY, fontSize: '11px', letterSpacing: '0.08em', fontWeight: 500 }}
+                    >
                       PDF
                     </span>
                   </div>
-                  <h3 className="m-0 mt-5 text-[#1A1010]" style={{ ...HEADING, fontSize: '28px', lineHeight: 1.15, fontWeight: 300 }}>
+                  <h3
+                    className="m-0 mt-5 text-[#1A1010] transition-colors duration-300 group-hover:text-[#EFE8DB]"
+                    style={{ ...HEADING, fontSize: '28px', lineHeight: 1.15, fontWeight: 300 }}
+                  >
                     {card.title}
                   </h3>
-                  <p className="m-0 mt-3 text-[#1A1010]/70" style={{ ...BODY, fontSize: '14px', lineHeight: 1.6 }}>
+                  <p className="m-0 mt-3 text-[#1A1010]/70 transition-colors duration-300 group-hover:text-[#EFE8DB]/88" style={{ ...BODY, fontSize: '14px', lineHeight: 1.6 }}>
                     {card.description}
                   </p>
-                  <div className="mt-5 border-t border-solid border-[#1A1010]/10 pt-4">
+                  <div className="mt-5 border-t border-solid border-[#1A1010]/10 pt-4 transition-colors duration-300 group-hover:border-[#EFE8DB]/22">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="uppercase text-[#1A1010]/50" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.08em', fontWeight: 500 }}>
+                      <span
+                        className="uppercase text-[#1A1010]/50 transition-colors duration-300 group-hover:text-[#EFE8DB]/65"
+                        style={{ ...BODY, fontSize: '11px', letterSpacing: '0.08em', fontWeight: 500 }}
+                      >
                         {card.tags[0]} | {card.tags[1]}
                       </span>
-                      <button className="flex items-center gap-1.5 text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '14px', fontWeight: 500 }}>
+                      <button
+                        type="button"
+                        className="flex items-center gap-1.5 text-[#64151F] underline underline-offset-2 transition-colors duration-300 group-hover:text-[#EFE8DB]"
+                        style={{ ...BODY, fontSize: '14px', fontWeight: 500 }}
+                      >
                         {card.ctaLabel}
                         {card.ctaIcon === 'download' ? <SfArrowDown size={14} strokeWidth={2.5} className="-mt-0.5" /> : card.ctaIcon === 'lock' ? <SfLock size={14} className="-mt-0.5" /> : <SfArrowRight size={14} strokeWidth={2.5} className="-mt-0.5" />}
                       </button>
