@@ -1,6 +1,8 @@
 'use client';
 
 import * as React from 'react';
+import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
+import { FooterSection } from '@/components/sections/FooterSection';
 
 const BODY = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -83,6 +85,7 @@ export default function ResursaiPage() {
 
   return (
     <main className="bg-[#EFE8DB] text-[#1A1010]">
+      <NavigationBarSection forceLightSurface />
       <section className="py-24 max-[767px]:py-16">
         <Container>
           <div className="grid grid-cols-1 gap-10 min-[992px]:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] min-[992px]:items-center">
@@ -293,6 +296,7 @@ export default function ResursaiPage() {
           </div>
         </Container>
       </section>
+      <FooterSection />
     </main>
   );
 }

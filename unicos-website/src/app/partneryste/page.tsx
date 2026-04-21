@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
+import { FooterSection } from '@/components/sections/FooterSection';
 
 const BODY = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -32,6 +34,7 @@ function SectionTitle({ title, subtitle, align = 'center' }: { title: string; su
 export default function PartnerystePage() {
   return (
     <main className="bg-[#EFE8DB] text-[#1A1010]">
+      <NavigationBarSection forceLightSurface />
       <section className="py-24 max-[767px]:py-16">
         <Container>
           <div className="mx-auto flex max-w-[920px] flex-col items-center text-center">
@@ -339,6 +342,7 @@ export default function PartnerystePage() {
           </div>
         </Container>
       </section>
+      <FooterSection />
     </main>
   );
 }
