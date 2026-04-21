@@ -6,11 +6,9 @@ import { AkademijaEventCard } from '@/components/sections/AkademijaTrainingSecti
 import { FooterSection } from '@/components/sections/FooterSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 import {
-  SfCalendar,
   SfClock,
   SfMapPin,
   SfCheckboxCheck,
-  SfCreditCard,
   SfAward,
   SfFaceSmile,
   SfLayers,
@@ -344,58 +342,6 @@ export default function NeostrataPilingaiPage() {
                       </div>
                     ))}
                   </div>
-                </div>
-              </Container>
-            </section>
-
-            <section className="py-16 max-[767px]:py-12">
-              <Container>
-                <h2 className="m-0 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(1.9rem, 3vw, 2.8rem)', lineHeight: 1.08, fontWeight: 300 }}>
-                  Praktinė informacija.
-                </h2>
-                <div className="mt-8 grid max-w-[1000px] grid-cols-1 gap-4 min-[768px]:grid-cols-2">
-                  {(
-                    [
-                      { Icon: SfMapPin, title: 'Vieta', body: 'Vilnius, UNICOS Akademija' },
-                      { Icon: SfCalendar, title: 'Data ir laikas', body: '2026 m. spalio 24 d., 10:00–16:00.' },
-                      { Icon: SfCreditCard, title: 'Kaina', body: '49 € (su PVM). Partneriams — specialios sąlygos.' },
-                      {
-                        Icon: SfAward,
-                        title: 'Sertifikatas',
-                        body: 'Tarptautinis Neostrata sertifikatas, patvirtinantis kompetenciją atlikti profesinius pilingus.',
-                      },
-                    ] as const
-                  ).map(({ Icon, title, body }) => (
-                    <div
-                      key={title}
-                      className="flex flex-col items-center gap-4 border border-solid border-[#1A1010]/15 bg-[#EFE8DB] p-6 text-center max-[479px]:p-5"
-                      style={R0}
-                    >
-                      <div
-                        className="flex h-10 w-10 shrink-0 items-center justify-center border border-solid border-[#64151F] bg-[rgba(100,21,31,0.06)]"
-                        style={R0}
-                        aria-hidden
-                      >
-                        <Icon size={20} className="text-[#64151F]" strokeWidth={1.5} aria-hidden />
-                      </div>
-                      <div className="flex w-full min-w-0 flex-col gap-2">
-                        <h3
-                          className="m-0 text-[#64151F]"
-                          style={{
-                            ...HEADING,
-                            fontSize: 'clamp(16px, 1.75vw, 18px)',
-                            lineHeight: 1.3,
-                            fontWeight: 500,
-                          }}
-                        >
-                          {title}
-                        </h3>
-                        <p className="m-0 text-[#1A1010]/78" style={{ ...BODY, fontSize: '15px', lineHeight: 1.6 }}>
-                          {body}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
                 </div>
               </Container>
             </section>
