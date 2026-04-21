@@ -11,6 +11,7 @@ import { PlatformSplitSection } from '@/components/sections/PlatformSplitSection
 import { UnicosWhySection, type UnicosWhyBubble } from '@/components/sections/UnicosWhySection';
 import { ValueFeaturesSection } from '@/components/sections/ValueFeaturesSection';
 import { BrandStatsMarqueeSection, type BrandStatsMarqueeItem } from '@/components/sections/BrandStatsMarqueeSection';
+import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
 import { HOME_PAGE_VALUE_FEATURE_IMAGES } from '@/config/homePageImages';
 import {
   SfClock,
@@ -137,6 +138,7 @@ export default function PartnerystePage() {
       />
 
       <BrandStatsMarqueeSection
+        theme="dark"
         items={[
           { value: '500+', label: 'partnerių', description: 'Augančių su mumis' },
           { value: '25 metai', label: '', description: 'Patirties rinkoje' },
@@ -154,8 +156,9 @@ export default function PartnerystePage() {
           </>
         }
         bodyText="Sukūrėme įrankį, kuris paverčia užsakymus malonumu."
-        surfaceClassName="bg-[#EFE8DB]"
+        surfaceClassName="bg-[#3B443A]"
         accent="green"
+        theme="dark"
         ctaLabel="Tapti partneriu ir gauti prieigą"
         ctaHref="#tapti-partneriu"
         features={[
@@ -182,35 +185,34 @@ export default function PartnerystePage() {
         ]}
       />
 
-      <section className="py-24 max-[767px]:py-16">
-        <Container>
-          <SectionTitle title="Lojalumo programa." subtitle="Kuo ilgiau dirbame kartu - tuo daugiau naudos Jusu verslui." />
-          <div className="mt-8 grid grid-cols-1 gap-4 min-[992px]:grid-cols-3">
-            {[
-              { title: 'Augancios nuolaidos', body: 'Partnerio kainodara gereja su kiekvienu ketvirciu.', Icon: SfActivity },
-              { title: 'Pirmenybe naujienoms', body: 'Pirmieji suzinote apie naujus produktus ir mokymus.', Icon: SfCheck },
-              { title: 'Asmeniniai pasiulymai', body: 'Vadybininkas paruosia akcijas, pritaikytas Jusu poreikiams.', Icon: SfAward },
-            ].map(({ title, body, Icon }) => (
-              <article key={title} className="border border-solid border-[#1A1010]/15 p-8" style={{ borderRadius: '0px' }}>
-                <div className="flex h-10 w-10 items-center justify-center border border-solid border-[#64151F]" style={{ borderRadius: '0px' }}>
-                  <Icon size={20} strokeWidth={1.75} className="text-[#64151F]" />
-                </div>
-                <h3 className="m-0 mt-4 text-[#1A1010]" style={{ ...BODY, fontSize: '20px', lineHeight: 1.25, fontWeight: 600 }}>
-                  {title}
-                </h3>
-                <p className="m-0 mt-3 text-[#1A1010]/75" style={{ ...BODY, fontSize: '15px', lineHeight: 1.6 }}>
-                  {body}
-                </p>
-              </article>
-            ))}
-          </div>
-          <div className="mt-6 text-center">
-            <Link href="/kontaktai" className="inline-flex items-center gap-1 text-[#64151F] underline underline-offset-2" style={{ ...BODY, fontSize: '15px', fontWeight: 500 }}>
-              Suzinoti daugiau apie lojaluma <SfArrowRight size={14} strokeWidth={2.5} />
-            </Link>
-          </div>
-        </Container>
-      </section>
+      <ResponsibleBeautySection
+        eyebrowLabel={null}
+        heading={
+          <>
+            <span className="font-light">Lojalumo </span>
+            <span className="font-medium">programa.</span>
+          </>
+        }
+        subheading="Kuo ilgiau dirbame kartu - tuo daugiau naudos Jūsų verslui."
+        surfaceClassName="bg-[#EFE8DB]"
+        accent="maroon"
+        cards={[
+          { title: 'Augančios nuolaidos', description: 'Partnerio kainodara gerėja su kiekvienu ketvirčiu.', Icon: SfActivity },
+          { title: 'Pirmenybė naujienoms', description: 'Pirmieji sužinote apie naujus produktus ir mokymus.', Icon: SfCheck },
+          { title: 'Asmeniniai pasiūlymai', description: 'Vadybininkas paruošia akcijas, pritaikytas Jūsų poreikiams.', Icon: SfAward },
+        ]}
+        showGuidanceRow={true}
+        guidanceStrip={{
+          title: 'Norite sužinoti daugiau?',
+          subtitle: 'Visada mielai papasakosime apie lojalumo programą.',
+          portraitSrc: 'https://byqsupply-components.netlify.app/haldenmiller/images/ContactAvatar-3.webp',
+          portraitAlt: 'Konsultantas',
+          cta: {
+            href: '/kontaktai',
+            label: 'Sužinoti daugiau apie lojalumą',
+          },
+        }}
+      />
 
       <ProcessSection />
       <TestimonialsSection />

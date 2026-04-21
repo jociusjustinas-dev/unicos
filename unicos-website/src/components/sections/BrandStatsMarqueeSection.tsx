@@ -13,44 +13,49 @@ export type BrandStatsMarqueeItem = {
   description: string;
 };
 
-function MarqueeSep() {
-  return (
+type BrandStatsMarqueeSectionProps = {
+  items: readonly BrandStatsMarqueeItem[];
+  theme?: 'light' | 'dark' | 'beige';
+};
+
+export function BrandStatsMarqueeSection({ items, theme = 'light' }: BrandStatsMarqueeSectionProps) {
+  const bgColor = theme === 'dark' ? '#3B443A' : theme === 'beige' ? '#EFE8DB' : '#FFFFFF';
+  const textColorClass = theme === 'dark' ? 'text-[#EFE8DB]' : 'text-[#3B443A]';
+  const descColorClass = theme === 'dark' ? 'text-[#EFE8DB]/72' : 'text-[#3B443A]/72';
+  const sepColorClass = theme === 'dark' ? 'bg-[#EFE8DB]/35' : 'bg-[#3B443A]/55';
+
+  const MarqueeSepTheme = () => (
     <span
-      className="h-3 w-3 shrink-0 rounded-full max-[767px]:h-2.5 max-[767px]:w-2.5 bg-[#3B443A]/55"
+      className={`h-3 w-3 shrink-0 rounded-full max-[767px]:h-2.5 max-[767px]:w-2.5 ${sepColorClass}`}
       aria-hidden
     />
   );
-}
 
-function MarqueeUnit({ items }: { items: readonly BrandStatsMarqueeItem[] }) {
-  const quiche = { fontFamily: "'Quiche Sans', Georgia, serif" };
-
-  return (
-    <div className="flex flex-none items-center gap-10 pr-10 md:gap-14 md:pr-16 lg:gap-16 lg:pr-16">
-      {items.map((item, i) => (
-        <React.Fragment key={`${item.value}-${item.label ?? ''}-${i}`}>
-          {i > 0 ? <MarqueeSep /> : null}
-          <div className="flex max-w-[min(92vw,340px)] flex-col gap-1.5 md:max-w-[380px]">
-            <span
-              className="font-light tracking-[-0.035em] text-[clamp(1.85rem,5vw,3.25rem)] leading-[1.05] text-[#3B443A]"
-              style={quiche}
-            >
-              {item.value}
-              {item.label?.trim() ? <span className="font-medium"> {item.label}</span> : null}
-            </span>
-            <span className="text-[#3B443A]/72" style={{ ...BODY, fontSize: '15px', lineHeight: 1.45, fontWeight: 400 }}>
-              {item.description}
-            </span>
-          </div>
-        </React.Fragment>
-      ))}
-      <MarqueeSep />
-    </div>
-  );
-}
-
-export function BrandStatsMarqueeSection({ items }: { items: readonly BrandStatsMarqueeItem[] }) {
-  const bgColor = '#FFFFFF';
+  const MarqueeUnitTheme = () => {
+    const quiche = { fontFamily: "'Quiche Sans', Georgia, serif" };
+    return (
+      <div className="flex flex-none items-center gap-10 pr-10 md:gap-14 md:pr-16 lg:gap-16 lg:pr-16">
+        {items.map((item, i) => (
+          <React.Fragment key={`${item.value}-${item.label ?? ''}-${i}`}>
+            {i > 0 ? <MarqueeSepTheme /> : null}
+            <div className="flex max-w-[min(92vw,340px)] flex-col gap-1.5 md:max-w-[380px]">
+              <span
+                className={`font-light tracking-[-0.035em] text-[clamp(1.85rem,5vw,3.25rem)] leading-[1.05] ${textColorClass}`}
+                style={quiche}
+              >
+                {item.value}
+                {item.label?.trim() ? <span className="font-medium"> {item.label}</span> : null}
+              </span>
+              <span className={descColorClass} style={{ ...BODY, fontSize: '15px', lineHeight: 1.45, fontWeight: 400 }}>
+                {item.description}
+              </span>
+            </div>
+          </React.Fragment>
+        ))}
+        <MarqueeSepTheme />
+      </div>
+    );
+  };
 
   return (
     <div style={{ backgroundColor: bgColor }}>
@@ -71,9 +76,9 @@ export function BrandStatsMarqueeSection({ items }: { items: readonly BrandStats
           />
 
           <div className="brand-stats-marquee-track flex w-max items-center py-8 max-[767px]:py-7">
-            <MarqueeUnit items={items} />
-            <MarqueeUnit items={items} />
-            <MarqueeUnit items={items} />
+            <MarqueeUnitTheme />
+            <MarqueeUnitTheme />
+            <MarqueeUnitTheme />
           </div>
         </div>
       </section>

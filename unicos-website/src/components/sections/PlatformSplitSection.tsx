@@ -44,6 +44,7 @@ export type PlatformSplitSectionProps = {
   ctaHref?: string;
   surfaceClassName?: string;
   accent?: 'green' | 'maroon';
+  theme?: 'light' | 'dark';
   imageContent?: React.ReactNode;
 };
 
@@ -56,9 +57,11 @@ export function PlatformSplitSection({
   ctaHref = '#platform-ypatybes',
   surfaceClassName = 'bg-white',
   accent = 'green',
+  theme = 'light',
   imageContent,
 }: PlatformSplitSectionProps) {
   const isMaroon = accent === 'maroon';
+  const isDark = theme === 'dark';
   const [headlineRef, headlineVisible] = useInViewOnce<HTMLDivElement>();
   const [imageRef, imageVisible] = useInViewOnce<HTMLDivElement>();
   const featureRefs = React.useRef<(HTMLDivElement | null)[]>([]);
@@ -115,9 +118,9 @@ export function PlatformSplitSection({
             >
               {eyebrow !== null ? (
                 <div className="flex items-center gap-2">
-                  <div className={`h-2 w-2 shrink-0 ${isMaroon ? 'bg-[#64151F]' : 'bg-[#3B443A]'}`} style={{ borderRadius: '0px' }} aria-hidden />
+                  <div className={`h-2 w-2 shrink-0 ${isDark ? 'bg-[#EFE8DB]' : isMaroon ? 'bg-[#64151F]' : 'bg-[#3B443A]'}`} style={{ borderRadius: '0px' }} aria-hidden />
                   <span
-                    className={`uppercase ${isMaroon ? 'text-[#64151F]' : 'text-[#3B443A]'}`}
+                    className={`uppercase ${isDark ? 'text-[#EFE8DB]' : isMaroon ? 'text-[#64151F]' : 'text-[#3B443A]'}`}
                     style={{
                       fontSize: '11px',
                       fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -132,7 +135,7 @@ export function PlatformSplitSection({
 
               <div className="flex flex-col gap-5" style={{ gap: '20px' }}>
                 <h2
-                  className={`m-0 max-[767px]:text-[32px] max-[767px]:leading-[1.12] max-[767px]:tracking-[-0.5px] ${isMaroon ? 'text-[#64151F]' : 'text-[#3B443A]'}`}
+                  className={`m-0 max-[767px]:text-[32px] max-[767px]:leading-[1.12] max-[767px]:tracking-[-0.5px] ${isDark ? 'text-[#EFE8DB]' : isMaroon ? 'text-[#64151F]' : 'text-[#3B443A]'}`}
                   style={{
                     fontFamily: "'Quiche Sans', Georgia, serif",
                     fontSize: 'clamp(32px, 3.2vw, 40px)',
@@ -149,13 +152,13 @@ export function PlatformSplitSection({
                     </>
                   )}
                 </h2>
-                <p className="m-0 max-w-[52ch] text-[#1A1010]/80" style={{ ...BODY, fontSize: '16px', lineHeight: '1.55', fontWeight: 400 }}>
+                <p className={`m-0 max-w-[52ch] ${isDark ? 'text-[#EFE8DB]/80' : 'text-[#1A1010]/80'}`} style={{ ...BODY, fontSize: '16px', lineHeight: '1.55', fontWeight: 400 }}>
                   {bodyText}
                 </p>
               </div>
 
               {ctaLabel ? (
-                <CtaLink href={ctaHref} variant="secondary" labelMode="slide">
+                <CtaLink href={ctaHref} variant={isDark ? 'primary' : 'secondary'} labelMode="slide">
                   {ctaLabel}
                 </CtaLink>
               ) : null}
@@ -181,7 +184,7 @@ export function PlatformSplitSection({
                   >
                     <div
                       className={`grid h-14 w-14 shrink-0 place-items-center overflow-visible border p-2 max-[767px]:h-12 max-[767px]:w-12 max-[767px]:p-1.5 ${
-                        isMaroon ? 'border-[#64151F]/20 bg-[rgba(100,21,31,0.1)] text-[#64151F]' : 'border-[#3B443A]/20 bg-[rgba(59,68,58,0.1)] text-[#3B443A]'
+                        isDark ? 'border-[#EFE8DB]/30 bg-[rgba(239,232,219,0.1)] text-[#EFE8DB]' : isMaroon ? 'border-[#64151F]/20 bg-[rgba(100,21,31,0.1)] text-[#64151F]' : 'border-[#3B443A]/20 bg-[rgba(59,68,58,0.1)] text-[#3B443A]'
                       }`}
                       style={{ borderRadius: '0px' }}
                     >
@@ -191,12 +194,12 @@ export function PlatformSplitSection({
                     </div>
                     <div className="flex min-w-0 flex-1 flex-col gap-1.5">
                       <div
-                        className="font-medium text-[#1A1010]"
+                        className={`font-medium ${isDark ? 'text-[#EFE8DB]' : 'text-[#1A1010]'}`}
                         style={{ ...BODY, fontSize: '15px', lineHeight: '1.35', fontWeight: 500 }}
                       >
                         {f.title}
                       </div>
-                      <p className="m-0 text-sm leading-5 text-[#1A1010]/65" style={BODY}>
+                      <p className={`m-0 text-sm leading-5 ${isDark ? 'text-[#EFE8DB]/70' : 'text-[#1A1010]/65'}`} style={BODY}>
                         {f.body}
                       </p>
                     </div>
