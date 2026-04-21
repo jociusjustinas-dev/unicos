@@ -83,6 +83,7 @@ export function ResponsibleBeautySection({
   showGuidanceRow = true,
   guidanceStrip,
   cardsPerRowDesktop = 3,
+  contentMaxWidthClass = 'max-w-[1028px]',
 }: {
   eyebrowLabel?: string | null;
   heading?: React.ReactNode;
@@ -98,6 +99,8 @@ export function ResponsibleBeautySection({
   guidanceStrip?: ResponsibleBeautyGuidanceStrip;
   /** Kortelių skaičius eilutėje desktop'e (2, 3 arba 4). */
   cardsPerRowDesktop?: 2 | 3 | 4;
+  /** Vidinio turinio maksimalus plotis. */
+  contentMaxWidthClass?: string;
 }) {
   const isMaroon = accent === 'maroon';
   const gridRef = React.useRef<HTMLDivElement>(null);
@@ -170,7 +173,7 @@ export function ResponsibleBeautySection({
   return (
     <section className={`relative z-[2] py-20 max-[767px]:py-14 text-[#1A1010] ${surfaceClassName}`}>
       <div className="relative z-[2] w-full max-w-[1800px] mx-auto px-16 max-[767px]:px-6 max-[479px]:px-4">
-        <div className="flex flex-col gap-16 max-[767px]:gap-12 mx-auto max-w-[1028px]">
+        <div className={`mx-auto flex flex-col gap-16 max-[767px]:gap-12 ${contentMaxWidthClass}`}>
           <div
             ref={headerRef}
             className={`flex flex-col items-center text-center gap-5 max-[767px]:gap-4 transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0 ${headerReveal}`}

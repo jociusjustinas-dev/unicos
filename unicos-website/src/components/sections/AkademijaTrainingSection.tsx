@@ -257,8 +257,6 @@ export function AkademijaTrainingSection() {
     });
   }, [topic, format, time]);
 
-  const anyFilterActive = topic !== 'all' || format !== 'all' || time !== 'all';
-
   React.useEffect(() => {
     const onPointer = (event: MouseEvent) => {
       if (!openDropdown) return;
@@ -296,7 +294,7 @@ export function AkademijaTrainingSection() {
   return (
     <section
       id="mokymu-kalendorius"
-      className="relative z-[2] scroll-mt-24 bg-[#EFE8DB] pb-16 pt-32 max-[767px]:pb-12 max-[767px]:pt-24 max-[479px]:pt-20"
+      className="relative z-[2] scroll-mt-24 bg-[#EFE8DB] pb-16 pt-40 max-[767px]:pb-12 max-[767px]:pt-28 max-[479px]:pt-24"
     >
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div ref={headingRef} className="mb-10 flex max-w-[760px] flex-col gap-4 max-[767px]:mb-8">
@@ -321,7 +319,7 @@ export function AkademijaTrainingSection() {
             <span className="font-light">Mokymų </span>
             <span className="font-medium">kalendorius.</span>{' '}
             <span className="text-[#1A1010]/56" style={{ ...BODY, fontSize: 'clamp(1rem, 1.5vw, 1.25rem)', fontWeight: 400 }}>
-              ({filtered.length} renginiai)
+              {filtered.length} {filtered.length === 1 ? 'renginys' : 'renginiai'}
             </span>
           </h2>
           <p className="m-0 max-w-[48ch] text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>
@@ -331,7 +329,7 @@ export function AkademijaTrainingSection() {
 
         <div
           ref={filterBarRef}
-          className={`z-[8] mb-10 border border-solid border-[#1A1010]/10 bg-[#EFE8DB]/94 p-4 backdrop-blur-[2px] transition-[box-shadow,background-color] ${
+          className={`z-[8] mb-10 bg-[#EFE8DB]/94 p-4 backdrop-blur-[2px] transition-[box-shadow,background-color] ${
             filtersSticky ? 'sticky top-0 shadow-[0_8px_18px_rgba(26,16,16,0.12)]' : 'sticky top-0 shadow-none'
           }`}
           style={{ borderRadius: '0px' }}
@@ -378,21 +376,6 @@ export function AkademijaTrainingSection() {
                 onClose={() => setOpenDropdown(null)}
                 onChange={setTime}
               />
-              {anyFilterActive ? (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setTopic('all');
-                    setFormat('all');
-                    setTime('all');
-                    setOpenDropdown(null);
-                  }}
-                  className="h-11 shrink-0 px-1 text-[13px] text-[#64151F] underline underline-offset-2 transition-opacity hover:opacity-70 max-[767px]:h-auto max-[767px]:self-start max-[767px]:px-0"
-                  style={BODY}
-                >
-                  Išvalyti filtrus
-                </button>
-              ) : null}
             </div>
           </div>
         </div>

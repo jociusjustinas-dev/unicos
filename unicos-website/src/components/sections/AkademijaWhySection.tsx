@@ -16,6 +16,7 @@ export function AkademijaWhySection() {
       subheading={null}
       cards={AKADEMIJA_WHY_CARDS}
       cardsPerRowDesktop={4}
+      contentMaxWidthClass="max-w-[1320px]"
       surfaceClassName="bg-white"
       accent="green"
       showGuidanceRow={false}
