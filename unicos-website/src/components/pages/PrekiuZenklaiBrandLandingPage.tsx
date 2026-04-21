@@ -180,28 +180,6 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
 
       <CmsGridSection />
 
-      <section className="relative z-[2] bg-[#EFE8DB] py-16 max-[767px]:py-14">
-        <div className="relative z-[2] mx-auto flex w-full max-w-[720px] flex-col items-center gap-6 px-16 text-center max-[767px]:px-6 max-[479px]:px-4">
-          <h2
-            className="m-0 text-[#64151F]"
-            style={{
-              fontFamily: "'Quiche Sans', Georgia, serif",
-              fontSize: 'clamp(1.75rem, 3vw, 2.25rem)',
-              lineHeight: 1.08,
-              fontWeight: 300,
-            }}
-          >
-            <SplitHeading light={config.trainings.headingLight} bold={config.trainings.headingBold} />
-          </h2>
-          <p className="m-0 max-w-[52ch] text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55 }}>
-            {config.trainings.body}
-          </p>
-          <CtaLink href={config.trainings.ctaHref} variant="outline">
-            {config.trainings.ctaLabel}
-          </CtaLink>
-        </div>
-      </section>
-
       <FaqSection backgroundClassName="bg-[#EFE8DB]" accent="maroon" />
       <CtaSection />
       <FooterSection />

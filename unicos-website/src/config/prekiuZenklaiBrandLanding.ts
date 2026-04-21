@@ -273,8 +273,8 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
     portraitAlt: 'Dr. Ieva Kazlauskienė',
   },
   trainings: {
-    headingLight: 'Mokymai ir ',
-    headingBold: 'renginiai.',
+    headingLight: 'Artimiausi ',
+    headingBold: 'Guinot mokymai',
     body: 'Datas ir registraciją skelbiame per UNICOS akademiją — parašykite vadybininkui, jei norite rezervuoti vietą Guinot mokyme ar sužinoti apie artimiausius renginius.',
     ctaHref: '/kontaktai',
     ctaLabel: 'Klauskite dėl mokymų ir renginių',
