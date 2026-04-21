@@ -7,7 +7,7 @@ export type PrekiuZenklaiBrandTextCard = {
 
 export type PrekiuZenklaiBrandStatItem = {
   value: string;
-  label: string;
+  label?: string;
   description: string;
 };
 
@@ -209,7 +209,10 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
     items: [
       { value: '50+', label: 'metų', description: 'Patirtis profesionalioje kosmetikoje' },
       { value: '80+', label: 'šalių', description: 'Kuriose dirba Guinot profesionalai' },
-      { value: 'Nr. 1', label: 'Prancūzijoje', description: 'Tarp profesionalių odos priežiūros prekių ženklų' },
+      {
+        value: 'Nr. 1',
+        description: 'Prancūzijoje — lyderis tarp profesionalių odos priežiūros ženklų.',
+      },
     ],
   },
   quality: {

@@ -8,7 +8,8 @@ const BODY: React.CSSProperties = {
 
 export type BrandStatsMarqueeItem = {
   value: string;
-  label: string;
+  /** Tuščia — rodomas tik `value` kaip pagrindinė antraštė (pvz. „Nr. 1“). */
+  label?: string;
   description: string;
 };
 
@@ -27,7 +28,7 @@ function MarqueeUnit({ items }: { items: readonly BrandStatsMarqueeItem[] }) {
   return (
     <div className="flex flex-none items-center gap-10 pr-10 md:gap-14 md:pr-16 lg:gap-16 lg:pr-16">
       {items.map((item, i) => (
-        <React.Fragment key={`${item.value}-${item.label}-${i}`}>
+        <React.Fragment key={`${item.value}-${item.label ?? ''}-${i}`}>
           {i > 0 ? <MarqueeSep /> : null}
           <div className="flex max-w-[min(92vw,340px)] flex-col gap-1.5 md:max-w-[380px]">
             <span
@@ -35,7 +36,7 @@ function MarqueeUnit({ items }: { items: readonly BrandStatsMarqueeItem[] }) {
               style={quiche}
             >
               {item.value}
-              <span className="font-medium"> {item.label}</span>
+              {item.label?.trim() ? <span className="font-medium"> {item.label}</span> : null}
             </span>
             <span className="text-[#3B443A]/72" style={{ ...BODY, fontSize: '15px', lineHeight: 1.45, fontWeight: 400 }}>
               {item.description}
@@ -43,6 +44,7 @@ function MarqueeUnit({ items }: { items: readonly BrandStatsMarqueeItem[] }) {
           </div>
         </React.Fragment>
       ))}
+      <MarqueeSep />
     </div>
   );
 }
@@ -70,7 +72,9 @@ export function BrandStatsMarqueeSection({ items }: { items: readonly [BrandStat
 
           <div className="brand-stats-marquee-track flex w-max items-center py-8 max-[767px]:py-7">
             <MarqueeUnit items={items} />
+            <MarqueeSep />
             <MarqueeUnit items={items} />
+            <MarqueeSep />
             <MarqueeUnit items={items} />
           </div>
         </div>
