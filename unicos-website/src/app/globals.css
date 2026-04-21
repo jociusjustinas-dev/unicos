@@ -9,6 +9,8 @@ html {
 :root {
   --background: #ECE2D3;
   --foreground: #1A1010;
+  /** Lipniams blokams po fixed nav — atnaujina `NavigationBarSection` pagal headerio matomumą (numatytai = md pt-32). */
+  --site-sticky-top: 8rem;
 }
 
 @theme inline {

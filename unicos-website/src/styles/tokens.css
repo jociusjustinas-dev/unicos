@@ -102,6 +102,8 @@
   --color-maroon: #64151F;
   --color-maroon-hover: #4a0f17;
   --color-nougat: #F1E8DA;
+  /** Šiek tiek tamsesnis kremo paviršius už #EFE8DB — šoniniai / lipnūs paneliai. */
+  --color-cream-panel: #E2D9CE;
   --color-green: #3B443A;
   --color-green-hover: rgba(59, 68, 58, 0.88);
   --color-white: #ffffff;

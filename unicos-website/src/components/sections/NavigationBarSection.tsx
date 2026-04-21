@@ -485,6 +485,15 @@ export function NavigationBarSection({
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMegaOpen, mobileOpen]);
 
+  const headerDocked = navVisible || mobileOpen || isMegaOpen;
+
+  React.useEffect(() => {
+    document.documentElement.style.setProperty('--site-sticky-top', headerDocked ? '8rem' : '0px');
+    return () => {
+      document.documentElement.style.removeProperty('--site-sticky-top');
+    };
+  }, [headerDocked]);
+
   return (
     <div
       className={`fixed inset-x-0 top-0 z-[999] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${

@@ -71,16 +71,15 @@ export default function NeostrataPilingaiPage() {
   const event = NEOSTRATA_EVENT;
 
   return (
-    <>
     <main className="bg-[#EFE8DB] text-[#1A1010]">
       <NavigationBarSection forceLightSurface />
 
-      {/* md:pt-32 = md:top-32 lipniame stulpelyje — kitaip ~16px plyšys po headeriu */}
+      {/* md:pt-32 sutampa su lipnaus stulpelio pradžia kai nav matomas; lipnus `top` seka --site-sticky-top iš NavigationBarSection */}
       <div className="pt-24 md:pt-32">
         <div className={PAGE_SHELL}>
           <div className="grid min-h-0 grid-cols-1 items-start gap-y-10 md:grid-cols-2 md:gap-x-16 md:gap-y-0 lg:gap-x-24">
-            {/* Kairė: lipnus hero — fonas iš tokens.css (--color-nougat), švelnus skirtumas nuo puslapio #EFE8DB */}
-            <aside className="relative min-h-0 w-full self-start bg-[var(--color-nougat)] text-[#1A1010] md:sticky md:top-32 md:z-[1] md:max-h-[calc(100svh-8rem)] md:overflow-y-auto md:overscroll-y-contain">
+            {/* Kairė: lipnus hero — fonas --color-cream-panel (tamsesnis už #EFE8DB); top iš --site-sticky-top */}
+            <aside className="relative min-h-0 w-full self-start bg-[var(--color-cream-panel)] text-[#1A1010] md:sticky md:top-[var(--site-sticky-top,8rem)] md:z-[1] md:max-h-[calc(100svh-var(--site-sticky-top,8rem))] md:overflow-y-auto md:overscroll-y-contain md:transition-[top,max-height] md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)]">
               <div className="flex flex-col gap-4 py-5 md:gap-5 md:py-6 md:pr-1">
                   <nav className="mb-0" aria-label="Breadcrumb">
                     <ol className="m-0 flex list-none flex-wrap items-center gap-3 p-0">
@@ -122,8 +121,8 @@ export default function NeostrataPilingaiPage() {
                     </div>
                     {event.statusLine ? (
                       <span
-                        className="shrink-0 whitespace-nowrap uppercase text-[#64151F]"
-                        style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 600, lineHeight: '12px' }}
+                        className="shrink-0 whitespace-nowrap border border-solid border-[#64151F] bg-[#64151F] px-2 py-1 uppercase text-[#EFE8DB]"
+                        style={{ ...BODY, fontSize: '10px', letterSpacing: '0.1em', fontWeight: 600, lineHeight: '12px', ...R0 }}
                       >
                         {event.statusLine}
                       </span>
@@ -252,13 +251,16 @@ export default function NeostrataPilingaiPage() {
                       'Praktinis darbas: pilingo atlikimas ant modelio žingsnis po žingsnio.',
                       'Postprocedūrinė priežiūra ir namų priežiūros rekomendacijos pacientui.',
                     ].map((item) => (
-                      <div key={item} className="flex flex-col gap-2 border-b border-solid border-[#1A1010]/10 py-4">
-                        <p className="m-0 text-[#1A1010]/85" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55 }}>
+                      <div key={item} className="flex items-start gap-3 border-b border-solid border-[#1A1010]/10 py-4">
+                        <SfCheck
+                          size={18}
+                          strokeWidth={2.5}
+                          className="mt-1 shrink-0 text-[#64151F]"
+                          aria-hidden
+                        />
+                        <p className="m-0 min-w-0 flex-1 text-[#1A1010]/85" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55 }}>
                           {item}
                         </p>
-                        <span className="inline-flex shrink-0 text-[#64151F]" aria-hidden>
-                          <SfCheck size={18} strokeWidth={2.5} />
-                        </span>
                       </div>
                     ))}
                   </div>
@@ -366,58 +368,65 @@ export default function NeostrataPilingaiPage() {
                 </div>
               </Container>
             </section>
-
-            <section className="bg-[#64151F] py-16 text-left max-[767px]:py-12">
-              <Container>
-                <div className="max-w-[980px]">
-                  <h2 className="m-0 text-[#EFE8DB]" style={{ ...HEADING, fontSize: 'clamp(2rem, 3.4vw, 3rem)', lineHeight: 1.06, fontWeight: 300 }}>
-                    Užtikrinkite savo vietą.
-                  </h2>
-                  <p className="m-0 mt-4 text-[#EFE8DB]/80" style={{ ...BODY, fontSize: '16px', lineHeight: 1.65 }}>
-                    Dalyvių skaičius ribotas — registruokitės dabar ir gaukite tarptautinį sertifikatą.
-                  </p>
-
-                  <div className="mt-7 flex flex-wrap items-center gap-3">
-                    <button
-                      type="button"
-                      className="h-12 border-0 bg-[#EFE8DB] px-6 text-[#64151F] transition-colors hover:bg-white"
-                      style={{ ...BODY, fontSize: '15px', fontWeight: 600, ...R0 }}
-                    >
-                      Registruotis
-                    </button>
-                    <span className="text-[#EFE8DB]/60" style={{ ...BODY, fontSize: '15px' }}>
-                      49 €
-                    </span>
-                    <span className="uppercase text-[#EFE8DB]/60" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.1em', fontWeight: 600 }}>
-                      Liko 4 vietos
-                    </span>
-                    <button
-                      type="button"
-                      className="h-12 border border-solid border-[#EFE8DB] bg-transparent px-6 text-[#EFE8DB] transition-colors hover:bg-[#EFE8DB]/10"
-                      style={{ ...BODY, fontSize: '15px', fontWeight: 500, ...R0 }}
-                    >
-                      Gauti priminimą
-                    </button>
-                  </div>
-
-                  <div className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-[#EFE8DB]/60" style={{ ...BODY, fontSize: '14px', lineHeight: 1.5 }}>
-                    <span className="inline-flex items-center gap-1.5">
-                      <SfPhone size={16} aria-hidden /> +370 600 00000
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <SfMessage size={16} aria-hidden /> Live Chat
-                    </span>
-                  </div>
-                </div>
-              </Container>
-            </section>
             </div>
           </div>
         </div>
       </div>
 
-      <FooterSection />
-    </main>
+      <section
+        className="w-full bg-[#64151F] py-16 text-center text-[#EFE8DB] max-[767px]:py-12"
+        aria-labelledby="neostrata-cta-heading"
+      >
+        <div className={PAGE_SHELL}>
+          <div className="mx-auto w-full max-w-[48rem]">
+            <h2
+              id="neostrata-cta-heading"
+              className="m-0 text-[#EFE8DB]"
+              style={{ ...HEADING, fontSize: 'clamp(2rem, 3.4vw, 3rem)', lineHeight: 1.06, fontWeight: 300 }}
+            >
+              Užtikrinkite savo vietą.
+            </h2>
+            <p className="m-0 mt-4 text-[#EFE8DB]/80" style={{ ...BODY, fontSize: '16px', lineHeight: 1.65 }}>
+              Dalyvių skaičius ribotas — registruokitės dabar ir gaukite tarptautinį sertifikatą.
+            </p>
+
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+              <button
+                type="button"
+                className="h-12 border-0 bg-[#EFE8DB] px-6 text-[#64151F] transition-colors hover:bg-white"
+                style={{ ...BODY, fontSize: '15px', fontWeight: 600, ...R0 }}
+              >
+                Registruotis
+              </button>
+              <span className="text-[#EFE8DB]/60" style={{ ...BODY, fontSize: '15px' }}>
+                {event.price}
+              </span>
+              <span className="uppercase text-[#EFE8DB]/60" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.1em', fontWeight: 600 }}>
+                {event.statusLine}
+              </span>
+              <button
+                type="button"
+                className="h-12 border border-solid border-[#EFE8DB] bg-transparent px-6 text-[#EFE8DB] transition-colors hover:bg-[#EFE8DB]/10"
+                style={{ ...BODY, fontSize: '15px', fontWeight: 500, ...R0 }}
+              >
+                Gauti priminimą
+              </button>
+            </div>
+
+            <div
+              className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-2 text-[#EFE8DB]/60"
+              style={{ ...BODY, fontSize: '14px', lineHeight: 1.5 }}
+            >
+              <span className="inline-flex items-center justify-center gap-1.5">
+                <SfPhone size={16} aria-hidden /> +370 600 00000
+              </span>
+              <span className="inline-flex items-center justify-center gap-1.5">
+                <SfMessage size={16} aria-hidden /> Live Chat
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section
         className="relative z-[1] border-t border-solid border-[#1A1010]/10 bg-[#EFE8DB] py-16 text-[#1A1010] max-[767px]:py-12"
@@ -452,6 +461,8 @@ export default function NeostrataPilingaiPage() {
           </div>
         </div>
       </section>
-    </>
+
+      <FooterSection />
+    </main>
   );
 }
