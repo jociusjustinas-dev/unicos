@@ -182,32 +182,42 @@ export default function NeostrataPilingaiPage() {
                   </div>
 
                   <div className="border-t-[1px] border-solid border-[#1A1010]/10 pt-3">
-                    <CtaLink
-                      href={event.href}
-                      variant="primary"
-                      labelMode="static"
-                      className="min-h-[52px] self-start rounded-none px-8"
-                      style={{ ...BODY, ...R0 }}
-                    >
-                      Registruotis — {event.price}
-                    </CtaLink>
-                  </div>
-
-                  <p className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45 }}>
-                    Vieta garantuojama tik po apmokėjimo.
-                  </p>
-
-                  <div className="flex flex-wrap items-center gap-3">
-                    <button
-                      type="button"
-                      className="h-[52px] border border-solid border-[#64151F] bg-transparent px-6 text-[#64151F] transition-colors hover:bg-[#64151F]/[0.06]"
-                      style={{ ...BODY, fontSize: '15px', fontWeight: 500, ...R0 }}
-                    >
-                      Gauti priminimą
-                    </button>
-                    <p className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45 }}>
-                      Atsiųsime el. paštu.
-                    </p>
+                    <div className="flex w-full max-w-[640px] flex-col items-stretch justify-start gap-6 sm:flex-row sm:items-start sm:gap-8">
+                      <div className="flex flex-col items-start gap-2.5 sm:items-start">
+                        <CtaLink
+                          href={event.href}
+                          variant="primary"
+                          labelMode="static"
+                          className="min-h-[52px] min-w-[240px] justify-center rounded-none px-8"
+                          style={{ ...BODY, ...R0 }}
+                        >
+                          Registruotis — {event.price}
+                        </CtaLink>
+                        <span
+                          className="uppercase text-[#1A1010]/62"
+                          style={{ fontSize: '10px', letterSpacing: '0.12em', ...BODY, fontWeight: 500, lineHeight: 1.45 }}
+                        >
+                          Vieta garantuojama tik po apmokėjimo.
+                        </span>
+                      </div>
+                      <div className="flex flex-col items-start gap-2.5 sm:items-start">
+                        <CtaLink
+                          href="/kontaktai"
+                          variant="outline"
+                          labelMode="static"
+                          className="min-h-[52px] min-w-[240px] justify-center rounded-none px-6"
+                          style={{ ...BODY, ...R0 }}
+                        >
+                          Gauti priminimą
+                        </CtaLink>
+                        <span
+                          className="uppercase text-[#1A1010]/62"
+                          style={{ fontSize: '10px', letterSpacing: '0.12em', ...BODY, fontWeight: 500, lineHeight: 1.45 }}
+                        >
+                          Atsiųsime el. paštu.
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
             </aside>
