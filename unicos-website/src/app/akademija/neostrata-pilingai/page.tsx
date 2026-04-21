@@ -76,11 +76,11 @@ export default function NeostrataPilingaiPage() {
       <div className="pt-24 md:pt-32">
         <div className={PAGE_SHELL}>
           <div className="grid min-h-0 grid-cols-1 items-start gap-y-10 md:grid-cols-2 md:gap-x-16 md:gap-y-0 lg:gap-x-24">
-            {/* Kairė: lipnus hero — fonas per visą stulpelio plotį; turinys su 64px (md:p-16) paddingu */}
+            {/* Kairė: lipnus hero — fonas per visą stulpelio plotį; turinys su 48px (md:p-12) paddingu */}
             <aside
               className="relative min-h-0 w-full self-start bg-[var(--color-cream-panel)] text-[#1A1010] md:sticky md:z-[1] md:overflow-y-auto md:overscroll-y-contain md:transition-[top,max-height] md:duration-500 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:top-[calc(var(--site-sticky-top,8rem)+1.25rem)] md:max-h-[calc(100svh-var(--site-sticky-top,8rem)-2.5rem)]"
             >
-              <div className="flex flex-col gap-4 p-6 md:gap-5 md:p-16">
+              <div className="flex flex-col gap-3 p-6 md:gap-4 md:p-12">
                   <nav className="mb-0" aria-label="Breadcrumb">
                     <ol className="m-0 flex list-none flex-wrap items-center gap-3 p-0">
                       <li>
@@ -130,7 +130,7 @@ export default function NeostrataPilingaiPage() {
                   </div>
 
                   <h1
-                    className="m-0 text-[30px] leading-[1.08] text-[#64151F] md:text-[44px] lg:text-[50px]"
+                    className="m-0 text-[26px] leading-[1.08] text-[#64151F] md:text-[36px] lg:text-[42px]"
                     style={{ ...HEADING, fontWeight: 300 }}
                   >
                     <NeostrataHeroHeading title={event.title} />
