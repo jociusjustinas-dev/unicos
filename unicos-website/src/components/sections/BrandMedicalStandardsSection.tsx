@@ -57,27 +57,24 @@ export function BrandMedicalStandardsSection({ quality }: { quality: Quality }) 
                 return (
                   <div
                     key={card.title}
-                    className="flex flex-row items-center justify-between gap-4 max-[479px]:gap-3"
+                    className="flex flex-row items-center gap-4 max-[479px]:gap-3"
                   >
-                    <div className="flex min-w-0 flex-1 items-center gap-4 max-[479px]:gap-3">
-                      <div
-                        className="grid h-14 w-14 shrink-0 place-items-center overflow-visible border border-[#3B443A]/20 bg-[rgba(59,68,58,0.1)] p-2 text-[#3B443A] max-[767px]:h-12 max-[767px]:w-12 max-[767px]:p-1.5"
-                        style={{ borderRadius: '0px' }}
-                      >
-                        <span className="inline-flex h-[22px] w-[22px] shrink-0 items-center justify-center overflow-visible">
-                          <Icon size={22} strokeWidth={1.75} className="overflow-visible" aria-hidden />
-                        </span>
-                      </div>
-                      <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-                        <h3 className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '15px', lineHeight: '1.35', fontWeight: 500 }}>
-                          {card.title}
-                        </h3>
-                        <p className="m-0 text-sm leading-5 text-[#1A1010]/65" style={{ ...BODY, fontWeight: 400 }}>
-                          {card.description}
-                        </p>
-                      </div>
+                    <div
+                      className="grid h-14 w-14 shrink-0 place-items-center overflow-visible border border-[#3B443A]/20 bg-[rgba(59,68,58,0.1)] p-2 text-[#3B443A] max-[767px]:h-12 max-[767px]:w-12 max-[767px]:p-1.5"
+                      style={{ borderRadius: '0px' }}
+                    >
+                      <span className="inline-flex h-[22px] w-[22px] shrink-0 items-center justify-center overflow-visible">
+                        <Icon size={22} strokeWidth={1.75} className="overflow-visible" aria-hidden />
+                      </span>
                     </div>
-                    <SfArrowRight size={18} className="shrink-0 text-[#3B443A]/40" aria-hidden />
+                    <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+                      <h3 className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '15px', lineHeight: '1.35', fontWeight: 500 }}>
+                        {card.title}
+                      </h3>
+                      <p className="m-0 text-sm leading-5 text-[#1A1010]/65" style={{ ...BODY, fontWeight: 400 }}>
+                        {card.description}
+                      </p>
+                    </div>
                   </div>
                 );
               })}
@@ -105,7 +102,7 @@ export function BrandMedicalStandardsSection({ quality }: { quality: Quality }) 
                   {quality.extraDocLinks.map((link) => (
                     <a key={link.label} href={link.href} className={docLinkClass}>
                       <span className="min-w-0 flex-1 pr-2">{link.label}</span>
-                      <SfArrowRight size={18} className="shrink-0 text-[#EFE8DB]/55" aria-hidden />
+                      <SfArrowRight size={16} className="shrink-0 text-[#EFE8DB]/75" aria-hidden />
                     </a>
                   ))}
                 </nav>

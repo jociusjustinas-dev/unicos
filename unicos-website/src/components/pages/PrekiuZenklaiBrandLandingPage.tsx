@@ -10,7 +10,7 @@ import { FaqSection } from '@/components/sections/FaqSection';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { BrandWhyBentoSection } from '@/components/sections/BrandWhyBentoSection';
 import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
-import { OdosAudienceSection } from '@/components/sections/OdosAudienceSection';
+import { BrandProductLinesTabsSection } from '@/components/sections/BrandProductLinesTabsSection';
 import { OdosChallengesSection } from '@/components/sections/OdosChallengesSection';
 import { OdosPartnerSpotlightSection } from '@/components/sections/OdosPartnerSpotlightSection';
 import { BrandStatsMarqueeSection } from '@/components/sections/BrandStatsMarqueeSection';
@@ -130,14 +130,16 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
       <BrandWhyBentoSection
         heading={<SplitHeading light={config.why.headingLight} bold={config.why.headingBold} />}
         cards={config.why.cards}
+        tallImageSrc={config.why.bentoTallImageSrc}
+        tallImageAlt={config.why.bentoTallImageAlt}
         bandImageSrc={config.why.bentoBandImageSrc}
         bandImageAlt={config.why.bentoBandImageAlt}
       />
 
-      <OdosAudienceSection
-        cards={config.productLines.audienceCards}
+      <BrandProductLinesTabsSection
         heading={<SplitHeading light={config.productLines.headingLight} bold={config.productLines.headingBold} />}
         subheading={config.productLines.subheading}
+        cards={config.productLines.audienceCards}
         consultTitle="Reikia Guinot asortimento konsultacijos?"
         consultBody="Padėsime išsirinkti linijas procedūroms ir namų priežiūrai."
       />
@@ -152,7 +154,7 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
         heading={<SplitHeading light={config.partner.headingLight} bold={config.partner.headingBold} />}
         subheading={config.partner.subheading}
         cards={[...config.partner.cards]}
-        surfaceClassName="bg-[#E8EDE9]"
+        surfaceClassName="bg-white"
         accent="green"
         showGuidanceRow={false}
       />

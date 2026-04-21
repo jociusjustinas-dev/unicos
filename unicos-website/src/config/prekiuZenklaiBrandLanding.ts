@@ -28,6 +28,8 @@ export type PrekiuZenklaiBrandLandingConfig = {
     headingLight: string;
     headingBold: string;
     cards: readonly PrekiuZenklaiBrandTextCard[];
+    bentoTallImageSrc: string;
+    bentoTallImageAlt: string;
     bentoBandImageSrc: string;
     bentoBandImageAlt: string;
   };
@@ -123,6 +125,8 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
         description: 'Klientai mato skirtumą jau po pirmos procedūros ir grįžta reguliariai.',
       },
     ],
+    bentoTallImageSrc: '/mega-menu/4.jpeg',
+    bentoTallImageAlt: 'Guinot Hydradermie procedūra',
     bentoBandImageSrc: '/mega-menu/2.jpeg',
     bentoBandImageAlt: 'Guinot procedūros kabinete',
   },
