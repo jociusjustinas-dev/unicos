@@ -53,6 +53,10 @@ export type PrekiuZenklaiBrandLandingConfig = {
     headingLight: string;
     headingBold: string;
     subheading: string;
+    splitEyebrow: string;
+    splitImageSrc: string;
+    splitImageAlt: string;
+    splitPrimaryCta: { href: string; label: string };
     cards: readonly PrekiuZenklaiBrandTextCard[];
     extraTitle: string;
     extraBullets: readonly string[];
@@ -213,6 +217,10 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
     headingBold: 'medicininiai standartai',
     subheading:
       'Mums rūpi ne tik gražus rezultatas, bet, svarbiausia, Jūsų ir Jūsų pacientų saugumas. Todėl visa mūsų įranga bei produktai atitinka aukščiausius ES kokybės standartus.',
+    splitEyebrow: 'Medicininė kokybė',
+    splitImageSrc: '/estetines.jpg',
+    splitImageAlt: 'Profesionali medicininė ir estetinė aplinka',
+    splitPrimaryCta: { href: '/kontaktai', label: 'Gauti konsultaciją' },
     cards: [
       {
         title: 'CE sertifikacija',

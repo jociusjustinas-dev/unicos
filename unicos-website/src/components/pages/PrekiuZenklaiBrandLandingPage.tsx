@@ -13,6 +13,7 @@ import { OdosAudienceSection } from '@/components/sections/OdosAudienceSection';
 import { OdosChallengesSection } from '@/components/sections/OdosChallengesSection';
 import { OdosPartnerSpotlightSection } from '@/components/sections/OdosPartnerSpotlightSection';
 import { BrandStatsMarqueeSection } from '@/components/sections/BrandStatsMarqueeSection';
+import { BrandMedicalStandardsSection } from '@/components/sections/BrandMedicalStandardsSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 
 const BODY: React.CSSProperties = {
@@ -160,47 +161,7 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
 
       <BrandStatsMarqueeSection items={config.stats.items} />
 
-      <ResponsibleBeautySection
-        eyebrowLabel={null}
-        heading={<SplitHeading light={config.quality.headingLight} bold={config.quality.headingBold} />}
-        subheading={config.quality.subheading}
-        cards={[...config.quality.cards]}
-        surfaceClassName="bg-white"
-        accent="maroon"
-        showGuidanceRow={false}
-      />
-
-      <section className="relative z-[2] border-t border-[#1A1010]/10 bg-white py-14 max-[767px]:py-12">
-        <div className="relative z-[2] mx-auto w-full max-w-[720px] px-16 max-[767px]:px-6 max-[479px]:px-4">
-          <h3
-            className="m-0 text-[#64151F]"
-            style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontSize: 'clamp(1.35rem,2.2vw,1.65rem)', fontWeight: 300, lineHeight: 1.15 }}
-          >
-            {config.quality.extraTitle}
-          </h3>
-          <ul className="m-0 mt-5 list-none space-y-2 p-0" style={BODY}>
-            {config.quality.extraBullets.map((line) => (
-              <li key={line} className="relative pl-5 text-[#1A1010]/82" style={{ fontSize: '15px', lineHeight: 1.5 }}>
-                <span className="absolute left-0 top-[0.55em] h-1.5 w-1.5 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
-                {line}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-10 border-t border-[#1A1010]/10 pt-10">
-            <h4 className="m-0 text-[#64151F]" style={{ ...BODY, fontSize: '13px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-              {config.quality.certificationTitle}
-            </h4>
-            <p className="m-0 mt-3 text-[#1A1010]/78" style={{ ...BODY, fontSize: '15px', lineHeight: 1.55 }}>
-              {config.quality.certificationBody}
-            </p>
-            <div className="mt-6">
-              <CtaLink href={config.quality.certificationCta.href} variant="secondary">
-                {config.quality.certificationCta.label}
-              </CtaLink>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BrandMedicalStandardsSection quality={config.quality} />
 
       <OdosPartnerSpotlightSection
         spotlightHeadingId={spotlightHeadingId}
