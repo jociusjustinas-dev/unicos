@@ -12,7 +12,7 @@ import {
   type AkademijaTimeId,
   type AkademijaTopicId,
 } from '@/config/akademijaPage';
-import { homePageImageForKey } from '@/config/homePageImages';
+import { HOME_PAGE_IMAGE_POOL } from '@/config/homePageImages';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -154,6 +154,16 @@ export function AkademijaTrainingSection() {
   const [topic, setTopic] = React.useState<AkademijaTopicId>('all');
   const [format, setFormat] = React.useState<AkademijaFormatId>('all');
   const [time, setTime] = React.useState<AkademijaTimeId>('all');
+  const [randomImagesByEventId, setRandomImagesByEventId] = React.useState<Record<string, string>>({});
+
+  React.useEffect(() => {
+    const next: Record<string, string> = {};
+    for (const event of AKADEMIJA_EVENTS) {
+      const idx = Math.floor(Math.random() * HOME_PAGE_IMAGE_POOL.length);
+      next[event.id] = HOME_PAGE_IMAGE_POOL[idx]!;
+    }
+    setRandomImagesByEventId(next);
+  }, []);
 
   const filtered = React.useMemo(() => {
     const mk = currentMonthKey();
@@ -267,7 +277,7 @@ export function AkademijaTrainingSection() {
         ) : (
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
             {filtered.map((e) => (
-              <AkademijaEventCard key={e.id} event={e} imageSrc={homePageImageForKey(e.id)} />
+              <AkademijaEventCard key={e.id} event={e} imageSrc={randomImagesByEventId[e.id] ?? HOME_PAGE_IMAGE_POOL[0]!} />
             ))}
           </div>
         )}
