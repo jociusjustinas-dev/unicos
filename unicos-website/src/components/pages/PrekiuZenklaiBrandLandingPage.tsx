@@ -12,6 +12,7 @@ import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeaut
 import { OdosAudienceSection } from '@/components/sections/OdosAudienceSection';
 import { OdosChallengesSection } from '@/components/sections/OdosChallengesSection';
 import { OdosPartnerSpotlightSection } from '@/components/sections/OdosPartnerSpotlightSection';
+import { BrandStatsMarqueeSection } from '@/components/sections/BrandStatsMarqueeSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 
 const BODY: React.CSSProperties = {
@@ -152,34 +153,12 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
         heading={<SplitHeading light={config.partner.headingLight} bold={config.partner.headingBold} />}
         subheading={config.partner.subheading}
         cards={[...config.partner.cards]}
-        surfaceClassName="bg-[#EFE8DB]"
-        accent="maroon"
+        surfaceClassName="bg-[#E8EDE9]"
+        accent="green"
         showGuidanceRow={false}
       />
 
-      <section className="relative z-[2] bg-[#3B443A] py-16 text-[#EFE8DB] max-[767px]:py-14">
-        <div className="relative z-[2] mx-auto grid w-full max-w-[1028px] grid-cols-1 gap-10 px-16 max-[767px]:px-6 max-[479px]:px-4 md:grid-cols-3 md:gap-8">
-          {config.stats.items.map((s) => (
-            <div key={s.label} className="flex flex-col gap-2 text-center md:text-left">
-              <div
-                className="text-[#EFE8DB]"
-                style={{
-                  fontFamily: "'Quiche Sans', Georgia, serif",
-                  fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
-                  lineHeight: 1.05,
-                  fontWeight: 300,
-                }}
-              >
-                {s.value}
-                <span className="font-medium"> {s.label}</span>
-              </div>
-              <p className="m-0 text-[#EFE8DB]/75" style={{ ...BODY, fontSize: '15px', lineHeight: 1.5, fontWeight: 400 }}>
-                {s.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <BrandStatsMarqueeSection items={config.stats.items} />
 
       <ResponsibleBeautySection
         eyebrowLabel={null}
