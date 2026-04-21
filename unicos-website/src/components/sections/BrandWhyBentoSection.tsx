@@ -17,13 +17,39 @@ type Props = {
   tallImageAlt: string;
   bandImageSrc: string;
   bandImageAlt: string;
+  smallImageSrc: string;
+  smallImageAlt: string;
+  topRightImageSrc: string;
+  topRightImageAlt: string;
 };
+
+function BentoFigure({
+  src,
+  alt,
+  className = '',
+  minHeightClass = 'min-h-[200px]',
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  minHeightClass?: string;
+}) {
+  return (
+    <figure
+      className={`relative m-0 overflow-hidden border border-[#1A1010]/10 ${minHeightClass} ${className}`.trim()}
+      style={{ borderRadius: '0px' }}
+    >
+      <img src={src} alt={alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+      <div className="pointer-events-none absolute inset-0 bg-[rgba(26,16,16,0.08)]" aria-hidden />
+    </figure>
+  );
+}
 
 function BentoTile({ card, index, className = '' }: { card: PrekiuZenklaiBrandTextCard; index: number; className?: string }) {
   const Icon = CARD_ICONS[index % CARD_ICONS.length]!;
   return (
     <div
-      className={`flex flex-row items-center gap-4 border border-[#1A1010]/10 bg-[#EFE8DB] p-6 max-[767px]:gap-3 max-[767px]:p-5 ${className}`.trim()}
+      className={`flex min-h-0 flex-row items-center gap-4 border border-[#1A1010]/10 bg-[#EFE8DB] p-6 max-[767px]:gap-3 max-[767px]:p-5 ${className}`.trim()}
       style={{ borderRadius: '0px' }}
     >
       <div
@@ -46,7 +72,18 @@ function BentoTile({ card, index, className = '' }: { card: PrekiuZenklaiBrandTe
   );
 }
 
-export function BrandWhyBentoSection({ heading, cards, tallImageSrc, tallImageAlt, bandImageSrc, bandImageAlt }: Props) {
+export function BrandWhyBentoSection({
+  heading,
+  cards,
+  tallImageSrc,
+  tallImageAlt,
+  bandImageSrc,
+  bandImageAlt,
+  smallImageSrc,
+  smallImageAlt,
+  topRightImageSrc,
+  topRightImageAlt,
+}: Props) {
   const quad = cards.slice(0, 4);
   const [a, b, c, d] = quad;
   if (quad.length < 4 || !a || !b || !c || !d) return null;
@@ -54,7 +91,7 @@ export function BrandWhyBentoSection({ heading, cards, tallImageSrc, tallImageAl
   return (
     <section className="relative z-[2] bg-white py-20 text-[#1A1010] max-[767px]:py-14" style={BODY}>
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
-        <div className="mx-auto flex max-w-[1200px] flex-col gap-12 max-[767px]:gap-10">
+        <div className="mx-auto flex max-w-[1240px] flex-col gap-12 max-[767px]:gap-10">
           <h2
             className="m-0 text-center tracking-[-0.02em] text-[#64151F]"
             style={{
@@ -67,28 +104,41 @@ export function BrandWhyBentoSection({ heading, cards, tallImageSrc, tallImageAl
             {heading}
           </h2>
 
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:grid-rows-[auto_auto_auto] lg:gap-4">
+          {/* Mobile: column stack. lg: 4 cols — row1–2 kaip ref.; row3: C | D */}
+          <div className="flex flex-col gap-4 lg:grid lg:grid-cols-4 lg:grid-rows-3 lg:gap-4 lg:auto-rows-[minmax(200px,auto)]">
+            <BentoTile card={a} index={0} className="lg:col-start-1 lg:row-start-1 lg:min-h-[200px]" />
+
             <figure
-              className="relative m-0 min-h-[280px] overflow-hidden border border-[#1A1010]/10 lg:row-span-3 lg:min-h-[420px]"
+              className="relative m-0 min-h-[280px] overflow-hidden border border-[#1A1010]/10 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:min-h-0"
               style={{ borderRadius: '0px' }}
             >
               <img src={tallImageSrc} alt={tallImageAlt} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-              <div className="pointer-events-none absolute inset-0 bg-[rgba(26,16,16,0.1)]" aria-hidden />
+              <div className="pointer-events-none absolute inset-0 bg-[rgba(26,16,16,0.08)]" aria-hidden />
             </figure>
 
-            <BentoTile card={a} index={0} className="lg:col-start-2 lg:row-start-1" />
-            <BentoTile card={b} index={1} className="lg:col-start-3 lg:row-start-1" />
+            <BentoTile card={b} index={1} className="lg:col-start-3 lg:row-start-1 lg:min-h-[200px]" />
 
-            <figure
-              className="relative m-0 min-h-[200px] overflow-hidden border border-[#1A1010]/10 lg:col-span-2 lg:col-start-2 lg:row-start-2 lg:min-h-[240px]"
-              style={{ borderRadius: '0px' }}
-            >
-              <img src={bandImageSrc} alt={bandImageAlt} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-              <div className="pointer-events-none absolute inset-0 bg-[rgba(26,16,16,0.1)]" aria-hidden />
-            </figure>
+            <BentoFigure
+              src={topRightImageSrc}
+              alt={topRightImageAlt}
+              className="lg:col-start-4 lg:row-start-1 min-h-[220px] lg:min-h-[200px]"
+            />
 
-            <BentoTile card={c} index={2} className="lg:col-start-2 lg:row-start-3" />
-            <BentoTile card={d} index={3} className="lg:col-start-3 lg:row-start-3" />
+            <BentoFigure
+              src={smallImageSrc}
+              alt={smallImageAlt}
+              className="lg:col-start-1 lg:row-start-2 min-h-[200px]"
+            />
+
+            <BentoFigure
+              src={bandImageSrc}
+              alt={bandImageAlt}
+              minHeightClass="min-h-[220px] lg:min-h-[200px]"
+              className="lg:col-span-2 lg:col-start-3 lg:row-start-2"
+            />
+
+            <BentoTile card={c} index={2} className="lg:col-span-2 lg:col-start-1 lg:row-start-3" />
+            <BentoTile card={d} index={3} className="lg:col-span-2 lg:col-start-3 lg:row-start-3" />
           </div>
         </div>
       </div>

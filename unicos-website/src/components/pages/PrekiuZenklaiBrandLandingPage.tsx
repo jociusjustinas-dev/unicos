@@ -134,6 +134,10 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
         tallImageAlt={config.why.bentoTallImageAlt}
         bandImageSrc={config.why.bentoBandImageSrc}
         bandImageAlt={config.why.bentoBandImageAlt}
+        smallImageSrc={config.why.bentoSmallImageSrc}
+        smallImageAlt={config.why.bentoSmallImageAlt}
+        topRightImageSrc={config.why.bentoTopRightImageSrc}
+        topRightImageAlt={config.why.bentoTopRightImageAlt}
       />
 
       <BrandProductLinesTabsSection
@@ -174,6 +178,8 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
         footnote=""
       />
 
+      <CmsGridSection />
+
       <section className="relative z-[2] bg-[#EFE8DB] py-16 max-[767px]:py-14">
         <div className="relative z-[2] mx-auto flex w-full max-w-[720px] flex-col items-center gap-6 px-16 text-center max-[767px]:px-6 max-[479px]:px-4">
           <h2
@@ -196,7 +202,6 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
         </div>
       </section>
 
-      <CmsGridSection />
       <FaqSection backgroundClassName="bg-[#EFE8DB]" accent="maroon" />
       <CtaSection />
       <FooterSection />

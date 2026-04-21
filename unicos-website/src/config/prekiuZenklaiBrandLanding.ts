@@ -32,6 +32,10 @@ export type PrekiuZenklaiBrandLandingConfig = {
     bentoTallImageAlt: string;
     bentoBandImageSrc: string;
     bentoBandImageAlt: string;
+    bentoSmallImageSrc: string;
+    bentoSmallImageAlt: string;
+    bentoTopRightImageSrc: string;
+    bentoTopRightImageAlt: string;
   };
   productLines: {
     headingLight: string;
@@ -129,6 +133,10 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
     bentoTallImageAlt: 'Guinot Hydradermie procedūra',
     bentoBandImageSrc: '/mega-menu/2.jpeg',
     bentoBandImageAlt: 'Guinot procedūros kabinete',
+    bentoSmallImageSrc: '/mega-menu/3.jpeg',
+    bentoSmallImageAlt: 'Guinot produktai ir procedūros',
+    bentoTopRightImageSrc: '/mega-menu/1.jpeg',
+    bentoTopRightImageAlt: 'Profesionali Guinot odos priežiūra',
   },
   productLines: {
     headingLight: 'Guinot ',
@@ -216,7 +224,7 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
       { value: '80+', label: 'šalių', description: 'Kuriose dirba Guinot profesionalai' },
       {
         value: 'Nr. 1',
-        description: 'Prancūzijoje — lyderis tarp profesionalių odos priežiūros ženklų.',
+        description: 'Lyderis tarp profesionalių odos priežiūros ženklų Prancūzijoje.',
       },
     ],
   },
@@ -265,11 +273,11 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
     portraitAlt: 'Dr. Ieva Kazlauskienė',
   },
   trainings: {
-    headingLight: 'Artimiausi ',
-    headingBold: 'Guinot mokymai.',
-    body: 'Datas ir registraciją skelbiame per UNICOS akademiją — parašykite vadybininkui, jei norite rezervuoti vietą Guinot mokyme.',
+    headingLight: 'Mokymai ir ',
+    headingBold: 'renginiai.',
+    body: 'Datas ir registraciją skelbiame per UNICOS akademiją — parašykite vadybininkui, jei norite rezervuoti vietą Guinot mokyme ar sužinoti apie artimiausius renginius.',
     ctaHref: '/kontaktai',
-    ctaLabel: 'Klauskite dėl mokymų',
+    ctaLabel: 'Klauskite dėl mokymų ir renginių',
   },
 };
 
