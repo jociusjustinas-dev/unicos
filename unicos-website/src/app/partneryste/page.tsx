@@ -90,8 +90,6 @@ export default function PartnerystePage() {
         heading="Ką reiškia būti UNICOS partneriu?"
         subheading="Tai daugiau nei tiekėjo ir pirkėjo santykis. Tai sistema, sukurta Jūsų augimui."
         showHighlights={false}
-        withFooterVideoBackdrop={false}
-        backdropTone="warmCream"
       />
 
       <section className="py-24 max-[767px]:py-16">
