@@ -1,5 +1,7 @@
 /** /akademija puslapis — filtrai ir renginių duomenys */
 
+import type { Challenges3 } from '@/config/sprendimaiSolutionLanding';
+
 export type AkademijaTopicId = 'all' | 'dermatologija' | 'kosmetologija' | 'plaukai' | 'verslas' | 'estetika';
 
 export type AkademijaFormatId = 'all' | 'gyvai' | 'online';
@@ -199,6 +201,12 @@ export const AKADEMIJA_FORMAT_CARDS = [
     description: 'Individualūs mokymai Jūsų komandai Jūsų patalpose. Turinys pritaikomas pagal Jūsų poreikius.',
   },
 ] as const;
+
+/** `OdosChallengesSection` (Pažįstama situacija) blokui — tie patys 3 formatai kaip `label` / `paragraph`. */
+export const AKADEMIJA_FORMAT_CHALLENGES: Challenges3 = AKADEMIJA_FORMAT_CARDS.map((c) => ({
+  label: c.title,
+  paragraph: c.description,
+})) as unknown as Challenges3;
 
 /** Marquee statistika (`BrandStatsMarqueeSection`): value + label + trumpas aprašymas. */
 export const AKADEMIJA_MARQUEE_STATS = [

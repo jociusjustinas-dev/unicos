@@ -31,10 +31,18 @@ const challengeIcons = [SfLayers, SfShield, SfChatScience] as const;
 export function OdosChallengesSection({
   items = defaultChallenges,
   heading,
+  imageSrc = '/mega-menu/2.jpeg',
+  imageAlt = 'Specialistės darbas su klientu',
+  belowAccordion,
 }: {
   items?: Challenges3;
   /** Numatyta: „Pažįstama situacija?“. */
   heading?: React.ReactNode;
+  /** Dešinėje nuotraukos stulpelyje. */
+  imageSrc?: string;
+  imageAlt?: string;
+  /** Po akordeono sąrašu (pvz. nuoroda į kontaktus). */
+  belowAccordion?: React.ReactNode;
 } = {}) {
   const [openIndexes, setOpenIndexes] = React.useState<number[]>([0]);
   const cardRef = React.useRef<HTMLDivElement>(null);
@@ -71,7 +79,7 @@ export function OdosChallengesSection({
             cardVisible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]'
           }`}
         >
-          <div className="flex min-h-[620px] min-w-0 flex-col items-start justify-between max-[991px]:min-h-0">
+          <div className="flex min-h-[620px] min-w-0 flex-col items-start justify-between gap-10 max-[991px]:min-h-0 max-[991px]:gap-8">
             <h2
               className="m-0 text-[#EFE8DB]"
               style={{
@@ -142,13 +150,16 @@ export function OdosChallengesSection({
                   </div>
                 );
               })}
+              {belowAccordion ? (
+                <div className="w-full border-t border-[#EFE8DB]/16 pt-8 max-[767px]:pt-6">{belowAccordion}</div>
+              ) : null}
             </div>
           </div>
 
           <div className="relative min-h-[620px] overflow-hidden border border-[#EFE8DB]/14 max-[991px]:min-h-[420px] max-[767px]:min-h-[320px]" style={{ borderRadius: '0px' }}>
             <img
-              src="/mega-menu/2.jpeg"
-              alt="Specialistės darbas su klientu"
+              src={imageSrc}
+              alt={imageAlt}
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover"
             />
