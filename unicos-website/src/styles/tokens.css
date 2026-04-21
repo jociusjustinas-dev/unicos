@@ -120,7 +120,8 @@
   --btn-radius: 0;
   --btn-font-size: 13px;
   --btn-font-weight: 500;
-  --btn-label-track-height: 22px;
+  /** Slide etiketei reikia ~2 eil. vertikalaus tarpo; per žema reikšmė kerpia tekstą. */
+  --btn-label-track-height: 28px;
   --btn-ease: cubic-bezier(0.4, 0, 0.2, 1);
   --btn-letter-spacing: 0.02em;
   /** Statinis `labelMode` (retai) — tas pats dydis/storis kaip slide. */

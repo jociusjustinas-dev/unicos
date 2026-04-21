@@ -14,7 +14,7 @@ export type CtaSurfaceVariant =
   | 'lightNeutral';
 
 export const CTA_SHELL_CLASS_BASE =
-  'group relative inline-flex w-fit max-w-full shrink-0 items-center justify-center overflow-hidden ' +
+  'group/cta relative inline-flex w-fit max-w-full shrink-0 items-center justify-center overflow-hidden ' +
   'min-h-[var(--btn-height)] px-[var(--btn-padding-x)] ' +
   `${CTA_TRANSITION} ${CTA_FOCUS}`;
 
@@ -22,42 +22,42 @@ export function CtaBackground({ variant }: { variant: CtaSurfaceVariant }) {
   switch (variant) {
     case 'primary':
       return (
-        <div className="pointer-events-none absolute inset-0 bg-[var(--color-maroon)] transition-[background-color,filter] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:bg-[var(--color-maroon-hover-bright)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[var(--color-maroon)] transition-[background-color,filter] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/cta:bg-[var(--color-maroon-hover-bright)]" />
       );
     case 'secondary':
       return (
-        <div className="pointer-events-none absolute inset-0 bg-[var(--color-green)] transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:bg-[var(--color-green-hover)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[var(--color-green)] transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/cta:bg-[var(--color-green-hover)]" />
       );
     case 'glass':
       return (
         <div
-          className="pointer-events-none absolute inset-0 rounded-[inherit] border border-[#EFE8DB]/25 bg-[#EFE8DB]/[0.12] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl backdrop-saturate-150 transition-[background-color,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:border-[#EFE8DB]/45 group-hover:bg-[#EFE8DB]/[0.26] group-hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
+          className="pointer-events-none absolute inset-0 rounded-[inherit] border border-[#EFE8DB]/25 bg-[#EFE8DB]/[0.12] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl backdrop-saturate-150 transition-[background-color,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/cta:border-[#EFE8DB]/45 group-hover/cta:bg-[#EFE8DB]/[0.26] group-hover/cta:shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
           aria-hidden
         />
       );
     case 'lightFill':
       return (
-        <div className="pointer-events-none absolute inset-0 bg-[#EFE8DB] transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:bg-white" />
+        <div className="pointer-events-none absolute inset-0 bg-[#EFE8DB] transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/cta:bg-white" />
       );
     case 'outlineLight':
       return (
-        <div className="pointer-events-none absolute inset-0 border border-solid border-[#EFE8DB] bg-transparent transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:bg-[#EFE8DB]/10" />
+        <div className="pointer-events-none absolute inset-0 border border-solid border-[#EFE8DB] bg-transparent transition-[background-color,border-color] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/cta:border-[#EFE8DB]/80 group-hover/cta:bg-[#EFE8DB]/14" />
       );
     case 'lightNeutral':
       return (
-        <div className="pointer-events-none absolute inset-0 border border-[#EFE8DB]/22 bg-[#EFE8DB] transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:bg-[#E6DDD0]" />
+        <div className="pointer-events-none absolute inset-0 border border-[#EFE8DB]/22 bg-[#EFE8DB] transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/cta:bg-[#E6DDD0]" />
       );
     case 'outline':
     default:
       return (
-        <div className="pointer-events-none absolute inset-0 border border-[var(--color-maroon)] transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:bg-[var(--color-maroon)]" />
+        <div className="pointer-events-none absolute inset-0 border border-[var(--color-maroon)] transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/cta:bg-[var(--color-maroon)]" />
       );
   }
 }
 
 export function ctaSlideInnerClass(v: CtaSurfaceVariant, labelClassName: string) {
   const motion =
-    'text-[length:var(--btn-font-size)] font-medium normal-case [letter-spacing:var(--btn-letter-spacing)] transition-transform duration-300 ease-[var(--btn-ease)] group-hover:-translate-y-[1.5em]';
+    'text-[length:var(--btn-font-size)] font-medium normal-case [letter-spacing:var(--btn-letter-spacing)] transition-transform duration-300 ease-[var(--btn-ease)] group-hover/cta:-translate-y-[1.5em]';
   const color =
     v === 'outline' || v === 'lightFill'
       ? 'text-[var(--color-maroon)]'
@@ -86,11 +86,11 @@ export function ctaStaticLabelClass(v: CtaSurfaceVariant) {
     case 'glass':
       return `${base} text-[#EFE8DB]`;
     case 'outline':
-      return `${base} text-[var(--color-maroon)] group-hover:text-[var(--color-nougat)]`;
+      return `${base} text-[var(--color-maroon)] group-hover/cta:text-[#F1E8DA]`;
     case 'lightFill':
       return `${base} text-[var(--color-maroon)]`;
     case 'outlineLight':
-      return `${base} text-[#EFE8DB]`;
+      return `${base} text-[#EFE8DB] group-hover/cta:text-[#F8F2E8]`;
     case 'lightNeutral':
       return `${base} text-[#1A1010]`;
     default:

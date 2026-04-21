@@ -134,10 +134,10 @@ export default function ResursaiPage() {
                 Protokolai, metodikos ir praktinės gairės, skirtos saugiam ir užtikrintam darbui.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <CtaLink href="#resursai-turinys" variant="primary" labelMode="static" className="justify-center px-6">
+                <CtaLink href="#resursai-turinys" variant="primary" className="justify-center px-6">
                   Peržiūrėti išteklius
                 </CtaLink>
-                <CtaLink href="/tapkite-partneriu" variant="outline" labelMode="static" className="justify-center px-6">
+                <CtaLink href="/tapkite-partneriu" variant="outline" className="justify-center px-6">
                   Tapti partneriu
                 </CtaLink>
               </div>
@@ -292,10 +292,10 @@ export default function ResursaiPage() {
                     Partneriams suteikiame prieigą prie išplėstinių protokolų, video mokymų medžiagos ir praktinių darbo sistemų, kurios atnaujinamos kas ketvirtį.
                   </p>
                   <div className="mt-7 flex flex-wrap justify-center gap-4">
-                    <CtaLink href="/tapkite-partneriu" variant="primary" labelMode="static" className="justify-center px-6">
+                    <CtaLink href="/tapkite-partneriu" variant="primary" className="justify-center px-6">
                       Tapti partneriu
                     </CtaLink>
-                    <CtaLink href="/kontaktai" variant="outlineLight" labelMode="static" className="justify-center px-6">
+                    <CtaLink href="/kontaktai" variant="outlineLight" className="justify-center px-6">
                       Gauti konsultaciją
                     </CtaLink>
                   </div>
@@ -308,11 +308,16 @@ export default function ResursaiPage() {
             <CtaButton
               type="button"
               variant="outline"
+              labelMode="static"
               onClick={() => setShowMore((p) => !p)}
               className="inline-flex items-center gap-2 px-8"
             >
               {showMore ? 'Rodyti mažiau' : 'Rodyti daugiau'}
-              <SfChevronDown size={14} strokeWidth={2.5} className={`transition-transform duration-300 ${showMore ? 'rotate-180' : ''}`} />
+              <SfChevronDown
+                size={14}
+                strokeWidth={2.5}
+                className={`shrink-0 text-current transition-transform duration-300 ${showMore ? 'rotate-180' : ''}`}
+              />
             </CtaButton>
           </div>
         </Shell>
