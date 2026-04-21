@@ -245,9 +245,9 @@ export function ResponsibleBeautySection({
           {showGuidanceRow ? (
             <div
               ref={guidanceRef}
-              className={`mx-auto flex w-full flex-col items-stretch gap-6 border-t border-[#1A1010]/10 pt-10 max-[767px]:pt-8 max-[639px]:gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-10 ${guidanceEase} ${guidanceReveal}`}
+              className={`mx-auto grid w-full grid-cols-1 items-center gap-8 border-t border-[#1A1010]/10 pt-10 max-[767px]:pt-8 max-[639px]:gap-6 sm:grid-cols-2 sm:gap-10 ${guidanceEase} ${guidanceReveal}`}
             >
-              <div className="flex min-w-0 flex-1 items-center gap-5 max-[479px]:gap-4">
+              <div className="flex min-w-0 items-center gap-5 max-[479px]:gap-4">
                 <div
                   className="h-14 w-14 shrink-0 overflow-hidden border border-[#1A1010]/10 bg-[#EFE8DB]/60 max-[479px]:h-12 max-[479px]:w-12"
                   style={{ borderRadius: '0px' }}
@@ -268,8 +268,8 @@ export function ResponsibleBeautySection({
                   </p>
                 </div>
               </div>
-              <div className="shrink-0 max-[639px]:w-full max-[639px]:[&>a]:w-full max-[639px]:[&>a]:justify-center">
-                <CtaLink href="/kontaktai" variant="secondary" labelMode="static" className="min-w-[180px] justify-center">
+              <div className="flex w-full justify-stretch sm:justify-end">
+                <CtaLink href="/kontaktai" variant="secondary" labelMode="static" className="min-w-[180px] justify-center max-[639px]:w-full">
                   Susisiekite
                 </CtaLink>
               </div>
