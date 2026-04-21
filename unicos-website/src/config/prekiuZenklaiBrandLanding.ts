@@ -28,6 +28,8 @@ export type PrekiuZenklaiBrandLandingConfig = {
     headingLight: string;
     headingBold: string;
     cards: readonly PrekiuZenklaiBrandTextCard[];
+    bentoBandImageSrc: string;
+    bentoBandImageAlt: string;
   };
   productLines: {
     headingLight: string;
@@ -121,6 +123,8 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
         description: 'Klientai mato skirtumą jau po pirmos procedūros ir grįžta reguliariai.',
       },
     ],
+    bentoBandImageSrc: '/mega-menu/2.jpeg',
+    bentoBandImageAlt: 'Guinot procedūros kabinete',
   },
   productLines: {
     headingLight: 'Guinot ',

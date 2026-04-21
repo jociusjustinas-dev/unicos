@@ -8,6 +8,7 @@ import { FooterSection } from '@/components/sections/FooterSection';
 import { CmsGridSection } from '@/components/sections/CmsGridSection';
 import { FaqSection } from '@/components/sections/FaqSection';
 import { CtaSection } from '@/components/sections/CtaSection';
+import { BrandWhyBentoSection } from '@/components/sections/BrandWhyBentoSection';
 import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
 import { OdosAudienceSection } from '@/components/sections/OdosAudienceSection';
 import { OdosChallengesSection } from '@/components/sections/OdosChallengesSection';
@@ -126,14 +127,11 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
         </div>
       </section>
 
-      <ResponsibleBeautySection
-        eyebrowLabel={null}
+      <BrandWhyBentoSection
         heading={<SplitHeading light={config.why.headingLight} bold={config.why.headingBold} />}
-        subheading={null}
-        cards={[...config.why.cards]}
-        surfaceClassName="bg-white"
-        accent="maroon"
-        showGuidanceRow={false}
+        cards={config.why.cards}
+        bandImageSrc={config.why.bentoBandImageSrc}
+        bandImageAlt={config.why.bentoBandImageAlt}
       />
 
       <OdosAudienceSection
