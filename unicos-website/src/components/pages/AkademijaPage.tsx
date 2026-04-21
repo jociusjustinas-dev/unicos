@@ -1,6 +1,6 @@
 'use client';
 
-import { AKADEMIJA_FAQ_ENTRIES, AKADEMIJA_FAQ_INTRO } from '@/config/akademijaPage';
+import { AKADEMIJA_FAQ_ENTRIES, AKADEMIJA_FAQ_INTRO, AKADEMIJA_MARQUEE_STATS } from '@/config/akademijaPage';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
 import { FooterSection } from '@/components/sections/FooterSection';
 import { FaqSection } from '@/components/sections/FaqSection';
@@ -10,7 +10,10 @@ import { AkademijaHeroSection } from '@/components/sections/AkademijaHeroSection
 import { AkademijaTrainingSection } from '@/components/sections/AkademijaTrainingSection';
 import { AkademijaWhySection } from '@/components/sections/AkademijaWhySection';
 import { AkademijaFormatsSection } from '@/components/sections/AkademijaFormatsSection';
-import { AkademijaStatsSection } from '@/components/sections/AkademijaStatsSection';
+import {
+  BrandStatsMarqueeSection,
+  type BrandStatsMarqueeItem,
+} from '@/components/sections/BrandStatsMarqueeSection';
 import { AkademijaNewsletterSection } from '@/components/sections/AkademijaNewsletterSection';
 
 const SPOTLIGHT_QUOTE =
@@ -25,7 +28,7 @@ export function AkademijaPage() {
       <AkademijaTrainingSection />
       <AkademijaWhySection />
       <AkademijaFormatsSection />
-      <AkademijaStatsSection />
+      <BrandStatsMarqueeSection items={AKADEMIJA_MARQUEE_STATS as readonly BrandStatsMarqueeItem[]} />
 
       <OdosPartnerSpotlightSection
         spotlightHeadingId="akademija-spotlight-heading"

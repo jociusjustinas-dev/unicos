@@ -49,7 +49,7 @@ function MarqueeUnit({ items }: { items: readonly BrandStatsMarqueeItem[] }) {
   );
 }
 
-export function BrandStatsMarqueeSection({ items }: { items: readonly [BrandStatsMarqueeItem, BrandStatsMarqueeItem, BrandStatsMarqueeItem] }) {
+export function BrandStatsMarqueeSection({ items }: { items: readonly BrandStatsMarqueeItem[] }) {
   const bgColor = '#FFFFFF';
 
   return (

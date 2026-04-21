@@ -200,12 +200,13 @@ export const AKADEMIJA_FORMAT_CARDS = [
   },
 ] as const;
 
-export const AKADEMIJA_STATS = [
-  { line: '50+ seminarų', sub: 'Per metus' },
-  { line: '500+ dalyvių', sub: 'Kasmet tobulina kvalifikaciją' },
-  { line: '12 prekių ženklų', sub: 'Su kuriais organizuojame mokymus' },
-  { line: '95% rekomenduotų', sub: 'Dalyvių, kurie rekomenduotų kolegoms' },
-] as const;
+/** Marquee statistika (`BrandStatsMarqueeSection`): value + label + trumpas aprašymas. */
+export const AKADEMIJA_MARQUEE_STATS = [
+  { value: '50+', label: 'seminarų', description: 'Per metus' },
+  { value: '500+', label: 'dalyvių', description: 'Kasmet kelia kvalifikaciją' },
+  { value: '12', label: 'prekių ženklų', description: 'Kartu kuriame mokymus' },
+  { value: '95%', label: 'rekomenduotų', description: 'Dalyviai siūlytų kolegoms' },
+];
 
 export type AkademijaFaqEntry = { id: string; question: string; answer: string };
 
