@@ -35,7 +35,7 @@ export function SprendimaiSolutionLandingPage({ config }: { config: SprendimaiSo
       >
         <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
           <div className="flex w-full flex-row items-stretch gap-16 max-[991px]:flex-col max-[991px]:gap-12">
-            <div className="flex min-w-0 flex-1 flex-col pb-8 max-[991px]:pb-0">
+            <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-start pb-8 max-[991px]:pb-0 min-[992px]:justify-center min-[992px]:pb-8">
               <nav className="mb-0" aria-label="Breadcrumb">
                 <div className="flex items-center gap-3">
                   <span
@@ -56,10 +56,8 @@ export function SprendimaiSolutionLandingPage({ config }: { config: SprendimaiSo
                 </div>
               </nav>
 
-              <div className="mb-10 max-[767px]:mb-8" aria-hidden />
-
               <h1
-                className={`m-0 text-[#64151F] tracking-[-0.03em] ${config.heroH1MaxWidthClass ?? 'max-w-[22ch]'}`}
+                className={`m-0 mt-8 text-[#64151F] tracking-[-0.03em] max-[767px]:mt-6 ${config.heroH1MaxWidthClass ?? 'max-w-[22ch]'}`}
                 style={{
                   fontFamily: "'Quiche Sans', Georgia, serif",
                   fontSize: 'clamp(2.1rem,3.3vw,3.1rem)',
