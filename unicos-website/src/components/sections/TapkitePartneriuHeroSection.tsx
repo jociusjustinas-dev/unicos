@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { SfCheckboxCheck } from '@/components/icons/feather';
+import { CtaButton } from '@/components/ui/CtaButton';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
 
 const BODY: React.CSSProperties = {
@@ -643,21 +644,9 @@ export function TapkitePartneriuHeroSection() {
 
                   {/* Submit */}
                   <div className="flex flex-col gap-3">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="group relative inline-flex min-h-[44px] items-center justify-center overflow-hidden border border-[#EFE8DB]/22 bg-[#EFE8DB] px-5 py-3 text-[#1A1010] transition-[background-color,border-color,color,transform,opacity] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-[#E6DDD0] active:translate-y-px disabled:cursor-not-allowed disabled:opacity-65"
-                      style={{ ...BODY, borderRadius: '0px', fontSize: '14px', lineHeight: 1, fontWeight: 500 }}
-                    >
-                      <span className="pointer-events-none relative z-[1] h-[1.5em] overflow-hidden">
-                        <span
-                          className="block text-[14px] font-medium leading-[1.5em] transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:-translate-y-[1.5em]"
-                          style={{ ...BODY, textShadow: '0 1.5em 0 #1A1010' }}
-                        >
-                          {isSubmitting ? 'Pateikiama…' : 'Pateikti paraišką'}
-                        </span>
-                      </span>
-                    </button>
+                    <CtaButton type="submit" variant="lightNeutral" disabled={isSubmitting} className="px-5 py-3">
+                      {isSubmitting ? 'Pateikiama…' : 'Pateikti paraišką'}
+                    </CtaButton>
 
                     <p className="m-0 text-[#EFE8DB]/64" style={{ ...BODY, fontSize: '12px', lineHeight: 1.45, fontWeight: 400 }}>
                       Jūsų duomenys saugūs. Atsakysime per 24 val.

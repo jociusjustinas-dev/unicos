@@ -188,7 +188,7 @@ export default function NeostrataPilingaiPage() {
                           href={event.href}
                           variant="primary"
                           labelMode="static"
-                          className="min-h-[52px] min-w-[240px] justify-center rounded-none px-8"
+                          className="min-h-[var(--btn-height)] min-w-[240px] justify-center rounded-none px-8"
                           style={{ ...BODY, ...R0 }}
                         >
                           Registruotis — {event.price}
@@ -205,7 +205,7 @@ export default function NeostrataPilingaiPage() {
                           href="/kontaktai"
                           variant="outline"
                           labelMode="static"
-                          className="min-h-[52px] min-w-[240px] justify-center rounded-none px-6"
+                          className="min-h-[var(--btn-height)] min-w-[240px] justify-center rounded-none px-6"
                           style={{ ...BODY, ...R0 }}
                         >
                           Gauti priminimą
@@ -422,20 +422,12 @@ export default function NeostrataPilingaiPage() {
             </p>
 
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href={event.href}
-                className="inline-flex h-12 min-h-[48px] items-center justify-center border-0 bg-[#EFE8DB] px-8 text-[#64151F] no-underline transition-colors hover:bg-white"
-                style={{ ...BODY, fontSize: '15px', fontWeight: 600, ...R0 }}
-              >
+              <CtaLink href={event.href} variant="lightFill" labelMode="static" className="justify-center px-8" style={{ ...BODY, fontWeight: 600, ...R0 }}>
                 Registruotis — {event.price}
-              </Link>
-              <button
-                type="button"
-                className="h-12 border border-solid border-[#EFE8DB] bg-transparent px-6 text-[#EFE8DB] transition-colors hover:bg-[#EFE8DB]/10"
-                style={{ ...BODY, fontSize: '15px', fontWeight: 500, ...R0 }}
-              >
+              </CtaLink>
+              <CtaLink href="/kontaktai" variant="outlineLight" labelMode="static" className="justify-center px-6" style={{ ...BODY, ...R0 }}>
                 Gauti priminimą
-              </button>
+              </CtaLink>
             </div>
           </div>
         </div>

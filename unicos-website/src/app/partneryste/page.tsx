@@ -12,6 +12,7 @@ import { UnicosWhySection, type UnicosWhyBubble } from '@/components/sections/Un
 import { ValueFeaturesSection } from '@/components/sections/ValueFeaturesSection';
 import { BrandStatsMarqueeSection, type BrandStatsMarqueeItem } from '@/components/sections/BrandStatsMarqueeSection';
 import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
+import { CtaLink } from '@/components/ui/CtaLink';
 import { HOME_PAGE_VALUE_FEATURE_IMAGES } from '@/config/homePageImages';
 import {
   SfClock,
@@ -68,21 +69,21 @@ export default function PartnerystePage() {
               UNICOS partneryste - tai ne tik produktu tiekimas. Tai asmeninis palaikymas, zinios ir irankiai, padedantys Jusu verslui klesteti kiekviena diena.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-start justify-center gap-3">
-              <div className="flex flex-col items-center">
-                <button className="h-[52px] border-0 bg-[#64151F] px-6 text-[#EFE8DB]" style={{ ...BODY, borderRadius: '0px', fontSize: '15px', fontWeight: 500 }}>
+            <div className="mt-8 flex w-full max-w-[640px] flex-col items-stretch justify-center gap-6 sm:flex-row sm:items-start sm:justify-center sm:gap-8">
+              <div className="flex flex-col items-center gap-2.5 sm:items-start">
+                <CtaLink href="/tapkite-partneriu" variant="primary" className="min-w-[240px] justify-center">
                   Tapti partneriu
-                </button>
-                <span className="mt-2 text-[#1A1010]/58" style={{ ...BODY, fontSize: '12px' }}>
+                </CtaLink>
+                <span className="uppercase text-[#1A1010]/52" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}>
                   Patvirtinimas per 24 val.
                 </span>
               </div>
-              <div className="flex flex-col items-center">
-                <button className="h-[52px] border border-solid border-[#64151F] bg-transparent px-6 text-[#64151F]" style={{ ...BODY, borderRadius: '0px', fontSize: '15px', fontWeight: 500 }}>
+              <div className="flex flex-col items-center gap-2.5 sm:items-start">
+                <CtaLink href="/kontaktai" variant="outline" className="min-w-[240px] justify-center">
                   Gauti konsultacija
-                </button>
-                <span className="mt-2 text-[#1A1010]/58" style={{ ...BODY, fontSize: '12px' }}>
-                  15 min. poreikiu analize.
+                </CtaLink>
+                <span className="uppercase text-[#1A1010]/52" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}>
+                  15 min. poreikių analizė.
                 </span>
               </div>
             </div>

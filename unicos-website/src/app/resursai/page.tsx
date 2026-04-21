@@ -4,6 +4,8 @@ import * as React from 'react';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
 import { FooterSection } from '@/components/sections/FooterSection';
 import { PlatformSplitSection } from '@/components/sections/PlatformSplitSection';
+import { CtaLink } from '@/components/ui/CtaLink';
+import { CtaButton } from '@/components/ui/CtaButton';
 import {
   SfClock,
   SfActivity,
@@ -128,12 +130,12 @@ export default function ResursaiPage() {
                 Protokolai, metodikos ir praktinės gairės, skirtos saugiam ir užtikrintam darbui.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <button className="h-[52px] border-0 bg-[#64151F] px-6 text-[#EFE8DB]" style={{ ...BODY, fontSize: '15px', fontWeight: 500, borderRadius: '0px' }}>
+                <CtaLink href="#resursai-turinys" variant="primary" labelMode="static" className="justify-center px-6">
                   Peržiūrėti išteklius
-                </button>
-                <button className="h-[52px] border border-solid border-[#64151F] bg-transparent px-6 text-[#64151F]" style={{ ...BODY, fontSize: '15px', fontWeight: 500, borderRadius: '0px' }}>
+                </CtaLink>
+                <CtaLink href="/tapkite-partneriu" variant="outline" labelMode="static" className="justify-center px-6">
                   Tapti partneriu
-                </button>
+                </CtaLink>
               </div>
             </div>
 
@@ -189,7 +191,7 @@ export default function ResursaiPage() {
         </Container>
       </section>
 
-      <section className="py-24 max-[767px]:py-16">
+      <section id="resursai-turinys" className="py-24 max-[767px]:py-16">
         <Container>
           <div className="grid grid-cols-1 gap-4 min-[992px]:grid-cols-3 min-[768px]:grid-cols-2">
             {resources.map((card, idx) => {
@@ -231,14 +233,15 @@ export default function ResursaiPage() {
             })}
           </div>
           <div className="mt-8 text-center">
-            <button
+            <CtaButton
+              type="button"
+              variant="outline"
               onClick={() => setShowMore((p) => !p)}
-              className="inline-flex h-[44px] items-center gap-2 border border-solid border-[#64151F] bg-transparent px-8 text-[#64151F]"
-              style={{ ...BODY, fontSize: '14px', fontWeight: 500, borderRadius: '0px' }}
+              className="inline-flex items-center gap-2 px-8"
             >
               {showMore ? 'Rodyti mažiau' : 'Rodyti daugiau'}
               <SfChevronDown size={14} strokeWidth={2.5} className={`transition-transform duration-300 ${showMore ? 'rotate-180' : ''}`} />
-            </button>
+            </CtaButton>
           </div>
         </Container>
       </section>
@@ -256,12 +259,12 @@ export default function ResursaiPage() {
               Partneriams suteikiame prieigą prie išplėstinių protokolų, video mokymų medžiagos ir praktinių darbo sistemų, kurios atnaujinamos kas ketvirtį.
             </p>
             <div className="mt-7 flex flex-wrap justify-center gap-4">
-              <button className="h-[52px] border-0 bg-[#64151F] px-6 text-[#EFE8DB]" style={{ ...BODY, borderRadius: '0px', fontSize: '15px', fontWeight: 500 }}>
+              <CtaLink href="/tapkite-partneriu" variant="primary" labelMode="static" className="justify-center px-6">
                 Tapti partneriu
-              </button>
-              <button className="h-[52px] border border-solid border-[#EFE8DB] bg-transparent px-6 text-[#EFE8DB]" style={{ ...BODY, borderRadius: '0px', fontSize: '15px', fontWeight: 500 }}>
+              </CtaLink>
+              <CtaLink href="/kontaktai" variant="outlineLight" labelMode="static" className="justify-center px-6">
                 Gauti konsultaciją
-              </button>
+              </CtaLink>
             </div>
           </div>
         </Container>
@@ -309,12 +312,12 @@ export default function ResursaiPage() {
               <input
                 type="email"
                 placeholder="El. paštas"
-                className="h-[52px] min-w-0 flex-1 border border-solid border-[#1A1010]/20 bg-[#EFE8DB] px-4 text-[#1A1010] placeholder:text-[#1A1010]/45 focus:border-[#64151F] focus:outline-none"
+                className="min-h-[var(--btn-height)] min-w-0 flex-1 border border-solid border-[#1A1010]/20 bg-[#EFE8DB] px-4 text-[#1A1010] placeholder:text-[#1A1010]/45 focus:border-[#64151F] focus:outline-none"
                 style={{ ...BODY, fontSize: '15px', borderRadius: '0px' }}
               />
-              <button className="h-[52px] border border-solid border-[#64151F] bg-[#64151F] px-6 text-[#EFE8DB]" style={{ ...BODY, fontSize: '15px', fontWeight: 500, borderRadius: '0px' }}>
+              <CtaButton type="button" variant="primary" className="shrink-0 px-6">
                 Prenumeruoti
-              </button>
+              </CtaButton>
             </div>
             <p className="m-0 mt-3 text-[#1A1010]/40" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.02em' }}>
               Skirta tik profesionalams
