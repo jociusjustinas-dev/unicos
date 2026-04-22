@@ -10,29 +10,35 @@ const BODY: React.CSSProperties = {
 
 type Milestone = {
   year: string;
-  description: string;
+  title: string;
+  body: string;
 };
 
 const milestones: Milestone[] = [
   {
     year: '2001',
-    description: 'Sugihara Pro pradžia. Pirmieji profesionalūs prekių ženklai Lietuvos grožio rinkoje.',
+    title: 'Sugihara Pro pradžia.',
+    body: 'Pirmieji profesionalūs prekių ženklai Lietuvos grožio rinkoje.',
   },
   {
     year: '2008',
-    description: 'Pirmoji akademija. Pradėjome organizuoti praktinius seminarus profesionalams.',
+    title: 'Pirmoji akademija.',
+    body: 'Pradėjome organizuoti praktinius seminarus profesionalams.',
   },
   {
     year: '2015',
-    description: '500 partnerių. Pasiekėme pusę tūkstančio aktyvių partnerių visoje Lietuvoje.',
+    title: '500 partnerių.',
+    body: 'Pasiekėme pusę tūkstančio aktyvių partnerių visoje Lietuvoje.',
   },
   {
     year: '2020',
-    description: 'Savitarnos platforma. Paleidome skaitmeninę užsakymų platformą partneriams.',
+    title: 'Savitarnos platforma.',
+    body: 'Paleidome skaitmeninę užsakymų platformą partneriams.',
   },
   {
     year: '2026',
-    description: 'UNICOS. Evoliucija į naują partnerystės modelį — aiškesnį, artimesnį ir stipresnį.',
+    title: 'UNICOS.',
+    body: 'Evoliucija į naują partnerystės modelį — aiškesnį, artimesnį ir stipresnį.',
   },
 ];
 
@@ -133,9 +139,22 @@ export function ApieTimelineSection() {
                     </span>
                   </div>
 
-                  <p className="m-0 text-[#1A1010]/88" style={{ ...BODY, fontSize: '15px', lineHeight: 1.55, fontWeight: 400 }}>
-                    {item.description}
-                  </p>
+                  <div className="flex flex-col gap-2">
+                    <h3
+                      className="m-0 text-[#1A1010] tracking-[-0.01em]"
+                      style={{
+                        fontFamily: "'Quiche Sans', Georgia, serif",
+                        fontSize: '20px',
+                        lineHeight: 1.2,
+                        fontWeight: 400,
+                      }}
+                    >
+                      {item.title}
+                    </h3>
+                    <p className="m-0 text-[#1A1010]/75" style={{ ...BODY, fontSize: '15px', lineHeight: 1.55, fontWeight: 400 }}>
+                      {item.body}
+                    </p>
+                  </div>
                 </article>
               ))}
             </div>
