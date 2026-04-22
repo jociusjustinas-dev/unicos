@@ -122,13 +122,23 @@ export function OdosPartnerSpotlightSection({
             </div>
           </div>
 
-          <div className="relative min-h-[min(420px,52vw)] w-full min-[992px]:min-h-[480px] max-[991px]:order-2 max-[991px]:min-h-[320px]">
+          <div className="relative w-full max-[991px]:order-2">
+            {/**
+             * Fiksuotas aspect ratio (≈1:1 kaip ir pats portretas), kad nuotrauka užpildytų
+             * visą talpyklą be tuščių tarpų. Grid cell `items-stretch` vis dar tenkinamas —
+             * aukštis prisitaiko prie pločio.
+             */}
             <div
-              className="relative h-full min-h-[inherit] w-full overflow-hidden"
+              className="relative w-full overflow-hidden aspect-[5/6] min-[768px]:aspect-[4/5] min-[992px]:aspect-[5/6]"
               style={{ borderRadius: '0px' }}
             >
-              <img src={portraitSrc} alt={portraitAlt} loading="lazy" className="absolute inset-0 block h-full w-full object-cover object-[center_25%]" />
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,16,0.05),rgba(26,16,16,0.35))]" aria-hidden />
+              <img
+                src={portraitSrc}
+                alt={portraitAlt}
+                loading="lazy"
+                className="absolute inset-0 block h-full w-full object-cover object-[center_30%] scale-[1.04] will-change-transform"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,16,0.02),rgba(26,16,16,0.28))]" aria-hidden />
             </div>
             {footnote ? (
               <p className="mt-4 m-0 text-[#EFE8DB]/58" style={{ ...BODY, fontSize: '13px', lineHeight: 1.5, fontWeight: 400 }}>
