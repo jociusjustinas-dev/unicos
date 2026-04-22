@@ -103,9 +103,9 @@ function Shell({ children }: { children: React.ReactNode }) {
 
 export default function ResursaiPage() {
   const [activeFilter, setActiveFilter] = React.useState<'tipas' | 'segmentas' | 'zenklas' | 'lygis' | null>(null);
-  const [showMore, setShowMore] = React.useState(false);
 
-  const resources = showMore ? [...BASE_RESOURCES, ...EXTRA_PLACEHOLDERS] : BASE_RESOURCES;
+  /** Visada renderinam visas korteles: pirma eilė — pilnai, antra — pusiau, likusios — po paywall gradient. */
+  const resources = [...BASE_RESOURCES, ...EXTRA_PLACEHOLDERS];
 
   return (
     <main className="bg-[#EFE8DB] text-[#1A1010]">
@@ -274,6 +274,11 @@ export default function ResursaiPage() {
              * dengiantis kraštus ir blukinant viduryje. Centre — tvarkingas tamsus
              * panelis su H2 ir CTA.
              */}
+            {/**
+             * Paywall: pirma eilė korteliu matoma pilnai, antra — tik iki pusės, nuo ten
+             * prasideda kremo gradientas + blur, po juo — tolesnės eilės. Centre — tamsus
+             * panelis su antrašte ir CTA.
+             */}
             <div
               className="pointer-events-none absolute inset-0 z-[2]"
               role="region"
@@ -281,14 +286,24 @@ export default function ResursaiPage() {
             >
               <div
                 aria-hidden
-                className="absolute top-0 bottom-0 left-1/2 w-screen -translate-x-1/2 backdrop-blur-xl backdrop-saturate-110"
+                className="absolute top-0 bottom-0 left-1/2 w-screen -translate-x-1/2"
                 style={{
                   backgroundImage:
-                    'radial-gradient(ellipse 70% 85% at center, rgba(239,232,219,0.22) 0%, rgba(239,232,219,0.72) 45%, rgba(239,232,219,0.95) 75%, rgba(239,232,219,1) 100%)',
+                    'linear-gradient(to bottom, rgba(239,232,219,0) 0%, rgba(239,232,219,0) 24%, rgba(239,232,219,0.35) 38%, rgba(239,232,219,0.78) 52%, rgba(239,232,219,0.96) 70%, rgba(239,232,219,1) 100%)',
+                }}
+              />
+              <div
+                aria-hidden
+                className="absolute top-0 bottom-0 left-1/2 w-screen -translate-x-1/2 backdrop-blur-xl backdrop-saturate-110"
+                style={{
+                  WebkitMaskImage:
+                    'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0.45) 38%, rgba(0,0,0,1) 55%, rgba(0,0,0,1) 100%)',
+                  maskImage:
+                    'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0.45) 38%, rgba(0,0,0,1) 55%, rgba(0,0,0,1) 100%)',
                 }}
               />
 
-              <div className="absolute inset-0 flex items-center justify-center px-6 max-[767px]:px-4">
+              <div className="absolute inset-x-0 top-[58%] flex -translate-y-1/2 justify-center px-6 max-[767px]:top-[62%] max-[767px]:px-4">
                 <div className="pointer-events-auto relative w-full max-w-[720px] border border-[#EFE8DB]/22 bg-[#3B443A] px-8 py-10 text-center text-[#EFE8DB] shadow-[0_24px_64px_rgba(26,16,16,0.35)] max-[767px]:px-6 max-[767px]:py-8">
                   <div
                     className="mx-auto flex h-12 w-12 items-center justify-center border border-solid border-[#EFE8DB]/40 bg-[#1A1010]/25 text-[#EFE8DB]"
@@ -321,22 +336,6 @@ export default function ResursaiPage() {
             </div>
           </div>
 
-          <div className="relative z-[3] mt-8 text-center">
-            <CtaButton
-              type="button"
-              variant="outline"
-              labelMode="static"
-              onClick={() => setShowMore((p) => !p)}
-              className="inline-flex items-center gap-2 px-8"
-            >
-              {showMore ? 'Rodyti mažiau' : 'Rodyti daugiau'}
-              <SfChevronDown
-                size={14}
-                strokeWidth={2.5}
-                className={`shrink-0 text-current transition-transform duration-300 ${showMore ? 'rotate-180' : ''}`}
-              />
-            </CtaButton>
-          </div>
         </Shell>
       </section>
 
