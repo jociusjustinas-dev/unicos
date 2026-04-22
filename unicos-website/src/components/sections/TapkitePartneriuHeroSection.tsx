@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { SfCheckboxCheck } from '@/components/icons/feather';
+import { ChevronDownIcon } from '@/components/ui/ChevronArrows';
 import { CtaButton } from '@/components/ui/CtaButton';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
 
@@ -20,28 +21,6 @@ const LABEL: React.CSSProperties = {
 
 const INPUT_BASE_CLASS =
   'w-full appearance-none rounded-none border border-[rgba(239,232,219,0.16)] bg-[rgba(239,232,219,0.09)] px-4 py-3 text-base leading-6 font-normal text-[rgba(239,232,219,0.82)] placeholder:text-[rgba(239,232,219,0.56)] outline-none transition-[border-color,color] duration-200 focus:border-[rgba(239,232,219,0.52)] focus:text-[#EFE8DB] max-[767px]:text-sm max-[767px]:leading-5 max-[767px]:py-[10px] max-[767px]:px-3';
-
-function ChevronDownIcon({ className = '' }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="100%"
-      height="100%"
-      viewBox="0 0 25 24"
-      fill="none"
-      aria-hidden
-    >
-      <path
-        d="M6.5 9L12.5 15L18.5 9"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 function StarIcon({ className = '' }: { className?: string }) {
   return (
@@ -350,13 +329,8 @@ export function TapkitePartneriuHeroSection() {
           {/* RIGHT COLUMN: FORM */}
           <div ref={formRef} style={formStyle} className="transition-all duration-700 ease-out max-[991px]:w-full">
             <div
-              className="mb-0 p-8 max-[767px]:p-6"
-              style={{
-                backgroundColor: '#64151F',
-                color: 'rgba(239,232,219,0.88)',
-                borderRadius: '0px',
-                border: '1px solid rgba(239,232,219,0.16)',
-              }}
+              className="mb-0 border border-[#EFE8DB]/20 bg-[#3B443A] p-8 text-[#EFE8DB]/88 max-[767px]:p-6"
+              style={{ borderRadius: '0px' }}
             >
               {isSubmitted ? (
                 <div className="flex flex-col gap-6">
@@ -531,7 +505,7 @@ export function TapkitePartneriuHeroSection() {
                             onChange={(e) => handleFieldChange('activity', e.target.value)}
                             required
                             disabled={isSubmitting}
-                            className={`${INPUT_BASE_CLASS} ${errors.activity ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
+                            className={`${INPUT_BASE_CLASS} pr-12 cursor-pointer ${errors.activity ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
                             style={{ ...BODY, borderRadius: '0px', fontSize: '15px', lineHeight: 1.45 }}
                           >
                             <option value="">Jūsų veiklos sritis</option>
@@ -541,9 +515,9 @@ export function TapkitePartneriuHeroSection() {
                               </option>
                             ))}
                           </select>
-                          <div className="pointer-events-none absolute inset-y-0 flex items-center justify-end pr-4 max-[767px]:pr-3" style={{ color: '#EFE8DB' }}>
+                          <span className="pointer-events-none absolute inset-y-0 right-5 flex items-center text-[#EFE8DB]/70" aria-hidden>
                             <ChevronDownIcon className="h-4 w-4" />
-                          </div>
+                          </span>
                         </div>
                         {errors.activity ? <p className="m-0 text-[#F3C8CE]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>{errors.activity}</p> : null}
                       </div>
@@ -583,7 +557,7 @@ export function TapkitePartneriuHeroSection() {
                             onChange={(e) => handleFieldChange('source', e.target.value)}
                             required
                             disabled={isSubmitting}
-                            className={`${INPUT_BASE_CLASS} ${errors.source ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
+                            className={`${INPUT_BASE_CLASS} pr-12 cursor-pointer ${errors.source ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
                             style={{ ...BODY, borderRadius: '0px', fontSize: '15px', lineHeight: 1.45 }}
                           >
                             <option value="">Kaip apie mus sužinojote?</option>
@@ -593,9 +567,9 @@ export function TapkitePartneriuHeroSection() {
                               </option>
                             ))}
                           </select>
-                          <div className="pointer-events-none absolute inset-y-0 flex items-center justify-end pr-4 max-[767px]:pr-3" style={{ color: '#EFE8DB' }}>
+                          <span className="pointer-events-none absolute inset-y-0 right-5 flex items-center text-[#EFE8DB]/70" aria-hidden>
                             <ChevronDownIcon className="h-4 w-4" />
-                          </div>
+                          </span>
                         </div>
                         {errors.source ? (
                           <p className="m-0 text-[#F3C8CE]" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>

@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { SfCheckboxCheck } from '@/components/icons/feather';
+import { ChevronDownIcon } from '@/components/ui/ChevronArrows';
 import { CtaButton } from '@/components/ui/CtaButton';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
 
@@ -162,6 +163,7 @@ export function KontaktaiFormSection() {
 
   const inputBaseClass =
     'h-12 w-full border bg-[rgba(239,232,219,0.08)] px-4 text-[#EFE8DB] placeholder:text-[#EFE8DB]/48 outline-none transition-[border-color,color] duration-200 focus:border-[#EFE8DB]/65';
+  const selectBaseClass = `${inputBaseClass} appearance-none pr-12 cursor-pointer`;
 
   return (
     <section className="relative z-[2] overflow-x-clip bg-[#ECE2D3] py-20 max-[767px]:py-14" aria-labelledby="kontaktai-form-heading">
@@ -313,25 +315,30 @@ export function KontaktaiFormSection() {
                     <label htmlFor="kontaktai-activity" className="uppercase text-[#EFE8DB]" style={{ ...BODY, fontSize: '11px', letterSpacing: '0.12em', fontWeight: 500 }}>
                       Jūsų veikla
                     </label>
-                    <select
-                      id="kontaktai-activity"
-                      ref={activityRef}
-                      value={values.activity}
-                      onChange={(e) => handleFieldChange('activity', e.target.value)}
-                      required
-                      disabled={isSubmitting}
-                      className={`${inputBaseClass} ${errors.activity ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
-                      style={{ ...BODY, borderRadius: '0px', fontSize: '15px' }}
-                      aria-invalid={Boolean(errors.activity)}
-                      aria-describedby="kontaktai-activity-help kontaktai-activity-error"
-                    >
-                      <option value="">Pasirinkite veiklos sritį</option>
-                      {ACTIVITY_OPTIONS.map((option) => (
-                        <option key={option} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative w-full">
+                      <select
+                        id="kontaktai-activity"
+                        ref={activityRef}
+                        value={values.activity}
+                        onChange={(e) => handleFieldChange('activity', e.target.value)}
+                        required
+                        disabled={isSubmitting}
+                        className={`${selectBaseClass} ${errors.activity ? 'border-[#64151F]' : 'border-[#EFE8DB]/12'}`}
+                        style={{ ...BODY, borderRadius: '0px', fontSize: '15px' }}
+                        aria-invalid={Boolean(errors.activity)}
+                        aria-describedby="kontaktai-activity-help kontaktai-activity-error"
+                      >
+                        <option value="">Pasirinkite veiklos sritį</option>
+                        {ACTIVITY_OPTIONS.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                      <span className="pointer-events-none absolute inset-y-0 right-5 flex items-center text-[#EFE8DB]/70" aria-hidden>
+                        <ChevronDownIcon className="h-4 w-4" />
+                      </span>
+                    </div>
                     <p id="kontaktai-activity-help" className="m-0 text-[#EFE8DB]/64" style={{ ...BODY, fontSize: '12px', lineHeight: 1.4 }}>
                       Tai padės nukreipti užklausą tinkamam specialistui.
                     </p>
