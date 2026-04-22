@@ -54,6 +54,6 @@ export const SfCreditCard = (p: IconProps) => <MqIcon {...p} icon="marketeq:wall
 export const SfCheck = (p: IconProps) => <MqIcon {...p} icon="marketeq:check-mark-circle" />;
 export const SfArrowDown = (p: IconProps) => <MqIcon {...p} icon="marketeq:down-sign" />;
 export const SfChevronDown = (p: IconProps) => <MqIcon {...p} icon="marketeq:down-sign" />;
-export const SfSearch = (p: IconProps) => <MqIcon {...p} icon="marketeq:search" />;
+export const SfSearch = (p: IconProps) => <MqIcon {...p} icon="marketeq:search-alt-2" />;
 export const SfMessage = (p: IconProps) => <MqIcon {...p} icon="marketeq:chat-4" />;
 export const SfBell = (p: IconProps) => <MqIcon {...p} icon="marketeq:notification-bell" />;
