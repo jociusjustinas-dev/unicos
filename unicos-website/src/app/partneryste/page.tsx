@@ -130,7 +130,7 @@ export default function PartnerystePage() {
         accent="green"
         theme="light"
         ctaLabel="Tapti partneriu ir gauti prieigą"
-        ctaHref="#tapti-partneriu"
+        ctaHref="/tapkite-partneriu"
         features={[
           {
             Icon: SfClock,

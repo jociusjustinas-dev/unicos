@@ -40,7 +40,7 @@ export type PlatformSplitSectionProps = {
   heading?: React.ReactNode;
   bodyText?: string;
   features?: readonly PlatformFeature[];
-  ctaLabel?: string;
+  ctaLabel?: string | null;
   ctaHref?: string;
   surfaceClassName?: string;
   accent?: 'green' | 'maroon';
@@ -49,11 +49,12 @@ export type PlatformSplitSectionProps = {
 };
 
 export function PlatformSplitSection({
-  eyebrow = 'Platforma verslui',
+  eyebrow = null,
   heading,
   bodyText = 'Sukūrėme platformą, kuri paverčia užsakymus malonumu. Pamirškite sudėtingą administravimą.',
   features = defaultFeatures,
-  ctaLabel = 'Kaip veikia platforma?',
+  /** Mygtukas pašalintas, kol nėra platformos puslapio — perrašyk rankiniu būdu, jei reikia. */
+  ctaLabel = null,
   ctaHref = '#platform-ypatybes',
   surfaceClassName = 'bg-white',
   accent = 'green',
