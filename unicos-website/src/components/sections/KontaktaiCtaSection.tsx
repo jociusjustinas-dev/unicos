@@ -111,7 +111,7 @@ export function KontaktaiCtaSection() {
                 </p>
               </div>
               <div className="relative z-[1]">
-                <CtaLink href="#" variant="glass">
+                <CtaLink href="/kontaktai#kontaktai-forma" variant="glass">
                   Registruotis konsultacijai
                 </CtaLink>
               </div>
@@ -145,7 +145,7 @@ export function KontaktaiCtaSection() {
                 Artimiausi seminarai ir registracija.
               </p>
             </div>
-            <CtaLink href="#" variant="secondary">
+            <CtaLink href="/akademija" variant="secondary">
               Akademija
             </CtaLink>
           </article>

@@ -95,7 +95,7 @@ export function CtaSection() {
 
             <div className="flex w-full max-w-[640px] flex-col items-stretch justify-center gap-6 sm:flex-row sm:items-start sm:justify-center sm:gap-8">
               <div className="flex flex-col items-center gap-2.5 sm:items-center">
-                <CtaLink href="/kontaktai" variant="primary">
+                <CtaLink href="/tapkite-partneriu" variant="primary">
                   Pildyti partnerio paraišką
                 </CtaLink>
                 <span
@@ -106,7 +106,7 @@ export function CtaSection() {
                 </span>
               </div>
               <div className="flex flex-col items-center gap-2.5 sm:items-center">
-                <CtaLink href="/kontaktai" variant="glass">
+                <CtaLink href="/kontaktai#kontaktai-forma" variant="glass">
                   Gauti konsultaciją
                 </CtaLink>
                 <span

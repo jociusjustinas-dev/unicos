@@ -152,7 +152,7 @@ export function FaqSection({
               </div>
 
               <div className="shrink-0">
-                <CtaLink href="/kontaktai" variant={ctaVariant}>
+                <CtaLink href="/kontaktai#kontaktai-forma" variant={ctaVariant}>
                   Susisiekti su vadybininku
                 </CtaLink>
               </div>

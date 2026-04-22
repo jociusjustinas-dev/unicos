@@ -84,7 +84,7 @@ export function ApieUnicosHeroSection() {
 
           <div className="flex w-fit max-w-full flex-col items-center gap-6 sm:flex-row sm:items-start sm:gap-6">
             <div className="flex flex-col items-center gap-2.5">
-              <CtaLink href="#kontaktai" variant="primary">
+              <CtaLink href="/tapkite-partneriu" variant="primary">
                 Tapti partneriu
               </CtaLink>
               <span className="px-1 uppercase text-[#1A1010]/62" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}>
@@ -93,7 +93,7 @@ export function ApieUnicosHeroSection() {
             </div>
 
             <div className="flex flex-col items-center gap-2.5">
-              <CtaLink href="#kontaktai" variant="outline">
+              <CtaLink href="/kontaktai#kontaktai-forma" variant="outline">
                 Susisiekti
               </CtaLink>
               <span className="px-1 uppercase text-[#1A1010]/62" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}>

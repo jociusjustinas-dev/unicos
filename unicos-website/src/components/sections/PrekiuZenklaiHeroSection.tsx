@@ -138,7 +138,7 @@ export function PrekiuZenklaiHeroSection() {
               </span>
             </div>
             <div className="flex flex-col items-start gap-2.5">
-              <CtaLink href="/kontaktai" variant="outline" className="min-w-[220px] justify-center">
+              <CtaLink href="/kontaktai#kontaktai-forma" variant="outline" className="min-w-[220px] justify-center">
                 Gauti konsultaciją
               </CtaLink>
               <span

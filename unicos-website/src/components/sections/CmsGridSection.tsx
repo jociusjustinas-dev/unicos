@@ -241,7 +241,7 @@ function EventCard({ card, registerLabel }: { card: EventCardData; registerLabel
               {card.price}
             </p>
           </div>
-          <CtaLink href="#kontaktai" variant="primary" className="self-start sm:self-auto">
+          <CtaLink href="/akademija/neostrata-pilingai" variant="primary" className="self-start sm:self-auto">
             {registerLabel}
           </CtaLink>
         </div>

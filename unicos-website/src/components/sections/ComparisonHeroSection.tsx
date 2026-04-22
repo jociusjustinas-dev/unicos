@@ -136,7 +136,7 @@ export function ComparisonHeroSection() {
 
               <div className="flex flex-row items-start gap-3 flex-wrap">
                 <div className="flex flex-col gap-2">
-                  <CtaLink href="#" variant="primary">
+                  <CtaLink href="/tapkite-partneriu" variant="primary">
                     Pildyti partnerio paraišką
                   </CtaLink>
                   <div
@@ -153,7 +153,7 @@ export function ComparisonHeroSection() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <CtaLink href="#" variant="glass">
+                  <CtaLink href="/kontaktai#kontaktai-forma" variant="glass">
                     Gauti konsultaciją
                   </CtaLink>
                   <div

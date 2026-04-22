@@ -166,7 +166,7 @@ export function KontaktaiFormSection() {
   const selectBaseClass = `${inputBaseClass} appearance-none pr-12 cursor-pointer`;
 
   return (
-    <section className="relative z-[2] overflow-x-clip bg-[#ECE2D3] py-20 max-[767px]:py-14" aria-labelledby="kontaktai-form-heading">
+    <section id="kontaktai-forma" className="relative z-[2] overflow-x-clip bg-[#ECE2D3] py-20 max-[767px]:py-14" aria-labelledby="kontaktai-form-heading">
       <div className="pointer-events-none absolute inset-0 bg-[#3B443A]/[0.06]" aria-hidden />
       <div className="mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div className="mx-auto w-full max-w-[912px]">

@@ -191,7 +191,7 @@ export function OdosAudienceSection({
               </div>
             </div>
 
-            <CtaLink href="/kontaktai" variant="primary">
+            <CtaLink href="/kontaktai#kontaktai-forma" variant="primary">
               Gauti konsultaciją
             </CtaLink>
           </div>

@@ -105,7 +105,7 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
     heroImageSrc: '/mega-menu/1.jpeg',
     heroImageAlt: 'Guinot profesionali odos priežiūra',
     ctaPrimary: {
-      href: '/kontaktai',
+      href: '/kontaktai#kontaktai-forma',
       label: 'Gauti Guinot pasiūlymą',
       microcopy: 'Vadybininkas susisieks per 24 val.',
     },
@@ -230,7 +230,7 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
         'Turite klausimų dėl kainų, asortimento ar žingsnių? Vadybininkas atsakys ir padės suplanuoti tolesnę eigą.',
       portraitSrc: 'https://byqsupply-components.netlify.app/haldenmiller/images/ContactAvatar-3.webp',
       portraitAlt: 'UNICOS vadybininkas — Guinot partnerystė',
-      cta: { href: '/kontaktai', label: 'Rašyti vadybininkui' },
+      cta: { href: '/kontaktai#kontaktai-forma', label: 'Rašyti vadybininkui' },
     },
   },
   stats: {
@@ -276,7 +276,7 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
     certificationTitle: 'Akredituoti mokymai',
     certificationBody:
       'Tik sertifikuoti specialistai gali dirbti su mūsų įranga. Mes užtikriname išsamius mokymus ir kvalifikacijos kėlimą.',
-    certificationCta: { href: '/kontaktai', label: 'Peržiūrėti mokymų grafiką' },
+    certificationCta: { href: '/akademija', label: 'Peržiūrėti mokymų grafiką' },
   },
   spotlight: {
     statBadge: '+35% pajamų augimas',

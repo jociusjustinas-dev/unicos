@@ -171,7 +171,7 @@ export function OdosBrandsSection({
             </p>
           </div>
 
-          <CtaLink href="#" variant="secondary" className="shrink-0">
+          <CtaLink href="/prekiu-zenklai" variant="secondary" className="shrink-0">
             {brandsCtaLabel}
           </CtaLink>
         </div>

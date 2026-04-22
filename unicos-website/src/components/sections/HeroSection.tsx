@@ -118,10 +118,10 @@ export function HeroSection() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-2">
-            <CtaLink href="#" variant="primary">
+            <CtaLink href="/tapkite-partneriu" variant="primary">
               Pildyti partnerio paraišką
             </CtaLink>
-            <CtaLink href="#" variant="outline">
+            <CtaLink href="/kontaktai#kontaktai-forma" variant="outline">
               Gauti konsultaciją
             </CtaLink>
           </div>

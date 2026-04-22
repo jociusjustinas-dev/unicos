@@ -327,7 +327,7 @@ export default function ResursaiPage() {
                     <CtaLink href="/tapkite-partneriu" variant="lightFill" className="justify-center px-6">
                       Tapti partneriu
                     </CtaLink>
-                    <CtaLink href="/kontaktai" variant="outlineLight" className="justify-center px-6">
+                    <CtaLink href="/kontaktai#kontaktai-forma" variant="outlineLight" className="justify-center px-6">
                       Gauti konsultaciją
                     </CtaLink>
                   </div>

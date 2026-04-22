@@ -194,7 +194,7 @@ export default function NeostrataPilingaiPage() {
                       </div>
                       <div className="flex flex-col items-start gap-2.5 sm:items-start">
                         <CtaLink
-                          href="/kontaktai"
+                          href="/kontaktai#kontaktai-forma"
                           variant="outline"
                           labelMode="static"
                           className="min-h-[var(--btn-height)] min-w-[240px] justify-center rounded-none px-6"

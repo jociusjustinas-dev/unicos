@@ -99,7 +99,7 @@ export function PartnerysteHeroSection() {
             </div>
 
             <div className="flex flex-col items-center gap-2.5">
-              <CtaLink href="/kontaktai" variant="outline">
+              <CtaLink href="/kontaktai#kontaktai-forma" variant="outline">
                 Gauti konsultaciją
               </CtaLink>
               <span className="px-1 uppercase text-[#1A1010]/62" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}>

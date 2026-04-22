@@ -186,7 +186,7 @@ export function OdosStarterCalloutSection({
                   </div>
                 ) : (
                   <div className="flex flex-col items-start gap-2.5">
-                    <CtaLink href="/kontaktai" variant="secondary">
+                    <CtaLink href="/kontaktai#kontaktai-forma" variant="secondary">
                       Gauti startinio paketo pasiūlymą
                     </CtaLink>
                     <span
