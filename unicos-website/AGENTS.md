@@ -54,10 +54,9 @@ Ant šviesių fonų (#EFE8DB ir pan., pvz. prekių ženklų sekcijos): rodyklių
 - **`CtaButton`** — kai reikia **`<button>`** (`onClick`, `type="submit"`, `disabled`, forma). Vizualiai tie patys variantai ir `labelMode` kaip `CtaLink`.
 - Abu naudoja tą patį korpusą, foną ir etiketę per **`ctaShared.tsx`** — naują CTA **ne** kurk iš atskirų `className` rinkinių.
 
-### „Slide“ ir `labelMode`
-- **`labelMode="slide"`** (numatytasis): ant hover teksto **slankiojantis** efektas — dubliuota eilutė per `text-shadow`, `translateY` (`CtaFace` + `ctaSlideInnerClass` / `ctaSlideShadowFor` faile `ctaShared.tsx`).
-- **`labelMode="static"`** — be judesio, tas pats šrifto kešas (`ctaStaticLabelClass`).
-- **Išimtis — `primary`**: visada statiškas tekstas, net jei perduotas `labelMode="slide"` (`CtaFace` forsuoja `static`). Slide paliekamas tik `outline`, `secondary`, `glass`, `outlineLight`, `lightFill`, `lightNeutral`.
+### Hover elgesys (Halden Miller stilius)
+- **Visi `CtaLink` / `CtaButton` variantai**: ant hover keičiasi **tik** fonas / rėmelis ir (kur taikoma) teksto spalva — per `~300ms`. **Tekstas ir ikona niekada nejuda**: jokių `translateY`, „slide“, `text-shadow` dublikatų.
+- `labelMode` propas paliktas tipui, bet **neturi įtakos** (visada statinė etiketė per `ctaStaticLabelClass`). `ctaSlideInnerClass` / `ctaSlideShadowFor` eksportuoti tik dėl atgalinio suderinamumo — nauji mygtukai jų nenaudoja.
 
 ### Variantai (`CtaSurfaceVariant`, `CtaBackground`)
 Vienas `variant` visada — fonas + numatytos etiketės spalvos (su slide atitinkamas šešėlio tonas). Lentelė sutampa su `src/components/ui/ctaShared.tsx`.

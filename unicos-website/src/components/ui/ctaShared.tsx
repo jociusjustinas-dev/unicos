@@ -117,35 +117,15 @@ type CtaFaceProps = {
   children: React.ReactNode;
 };
 
-export function CtaFace({ variant, labelMode, labelClassName = '', slideWrapperClassName = '', children }: CtaFaceProps) {
-  const v = variant;
-  /** Global: `primary` CTA — be „slide“; tekstas visada statiškas (žr. AGENTS.md). */
-  const effectiveMode: CtaLabelMode = v === 'primary' ? 'static' : labelMode;
-  const slideInner = ctaSlideInnerClass(v, labelClassName);
-  const slideShadow = ctaSlideShadowFor(v);
-
-  if (effectiveMode === 'slide') {
-    const shadowInline = v === 'outline' ? undefined : slideShadow;
-    return (
-      <div
-        className={`relative z-[1] flex min-h-0 items-center justify-center overflow-hidden text-center pointer-events-none [height:var(--btn-label-track-height)] ${slideWrapperClassName}`.trim()}
-      >
-        <div
-          className={slideInner}
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontWeight: 'var(--btn-font-weight)',
-            ...(shadowInline ? { textShadow: shadowInline } : {}),
-          }}
-        >
-          {children}
-        </div>
-      </div>
-    );
-  }
-
+/**
+ * Global CTA hover: kaip Halden Miller — tik fonas / rėmelis keičia spalvą per 0.3s.
+ * Tekstas (ir ikona) niekada nejuda: jokios „slide“ / `translateY` / text-shadow dublikatų.
+ * `labelMode` paliktas tipui, bet neturi įtakos — visos `CtaLink` / `CtaButton` lygiai vienodos.
+ */
+export function CtaFace({ variant, labelClassName = '', children }: CtaFaceProps) {
+  const staticClass = `${ctaStaticLabelClass(variant)} ${labelClassName}`.trim();
   return (
-    <span className={ctaStaticLabelClass(v)} style={{ fontFamily: 'var(--font-body)' }}>
+    <span className={staticClass} style={{ fontFamily: 'var(--font-body)' }}>
       {children}
     </span>
   );
