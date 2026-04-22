@@ -76,7 +76,7 @@ export function OdosStarterCalloutSection({
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={cardRef}
-          className={`border border-[#3B443A]/10 transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          className={`border border-[#3B443A]/10 transition-[opacity,transform] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
             visible ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
           }`}
           style={{ borderRadius: '0px', backgroundColor: INNER_SURFACE }}

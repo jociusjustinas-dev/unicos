@@ -143,7 +143,7 @@ export function OdosBrandsSection({
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headerInView.ref}
-          className={`mb-10 flex flex-wrap items-end justify-between gap-6 transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] max-[767px]:mb-8 max-[767px]:gap-5 ${
+          className={`mb-10 flex flex-wrap items-end justify-between gap-6 transition-[opacity,transform] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] max-[767px]:mb-8 max-[767px]:gap-5 ${
             headerInView.visible ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
           }`}
         >

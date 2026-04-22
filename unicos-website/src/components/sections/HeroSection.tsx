@@ -95,7 +95,7 @@ export function HeroSection() {
       <div className="relative z-[2] w-full max-w-[1800px] mx-auto px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headlineRef}
-          className={`max-w-[680px] mx-auto mb-12 flex flex-col items-center text-center gap-6 max-[767px]:gap-4 max-[767px]:mb-8 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          className={`max-w-[680px] mx-auto mb-12 flex flex-col items-center text-center gap-6 max-[767px]:gap-4 max-[767px]:mb-8 transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
             headlineVisible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]'
           }`}
         >
@@ -149,7 +149,7 @@ export function HeroSection() {
 
         <div
           ref={gridRef}
-          className={`grid gap-4 max-[767px]:gap-3 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          className={`grid gap-4 max-[767px]:gap-3 transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
             gridVisible ? 'opacity-100 blur-0' : 'opacity-0 blur-[12px]'
           } grid-cols-1 min-[768px]:grid-cols-[0.7fr_1fr]`}
         >

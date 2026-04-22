@@ -70,7 +70,7 @@ export function ComparisonHeroSection() {
             </div>
             <div
               ref={eyebrowRef}
-              className={`transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              className={`transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
                 eyebrowVisible
                   ? 'opacity-100 blur-0'
                   : 'opacity-0 blur-[12px]'
@@ -99,7 +99,7 @@ export function ComparisonHeroSection() {
 
           <div
             ref={centerRef}
-            className={`transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] flex flex-row items-end gap-8 max-[767px]:flex-col max-[767px]:items-start max-[767px]:gap-6 ${
+            className={`transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] flex flex-row items-end gap-8 max-[767px]:flex-col max-[767px]:items-start max-[767px]:gap-6 ${
               centerVisible
                 ? 'opacity-100 blur-0'
                 : 'opacity-0 blur-[12px]'
@@ -174,7 +174,7 @@ export function ComparisonHeroSection() {
 
           <div
             ref={bottomRef}
-            className={`transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] flex flex-row justify-between items-end pt-8 max-[767px]:pt-6 ${
+            className={`transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] flex flex-row justify-between items-end pt-8 max-[767px]:pt-6 ${
               bottomVisible
                 ? 'opacity-100 blur-0'
                 : 'opacity-0 blur-[12px]'

@@ -66,7 +66,7 @@ export function PrekiuZenklaiHeroSection() {
   usePreloaderEntrance(runRevealOnce, 2000);
 
   const reveal = (visible: boolean) =>
-    visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 motion-reduce:opacity-100 motion-reduce:translate-y-0';
+    visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 motion-reduce:opacity-100 motion-reduce:translate-y-0';
 
   return (
     <section className="relative z-[2] w-full bg-[#EFE8DB] pb-16 text-[#1A1010] max-[767px]:pb-12">
@@ -81,7 +81,7 @@ export function PrekiuZenklaiHeroSection() {
         >
           {/* LEFT: eyebrow + heading + paragraph */}
           <div className="flex min-w-0 max-w-[760px] flex-col text-left">
-            <div className={`transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${reveal(labelVisible)}`}>
+            <div className={`transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${reveal(labelVisible)}`}>
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
                 <span
@@ -95,7 +95,7 @@ export function PrekiuZenklaiHeroSection() {
 
             <div className="mt-8 overflow-hidden pb-1 max-[767px]:mt-6">
               <h1
-                className={`m-0 text-[#64151F] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 ${
+                className={`m-0 text-[#64151F] transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-y-0 ${
                   headingVisible ? 'translate-y-0' : 'translate-y-[110%]'
                 }`}
                 style={{
@@ -112,7 +112,7 @@ export function PrekiuZenklaiHeroSection() {
             </div>
 
             <p
-              className={`m-0 mt-6 max-w-[52ch] text-[#1A1010]/78 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${reveal(bodyVisible)}`}
+              className={`m-0 mt-6 max-w-[52ch] text-[#1A1010]/78 transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${reveal(bodyVisible)}`}
               style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}
             >
               Profesionalūs kosmetikos prekių ženklai, oficialiai atstovaujami Lietuvoje. Guinot, Neostrata, Fillmed, Anna
@@ -122,7 +122,7 @@ export function PrekiuZenklaiHeroSection() {
 
           {/* RIGHT: dviejų CTA blokų stulpelis su `justify-between`. */}
           <div
-            className={`flex w-full flex-row flex-wrap items-start gap-4 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] max-[767px]:mt-2 min-[992px]:w-auto min-[992px]:shrink-0 min-[992px]:flex-nowrap min-[992px]:items-end min-[992px]:gap-6 ${reveal(
+            className={`flex w-full flex-row flex-wrap items-start gap-4 transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] max-[767px]:mt-2 min-[992px]:w-auto min-[992px]:shrink-0 min-[992px]:flex-nowrap min-[992px]:items-end min-[992px]:gap-6 ${reveal(
               buttonsVisible
             )}`}
           >

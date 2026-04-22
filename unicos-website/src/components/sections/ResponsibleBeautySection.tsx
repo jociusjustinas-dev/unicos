@@ -140,7 +140,7 @@ export function ResponsibleBeautySection({
     ? 'opacity-100 translate-y-0'
     : 'opacity-0 translate-y-3 motion-reduce:opacity-100 motion-reduce:translate-y-0';
   const guidanceEase =
-    'transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none';
+    'transition-[opacity,transform] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none';
 
   const resolvedEyebrow = eyebrowLabel === null ? null : eyebrowLabel ?? 'Mūsų standartas';
   const resolvedHeading =
@@ -184,7 +184,7 @@ export function ResponsibleBeautySection({
           {!cardsOnlyLayout ? (
           <div
             ref={headerRef}
-            className={`flex flex-col items-center text-center gap-5 max-[767px]:gap-4 transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0 ${headerReveal}`}
+            className={`flex flex-col items-center text-center gap-5 max-[767px]:gap-4 transition-[opacity,transform] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0 ${headerReveal}`}
           >
             {resolvedEyebrow ? (
               <div className="flex items-center justify-center gap-2">
