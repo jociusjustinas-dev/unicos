@@ -88,7 +88,7 @@ export function SprendimaiSolutionLandingPage({ config }: { config: SprendimaiSo
                     className="uppercase text-[#64151F]/70"
                     style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1, paddingBottom: '6px' }}
                   >
-                    STARTAS NUO
+                    STARTAS NUO:
                   </div>
                   <div
                     style={{
