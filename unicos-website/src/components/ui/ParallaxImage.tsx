@@ -67,15 +67,15 @@ export function ParallaxImage({
   }, [distance]);
 
   /**
-   * Papildomas „overscan“ į visas 4 puses — taip net sub-pikselio hairline'as nuo
-   * transformacijos lieka išklipuotas `overflow-hidden`. Vietoje `width`/`height`
-   * naudojam `inset`, kad br. nepridėtų +/- 0.5px į kraštus.
+   * Platus „overscan“ (3× distance į kiekvieną pusę) — sub-pikselio hairline'as po
+   * GPU transformacijos garantuotai lieka už konteinerio ribų.
    */
+  const overhang = distance * 3;
   const overscanStyle: React.CSSProperties = {
-    top: `-${distance}px`,
-    right: `-${distance}px`,
-    bottom: `-${distance}px`,
-    left: `-${distance}px`,
+    top: `-${overhang}px`,
+    right: `-${overhang}px`,
+    bottom: `-${overhang}px`,
+    left: `-${overhang}px`,
     backfaceVisibility: 'hidden',
   };
 
