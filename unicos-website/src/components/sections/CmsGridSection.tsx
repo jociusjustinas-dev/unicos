@@ -405,7 +405,7 @@ export function CmsGridSection({ trainings, registerCtaLabel = 'Registruotis' }:
           {/* Dešinė: kortelės — mobile karuselė, desktop grid */}
           <div
             ref={mobileCarouselRef}
-            className="flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto pb-0 pr-1 max-[767px]:-mx-1 max-[767px]:px-1 min-[768px]:grid min-[768px]:grid-cols-2 min-[768px]:gap-x-8 min-[768px]:gap-y-10 min-[992px]:gap-x-10 min-[992px]:gap-y-12 min-[768px]:overflow-visible min-[768px]:snap-none min-[768px]:p-0 min-[768px]:pr-0"
+            className="flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto pb-0 pr-0 max-[767px]:-mr-6 max-[479px]:-mr-4 min-[768px]:grid min-[768px]:grid-cols-2 min-[768px]:gap-x-8 min-[768px]:gap-y-10 min-[992px]:gap-x-10 min-[992px]:gap-y-12 min-[768px]:mr-0 min-[768px]:overflow-visible min-[768px]:snap-none min-[768px]:p-0 min-[768px]:pr-0"
           >
             {events.map((card) => (
               <EventCardReveal key={card.id} card={card} registerLabel={registerCtaLabel} />

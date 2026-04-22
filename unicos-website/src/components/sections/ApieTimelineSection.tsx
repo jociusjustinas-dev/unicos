@@ -116,7 +116,7 @@ export function ApieTimelineSection() {
 
             <div
               ref={trackRef}
-              className="relative z-[1] flex snap-x snap-mandatory gap-14 overflow-x-auto pb-2 pr-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden max-[767px]:gap-10"
+              className="relative z-[1] flex snap-x snap-mandatory gap-14 overflow-x-auto pb-2 pr-0 max-[991px]:-mr-16 max-[767px]:gap-10 max-[767px]:-mr-6 max-[479px]:-mr-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {milestones.map((item, index) => (
                 <article

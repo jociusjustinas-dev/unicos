@@ -116,7 +116,7 @@ export function OdosAudienceSection({
           ) : null}
         </div>
 
-        <div className="mb-20 overflow-x-auto max-[767px]:mb-14">
+        <div className="mb-20 overflow-x-auto max-[991px]:-mr-16 max-[767px]:mb-14 max-[767px]:-mr-6 max-[479px]:-mr-4">
           <div className="flex min-w-[1120px] flex-nowrap gap-4 max-[767px]:min-w-[980px] max-[767px]:gap-3">
           {cards.map((card, i) => (
             <div
