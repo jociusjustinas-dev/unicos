@@ -83,8 +83,12 @@ export function BrandMedicalStandardsSection({ quality }: { quality: Quality }) 
           </div>
 
           <aside className="flex h-full min-h-0 w-full min-w-0 flex-col">
+            {/**
+             * Trys „skiltys“ su `justify-between`: viršuje — dokumentų linkų blokas,
+             * per vidurį — skirtukas, apačioje — akreditacijos blokas su mygtuku šalia teksto.
+             */}
             <div
-              className="flex h-full min-h-[280px] w-full flex-col border border-[#1A1010]/12 bg-[#3B443A] p-8 text-[#EFE8DB] max-[767px]:p-6 lg:min-h-0 lg:p-9"
+              className="flex h-full min-h-[280px] w-full flex-col justify-between gap-8 border border-[#1A1010]/12 bg-[#3B443A] p-8 text-[#EFE8DB] max-[767px]:p-6 lg:min-h-0 lg:p-9"
               style={{ borderRadius: '0px' }}
             >
               <div className="flex flex-col gap-5">
@@ -109,9 +113,9 @@ export function BrandMedicalStandardsSection({ quality }: { quality: Quality }) 
                 </nav>
               </div>
 
-              <div className="my-8 h-px w-full shrink-0 bg-[#EFE8DB]/15" aria-hidden />
+              <div className="h-px w-full shrink-0 bg-[#EFE8DB]/15" aria-hidden />
 
-              <div className="flex flex-1 flex-col gap-3">
+              <div className="flex flex-col gap-4">
                 <h4
                   className="m-0 text-[#EFE8DB] tracking-[-0.02em]"
                   style={{
@@ -126,18 +130,15 @@ export function BrandMedicalStandardsSection({ quality }: { quality: Quality }) 
                 <p className="m-0 text-[#EFE8DB]/80" style={{ ...BODY, fontSize: '14px', lineHeight: 1.55, fontWeight: 400 }}>
                   {quality.certificationBody}
                 </p>
-              </div>
-
-              <div className="my-8 h-px w-full shrink-0 bg-[#EFE8DB]/15" aria-hidden />
-
-              <div className="mt-auto pt-0">
-                <a
-                  href={quality.certificationCta.href}
-                  className="inline-flex min-h-[48px] w-full max-w-full items-center justify-center border border-transparent bg-[#EFE8DB] px-6 py-3 text-center text-[15px] font-medium leading-snug text-[#3B443A] no-underline transition-[background-color,color] duration-200 hover:bg-[#E4DDD0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EFE8DB] sm:w-auto"
-                  style={{ borderRadius: '0px' }}
-                >
-                  {quality.certificationCta.label}
-                </a>
+                <div>
+                  <a
+                    href={quality.certificationCta.href}
+                    className="inline-flex min-h-[48px] w-full max-w-full items-center justify-center border border-transparent bg-[#EFE8DB] px-6 py-3 text-center text-[15px] font-medium leading-snug text-[#3B443A] no-underline transition-[background-color,color] duration-200 hover:bg-[#E4DDD0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EFE8DB] sm:w-auto"
+                    style={{ borderRadius: '0px' }}
+                  >
+                    {quality.certificationCta.label}
+                  </a>
+                </div>
               </div>
             </div>
           </aside>
