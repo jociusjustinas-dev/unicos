@@ -23,6 +23,7 @@ import {
   SfFaceSmile,
   SfShield,
   SfCheck,
+  SfBell,
 } from '@/components/icons/feather';
 
 const BODY = {
@@ -199,7 +200,7 @@ export default function PartnerystePage() {
         accent="green"
         cards={[
           { title: 'Augančios nuolaidos', description: 'Partnerio kainodara gerėja su kiekvienu ketvirčiu.', Icon: SfActivity },
-          { title: 'Pirmenybė naujienoms', description: 'Pirmieji sužinote apie naujus produktus ir mokymus.', Icon: SfCheck },
+          { title: 'Pirmenybė naujienoms', description: 'Pirmieji sužinote apie naujus produktus ir mokymus.', Icon: SfBell },
           { title: 'Asmeniniai pasiūlymai', description: 'Vadybininkas paruošia akcijas, pritaikytas Jūsų poreikiams.', Icon: SfAward },
         ]}
         showGuidanceRow={true}

@@ -51,8 +51,9 @@ export const SfCheckboxCheck = (p: IconProps) => <MqIcon {...p} icon="marketeq:c
 export const SfCalendar = (p: IconProps) => <MqIcon {...p} icon="marketeq:calendar-date" />;
 export const SfLock = (p: IconProps) => <MqIcon {...p} icon="marketeq:lock-1" />;
 export const SfCreditCard = (p: IconProps) => <MqIcon {...p} icon="marketeq:wallet" />;
-export const SfCheck = (p: IconProps) => <MqIcon {...p} icon="marketeq:check-mark" />;
+export const SfCheck = (p: IconProps) => <MqIcon {...p} icon="marketeq:check-mark-circle" />;
 export const SfArrowDown = (p: IconProps) => <MqIcon {...p} icon="marketeq:down-sign" />;
 export const SfChevronDown = (p: IconProps) => <MqIcon {...p} icon="marketeq:down-sign" />;
 export const SfSearch = (p: IconProps) => <MqIcon {...p} icon="marketeq:search" />;
-export const SfMessage = (p: IconProps) => <MqIcon {...p} icon="marketeq:chat-2" />;
+export const SfMessage = (p: IconProps) => <MqIcon {...p} icon="marketeq:chat-4" />;
+export const SfBell = (p: IconProps) => <MqIcon {...p} icon="marketeq:notification-bell" />;
