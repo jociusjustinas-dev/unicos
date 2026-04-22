@@ -664,20 +664,18 @@ export function NavigationBarSection({
           {/* RIGHT — auth + CTA */}
           {logoOnly ? null : (
             <div className="flex items-center gap-4">
-            {/* Prisijungti — text slide */}
-            <a {...navAnchorAttrs('#')} className="group relative no-underline overflow-hidden max-[767px]:hidden">
-              <div
-                className="transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:-translate-y-[1.5em]"
-                style={{
-                  ...NAV_FONT,
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  color: useLightNavSurface ? 'rgba(26,16,16,0.72)' : 'rgba(239,232,219,0.88)',
-                  textShadow: `0 1.5em 0 ${useLightNavSurface ? 'rgba(26,16,16,0.72)' : 'rgba(239,232,219,0.88)'}`,
-                }}
-              >
-                Prisijungti
-              </div>
+            {/* Prisijungti — statinis tekstas, hover: tik opacity (jokio „slide“). */}
+            <a
+              {...navAnchorAttrs('#')}
+              className="no-underline transition-opacity duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:opacity-80 max-[767px]:hidden"
+              style={{
+                ...NAV_FONT,
+                fontSize: '14px',
+                fontWeight: 500,
+                color: useLightNavSurface ? 'rgba(26,16,16,0.72)' : 'rgba(239,232,219,0.88)',
+              }}
+            >
+              Prisijungti
             </a>
 
             <CtaLink {...navAnchorAttrs('/tapkite-partneriu')} variant="secondary" className="whitespace-nowrap">

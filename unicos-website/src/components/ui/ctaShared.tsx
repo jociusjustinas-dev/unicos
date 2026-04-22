@@ -55,39 +55,6 @@ export function CtaBackground({ variant }: { variant: CtaSurfaceVariant }) {
   }
 }
 
-export function ctaSlideInnerClass(v: CtaSurfaceVariant, labelClassName: string) {
-  const motionBase =
-    'text-[length:var(--btn-font-size)] font-medium normal-case [letter-spacing:var(--btn-letter-spacing)] ' +
-    'transition-[color,transform,text-shadow] duration-300 ease-[var(--btn-ease)] group-hover/cta:-translate-y-[1.5em]';
-  if (v === 'outline') {
-    return (
-      `${motionBase} ` +
-      `text-[var(--color-maroon)] [text-shadow:0_1.5em_0_var(--color-maroon)] ` +
-      `group-hover/cta:text-[#F1E8DA] group-hover/cta:[text-shadow:0_1.5em_0_#F1E8DA] ` +
-      `${labelClassName}`.trim()
-    );
-  }
-  const color =
-    v === 'lightFill'
-      ? 'text-[var(--color-maroon)]'
-      : v === 'outlineLight'
-        ? 'text-[#EFE8DB]'
-        : v === 'glass'
-          ? 'text-[#EFE8DB]'
-          : v === 'lightNeutral'
-            ? 'text-[#1A1010]'
-            : 'text-[var(--color-nougat)]';
-  return `${color} ${motionBase} ${labelClassName}`.trim();
-}
-
-export function ctaSlideShadowFor(v: CtaSurfaceVariant) {
-  if (v === 'glass') return '0 1.5em 0 #EFE8DB';
-  if (v === 'outline' || v === 'lightFill') return '0 1.5em 0 var(--color-maroon)';
-  if (v === 'outlineLight') return '0 1.5em 0 #EFE8DB';
-  if (v === 'lightNeutral') return '0 1.5em 0 #1A1010';
-  return '0 1.5em 0 var(--color-nougat)';
-}
-
 export function ctaStaticLabelClass(v: CtaSurfaceVariant) {
   const base =
     'relative z-[1] text-center font-medium normal-case [font-size:var(--btn-font-size)] [font-weight:var(--btn-font-weight)] [letter-spacing:var(--btn-letter-spacing)] [line-height:var(--btn-static-line-height)] transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]';
