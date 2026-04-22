@@ -197,10 +197,7 @@ export function FooterSection({
               title="Pagalba"
               links={[
                 { label: 'Tapkite partneriu', href: '/tapkite-partneriu' },
-                { label: 'Mokymai', href: '/akademija' },
-                { label: 'D.U.K.', href: '/akademija#duk' },
                 { label: 'Privatumo politika', href: '#' },
-                { label: 'Taisyklės', href: '#' },
               ]}
             />
           </div>
