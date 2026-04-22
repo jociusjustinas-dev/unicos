@@ -303,7 +303,7 @@ export function TapkitePartneriuHeroSection() {
               <div className="mt-2 flex flex-col gap-2.5">
                 {[
                   'Patvirtinimas per 24 val.',
-                  'Startas nuo 150 €',
+                  'Startas nuo: 150 €',
                   'Be ilgalaikių įsipareigojimų',
                 ].map((b) => (
                   <div key={b} className="flex items-start gap-2 text-[#1A1010]/86">

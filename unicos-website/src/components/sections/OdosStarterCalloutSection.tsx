@@ -122,7 +122,7 @@ export function OdosStarterCalloutSection({
                         className="uppercase text-[#3B443A]/65"
                         style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1, paddingBottom: '6px' }}
                       >
-                        STARTAS NUO
+                        STARTAS NUO:
                       </div>
                       <div
                         className="text-[#3B443A]"

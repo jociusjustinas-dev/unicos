@@ -229,7 +229,7 @@ export function ValueFeaturesSection({
                       style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}
                     >
                       <span className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
-                      {activeData.pricePrefix ? `${activeData.pricePrefix} ` : ''}{activeData.price}
+                      {activeData.pricePrefix ? `${activeData.pricePrefix}: ` : ''}{activeData.price}
                     </div>
                   ) : null}
 
