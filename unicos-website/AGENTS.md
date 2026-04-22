@@ -54,9 +54,14 @@ Ant šviesių fonų (#EFE8DB ir pan., pvz. prekių ženklų sekcijos): rodyklių
 - **`CtaButton`** — kai reikia **`<button>`** (`onClick`, `type="submit"`, `disabled`, forma). Vizualiai tie patys variantai ir `labelMode` kaip `CtaLink`.
 - Abu naudoja tą patį korpusą, foną ir etiketę per **`ctaShared.tsx`** — naują CTA **ne** kurk iš atskirų `className` rinkinių.
 
-### Hover elgesys (Halden Miller stilius)
-- **Visi `CtaLink` / `CtaButton` variantai**: ant hover keičiasi **tik** fonas / rėmelis ir (kur taikoma) teksto spalva — per `~300ms`. **Tekstas ir ikona niekada nejuda**: jokių `translateY`, „slide“, `text-shadow` dublikatų.
-- `labelMode` propas paliktas tipui, bet **neturi įtakos** (visada statinė etiketė per `ctaStaticLabelClass`). `ctaSlideInnerClass` / `ctaSlideShadowFor` eksportuoti tik dėl atgalinio suderinamumo — nauji mygtukai jų nenaudoja.
+### Hover elgesys (Halden Miller „text-slide“)
+- **Visi `CtaLink` / `CtaButton` variantai** naudoja tą patį `CtaFace` mechanizmą:
+  - mask tik 1 teksto eilutės aukščio (`overflow: hidden`, `height: var(--btn-label-line-height)`);
+  - viduje tekstas su `text-shadow: 0 var(--btn-label-line-height) 0 <hover-spalva>` (klonas lygiai vienu aukščiu žemiau);
+  - hover'yje tekstas `translateY(-100%)` į viršų → šešėlis atsiduria originalo vietoje, su hover spalva.
+- Kartu hover'yje keičiasi **fonas / rėmelis** (`CtaBackground`) per `~300ms`.
+- `labelMode` propas paliktas tipui dėl API suderinamumo, bet **neturi įtakos** — visos CTA elgiasi vienodai.
+- Svarbu: `--btn-label-line-height` (numatyta 20px) turi atitikti mygtuko teksto aukštį su `--btn-font-size` + `letter-spacing` — kitaip slide pasislinks per daug arba per mažai.
 
 ### Variantai (`CtaSurfaceVariant`, `CtaBackground`)
 Vienas `variant` visada — fonas + numatytos etiketės spalvos (su slide atitinkamas šešėlio tonas). Lentelė sutampa su `src/components/ui/ctaShared.tsx`.

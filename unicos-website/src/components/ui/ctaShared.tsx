@@ -55,22 +55,23 @@ export function CtaBackground({ variant }: { variant: CtaSurfaceVariant }) {
   }
 }
 
-export function ctaStaticLabelClass(v: CtaSurfaceVariant) {
-  const base =
-    'relative z-[1] text-center font-medium normal-case [font-size:var(--btn-font-size)] [font-weight:var(--btn-font-weight)] [letter-spacing:var(--btn-letter-spacing)] [line-height:var(--btn-static-line-height)] transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]';
+/** Numatyta ir hover teksto spalvos pagal variantą (naudojama slide'e ir kaip atsarginis static'ui). */
+function ctaTextColors(v: CtaSurfaceVariant): { base: string; hover: string } {
   switch (v) {
-    case 'glass':
-      return `${base} text-[#EFE8DB]`;
+    case 'primary':
+      return { base: 'var(--color-nougat)', hover: 'var(--color-nougat)' };
+    case 'secondary':
+      return { base: 'var(--color-nougat)', hover: 'var(--color-nougat)' };
     case 'outline':
-      return `${base} text-[var(--color-maroon)] group-hover/cta:text-[#F1E8DA]`;
+      return { base: 'var(--color-maroon)', hover: '#F1E8DA' };
+    case 'glass':
+      return { base: '#EFE8DB', hover: '#EFE8DB' };
     case 'lightFill':
-      return `${base} text-[var(--color-maroon)]`;
+      return { base: 'var(--color-maroon)', hover: 'var(--color-maroon)' };
     case 'outlineLight':
-      return `${base} text-[#EFE8DB] group-hover/cta:text-[#F8F2E8]`;
+      return { base: '#EFE8DB', hover: '#EFE8DB' };
     case 'lightNeutral':
-      return `${base} text-[#1A1010]`;
-    default:
-      return `${base} text-[var(--color-nougat)]`;
+      return { base: '#1A1010', hover: '#1A1010' };
   }
 }
 
@@ -85,15 +86,32 @@ type CtaFaceProps = {
 };
 
 /**
- * Global CTA hover: kaip Halden Miller — tik fonas / rėmelis keičia spalvą per 0.3s.
- * Tekstas (ir ikona) niekada nejuda: jokios „slide“ / `translateY` / text-shadow dublikatų.
- * `labelMode` paliktas tipui, bet neturi įtakos — visos `CtaLink` / `CtaButton` lygiai vienodos.
+ * Halden Miller stiliaus CTA etiketė: mask + dublikatas per `text-shadow`.
+ * Hover: tekstas slenka -100% į viršų, o apačioje esantis šešėlis (hover spalva)
+ * atsiduria originalo vietoje. Aukštis — lygiai viena eilutė (`--btn-label-line-height`),
+ * kad niekas nebūtų kerpama ir nesimatytų tarpų.
  */
 export function CtaFace({ variant, labelClassName = '', children }: CtaFaceProps) {
-  const staticClass = `${ctaStaticLabelClass(variant)} ${labelClassName}`.trim();
+  const { base: baseColor, hover } = ctaTextColors(variant);
   return (
-    <span className={staticClass} style={{ fontFamily: 'var(--font-body)' }}>
-      {children}
+    <span
+      className="pointer-events-none relative z-[1] inline-flex items-center justify-center overflow-hidden [height:var(--btn-label-line-height)]"
+    >
+      <span
+        className={`block transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] will-change-transform group-hover/cta:-translate-y-full ${labelClassName}`.trim()}
+        style={{
+          color: baseColor,
+          fontFamily: 'var(--font-body)',
+          fontSize: 'var(--btn-font-size)',
+          fontWeight: 'var(--btn-font-weight)',
+          letterSpacing: 'var(--btn-letter-spacing)',
+          lineHeight: 'var(--btn-label-line-height)',
+          textShadow: `0 var(--btn-label-line-height) 0 ${hover}`,
+          whiteSpace: 'nowrap',
+        }}
+      >
+        {children}
+      </span>
     </span>
   );
 }

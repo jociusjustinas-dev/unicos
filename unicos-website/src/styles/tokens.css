@@ -120,10 +120,11 @@
   --btn-radius: 0;
   --btn-font-size: 13px;
   --btn-font-weight: 500;
-  /** Slide etiketei reikia ~2 eil. vertikalaus tarpo; per žema reikšmė kerpia tekstą. */
-  --btn-label-track-height: 28px;
+  /** Slide (Halden Miller) — viena teksto eilutė: mask aukštis = line-height, šešėlis 1 line'u žemiau. */
+  --btn-label-line-height: 20px;
+  --btn-label-track-height: var(--btn-label-line-height);
   --btn-ease: cubic-bezier(0.4, 0, 0.2, 1);
   --btn-letter-spacing: 0.02em;
-  /** Statinis `labelMode` (retai) — tas pats dydis/storis kaip slide. */
+  /** Atgalinis suderinamumas statiniam `ctaStaticLabelClass`. */
   --btn-static-line-height: 1.35;
 }
