@@ -119,10 +119,12 @@ type CtaFaceProps = {
 
 export function CtaFace({ variant, labelMode, labelClassName = '', slideWrapperClassName = '', children }: CtaFaceProps) {
   const v = variant;
+  /** Global: `primary` CTA — be „slide“; tekstas visada statiškas (žr. AGENTS.md). */
+  const effectiveMode: CtaLabelMode = v === 'primary' ? 'static' : labelMode;
   const slideInner = ctaSlideInnerClass(v, labelClassName);
   const slideShadow = ctaSlideShadowFor(v);
 
-  if (labelMode === 'slide') {
+  if (effectiveMode === 'slide') {
     const shadowInline = v === 'outline' ? undefined : slideShadow;
     return (
       <div

@@ -55,8 +55,9 @@ Ant šviesių fonų (#EFE8DB ir pan., pvz. prekių ženklų sekcijos): rodyklių
 - Abu naudoja tą patį korpusą, foną ir etiketę per **`ctaShared.tsx`** — naują CTA **ne** kurk iš atskirų `className` rinkinių.
 
 ### „Slide“ ir `labelMode`
-- **`labelMode="slide"`** (numatytasis): ant hover teksto **slankiojantis** efektas — dubliuota eilutė per `text-shadow`, `translateY` (`CtaFace` + `ctaSlideInnerClass` / `ctaSlideShadowFor` faile `ctaShared.tsx`). Tai **vienas** numatytasis CTA elgesys visoje svetainėje.
-- **`labelMode="static"`** — be judesio, tas pats šrifto kešas (`ctaStaticLabelClass`); naudok tik kur slide trikdo išdėstymą (pvz. labai ilgas tekstas) arba dizaino išimtis.
+- **`labelMode="slide"`** (numatytasis): ant hover teksto **slankiojantis** efektas — dubliuota eilutė per `text-shadow`, `translateY` (`CtaFace` + `ctaSlideInnerClass` / `ctaSlideShadowFor` faile `ctaShared.tsx`).
+- **`labelMode="static"`** — be judesio, tas pats šrifto kešas (`ctaStaticLabelClass`).
+- **Išimtis — `primary`**: visada statiškas tekstas, net jei perduotas `labelMode="slide"` (`CtaFace` forsuoja `static`). Slide paliekamas tik `outline`, `secondary`, `glass`, `outlineLight`, `lightFill`, `lightNeutral`.
 
 ### Variantai (`CtaSurfaceVariant`, `CtaBackground`)
 Vienas `variant` visada — fonas + numatytos etiketės spalvos (su slide atitinkamas šešėlio tonas). Lentelė sutampa su `src/components/ui/ctaShared.tsx`.
