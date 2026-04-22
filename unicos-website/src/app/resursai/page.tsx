@@ -2,22 +2,16 @@
 
 import * as React from 'react';
 import { NavigationBarSection } from '@/components/sections/NavigationBarSection';
-import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
 import { FooterSection } from '@/components/sections/FooterSection';
 import { PAGE_SHELL_CLASS } from '@/config/pageShell';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { CtaButton } from '@/components/ui/CtaButton';
 import {
-  SfActivity,
-  SfLayers,
-  SfAward,
   SfArrowDown,
-  SfChevronDown,
   SfSearch,
   SfLock,
   SfArrowRight,
   SfEnvelope,
-  SfCheck,
 } from '@/components/icons/feather';
 
 const BODY = {
@@ -338,32 +332,6 @@ export default function ResursaiPage() {
 
         </Shell>
       </section>
-
-      <div className="border-t border-solid border-[#1A1010]/10">
-        <ResponsibleBeautySection
-          cardsOnly
-          showGuidanceRow={false}
-          surfaceClassName="bg-[#EFE8DB]"
-          accent="maroon"
-          cards={[
-            {
-              title: 'CENTRALIZUOTA BAZĖ',
-              description: 'Visi dokumentai vienoje vietoje, pasiekiami 24/7.',
-              Icon: SfLayers,
-            },
-            {
-              title: 'NUOLATINIS ATNAUJINIMAS',
-              description: 'Naujausi protokolai tiesiai iš gamintojų.',
-              Icon: SfActivity,
-            },
-            {
-              title: 'PATIKRINTA EKSPERTŲ',
-              description: 'Tik saugios ir patvirtintos metodikos.',
-              Icon: SfCheck,
-            },
-          ]}
-        />
-      </div>
 
       <section className="pt-16 pb-20 min-[768px]:pt-24 min-[768px]:pb-28">
         <Shell>
