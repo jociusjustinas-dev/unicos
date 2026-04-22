@@ -103,10 +103,7 @@ export function FooterSection({
                 style={{ borderRadius: '0px' }}
               />
             </a>
-            <p className="m-0 mt-2 text-[#EFE8DB]/55" style={{ ...BODY, fontSize: '13px', lineHeight: 1.45, fontWeight: 400 }}>
-              Anksčiau Sugihara Pro
-            </p>
-            <div className="mt-4 flex flex-col gap-1.5 text-[#EFE8DB]/88" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45, fontWeight: 400 }}>
+            <div className="mt-6 flex flex-col gap-1.5 text-[#EFE8DB]/88" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45, fontWeight: 400 }}>
               <span>Metalo g. 13a, LT-02190, Vilnius</span>
               <a href="tel:+37052705712" className="text-[#EFE8DB] no-underline transition-opacity hover:opacity-80">
                 (+370 5) 270 57 12
