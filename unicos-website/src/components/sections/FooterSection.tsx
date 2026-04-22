@@ -107,9 +107,9 @@ export function FooterSection({
               Anksčiau Sugihara Pro
             </p>
             <div className="mt-4 flex flex-col gap-1.5 text-[#EFE8DB]/88" style={{ ...BODY, fontSize: '14px', lineHeight: 1.45, fontWeight: 400 }}>
-              <span>Vilnius, Lietuva</span>
-              <a href="tel:+37060000000" className="text-[#EFE8DB] no-underline transition-opacity hover:opacity-80">
-                +370 600 00000
+              <span>Metalo g. 13a, LT-02190, Vilnius</span>
+              <a href="tel:+37052705712" className="text-[#EFE8DB] no-underline transition-opacity hover:opacity-80">
+                (+370 5) 270 57 12
               </a>
               <a href="mailto:info@unicos.lt" className="text-[#EFE8DB] no-underline transition-opacity hover:opacity-80">
                 info@unicos.lt
