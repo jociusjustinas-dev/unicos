@@ -67,16 +67,16 @@ export function ParallaxImage({
   }, [distance]);
 
   /**
-   * Papildomas „overscan“ vertikaliai (viršuje ir apačioje po `distance`), kad
-   * translate'as niekada neatvertų tėvo fono — viską uždengia pats vaizdas.
+   * Papildomas „overscan“ į visas 4 puses — taip net sub-pikselio hairline'as nuo
+   * transformacijos lieka išklipuotas `overflow-hidden`. Vietoje `width`/`height`
+   * naudojam `inset`, kad br. nepridėtų +/- 0.5px į kraštus.
    */
   const overscanStyle: React.CSSProperties = {
     top: `-${distance}px`,
+    right: `-${distance}px`,
     bottom: `-${distance}px`,
-    left: 0,
-    right: 0,
-    height: `calc(100% + ${distance * 2}px)`,
-    width: '100%',
+    left: `-${distance}px`,
+    backfaceVisibility: 'hidden',
   };
 
   if (asImage) {

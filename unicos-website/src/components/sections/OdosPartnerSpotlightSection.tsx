@@ -129,7 +129,7 @@ export function OdosPartnerSpotlightSection({
              * stulpelio aukščio (`items-stretch`), kad nebūtų neproporcingai aukšta foto.
              */}
             <div
-              className="relative block w-full overflow-hidden aspect-[4/5] min-[768px]:aspect-[5/4] min-[992px]:aspect-auto min-[992px]:h-full min-[992px]:min-h-[440px]"
+              className="relative block w-full overflow-hidden aspect-[4/5] min-[768px]:aspect-[5/4] min-[992px]:aspect-auto min-[992px]:h-full min-[992px]:min-h-[440px] [transform:translateZ(0)] [clip-path:inset(0)]"
               style={{ borderRadius: '0px' }}
             >
               <ParallaxImage
