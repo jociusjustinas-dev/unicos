@@ -360,7 +360,7 @@ export function CmsGridSection({ trainings, registerCtaLabel = 'Registruotis' }:
                 <p className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '17px', lineHeight: 1.35, fontWeight: 500 }}>
                   Sužinokite apie mokymus pirmieji
                 </p>
-                <p className="m-0 max-w-[40ch] whitespace-nowrap text-[#1A1010]/75" style={{ ...BODY, fontSize: '14px', lineHeight: 1.5, fontWeight: 400 }}>
+                <p className="m-0 max-w-[40ch] text-[#1A1010]/75" style={{ ...BODY, fontSize: '14px', lineHeight: 1.5, fontWeight: 400 }}>
                   Gaukite asmeninius kvietimus ir registruokitės anksčiau už kitus.
                 </p>
               </div>
@@ -439,7 +439,7 @@ export function CmsGridSection({ trainings, registerCtaLabel = 'Registruotis' }:
               <p className="m-0 text-[#1A1010]" style={{ ...BODY, fontSize: '17px', lineHeight: 1.35, fontWeight: 500 }}>
                 Sužinokite apie mokymus pirmieji
               </p>
-              <p className="m-0 max-w-[40ch] whitespace-nowrap text-[#1A1010]/75" style={{ ...BODY, fontSize: '14px', lineHeight: 1.5, fontWeight: 400 }}>
+              <p className="m-0 max-w-[40ch] text-[#1A1010]/75" style={{ ...BODY, fontSize: '14px', lineHeight: 1.5, fontWeight: 400 }}>
                 Gaukite asmeninius kvietimus ir registruokitės anksčiau už kitus.
               </p>
             </div>

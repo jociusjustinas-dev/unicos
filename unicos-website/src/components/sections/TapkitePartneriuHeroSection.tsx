@@ -221,10 +221,7 @@ export function TapkitePartneriuHeroSection() {
   return (
     <section className="relative z-[2] overflow-x-clip border-b border-[#1A1010]/10 bg-white pt-40 pb-20 max-[767px]:pt-24 max-[767px]:pb-12">
       <div className="mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
-        <div
-          className="grid grid-cols-2 max-[991px]:grid-cols-1"
-          style={{ columnGap: '132px', rowGap: '132px' }}
-        >
+        <div className="grid grid-cols-2 gap-x-[min(8rem,6vw)] gap-y-16 max-[991px]:grid-cols-1 max-[991px]:gap-y-12 max-[767px]:gap-y-10">
           {/* LEFT COLUMN */}
           <div className="flex flex-col items-start gap-8 max-w-[564px] max-[991px]:max-w-none max-[991px]:flex-row max-[991px]:items-end max-[991px]:justify-between max-[767px]:flex-col max-[767px]:items-stretch max-[767px]:gap-6">
             <div ref={topRef} style={topStyle} className="flex flex-col items-start gap-6 max-[767px]:gap-4 transition-all duration-700 ease-out max-[991px]:max-w-[448px] max-[479px]:max-w-[364px]">

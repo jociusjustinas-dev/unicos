@@ -138,11 +138,14 @@ export default function ResursaiPage() {
               </div>
             </div>
 
-            <div className="relative min-h-[280px] w-full overflow-hidden border border-solid border-[#1A1010]/15 min-[992px]:min-h-[360px]" style={{ borderRadius: '0px' }}>
+            <div
+              className="relative w-full overflow-hidden border border-solid border-[#1A1010]/15 aspect-[4/5] min-[768px]:aspect-[4/3] min-[992px]:aspect-auto min-[992px]:min-h-[360px]"
+              style={{ borderRadius: '0px' }}
+            >
               <img
                 src="/Professional Woman Indoors.png"
                 alt=""
-                className="h-full w-full min-h-[280px] object-cover min-[992px]:min-h-[360px]"
+                className="absolute inset-0 h-full w-full object-cover"
                 loading="eager"
                 sizes="(max-width: 991px) 100vw, 42vw"
               />
