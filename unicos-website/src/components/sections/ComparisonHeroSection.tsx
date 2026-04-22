@@ -116,7 +116,7 @@ export function ComparisonHeroSection() {
               >
                 Profesionalus standartas.
                 <br />
-                <span style={{ color: '#EFE8DB', fontWeight: 500 }}>Asmeninis ryšys.</span>
+                <span style={{ color: '#EFE8DB', fontWeight: 500 }}>Asmeninis ryšys</span>
               </h2>
             </div>
 

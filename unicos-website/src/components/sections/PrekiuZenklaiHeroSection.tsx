@@ -107,7 +107,7 @@ export function PrekiuZenklaiHeroSection() {
                 }}
               >
                 <span className="font-light">Tik tai, kuo </span>
-                <span className="font-medium">patys tikime.</span>
+                <span className="font-medium">patys tikime</span>
               </h1>
             </div>
 

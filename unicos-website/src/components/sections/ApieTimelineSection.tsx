@@ -17,27 +17,27 @@ type Milestone = {
 const milestones: Milestone[] = [
   {
     year: '2001',
-    title: 'Sugihara Pro pradžia.',
+    title: 'Sugihara Pro pradžia',
     body: 'Pirmieji profesionalūs prekių ženklai Lietuvos grožio rinkoje.',
   },
   {
     year: '2008',
-    title: 'Pirmoji akademija.',
+    title: 'Pirmoji akademija',
     body: 'Pradėjome organizuoti praktinius seminarus profesionalams.',
   },
   {
     year: '2015',
-    title: '500 partnerių.',
+    title: '500 partnerių',
     body: 'Pasiekėme pusę tūkstančio aktyvių partnerių visoje Lietuvoje.',
   },
   {
     year: '2020',
-    title: 'Savitarnos platforma.',
+    title: 'Savitarnos platforma',
     body: 'Paleidome skaitmeninę užsakymų platformą partneriams.',
   },
   {
     year: '2026',
-    title: 'UNICOS.',
+    title: 'UNICOS',
     body: 'Evoliucija į naują partnerystės modelį — aiškesnį, artimesnį ir stipresnį.',
   },
 ];
@@ -77,7 +77,7 @@ export function ApieTimelineSection() {
               color: '#3B443A',
             }}
           >
-            <span className="font-medium">Mūsų kelias.</span>
+            <span className="font-medium">Mūsų kelias</span>
           </h2>
 
           <div className="flex shrink-0 items-center gap-2">

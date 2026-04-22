@@ -74,7 +74,7 @@ export function ApieUnicosHeroSection() {
             }}
           >
             <span className="font-medium">25 metai šalia </span>
-            <span className="font-light">profesionalų.</span>
+            <span className="font-light">profesionalų</span>
           </h1>
 
           <p className="m-0 max-w-[68ch] text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>

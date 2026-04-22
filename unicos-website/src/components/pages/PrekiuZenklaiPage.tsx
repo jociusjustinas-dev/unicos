@@ -143,7 +143,7 @@ export function PrekiuZenklaiPage() {
         showEyebrow={false}
         showPriceBlock={false}
         headingLight="Oficialus atstovas "
-        headingBold="Lietuvoje."
+        headingBold="Lietuvoje"
         description="Kiekvienas ženklas mūsų portfelyje turi oficialų atstovavimo statusą. Tai reiškia:"
         benefits={[...PREKIU_ZENKLAI_OFFICIAL_BULLETS]}
         imageSrc="/estetines.jpg"
@@ -160,7 +160,7 @@ export function PrekiuZenklaiPage() {
         heading={
           <>
             <span className="font-light">Daugiau nei </span>
-            <span className="font-medium">tiekimas.</span>
+            <span className="font-medium">tiekimas</span>
           </>
         }
         subheading="Su kiekvienu ženklu gausite visą ekosistemą."

@@ -122,7 +122,7 @@ export default function PartnerystePage() {
         heading={
           <>
             <span className="font-light">UNICOS platforma - </span>
-            <span className="font-medium">daugiau laiko Jums.</span>
+            <span className="font-medium">daugiau laiko Jums</span>
           </>
         }
         bodyText="Sukūrėme įrankį, kuris paverčia užsakymus malonumu."
@@ -160,7 +160,7 @@ export default function PartnerystePage() {
         heading={
           <>
             <span className="font-light">Lojalumo </span>
-            <span className="font-medium">programa.</span>
+            <span className="font-medium">programa</span>
           </>
         }
         subheading="Kuo ilgiau dirbame kartu - tuo daugiau naudos Jūsų verslui."

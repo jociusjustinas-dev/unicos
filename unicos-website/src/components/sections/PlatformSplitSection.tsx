@@ -148,7 +148,7 @@ export function PlatformSplitSection({
                       <span className="font-medium">Daugiau laiko </span>
                       <span className="font-medium">Jums</span>
                       <br />
-                      <span className="font-light">ir Jūsų klientams.</span>
+                      <span className="font-light">ir Jūsų klientams</span>
                     </>
                   )}
                 </h2>

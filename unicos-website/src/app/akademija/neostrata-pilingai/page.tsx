@@ -328,7 +328,7 @@ export default function NeostrataPilingaiPage() {
 
       <AkademijaMaroonEventCtaBand
         ariaLabelledBy="neostrata-cta-heading"
-        title="Užtikrinkite savo vietą."
+        title="Užtikrinkite savo vietą"
         description="Dalyvių skaičius ribotas — registruokitės dabar ir gaukite tarptautinį sertifikatą."
         registerHref={event.href}
         registerLabel={`Registruotis — ${event.price}`}
@@ -337,7 +337,7 @@ export default function NeostrataPilingaiPage() {
       <AkademijaRelatedEventsSection
         excludeEventId="evt-1"
         headingId="neostrata-kiti-renginiai-heading"
-        title="Kiti artimiausi renginiai."
+        title="Kiti artimiausi renginiai"
         viewAllHref="/akademija"
         viewAllLabel="Visi renginiai"
       />

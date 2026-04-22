@@ -202,7 +202,7 @@ export const odosSpecialistamsLandingConfig: SprendimaiSolutionLandingConfig = {
   challenges: ODOS_DEFAULT_CHALLENGES,
   responsibleSubheading: 'Gausite ne tik produktus, bet ir aplinką profesionaliam augimui.',
   brandsHeadingLight: 'Prekių ženklai, atrinkti ',
-  brandsHeadingBold: 'Jūsų sričiai.',
+  brandsHeadingBold: 'Jūsų sričiai',
   brandsSubheading: 'Oficialiai atstovaujami, su mokymų programa ir logistikos palaikymu.',
   audienceCards: [
     {
@@ -260,7 +260,7 @@ export const odosSpecialistamsLandingConfig: SprendimaiSolutionLandingConfig = {
   starter: {
     eyebrowLabel: 'Specialus pasiūlymas',
     headingLight: 'Startinis paketas ',
-    headingBold: 'odos specialistams.',
+    headingBold: 'odos specialistams',
     description: 'Nežinote nuo ko pradėti? Paruošėme rinkinį lengvam startui.',
     benefits: [
       'Populiariausi produktai procedūroms ir namų priežiūrai',
@@ -321,7 +321,7 @@ export const plaukuPrieziurosSpecialistamsLandingConfig: SprendimaiSolutionLandi
   challenges: PLAUKU_CHALLENGES,
   responsibleSubheading: 'Gausite ne tik produktus, bet ir aplinką profesionaliam augimui.',
   brandsHeadingLight: 'Prekių ženklai, atrinkti ',
-  brandsHeadingBold: 'Jūsų sričiai.',
+  brandsHeadingBold: 'Jūsų sričiai',
   brandsSubheading: 'Oficialiai atstovaujami, su mokymų programa ir logistikos palaikymu.',
   audienceCards: [
     {
@@ -381,7 +381,7 @@ export const plaukuPrieziurosSpecialistamsLandingConfig: SprendimaiSolutionLandi
   starter: {
     eyebrowLabel: 'Specialus pasiūlymas',
     headingLight: 'Startinis paketas ',
-    headingBold: 'plaukų specialistams.',
+    headingBold: 'plaukų specialistams',
     description: 'Nežinote nuo ko pradėti? Paruošėme rinkinį lengvam startui.',
     benefits: [
       'Populiariausi šampūnai, kaukės ir priežiūros priemonės',
@@ -477,7 +477,7 @@ export const estetinesMedicinosKlinikomsLandingConfig: SprendimaiSolutionLanding
   audienceConsultBody: 'Padėsime sudėlioti tinkamiausią startą Jūsų kabinetui.',
   challenges: ESTETINE_CHALLENGES,
   responsibleSubheading: 'Gausite ne tik produktus, bet ir struktūrą, kuria galite pasitikėti.',
-  brandsHeadingLight: 'Prekių ženklai.',
+  brandsHeadingLight: 'Prekių ženklai',
   brandsHeadingBold: '',
   brandsSubheading: 'Kiekvienas ženklas — oficialiai atstovaujamas, su klinikine dokumentacija ir mokymų programa.',
   audienceCards: [
@@ -540,7 +540,7 @@ export const estetinesMedicinosKlinikomsLandingConfig: SprendimaiSolutionLanding
   starter: {
     eyebrowLabel: 'Specialus pasiūlymas',
     headingLight: 'Startinis paketas ',
-    headingBold: 'estetinės dermatologijos klinikoms.',
+    headingBold: 'estetinės dermatologijos klinikoms',
     description: 'Paruošėme rinkinį, kad galėtumėte pradėti dirbti su patikimais produktais greitai ir be komplikacijų.',
     benefits: [
       'Pre- ir postprocedūrinės priežiūros produktai',
@@ -658,7 +658,7 @@ export const vaistinemsIrFarmacijosSpecialistamsLandingConfig: SprendimaiSolutio
   starter: {
     eyebrowLabel: 'Specialus pasiūlymas',
     headingLight: 'Startinis paketas ',
-    headingBold: 'konsultantams ir farmacininkams.',
+    headingBold: 'konsultantams ir farmacininkams',
     description: 'Pradėkite be rizikos — paruošėme rinkinį, kad pirmieji žingsniai būtų lengvi ir pelningi.',
     benefits: [
       'Populiariausi produktai namų priežiūrai',

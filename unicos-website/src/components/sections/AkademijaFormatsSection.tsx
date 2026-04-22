@@ -12,7 +12,7 @@ export function AkademijaFormatsSection() {
       heading={
         <>
           <span className="font-light">Mokymų </span>
-          <span className="font-medium">formatai.</span>
+          <span className="font-medium">formatai</span>
         </>
       }
       imageSrc="/mega-menu/1.jpeg"

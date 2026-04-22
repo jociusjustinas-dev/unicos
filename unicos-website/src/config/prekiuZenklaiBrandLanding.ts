@@ -99,7 +99,7 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
   hero: {
     htmlIdPrefix: 'prekiu-zenklai-guinot',
     h1Light: 'Guinot — ',
-    h1Bold: 'prancūziškos odos priežiūros meistriškumas.',
+    h1Bold: 'prancūziškos odos priežiūros meistriškumas',
     lead:
       'Daugiau nei 50 metų patirties profesionalioje kosmetikoje. Unikalios aparatinės procedūros, kurių rezultatai kalba patys už save.',
     heroImageSrc: '/mega-menu/1.jpeg',
@@ -145,7 +145,7 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
   },
   productLines: {
     headingLight: 'Guinot ',
-    headingBold: 'produktų linijos.',
+    headingBold: 'produktų linijos',
     subheading: 'Platus profesionalus asortimentas procedūroms ir namų priežiūrai.',
     audienceCards: [
       {
@@ -194,7 +194,7 @@ export const guinotBrandLandingConfig: PrekiuZenklaiBrandLandingConfig = {
   },
   partner: {
     headingLight: 'Partnerystės ',
-    headingBold: 'privalumai.',
+    headingBold: 'privalumai',
     subheading: 'Ką gausite kaip Guinot partneris?',
     cards: [
       {

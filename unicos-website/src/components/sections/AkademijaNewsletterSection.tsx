@@ -27,7 +27,7 @@ export function AkademijaNewsletterSection() {
               }}
             >
               <span className="font-light">Sužinokite apie mokymus </span>
-              <span className="font-medium">pirmieji.</span>
+              <span className="font-medium">pirmieji</span>
             </h2>
             <p className="m-0 text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>
               Gaukite asmeninius kvietimus ir registruokitės anksčiau už kitus.

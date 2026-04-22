@@ -17,7 +17,7 @@ export default function ApieUnicosPage() {
       <NavigationBarSection forceLightSurface />
       <ApieUnicosHeroSection />
       <UnicosWhySection
-        heading={<span className="font-medium">Kuo tikime.</span>}
+        heading={<span className="font-medium">Kuo tikime</span>}
         subheading="Trys principai, kuriais grindžiame kiekvieną sprendimą."
         showHighlights={false}
       />

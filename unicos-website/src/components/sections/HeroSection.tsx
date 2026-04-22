@@ -109,8 +109,8 @@ export function HeroSection() {
             className="m-0 text-center"
             style={{ fontFamily: "'Quiche Sans', Georgia, serif", fontWeight: 300, fontSize: 'clamp(40px, 4.3vw, 64px)', lineHeight: 1.1, letterSpacing: '-2.5px' }}
           >
-            <span className="block whitespace-nowrap max-[767px]:whitespace-normal">Profesionalus standartas.</span>
-            <span className="block whitespace-nowrap max-[767px]:whitespace-normal" style={{ color: '#64151F', fontWeight: 500 }}>Asmeninis ryšys.</span>
+            <span className="block whitespace-nowrap max-[767px]:whitespace-normal">Profesionalus standartas</span>
+            <span className="block whitespace-nowrap max-[767px]:whitespace-normal" style={{ color: '#64151F', fontWeight: 500 }}>Asmeninis ryšys</span>
           </h1>
 
           <div className="w-[80%] max-[767px]:w-full text-sm leading-5 font-normal opacity-70">

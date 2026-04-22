@@ -40,7 +40,7 @@ export default function KontaktaiPage() {
                 }}
               >
                 <span className="font-light">Visada </span>
-                <span className="font-medium">esame šalia.</span>
+                <span className="font-medium">esame šalia</span>
               </h1>
 
               <p className="m-0 max-w-[62ch] text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>

@@ -68,7 +68,7 @@ export function ApieTeamSection() {
               fontWeight: 300,
             }}
           >
-            <span className="font-medium">Žmonės už UNICOS.</span>
+            <span className="font-medium">Žmonės už UNICOS</span>
           </h2>
           <p className="m-0 max-w-[60ch] text-[#1A1010]/78" style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}>
             Maža, bet stipri komanda, kuri rūpinasi kiekvienu partneriu asmeniškai.
