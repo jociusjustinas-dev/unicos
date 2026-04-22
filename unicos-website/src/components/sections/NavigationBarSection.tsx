@@ -17,32 +17,34 @@ interface DropdownColumn {
 // Data
 // ---------------------------------------------------------------------------
 
+/** Visi prekių ženklų įrašai nukreipia į šablono puslapį `/prekiu-zenklai/guinot`, kol nėra konkrečių brand'o puslapių. */
+const BRAND_TEMPLATE_HREF = '/prekiu-zenklai/guinot';
 const PREKES_ZENKLAI_COLUMNS: DropdownColumn[] = [
   {
     label: 'Premium',
     items: [
-      { title: 'Balmain Hair', href: '#' },
-      { title: 'Medik8', href: '#' },
-      { title: 'Environ', href: '#' },
-      { title: 'La Biosthetique', href: '#' },
+      { title: 'Balmain Hair', href: BRAND_TEMPLATE_HREF },
+      { title: 'Medik8', href: BRAND_TEMPLATE_HREF },
+      { title: 'Environ', href: BRAND_TEMPLATE_HREF },
+      { title: 'La Biosthetique', href: BRAND_TEMPLATE_HREF },
     ],
   },
   {
     label: 'Profesionalūs',
     items: [
-      { title: 'Wella Professionals', href: '#' },
-      { title: 'Goldwell', href: '#' },
-      { title: 'Schwarzkopf Professional', href: '#' },
-      { title: "L'Oréal Professionnel", href: '#' },
+      { title: 'Wella Professionals', href: BRAND_TEMPLATE_HREF },
+      { title: 'Goldwell', href: BRAND_TEMPLATE_HREF },
+      { title: 'Schwarzkopf Professional', href: BRAND_TEMPLATE_HREF },
+      { title: "L'Oréal Professionnel", href: BRAND_TEMPLATE_HREF },
     ],
   },
   {
     label: 'Nišiniai',
     items: [
-      { title: 'Comfort Zone', href: '#' },
-      { title: 'Guinot', href: '#' },
-      { title: 'Mary Cohr', href: '#' },
-      { title: 'Ahava Pro', href: '#' },
+      { title: 'Comfort Zone', href: BRAND_TEMPLATE_HREF },
+      { title: 'Guinot', href: '/prekiu-zenklai/guinot' },
+      { title: 'Mary Cohr', href: BRAND_TEMPLATE_HREF },
+      { title: 'Ahava Pro', href: BRAND_TEMPLATE_HREF },
     ],
   },
 ];
@@ -71,7 +73,7 @@ const NAV_FONT: React.CSSProperties = {
 };
 
 /** Kai `true` — header'yje jokios nuorodos neveda į puslapius (tik `#` + preventDefault). Įjunkite `false`, kai norėsite vėl įjungti maršrutus. */
-export const NAV_HEADER_URLS_DISABLED = true;
+export const NAV_HEADER_URLS_DISABLED = false;
 
 function navAnchorAttrs(
   href: string
@@ -308,7 +310,7 @@ function ResursaiPanel({
               Viskas vienoje vietoje: mokomoji medžiaga, praktiniai failai ir partneriams aktuali informacija.
             </p>
             <a
-              {...navAnchorAttrs('#')}
+              {...navAnchorAttrs('/resursai')}
               className="inline-flex items-center no-underline hover:opacity-60 transition-opacity duration-200"
               style={{ ...NAV_FONT, fontSize: '13px', fontWeight: 500, color: '#EFE8DB' }}
             >
@@ -382,10 +384,10 @@ function MobileMenu({ open }: { open: boolean }) {
         {[
           { label: 'Prekių ženklai', href: '/prekiu-zenklai' },
           { label: 'Akademija', href: '/akademija' },
-          { label: 'Partnerystė', href: '/tapkite-partneriu' },
+          { label: 'Partnerystė', href: '/partneryste' },
           { label: 'Apie Unicos', href: '/apie-unicos' },
           { label: 'Kontaktai', href: '/kontaktai' },
-          { label: 'Resursai', href: '#' },
+          { label: 'Resursai', href: '/resursai' },
         ].map((item) => (
           <a
             key={item.label}
@@ -638,7 +640,7 @@ export function NavigationBarSection({
             {/* Plain links */}
             {[
               { label: 'Akademija', href: '/akademija' },
-              { label: 'Partnerystė', href: '/tapkite-partneriu' },
+              { label: 'Partnerystė', href: '/partneryste' },
               { label: 'Apie Unicos', href: '/apie-unicos' },
             ].map((item) => (
               <a

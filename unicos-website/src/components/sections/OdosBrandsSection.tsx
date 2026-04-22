@@ -207,7 +207,7 @@ export function OdosBrandsSection({
                 imageSrc={card.image}
                 imageAlt={card.title}
                 badge={DEFAULT_BADGE}
-                ctaHref="/prekiu-zenklai"
+                ctaHref="/prekiu-zenklai/guinot"
                 ctaLabel="Sužinokite daugiau"
                 ctaVariant="secondary"
                 meta={

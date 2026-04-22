@@ -68,7 +68,7 @@ const events: EventCardData[] = [
     role: 'Dermatovenerologė',
     speakerAvatar: SPEAKER_AVATAR,
     price: '49 €',
-    href: '/akademija/renginiai/evt-1',
+    href: '/akademija/neostrata-pilingai',
     image: '/mega-menu/1.jpeg',
   },
   {
@@ -84,7 +84,7 @@ const events: EventCardData[] = [
     role: 'Guinot trenerė',
     speakerAvatar: SPEAKER_AVATAR,
     price: 'Nemokama',
-    href: '/akademija/renginiai/evt-2',
+    href: '/akademija/neostrata-pilingai',
     image: '/mega-menu/2.jpeg',
   },
   {
@@ -101,7 +101,7 @@ const events: EventCardData[] = [
     role: 'Verslo konsultantas',
     speakerAvatar: SPEAKER_AVATAR,
     price: '29 €',
-    href: '/akademija/renginiai/evt-3',
+    href: '/akademija/neostrata-pilingai',
     image: '/mega-menu/3.jpeg',
   },
 ];

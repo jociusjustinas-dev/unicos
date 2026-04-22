@@ -72,7 +72,7 @@ export const AKADEMIJA_EVENTS: AkademijaEvent[] = [
     statusMuted: true,
     price: '49 €',
     imageSrc: '/mega-menu/1.jpeg',
-    href: '/kontaktai',
+    href: '/akademija/neostrata-pilingai',
   },
   {
     id: 'evt-2',
@@ -91,7 +91,7 @@ export const AKADEMIJA_EVENTS: AkademijaEvent[] = [
     statusTone: 'green',
     price: 'Nemokama',
     imageSrc: '/mega-menu/2.jpeg',
-    href: '/kontaktai',
+    href: '/akademija/neostrata-pilingai',
   },
   {
     id: 'evt-3',
@@ -111,7 +111,7 @@ export const AKADEMIJA_EVENTS: AkademijaEvent[] = [
     statusTone: 'green',
     price: '29 €',
     imageSrc: '/mega-menu/3.jpeg',
-    href: '/kontaktai',
+    href: '/akademija/neostrata-pilingai',
   },
   {
     id: 'evt-4',
@@ -131,7 +131,7 @@ export const AKADEMIJA_EVENTS: AkademijaEvent[] = [
     statusMuted: true,
     price: '79 €',
     imageSrc: '/mega-menu/4.jpeg',
-    href: '/kontaktai',
+    href: '/akademija/neostrata-pilingai',
   },
 ];
 

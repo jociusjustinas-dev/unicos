@@ -54,7 +54,7 @@ export const PREKIU_ZENKLAI_BRANDS: readonly PrekiuZenklaiBrandCard[] = [
     country: 'JAV',
     imageSrc: '/mega-menu/2.jpeg',
     imageAlt: 'Neostrata produktai',
-    href: '#',
+    href: '/prekiu-zenklai/guinot',
   },
   {
     id: 'mary-cohr',
@@ -68,7 +68,7 @@ export const PREKIU_ZENKLAI_BRANDS: readonly PrekiuZenklaiBrandCard[] = [
     country: 'Prancūzija',
     imageSrc: '/mega-menu/3.jpeg',
     imageAlt: 'Mary Cohr procedūros salone',
-    href: '#',
+    href: '/prekiu-zenklai/guinot',
   },
   {
     id: 'anna-lotan',
@@ -81,7 +81,7 @@ export const PREKIU_ZENKLAI_BRANDS: readonly PrekiuZenklaiBrandCard[] = [
     country: 'Izraelis',
     imageSrc: '/Female_hands_applying_202604110815.jpeg',
     imageAlt: 'Anna Lotan odos priežiūra',
-    href: '#',
+    href: '/prekiu-zenklai/guinot',
   },
   {
     id: 'fillmed',
@@ -94,7 +94,7 @@ export const PREKIU_ZENKLAI_BRANDS: readonly PrekiuZenklaiBrandCard[] = [
     country: 'Prancūzija',
     imageSrc: '/mega-menu/4.jpeg',
     imageAlt: 'Fillmed estetinė medicina',
-    href: '#',
+    href: '/prekiu-zenklai/guinot',
   },
   {
     id: 'caregen',
@@ -107,7 +107,7 @@ export const PREKIU_ZENKLAI_BRANDS: readonly PrekiuZenklaiBrandCard[] = [
     country: 'Pietų Korėja',
     imageSrc: '/plaukai.jpg',
     imageAlt: 'Caregen peptidiniai sprendimai',
-    href: '#',
+    href: '/prekiu-zenklai/guinot',
   },
   {
     id: 'exuviance',
@@ -120,7 +120,7 @@ export const PREKIU_ZENKLAI_BRANDS: readonly PrekiuZenklaiBrandCard[] = [
     country: 'JAV',
     imageSrc: '/estetines.jpg',
     imageAlt: 'Exuviance dermatologinė kosmetika',
-    href: '#',
+    href: '/prekiu-zenklai/guinot',
   },
 ] as const;
 
