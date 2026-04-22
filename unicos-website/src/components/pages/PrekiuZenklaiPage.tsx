@@ -175,8 +175,6 @@ export function PrekiuZenklaiPage() {
         quote={SPOTLIGHT_QUOTE}
         authorName="Dr. Ieva Kazlauskienė"
         authorMeta="Dermatovenerologė, Vilnius"
-        portraitSrc="/Female_hands_applying_202604110815.jpeg"
-        portraitAlt="Dr. Ieva Kazlauskienė"
       />
 
       <CmsGridSection />

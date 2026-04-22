@@ -176,9 +176,6 @@ export function PrekiuZenklaiBrandLandingPage({ config }: { config: PrekiuZenkla
         quote={config.spotlight.quote}
         authorName={config.spotlight.authorName}
         authorMeta={config.spotlight.authorMeta}
-        portraitSrc={config.spotlight.portraitSrc}
-        portraitAlt={config.spotlight.portraitAlt}
-        footnote=""
       />
 
       <CmsGridSection trainings={config.trainings} />

@@ -187,9 +187,6 @@ export function SprendimaiSolutionLandingPage({ config }: { config: SprendimaiSo
         quote={config.spotlight.quote}
         authorName={config.spotlight.authorName}
         authorMeta={config.spotlight.authorMeta}
-        portraitSrc={config.spotlight.portraitSrc}
-        portraitAlt={config.spotlight.portraitAlt}
-        footnote={config.spotlight.footnote}
       />
       <CmsGridSection />
       <FaqSection backgroundClassName="bg-[#EFE8DB]" accent="maroon" />

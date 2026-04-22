@@ -14,11 +14,12 @@ const defaultQuote =
 const defaultAuthorName = 'Dr. Ieva Kazlauskienė';
 const defaultAuthorMeta = 'Dermatovenerologė, Vilnius';
 
-const defaultPortraitSrc = '/mega-menu/3.jpeg';
+/** Home atsiliepimų sekcijos portretas — naudojamas visur tas pats žmogaus įvaizdis. */
+const defaultPortraitSrc = '/testimonials-photo.png';
 const defaultPortraitAlt = 'Dr. Ieva Kazlauskienė';
 
-const defaultFootnote =
-  'Portretinė partnerio ar kliento nuotrauka — citatai patikimumas ir žmogiškumas.';
+/** Paaiškinimo tekstas po foto buvo panaikintas globaliai; paliekama galimybė perrašyti. */
+const defaultFootnote = '';
 
 function useInViewOnce(threshold = 0.1) {
   const ref = React.useRef<HTMLDivElement>(null);

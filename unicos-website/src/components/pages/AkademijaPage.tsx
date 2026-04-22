@@ -30,9 +30,6 @@ export function AkademijaPage() {
         quote={SPOTLIGHT_QUOTE}
         authorName="Dr. Ieva Kazlauskienė"
         authorMeta="Dermatovenerologė, Vilnius"
-        portraitSrc="/Female_hands_applying_202604110815.jpeg"
-        portraitAlt="Dr. Ieva Kazlauskienė"
-        footnote=""
       />
 
       <FaqSection backgroundClassName="bg-[#EFE8DB]" accent="maroon" faqEntries={AKADEMIJA_FAQ_ENTRIES} faqIntro={AKADEMIJA_FAQ_INTRO} />
