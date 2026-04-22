@@ -203,10 +203,10 @@ export default function ResursaiPage() {
         </Shell>
       </section>
 
-      <section id="resursai-turinys" className="py-16 min-[768px]:py-24">
+      <section id="resursai-turinys" className="relative py-16 min-[768px]:py-24">
         <Shell>
-          <div className="relative isolate overflow-hidden">
-            <div className="grid grid-cols-1 gap-4 min-[992px]:grid-cols-3 min-[768px]:grid-cols-2">
+          <div className="relative isolate">
+            <div className="relative z-[1] grid grid-cols-1 gap-4 min-[992px]:grid-cols-3 min-[768px]:grid-cols-2">
             {resources.map((card, idx) => {
               const badgeClass =
                 card.access === 'NEMOKAMA'
@@ -269,19 +269,27 @@ export default function ResursaiPage() {
             })}
             </div>
 
-            {/* Paywall: store „stiklo“+tamsinimas ant kortelių, tekstas ant vientiso tamsaus bloko (skaitoma). */}
+            {/**
+             * Paywall: pilno pločio (edge-to-edge) haze sluoksnis ant korteliu tinklelio,
+             * dengiantis kraštus ir blukinant viduryje. Centre — tvarkingas tamsus
+             * panelis su H2 ir CTA.
+             */}
             <div
-              className="absolute inset-x-0 bottom-0 z-[2] flex min-h-[min(520px,70%)] flex-col justify-end min-[768px]:min-h-[min(440px,58%)]"
+              className="pointer-events-none absolute inset-0 z-[2]"
               role="region"
               aria-label="Pilna metodinė bazė skirta partneriams"
             >
               <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f120f] via-[#0f120f]/88 to-[#0f120f]/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-2xl backdrop-saturate-100"
                 aria-hidden
+                className="absolute top-0 bottom-0 left-1/2 w-screen -translate-x-1/2 backdrop-blur-xl backdrop-saturate-110"
+                style={{
+                  backgroundImage:
+                    'radial-gradient(ellipse 70% 85% at center, rgba(239,232,219,0.22) 0%, rgba(239,232,219,0.72) 45%, rgba(239,232,219,0.95) 75%, rgba(239,232,219,1) 100%)',
+                }}
               />
 
-              <div className="relative z-[1] w-full border-t-2 border-[#EFE8DB]/25 bg-[#3B443A] px-4 py-8 shadow-[0_-20px_50px_rgba(0,0,0,0.45)] min-[768px]:px-10 min-[768px]:py-10">
-                <div className="mx-auto w-full max-w-[860px] text-center">
+              <div className="absolute inset-0 flex items-center justify-center px-6 max-[767px]:px-4">
+                <div className="pointer-events-auto relative w-full max-w-[720px] border border-[#EFE8DB]/22 bg-[#3B443A] px-8 py-10 text-center text-[#EFE8DB] shadow-[0_24px_64px_rgba(26,16,16,0.35)] max-[767px]:px-6 max-[767px]:py-8">
                   <div
                     className="mx-auto flex h-12 w-12 items-center justify-center border border-solid border-[#EFE8DB]/40 bg-[#1A1010]/25 text-[#EFE8DB]"
                     style={{ ...BODY, fontSize: '18px', borderRadius: '999px' }}
@@ -289,13 +297,13 @@ export default function ResursaiPage() {
                     <SfLock size={20} strokeWidth={2.5} className="-mt-0.5" />
                   </div>
                   <h2
-                    className="m-0 mt-5 text-balance text-[#EFE8DB] [text-shadow:0_1px_2px_rgba(0,0,0,0.25)]"
+                    className="m-0 mt-5 text-balance text-[#EFE8DB]"
                     style={{ ...HEADING, fontSize: 'clamp(1.75rem, 3.2vw, 2.75rem)', lineHeight: 1.1, fontWeight: 400 }}
                   >
                     Norite pilnos metodinės bazės?
                   </h2>
                   <p
-                    className="m-0 mt-4 max-w-[58ch] text-[#EFE8DB] [text-shadow:0_1px_1px_rgba(0,0,0,0.2)] md:mx-auto"
+                    className="m-0 mx-auto mt-4 max-w-[58ch] text-[#EFE8DB]/85"
                     style={{ ...BODY, fontSize: '16px', lineHeight: 1.6 }}
                   >
                     Partneriams suteikiame prieigą prie išplėstinių protokolų, video mokymų medžiagos ir praktinių darbo sistemų, kurios atnaujinamos kas ketvirtį.
