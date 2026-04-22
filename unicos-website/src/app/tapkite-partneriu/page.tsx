@@ -59,7 +59,7 @@ export default function TapkitePartneriuPage() {
 
   return (
     <main className="bg-[#ECE2D3]">
-      <NavigationBarSection forceLightSurface logoOnly />
+      <NavigationBarSection logoOnly transparentStatic />
       <TapkitePartneriuHeroSection />
       <ResponsibleBeautySection
         eyebrowLabel={null}

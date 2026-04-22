@@ -420,9 +420,12 @@ function MobileMenu({ open }: { open: boolean }) {
 export function NavigationBarSection({
   forceLightSurface = false,
   logoOnly = false,
+  transparentStatic = false,
 }: {
   forceLightSurface?: boolean;
   logoOnly?: boolean;
+  /** Be fono, ne sticky, logo žaliai — dedamas virš hero, kurio fonas jau kreminis. */
+  transparentStatic?: boolean;
 }) {
   const [openDropdown, setOpenDropdown] = React.useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -431,7 +434,7 @@ export function NavigationBarSection({
   const lastScrollYRef = React.useRef(0);
   const closeTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const isMegaOpen = openDropdown !== null;
-  const useLightNavSurface = forceLightSurface || logoOnly || isMegaOpen || mobileOpen || hasScrolled;
+  const useLightNavSurface = !transparentStatic && (forceLightSurface || logoOnly || isMegaOpen || mobileOpen || hasScrolled);
 
   const clearCloseTimeout = React.useCallback(() => {
     if (closeTimeoutRef.current) {
@@ -496,9 +499,13 @@ export function NavigationBarSection({
 
   return (
     <div
-      className={`fixed inset-x-0 top-0 z-[999] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-        navVisible ? 'translate-y-0' : '-translate-y-full'
-      }`}
+      className={
+        transparentStatic
+          ? 'absolute inset-x-0 top-0 z-[999]'
+          : `fixed inset-x-0 top-0 z-[999] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              navVisible ? 'translate-y-0' : '-translate-y-full'
+            }`
+      }
     >
 
       {/* ------------------------------------------------------------------ */}
@@ -515,16 +522,36 @@ export function NavigationBarSection({
           <div className="flex items-center gap-3">
             {logoOnly ? (
               <a {...navAnchorAttrs('/')} className="no-underline flex items-start self-start">
-                <img
-                  src="/unicos-logo.svg"
-                  alt="Unicos"
-                  className="block h-16 w-auto max-[767px]:h-11 transition duration-300"
-                  style={{
-                    filter: useLightNavSurface
-                      ? 'invert(12%) sepia(43%) saturate(1442%) hue-rotate(321deg) brightness(95%) contrast(95%)'
-                      : 'brightness(0) invert(1)',
-                  }}
-                />
+                {transparentStatic ? (
+                  <span
+                    aria-label="Unicos"
+                    role="img"
+                    className="block h-16 max-[767px]:h-11"
+                    style={{
+                      width: '184px',
+                      backgroundColor: '#3B443A',
+                      WebkitMaskImage: 'url("/unicos-logo.svg")',
+                      WebkitMaskRepeat: 'no-repeat',
+                      WebkitMaskPosition: 'left center',
+                      WebkitMaskSize: 'contain',
+                      maskImage: 'url("/unicos-logo.svg")',
+                      maskRepeat: 'no-repeat',
+                      maskPosition: 'left center',
+                      maskSize: 'contain',
+                    }}
+                  />
+                ) : (
+                  <img
+                    src="/unicos-logo.svg"
+                    alt="Unicos"
+                    className="block h-16 w-auto max-[767px]:h-11 transition duration-300"
+                    style={{
+                      filter: useLightNavSurface
+                        ? 'invert(12%) sepia(43%) saturate(1442%) hue-rotate(321deg) brightness(95%) contrast(95%)'
+                        : 'brightness(0) invert(1)',
+                    }}
+                  />
+                )}
               </a>
             ) : (
               <>

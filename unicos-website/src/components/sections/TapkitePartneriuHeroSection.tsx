@@ -247,33 +247,28 @@ export function TapkitePartneriuHeroSection() {
           {/* LEFT COLUMN */}
           <div className="flex flex-col justify-between items-start gap-12 max-w-[564px] max-[991px]:flex-row max-[991px]:justify-between max-[991px]:items-end max-[991px]:max-w-none max-[767px]:flex-col max-[767px]:justify-between max-[767px]:items-start max-[767px]:gap-8">
             <div ref={topRef} style={topStyle} className="flex flex-col items-start gap-6 max-[767px]:gap-4 transition-all duration-700 ease-out max-[991px]:max-w-[448px] max-[479px]:max-w-[364px]">
-              <div
-                className="flex items-center justify-center px-2 py-1 bg-[#EFE8DB]"
-                style={{ borderRadius: '0px' }}
-              >
-                <span
-                  className="uppercase"
-                  style={{ ...LABEL, color: '#1A1010', fontSize: '10px', lineHeight: '12px', fontWeight: 400, letterSpacing: '0.75px' }}
-                >
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
+                <span className="uppercase text-[#3B443A]" style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}>
                   Tapkite partneriu
                 </span>
               </div>
 
               <h1
-                className="m-0 z-[1] max-[767px]:text-[44px] max-[767px]:leading-[48px] max-[767px]:tracking-[-2px] text-[#64151F]"
+                className="m-0 z-[1] text-[#3B443A]"
                 style={{
                   fontFamily: "'Quiche Sans', Georgia, serif",
-                  fontSize: 'clamp(2.4rem, 5.2vw, 4.6rem)',
-                  lineHeight: 1.05,
+                  fontSize: 'clamp(1.85rem, 3.4vw, 2.75rem)',
+                  lineHeight: 1.1,
                   fontWeight: 300,
-                  letterSpacing: '-0.03em',
+                  letterSpacing: '-0.02em',
                 }}
               >
                 Jūsų augimo partnerystė prasideda čia.
               </h1>
 
               <p
-                className="m-0 max-[767px]:text-base max-[767px]:leading-6 text-[#1A1010]/78"
+                className="m-0 max-[767px]:text-base max-[767px]:leading-6 text-[#3B443A]/80"
                 style={{ ...BODY, fontSize: '16px', lineHeight: 1.55, fontWeight: 400 }}
               >
                 Užpildykite paraišką ir per 24 valandas gaukite asmeninį vadybininko skambutį. Jokių įsipareigojimų — tik pokalbis apie Jūsų tikslus.
@@ -285,8 +280,8 @@ export function TapkitePartneriuHeroSection() {
                   'Startas nuo: 150 €',
                   'Be ilgalaikių įsipareigojimų',
                 ].map((b) => (
-                  <div key={b} className="flex items-start gap-2 text-[#1A1010]/86">
-                    <SfCheckboxCheck size={16} className="mt-[1px] text-[#64151F] shrink-0" aria-hidden />
+                  <div key={b} className="flex items-start gap-2 text-[#3B443A]/90">
+                    <SfCheckboxCheck size={16} className="mt-[1px] text-[#3B443A] shrink-0" aria-hidden />
                     <span style={{ ...BODY, fontSize: '14px', lineHeight: '1.35', fontWeight: 400 }}>{b}</span>
                   </div>
                 ))}
