@@ -178,24 +178,29 @@ export function FooterSection({
               links={[
                 { label: 'Prekių ženklai', href: '/prekiu-zenklai' },
                 { label: 'Akademija', href: '/akademija' },
-                { label: 'Sprendimai', href: '/sprendimai/odos-specialistams' },
-                { label: 'Platforma', href: '#' },
-              ]}
-            />
-            <FooterColumn
-              title="Pagalba"
-              links={[
-                { label: 'Mokymai', href: '/akademija#mokymu-kalendorius' },
-                { label: 'Logistika', href: '#' },
-                { label: 'D.U.K.', href: '#duk' },
-                { label: 'Privatumas', href: '#' },
-                { label: 'Taisyklės', href: '#' },
+                { label: 'Partnerystė', href: '/partneryste' },
+                { label: 'Apie UNICOS', href: '/apie-unicos' },
+                { label: 'Resursai', href: '/resursai' },
+                { label: 'Kontaktai', href: '/kontaktai' },
               ]}
             />
             <FooterColumn
               title="Sprendimai"
               links={[
                 { label: 'Odos priežiūros specialistams', href: '/sprendimai/odos-specialistams' },
+                { label: 'Plaukų priežiūros specialistams', href: '/sprendimai/plauku-prieziuros-specialistams' },
+                { label: 'Estetinės medicinos klinikoms', href: '/sprendimai/estetines-medicinos-klinikoms' },
+                { label: 'Vaistinėms ir farmacijos specialistams', href: '/sprendimai/vaistinems-ir-farmacijos-specialistams' },
+              ]}
+            />
+            <FooterColumn
+              title="Pagalba"
+              links={[
+                { label: 'Tapkite partneriu', href: '/tapkite-partneriu' },
+                { label: 'Mokymai', href: '/akademija' },
+                { label: 'D.U.K.', href: '/akademija#duk' },
+                { label: 'Privatumo politika', href: '#' },
+                { label: 'Taisyklės', href: '#' },
               ]}
             />
           </div>
