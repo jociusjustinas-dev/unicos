@@ -70,7 +70,7 @@ function BentoTile({
 
   return (
     <div
-      className={`flex min-h-0 flex-col items-start gap-4 border p-6 max-[767px]:p-5 ${surface} ${className}`.trim()}
+      className={`flex min-h-0 flex-col items-start justify-between gap-6 border p-6 max-[767px]:p-5 ${surface} ${className}`.trim()}
       style={{ borderRadius: '0px' }}
     >
       <div
@@ -81,7 +81,7 @@ function BentoTile({
           <Icon size={22} strokeWidth={1.75} className="overflow-visible" aria-hidden />
         </span>
       </div>
-      <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+      <div className="flex min-w-0 flex-col gap-1.5">
         <h3 className={`m-0 ${titleC}`} style={{ ...BODY, fontSize: '15px', lineHeight: '1.35', fontWeight: 500 }}>
           {card.title}
         </h3>
