@@ -304,9 +304,9 @@ export default function ResursaiPage() {
               />
 
               <div className="absolute inset-x-0 top-[58%] flex -translate-y-1/2 justify-center px-6 max-[767px]:top-[62%] max-[767px]:px-4">
-                <div className="pointer-events-auto relative w-full max-w-[720px] border border-[#EFE8DB]/22 bg-[#3B443A] px-8 py-10 text-center text-[#EFE8DB] shadow-[0_24px_64px_rgba(26,16,16,0.35)] max-[767px]:px-6 max-[767px]:py-8">
+                <div className="pointer-events-auto relative w-full max-w-[960px] border border-[#EFE8DB]/20 bg-[#64151F] px-10 py-12 text-center text-[#EFE8DB] shadow-[0_28px_72px_rgba(26,16,16,0.4)] max-[767px]:px-6 max-[767px]:py-10">
                   <div
-                    className="mx-auto flex h-12 w-12 items-center justify-center border border-solid border-[#EFE8DB]/40 bg-[#1A1010]/25 text-[#EFE8DB]"
+                    className="mx-auto flex h-12 w-12 items-center justify-center border border-solid border-[#EFE8DB]/45 bg-[#1A1010]/25 text-[#EFE8DB]"
                     style={{ ...BODY, fontSize: '18px', borderRadius: '999px' }}
                   >
                     <SfLock size={20} strokeWidth={2.5} className="-mt-0.5" />
@@ -318,13 +318,13 @@ export default function ResursaiPage() {
                     Norite pilnos metodinės bazės?
                   </h2>
                   <p
-                    className="m-0 mx-auto mt-4 max-w-[58ch] text-[#EFE8DB]/85"
+                    className="m-0 mx-auto mt-4 max-w-[58ch] text-[#EFE8DB]/88"
                     style={{ ...BODY, fontSize: '16px', lineHeight: 1.6 }}
                   >
                     Partneriams suteikiame prieigą prie išplėstinių protokolų, video mokymų medžiagos ir praktinių darbo sistemų, kurios atnaujinamos kas ketvirtį.
                   </p>
                   <div className="mt-7 flex flex-wrap justify-center gap-4">
-                    <CtaLink href="/tapkite-partneriu" variant="primary" className="justify-center px-6">
+                    <CtaLink href="/tapkite-partneriu" variant="lightFill" className="justify-center px-6">
                       Tapti partneriu
                     </CtaLink>
                     <CtaLink href="/kontaktai" variant="outlineLight" className="justify-center px-6">
