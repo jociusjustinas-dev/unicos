@@ -40,8 +40,12 @@ export function ParallaxImage({
     const apply = () => {
       const rect = parent.getBoundingClientRect();
       const vh = window.innerHeight || 1;
-      const progress = -rect.top / vh;
-      el.style.transform = `translateY(${progress * distance}px)`;
+      /** Progress 0..1 — kada elementas keliauja per viewport'ą. Klampavimas neišpainioja ribų. */
+      const raw = (vh - rect.top) / (vh + rect.height);
+      const progress = Math.max(0, Math.min(1, raw));
+      /** Centruojame diapazoną ties 0, kad juda vienodai į abi puses nuo vidurio. */
+      const shift = (progress - 0.5) * distance;
+      el.style.transform = `translate3d(0, ${shift}px, 0)`;
     };
 
     const onScrollOrResize = () => {
@@ -62,6 +66,19 @@ export function ParallaxImage({
     };
   }, [distance]);
 
+  /**
+   * Papildomas „overscan“ vertikaliai (viršuje ir apačioje po `distance`), kad
+   * translate'as niekada neatvertų tėvo fono — viską uždengia pats vaizdas.
+   */
+  const overscanStyle: React.CSSProperties = {
+    top: `-${distance}px`,
+    bottom: `-${distance}px`,
+    left: 0,
+    right: 0,
+    height: `calc(100% + ${distance * 2}px)`,
+    width: '100%',
+  };
+
   if (asImage) {
     return (
       <img
@@ -71,8 +88,8 @@ export function ParallaxImage({
         src={src}
         alt={alt}
         loading={loading}
-        className={`absolute inset-0 h-full w-full object-cover will-change-transform ${className}`.trim()}
-        style={{ objectPosition }}
+        className={`absolute object-cover will-change-transform ${className}`.trim()}
+        style={{ ...overscanStyle, objectPosition }}
       />
     );
   }
@@ -84,8 +101,8 @@ export function ParallaxImage({
       }}
       role="img"
       aria-label={alt || undefined}
-      className={`absolute inset-0 h-full w-full bg-cover will-change-transform ${className}`.trim()}
-      style={{ backgroundImage: `url("${src}")`, backgroundPosition: objectPosition }}
+      className={`absolute bg-cover will-change-transform ${className}`.trim()}
+      style={{ ...overscanStyle, backgroundImage: `url("${src}")`, backgroundPosition: objectPosition }}
     />
   );
 }
