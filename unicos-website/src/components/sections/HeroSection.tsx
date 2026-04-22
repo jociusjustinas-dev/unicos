@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { SfSparkles } from '@/components/icons/feather';
 import { CtaLink } from '@/components/ui/CtaLink';
+import { usePreloaderEntrance } from '@/hooks/usePreloaderEntrance';
 
 export function HeroSection() {
   const headlineRef = React.useRef<HTMLDivElement>(null);
@@ -26,27 +27,17 @@ export function HeroSection() {
   const blockTopRightRef = React.useRef<HTMLDivElement>(null);
   const blockBottomRef = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    const timers: Array<ReturnType<typeof setTimeout>> = [];
-
-    const runEntrance = () => {
-      timers.push(setTimeout(() => setHeadlineVisible(true), 0));
-      timers.push(setTimeout(() => setAvatar1Visible(true), 120));
-      timers.push(setTimeout(() => setAvatar2Visible(true), 220));
-      timers.push(setTimeout(() => setAvatar3Visible(true), 320));
-      timers.push(setTimeout(() => setAvatar4Visible(true), 420));
-      timers.push(setTimeout(() => setTrustTextVisible(true), 520));
-      timers.push(setTimeout(() => setGridVisible(true), 160));
-    };
-
-    const onPreloaderDone = () => runEntrance();
-    window.addEventListener('preloader:done', onPreloaderDone);
-
-    return () => {
-      window.removeEventListener('preloader:done', onPreloaderDone);
-      timers.forEach((t) => clearTimeout(t));
-    };
+  const runEntrance = React.useCallback(() => {
+    setTimeout(() => setHeadlineVisible(true), 0);
+    setTimeout(() => setAvatar1Visible(true), 120);
+    setTimeout(() => setAvatar2Visible(true), 220);
+    setTimeout(() => setAvatar3Visible(true), 320);
+    setTimeout(() => setAvatar4Visible(true), 420);
+    setTimeout(() => setTrustTextVisible(true), 520);
+    setTimeout(() => setGridVisible(true), 160);
   }, []);
+
+  usePreloaderEntrance(runEntrance, 1500);
 
   React.useEffect(() => {
     let rafId = 0;

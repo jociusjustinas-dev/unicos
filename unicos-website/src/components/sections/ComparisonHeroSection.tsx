@@ -1,6 +1,7 @@
 'use client';
 import * as React from 'react';
 import { CtaLink } from '@/components/ui/CtaLink';
+import { usePreloaderEntrance } from '@/hooks/usePreloaderEntrance';
 
 export function ComparisonHeroSection() {
   const eyebrowRef = React.useRef<HTMLDivElement>(null);
@@ -13,24 +14,15 @@ export function ComparisonHeroSection() {
   const [videoVisible, setVideoVisible] = React.useState(false);
   const [lineVisible, setLineVisible] = React.useState(false);
 
-  React.useEffect(() => {
-    const timers: Array<ReturnType<typeof setTimeout>> = [];
-    const runEntrance = () => {
-      timers.push(setTimeout(() => setVideoVisible(true), 0));
-      timers.push(setTimeout(() => setEyebrowVisible(true), 120));
-      timers.push(setTimeout(() => setCenterVisible(true), 260));
-      timers.push(setTimeout(() => setBottomVisible(true), 420));
-      timers.push(setTimeout(() => setLineVisible(true), 520));
-    };
-
-    const onPreloaderDone = () => runEntrance();
-    window.addEventListener('preloader:done', onPreloaderDone);
-
-    return () => {
-      window.removeEventListener('preloader:done', onPreloaderDone);
-      timers.forEach((t) => clearTimeout(t));
-    };
+  const runEntrance = React.useCallback(() => {
+    setTimeout(() => setVideoVisible(true), 0);
+    setTimeout(() => setEyebrowVisible(true), 120);
+    setTimeout(() => setCenterVisible(true), 260);
+    setTimeout(() => setBottomVisible(true), 420);
+    setTimeout(() => setLineVisible(true), 520);
   }, []);
+
+  usePreloaderEntrance(runEntrance, 1500);
 
   return (
     <section className="sticky top-0 z-[1] w-full h-screen min-h-screen overflow-hidden bg-[#1A1010]">

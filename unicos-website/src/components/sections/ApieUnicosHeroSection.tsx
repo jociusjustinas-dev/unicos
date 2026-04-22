@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
+import { usePreloaderEntrance } from '@/hooks/usePreloaderEntrance';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -33,20 +34,12 @@ export function ApieUnicosHeroSection() {
   const [headlineLoaded, setHeadlineLoaded] = React.useState(false);
   const [marqueeLoaded, setMarqueeLoaded] = React.useState(false);
 
-  React.useEffect(() => {
-    const timers: Array<ReturnType<typeof setTimeout>> = [];
-    const runEntrance = () => {
-      timers.push(setTimeout(() => setHeadlineLoaded(true), 80));
-      timers.push(setTimeout(() => setMarqueeLoaded(true), 260));
-    };
-
-    const onPreloaderDone = () => runEntrance();
-    window.addEventListener('preloader:done', onPreloaderDone);
-    return () => {
-      window.removeEventListener('preloader:done', onPreloaderDone);
-      timers.forEach((t) => clearTimeout(t));
-    };
+  const runEntrance = React.useCallback(() => {
+    setTimeout(() => setHeadlineLoaded(true), 80);
+    setTimeout(() => setMarqueeLoaded(true), 260);
   }, []);
+
+  usePreloaderEntrance(runEntrance, 1500);
 
   const headlineVisible = headlineLoaded || headlineInView;
   const marqueeVisible = marqueeLoaded || marqueeInView;

@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { CtaLink } from '@/components/ui/CtaLink';
+import { usePreloaderEntrance } from '@/hooks/usePreloaderEntrance';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -41,9 +42,6 @@ export function PrekiuZenklaiHeroSection() {
       revealTimersRef.current = [];
     };
 
-    const onPreloaderDone = () => runRevealOnce();
-    window.addEventListener('preloader:done', onPreloaderDone);
-
     const el = blockRef.current;
     let obs: IntersectionObserver | null = null;
     if (el) {
@@ -60,20 +58,12 @@ export function PrekiuZenklaiHeroSection() {
     }
 
     return () => {
-      window.removeEventListener('preloader:done', onPreloaderDone);
       obs?.disconnect();
       clearRevealTimers();
     };
   }, [runRevealOnce]);
 
-  /** Jei `preloader:done` jau iššoko prieš mount arba IO nepasileidžia — nepaliekame tuščio hero. */
-  React.useEffect(() => {
-    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return;
-    }
-    const id = window.setTimeout(() => runRevealOnce(), 2000);
-    return () => window.clearTimeout(id);
-  }, [runRevealOnce]);
+  usePreloaderEntrance(runRevealOnce, 2000);
 
   const reveal = (visible: boolean) =>
     visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 motion-reduce:opacity-100 motion-reduce:translate-y-0';

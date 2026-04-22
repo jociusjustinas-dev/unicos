@@ -15,10 +15,7 @@ export function Preloader() {
 
     if (hasSeen) {
       setVisible(false);
-      /** Kitaip `preloader:done` iššoka iki `useEffect` vaikams (hero ir pan.) — po refresh jie negauna įvykio. */
-      window.setTimeout(() => {
-        window.dispatchEvent(new Event('preloader:done'));
-      }, 0);
+      window.dispatchEvent(new Event('preloader:done'));
       return;
     }
 
