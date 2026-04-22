@@ -193,21 +193,24 @@ export function TapkitePartneriuHeroSection() {
     opacity: topVisible ? 1 : 0,
     filter: topVisible ? 'blur(0px)' : 'blur(12px)',
     transform: topVisible ? 'translateY(0)' : 'translateY(18px)',
-    transition: 'opacity 0.7s ease-out, filter 0.7s ease-out, transform 0.7s ease-out',
+    transition:
+      'opacity 0.7s cubic-bezier(0.22,1,0.36,1), filter 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)',
   };
 
   const testimonialStyle: React.CSSProperties = {
     opacity: testimonialVisible ? 1 : 0,
     filter: testimonialVisible ? 'blur(0px)' : 'blur(12px)',
-    transform: testimonialVisible ? 'translateY(18px)' : 'translateY(18px)',
-    transition: 'opacity 0.7s ease-out, filter 0.7s ease-out, transform 0.7s ease-out',
+    transform: testimonialVisible ? 'translateY(0)' : 'translateY(18px)',
+    transition:
+      'opacity 0.7s cubic-bezier(0.22,1,0.36,1), filter 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)',
   };
 
   const formStyle: React.CSSProperties = {
     opacity: formVisible ? 1 : 0,
     filter: formVisible ? 'blur(0px)' : 'blur(12px)',
     transform: formVisible ? 'translateY(0)' : 'translateY(18px)',
-    transition: 'opacity 0.7s ease-out, filter 0.7s ease-out, transform 0.7s ease-out',
+    transition:
+      'opacity 0.7s cubic-bezier(0.22,1,0.36,1), filter 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)',
   };
 
   const testimonial = {
@@ -224,7 +227,7 @@ export function TapkitePartneriuHeroSection() {
         <div className="grid grid-cols-2 gap-x-[min(8rem,6vw)] gap-y-16 max-[991px]:grid-cols-1 max-[991px]:gap-y-12 max-[767px]:gap-y-10">
           {/* LEFT COLUMN */}
           <div className="flex flex-col items-start gap-8 max-w-[564px] max-[991px]:max-w-none max-[991px]:flex-row max-[991px]:items-end max-[991px]:justify-between max-[767px]:flex-col max-[767px]:items-stretch max-[767px]:gap-6">
-            <div ref={topRef} style={topStyle} className="flex flex-col items-start gap-6 max-[767px]:gap-4 transition-all duration-700 ease-out max-[991px]:max-w-[448px] max-[479px]:max-w-[364px]">
+            <div ref={topRef} style={topStyle} className="flex flex-col items-start gap-6 max-[767px]:gap-4 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] max-[991px]:max-w-[448px] max-[479px]:max-w-[364px]">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
                 <span className="uppercase text-[#3B443A]" style={{ ...BODY, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em' }}>
@@ -269,7 +272,7 @@ export function TapkitePartneriuHeroSection() {
             <div
               ref={testimonialRef}
               style={testimonialStyle}
-              className="w-full transition-all duration-700 ease-out"
+              className="w-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
             >
               <div
                 className="flex flex-col gap-5 border border-[#3B443A]/18 bg-[#E8EDE9] p-6 text-[#3B443A] max-[767px]:p-5"
@@ -295,7 +298,7 @@ export function TapkitePartneriuHeroSection() {
           </div>
 
           {/* RIGHT COLUMN: FORM */}
-          <div ref={formRef} style={formStyle} className="transition-all duration-700 ease-out max-[991px]:w-full">
+          <div ref={formRef} style={formStyle} className="transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] max-[991px]:w-full">
             <div
               className="mb-0 border border-[#EFE8DB]/20 bg-[#3B443A] p-8 text-[#EFE8DB]/88 max-[767px]:p-6"
               style={{ borderRadius: '0px' }}

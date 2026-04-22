@@ -177,7 +177,8 @@ export function KontaktaiFormSection() {
               opacity: headlineVisible ? 1 : 0,
               filter: headlineVisible ? 'blur(0px)' : 'blur(12px)',
               transform: headlineVisible ? 'translateY(0)' : 'translateY(18px)',
-              transition: 'opacity 0.7s ease-out, filter 0.7s ease-out, transform 0.7s ease-out',
+              transition:
+                'opacity 0.7s cubic-bezier(0.22,1,0.36,1), filter 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)',
             }}
           >
             <div className="flex items-center gap-2">
@@ -206,7 +207,8 @@ export function KontaktaiFormSection() {
               opacity: formVisible ? 1 : 0,
               filter: formVisible ? 'blur(0px)' : 'blur(12px)',
               transform: formVisible ? 'translateY(0)' : 'translateY(18px)',
-              transition: 'opacity 0.7s ease-out, filter 0.7s ease-out, transform 0.7s ease-out',
+              transition:
+                'opacity 0.7s cubic-bezier(0.22,1,0.36,1), filter 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)',
             }}
           >
             {isSubmitted ? (

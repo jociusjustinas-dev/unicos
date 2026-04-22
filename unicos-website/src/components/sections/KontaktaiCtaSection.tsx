@@ -124,7 +124,7 @@ export function KontaktaiCtaSection() {
             style={{
               borderRadius: '0px',
               opacity: cardCVisible ? 1 : 0,
-              filter: cardCVisible ? 'blur(0px)' : 'blur(10px)',
+              filter: cardCVisible ? 'blur(0px)' : 'blur(12px)',
               transform: cardCVisible ? 'translateY(0)' : 'translateY(16px)',
               transition: 'opacity 0.7s ease-out 220ms, filter 0.7s ease-out 220ms, transform 0.7s ease-out 220ms',
             }}

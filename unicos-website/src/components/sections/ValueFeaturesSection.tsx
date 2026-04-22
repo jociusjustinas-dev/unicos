@@ -111,7 +111,7 @@ export function ValueFeaturesSection({
 
   const leftColumnStyle: React.CSSProperties = {
     opacity: sectionVisible ? 1 : 0,
-    filter: sectionVisible ? 'blur(0px)' : 'blur(10px)',
+    filter: sectionVisible ? 'blur(0px)' : 'blur(12px)',
     transform: sectionVisible ? 'translateY(0)' : 'translateY(18px)',
     transition: 'opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)',
   };
@@ -126,14 +126,14 @@ export function ValueFeaturesSection({
 
   const tabImageTransitionStyle: React.CSSProperties = {
     opacity: tabContentVisible ? 1 : 0,
-    filter: tabContentVisible ? 'blur(0px)' : 'blur(10px)',
+    filter: tabContentVisible ? 'blur(0px)' : 'blur(12px)',
     transform: tabContentVisible ? 'translateY(0)' : 'translateY(10px) scale(0.985)',
     transition: 'opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)',
   };
 
   const tabTextTransitionStyle: React.CSSProperties = {
     opacity: tabContentVisible ? 1 : 0,
-    filter: tabContentVisible ? 'blur(0px)' : 'blur(8px)',
+    filter: tabContentVisible ? 'blur(0px)' : 'blur(12px)',
     transform: tabContentVisible ? 'translateY(0)' : 'translateY(10px)',
     transition: 'opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1), filter 0.42s cubic-bezier(0.22, 1, 0.36, 1), transform 0.42s cubic-bezier(0.22, 1, 0.36, 1)',
     transitionDelay: tabContentVisible ? '35ms' : '0ms',

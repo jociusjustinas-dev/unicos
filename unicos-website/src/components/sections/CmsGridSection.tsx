@@ -273,7 +273,7 @@ function EventCardReveal({ card, registerLabel }: { card: EventCardData; registe
 
   const style: React.CSSProperties = {
     opacity: shouldRevealNow ? 1 : 0,
-    filter: shouldRevealNow ? 'blur(0px)' : 'blur(10px)',
+    filter: shouldRevealNow ? 'blur(0px)' : 'blur(12px)',
     transform: shouldRevealNow ? 'translateY(0)' : 'translateY(24px)',
     transition: `opacity 0.7s ${revealEase}, filter 0.7s ${revealEase}, transform 0.7s ${revealEase}`,
   };

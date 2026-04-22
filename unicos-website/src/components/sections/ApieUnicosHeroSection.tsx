@@ -54,7 +54,8 @@ export function ApieUnicosHeroSection() {
             opacity: headlineVisible ? 1 : 0,
             filter: headlineVisible ? 'blur(0px)' : 'blur(12px)',
             transform: headlineVisible ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'opacity 0.7s ease-out, filter 0.7s ease-out, transform 0.7s ease-out',
+            transition:
+              'opacity 0.7s cubic-bezier(0.22,1,0.36,1), filter 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)',
           }}
         >
           <div className="flex items-center gap-2">
@@ -109,7 +110,8 @@ export function ApieUnicosHeroSection() {
         style={{
           opacity: marqueeVisible ? 1 : 0,
           filter: marqueeVisible ? 'blur(0px)' : 'blur(12px)',
-          transition: 'opacity 0.7s ease-out 120ms, filter 0.7s ease-out 120ms',
+          transition:
+            'opacity 0.7s cubic-bezier(0.22,1,0.36,1) 120ms, filter 0.7s cubic-bezier(0.22,1,0.36,1) 120ms',
         }}
       >
         <div className="apie-unicos-marquee-track flex w-max items-stretch gap-4 max-[767px]:gap-3">

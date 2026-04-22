@@ -72,7 +72,7 @@ export function FaqSection({
 
   const panelStyle: React.CSSProperties = {
     opacity: visible ? 1 : 0,
-    filter: visible ? 'blur(0px)' : 'blur(10px)',
+    filter: visible ? 'blur(0px)' : 'blur(12px)',
     transform: visible ? 'translateY(0)' : 'translateY(16px)',
     transition: 'opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1)',
   };
@@ -172,7 +172,7 @@ export function FaqSection({
                   className="border-b border-solid border-[#1A1010]/20"
                   style={{
                     opacity: visible ? 1 : 0,
-                    filter: visible ? 'blur(0px)' : 'blur(8px)',
+                    filter: visible ? 'blur(0px)' : 'blur(12px)',
                     transform: visible ? 'translateY(0)' : 'translateY(14px)',
                     transition:
                       `opacity 0.58s cubic-bezier(0.22, 1, 0.36, 1) ${itemDelay}, ` +
