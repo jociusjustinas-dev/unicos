@@ -72,16 +72,15 @@ export function PrekiuZenklaiHeroSection() {
     <section className="relative z-[2] w-full bg-[#EFE8DB] pb-16 text-[#1A1010] max-[767px]:pb-12">
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         {/**
-         * Dviejų stulpelių išdėstymas desktop'e: kairėje — eyebrow + H1 + aprašymas;
-         * dešinėje — du CTA su `justify-between` (aukščiu tempiasi kartu su tekstu).
-         * Mobile / tablet — stack, kairinis lygiavimas.
+         * Desktop'e: kairėje — eyebrow + H1 + aprašymas; dešinėje — du CTA vienoje eilutėje
+         * (side-by-side). Mobile — stack, kairinis lygiavimas.
          */}
         <div
           ref={blockRef}
-          className="grid grid-cols-1 gap-12 pt-44 max-[767px]:pt-32 max-[479px]:pt-28 min-[768px]:grid-cols-[minmax(0,1fr)_auto] min-[768px]:items-stretch min-[768px]:gap-x-12 min-[992px]:gap-x-16"
+          className="flex flex-col gap-10 pt-44 max-[767px]:pt-32 max-[479px]:pt-28 min-[992px]:flex-row min-[992px]:items-end min-[992px]:justify-between min-[992px]:gap-16"
         >
           {/* LEFT: eyebrow + heading + paragraph */}
-          <div className="flex max-w-[760px] flex-col text-left">
+          <div className="flex min-w-0 max-w-[760px] flex-col text-left">
             <div className={`transition-all duration-700 ease-out ${reveal(labelVisible)}`}>
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 shrink-0 bg-[#64151F]" style={{ borderRadius: '0px' }} aria-hidden />
@@ -123,12 +122,12 @@ export function PrekiuZenklaiHeroSection() {
 
           {/* RIGHT: dviejų CTA blokų stulpelis su `justify-between`. */}
           <div
-            className={`flex w-full max-w-[280px] flex-col gap-8 transition-all duration-700 ease-out max-[767px]:mt-2 min-[768px]:max-w-[260px] min-[768px]:justify-between min-[768px]:gap-4 ${reveal(
+            className={`flex w-full flex-row flex-wrap items-start gap-4 transition-all duration-700 ease-out max-[767px]:mt-2 min-[992px]:w-auto min-[992px]:shrink-0 min-[992px]:flex-nowrap min-[992px]:items-end min-[992px]:gap-6 ${reveal(
               buttonsVisible
             )}`}
           >
             <div className="flex flex-col items-start gap-2.5">
-              <CtaLink href="/tapkite-partneriu" variant="primary" className="w-full min-w-[240px] justify-center">
+              <CtaLink href="/tapkite-partneriu" variant="primary" className="min-w-[220px] justify-center">
                 Tapti partneriu
               </CtaLink>
               <span
@@ -139,7 +138,7 @@ export function PrekiuZenklaiHeroSection() {
               </span>
             </div>
             <div className="flex flex-col items-start gap-2.5">
-              <CtaLink href="/kontaktai" variant="outline" className="w-full min-w-[240px] justify-center">
+              <CtaLink href="/kontaktai" variant="outline" className="min-w-[220px] justify-center">
                 Gauti konsultaciją
               </CtaLink>
               <span
