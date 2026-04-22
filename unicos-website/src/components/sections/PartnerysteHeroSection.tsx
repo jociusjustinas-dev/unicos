@@ -54,7 +54,7 @@ export function PartnerysteHeroSection() {
       <div className="relative z-[2] mx-auto w-full max-w-[1800px] px-16 max-[767px]:px-6 max-[479px]:px-4">
         <div
           ref={headlineRef}
-          className="mb-14 flex w-full max-w-[912px] flex-col gap-6 max-[767px]:mb-10 max-[767px]:gap-4"
+          className="mx-auto mb-14 flex w-full max-w-[912px] flex-col items-center gap-6 text-center max-[767px]:mb-10 max-[767px]:gap-4"
           style={{
             opacity: headlineVisible ? 1 : 0,
             filter: headlineVisible ? 'blur(0px)' : 'blur(12px)',
@@ -87,8 +87,8 @@ export function PartnerysteHeroSection() {
             padedantys Jūsų verslui klestėti kiekvieną dieną.
           </p>
 
-          <div className="flex w-full max-w-[640px] flex-col items-stretch gap-8 sm:flex-row sm:items-start sm:gap-10">
-            <div className="flex flex-1 flex-col items-start gap-2.5">
+          <div className="flex w-fit max-w-full flex-col items-center gap-6 sm:flex-row sm:items-start sm:gap-6">
+            <div className="flex flex-col items-center gap-2.5">
               <CtaLink href="/tapkite-partneriu" variant="primary">
                 Tapti partneriu
               </CtaLink>
@@ -97,7 +97,7 @@ export function PartnerysteHeroSection() {
               </span>
             </div>
 
-            <div className="flex flex-1 flex-col items-start gap-2.5">
+            <div className="flex flex-col items-center gap-2.5">
               <CtaLink href="/kontaktai" variant="outline">
                 Gauti konsultaciją
               </CtaLink>
