@@ -12,6 +12,7 @@ import { UnicosWhySection, type UnicosWhyBubble } from '@/components/sections/Un
 import { ValueFeaturesSection } from '@/components/sections/ValueFeaturesSection';
 import { BrandStatsMarqueeSection, type BrandStatsMarqueeItem } from '@/components/sections/BrandStatsMarqueeSection';
 import { ResponsibleBeautySection } from '@/components/sections/ResponsibleBeautySection';
+import { PartnerysteHeroSection } from '@/components/sections/PartnerysteHeroSection';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { HOME_PAGE_VALUE_FEATURE_IMAGES } from '@/config/homePageImages';
 import {
@@ -57,40 +58,7 @@ export default function PartnerystePage() {
   return (
     <main className="bg-[#EFE8DB] text-[#1A1010]">
       <NavigationBarSection forceLightSurface />
-      <section className="pt-40 pb-24 max-[767px]:pt-28 max-[767px]:pb-16 max-[479px]:pt-24">
-        <Container>
-          <div className="mx-auto flex max-w-[920px] flex-col items-center text-center">
-            <span className="inline-flex border border-solid border-[#64151F] bg-[#64151F] px-2 py-1 text-[#EFE8DB]" style={{ ...BODY, fontSize: '10px', fontWeight: 500, letterSpacing: '0.12em', borderRadius: '0px' }}>
-              PARTNERYSTE
-            </span>
-            <h1 className="m-0 mt-6 text-[#64151F]" style={{ ...HEADING, fontSize: 'clamp(2.4rem, 5vw, 4.5rem)', lineHeight: 1.02, fontWeight: 300 }}>
-              Augkime kartu.
-            </h1>
-            <p className="m-0 mt-5 max-w-[760px] text-[#1A1010]/80" style={{ ...BODY, fontSize: '17px', lineHeight: 1.65 }}>
-              UNICOS partneryste - tai ne tik produktu tiekimas. Tai asmeninis palaikymas, zinios ir irankiai, padedantys Jusu verslui klesteti kiekviena diena.
-            </p>
-
-            <div className="mt-8 flex w-full max-w-[640px] flex-col items-stretch justify-center gap-6 sm:flex-row sm:items-start sm:justify-center sm:gap-8">
-              <div className="flex flex-col items-center gap-2.5 sm:items-start">
-                <CtaLink href="/tapkite-partneriu" variant="primary" className="min-w-[240px] justify-center">
-                  Tapti partneriu
-                </CtaLink>
-                <span className="uppercase text-[#1A1010]/52" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}>
-                  Patvirtinimas per 24 val.
-                </span>
-              </div>
-              <div className="flex flex-col items-center gap-2.5 sm:items-start">
-                <CtaLink href="/kontaktai" variant="outline" className="min-w-[240px] justify-center">
-                  Gauti konsultacija
-                </CtaLink>
-                <span className="uppercase text-[#1A1010]/52" style={{ ...BODY, fontSize: '10px', letterSpacing: '0.12em', fontWeight: 500 }}>
-                  15 min. poreikių analizė.
-                </span>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <PartnerysteHeroSection />
 
       <UnicosWhySection
         heading="Ką reiškia būti UNICOS partneriu?"
