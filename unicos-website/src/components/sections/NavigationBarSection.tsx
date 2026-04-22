@@ -1,8 +1,9 @@
 'use client';
 import * as React from 'react';
 import { SPRENDIMAI_NAV_SEGMENTS } from '@/config/sprendimaiSolutionLanding';
-import { SfArrowLeft, SfMenu, SfX } from '@/components/icons/feather';
+import { SfMenu, SfX } from '@/components/icons/feather';
 import { CtaLink } from '@/components/ui/CtaLink';
+import { ChevronDownIcon } from '@/components/ui/ChevronArrows';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -348,14 +349,15 @@ function MobileMenu({ open }: { open: boolean }) {
             onClick={() => toggleGroup('sprendimai')}
             className="flex w-full items-center justify-between border-0 bg-transparent py-3 text-left cursor-pointer"
             style={{ ...NAV_FONT, fontSize: '15px', fontWeight: 500, color: '#1A1010' }}
+            aria-expanded={openGroup === 'sprendimai'}
           >
             <span>Sprendimai</span>
             <span
               aria-hidden
-              className="inline-flex items-center justify-center text-[#64151F] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-              style={{ transform: openGroup === 'sprendimai' ? 'rotate(-90deg)' : 'rotate(180deg)' }}
+              className="inline-flex items-center justify-center text-[#64151F] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              style={{ transform: openGroup === 'sprendimai' ? 'rotate(180deg)' : 'rotate(0deg)' }}
             >
-              <SfArrowLeft size={14} className="text-current" />
+              <ChevronDownIcon className="h-4 w-4 text-current" />
             </span>
           </button>
 
@@ -399,15 +401,8 @@ function MobileMenu({ open }: { open: boolean }) {
           </a>
         ))}
         <div className="mt-6 flex flex-col gap-3">
-          <a
-            {...navAnchorAttrs('#')}
-            className="no-underline py-2"
-            style={{ ...NAV_FONT, fontSize: '14px', fontWeight: 500, color: 'rgba(26,16,16,0.56)' }}
-          >
-            Prisijungti
-          </a>
-          <CtaLink {...navAnchorAttrs('/tapkite-partneriu')} variant="secondary" className="self-center">
-            Tapti partneriu
+          <CtaLink {...navAnchorAttrs('#')} variant="outline" className="self-start">
+            B2B platforma
           </CtaLink>
         </div>
       </div>
@@ -569,8 +564,8 @@ export function NavigationBarSection({
                   )}
                 </button>
 
-                <div className="inline-flex flex-col items-start gap-0">
-                  <a {...navAnchorAttrs('/')} className="no-underline flex items-start self-start">
+                <div className="relative inline-flex flex-col items-start gap-0">
+                  <a {...navAnchorAttrs('/')} className="no-underline flex items-center">
                     <img
                       src="/unicos-logo.svg"
                       alt="Unicos"
@@ -583,7 +578,7 @@ export function NavigationBarSection({
                     />
                   </a>
                   <span
-                    className={`-mt-[5px] m-0 ml-[18px] block self-start text-left uppercase tracking-[0.08em] leading-none transition-colors duration-300 max-[767px]:ml-[12px] ${
+                    className={`-mt-[5px] m-0 ml-[18px] block self-start text-left uppercase tracking-[0.08em] leading-none transition-colors duration-300 max-[991px]:hidden ${
                       useLightNavSurface ? 'text-[#1A1010]' : 'text-[#EFE8DB]'
                     }`}
                     style={{ ...NAV_FONT, fontSize: '10px', lineHeight: 1, fontWeight: 500 }}
@@ -693,19 +688,14 @@ export function NavigationBarSection({
           {/* RIGHT — auth + CTA */}
           {logoOnly ? null : (
             <div className="flex items-center gap-4">
-            {/* Prisijungti — statinis tekstas, hover: tik opacity (jokio „slide“). */}
-            <a
+            {/* B2B platforma — ghost mygtukas (outline) vietoj buvusio „Prisijungti“ teksto. */}
+            <CtaLink
               {...navAnchorAttrs('#')}
-              className="no-underline transition-opacity duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:opacity-80 max-[767px]:hidden"
-              style={{
-                ...NAV_FONT,
-                fontSize: '14px',
-                fontWeight: 500,
-                color: useLightNavSurface ? 'rgba(26,16,16,0.72)' : 'rgba(239,232,219,0.88)',
-              }}
+              variant={useLightNavSurface ? 'outline' : 'outlineLight'}
+              className="whitespace-nowrap max-[767px]:hidden"
             >
-              Prisijungti
-            </a>
+              B2B platforma
+            </CtaLink>
 
             <CtaLink {...navAnchorAttrs('/tapkite-partneriu')} variant="secondary" className="whitespace-nowrap">
               Tapti partneriu
