@@ -82,7 +82,8 @@ const BASE_RESOURCES: ResourceCard[] = [
   },
 ];
 
-const EXTRA_PLACEHOLDERS: ResourceCard[] = Array.from({ length: 6 }).map((_, i) => ({
+/** 3 papildomos kortelės — viso su BASE_RESOURCES = 9 kortelių (3 eilės desktop). */
+const EXTRA_PLACEHOLDERS: ResourceCard[] = Array.from({ length: 3 }).map((_, i) => ({
   access: i % 3 === 0 ? 'NEMOKAMA' : i % 3 === 1 ? 'REGISTRUOTIEMS' : 'PARTNERIAMS',
   title: `Papildomas metodinis dokumentas ${i + 1}`,
   description: 'Atnaujinta gairių versija profesionaliam kasdieniam darbui.',
@@ -197,7 +198,7 @@ export default function ResursaiPage() {
         </Shell>
       </section>
 
-      <section id="resursai-turinys" className="relative py-16 min-[768px]:py-24">
+      <section id="resursai-turinys" className="relative pt-16 pb-0 min-[768px]:pt-20 min-[768px]:pb-0">
         <Shell>
           <div className="relative isolate">
             <div className="relative z-[1] grid grid-cols-1 gap-4 min-[992px]:grid-cols-3 min-[768px]:grid-cols-2">
@@ -333,7 +334,7 @@ export default function ResursaiPage() {
         </Shell>
       </section>
 
-      <section className="pt-16 pb-20 min-[768px]:pt-24 min-[768px]:pb-28">
+      <section className="pb-20 min-[768px]:pb-28">
         <Shell>
           <div className="mx-auto max-w-[560px] text-center">
             <div className="mx-auto flex justify-center text-[#64151F]">
