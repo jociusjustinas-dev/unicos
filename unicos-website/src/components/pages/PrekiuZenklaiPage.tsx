@@ -94,8 +94,8 @@ export function PrekiuZenklaiPage() {
                         {brand.categoryLabels.map((label) => (
                           <span
                             key={label}
-                            className="border border-[#1A1010]/14 px-2.5 py-1 text-[#1A1010]/78"
-                            style={{ ...BODY, fontSize: '12px', fontWeight: 400, borderRadius: '0px' }}
+                            className="uppercase border border-[#3B443A]/30 bg-[#3B443A]/10 px-2 py-1 text-[#3B443A]"
+                            style={{ ...BODY, fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', borderRadius: '0px' }}
                           >
                             {label}
                           </span>
