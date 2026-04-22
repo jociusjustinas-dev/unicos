@@ -124,10 +124,10 @@ export function OdosPartnerSpotlightSection({
 
           <div className="relative min-h-[min(420px,52vw)] w-full min-[992px]:min-h-[480px] max-[991px]:order-2 max-[991px]:min-h-[320px]">
             <div
-              className="relative h-full min-h-[inherit] w-full overflow-hidden border border-[#EFE8DB]/14"
+              className="relative h-full min-h-[inherit] w-full overflow-hidden"
               style={{ borderRadius: '0px' }}
             >
-              <img src={portraitSrc} alt={portraitAlt} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[center_25%]" />
+              <img src={portraitSrc} alt={portraitAlt} loading="lazy" className="absolute inset-0 block h-full w-full object-cover object-[center_25%]" />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,16,0.05),rgba(26,16,16,0.35))]" aria-hidden />
             </div>
             {footnote ? (
