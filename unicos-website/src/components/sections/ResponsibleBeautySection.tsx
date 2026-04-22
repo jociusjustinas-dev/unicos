@@ -285,7 +285,7 @@ export function ResponsibleBeautySection({
           {showGuidanceRow ? (
             <div
               ref={guidanceRef}
-              className={`mx-auto flex w-full max-w-[960px] flex-col items-center justify-center gap-6 text-center sm:flex-row sm:flex-wrap sm:gap-8 sm:text-left ${guidanceEase} ${guidanceReveal}`}
+              className={`mx-auto flex w-fit max-w-full flex-col items-center justify-center gap-5 text-center sm:flex-row sm:items-center sm:gap-6 sm:text-left ${guidanceEase} ${guidanceReveal}`}
             >
               <div className="flex min-w-0 max-w-full flex-col items-center gap-5 max-[479px]:gap-4 sm:flex-row sm:items-center">
                 <div
@@ -303,11 +303,9 @@ export function ResponsibleBeautySection({
                   </p>
                 </div>
               </div>
-              <div className="flex w-full shrink-0 justify-center sm:w-auto">
-                <CtaLink href={stripCtaHref} variant="secondary" labelMode="static" className="min-w-[180px] justify-center max-[639px]:w-full sm:max-w-none sm:w-auto">
-                  {stripCtaLabel}
-                </CtaLink>
-              </div>
+              <CtaLink href={stripCtaHref} variant="secondary" labelMode="static" className="min-w-[180px] justify-center max-[639px]:w-full sm:max-w-none sm:w-auto">
+                {stripCtaLabel}
+              </CtaLink>
             </div>
           ) : null}
         </div>
