@@ -141,13 +141,8 @@ export function ApieTimelineSection() {
 
                   <div className="flex flex-col gap-2">
                     <h3
-                      className="m-0 text-[#1A1010] tracking-[-0.01em]"
-                      style={{
-                        fontFamily: "'Quiche Sans', Georgia, serif",
-                        fontSize: '20px',
-                        lineHeight: 1.2,
-                        fontWeight: 400,
-                      }}
+                      className="m-0 text-[#1A1010]"
+                      style={{ ...BODY, fontSize: '15px', lineHeight: 1.35, fontWeight: 500, letterSpacing: '-0.005em' }}
                     >
                       {item.title}
                     </h3>
