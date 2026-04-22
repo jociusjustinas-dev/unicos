@@ -14,8 +14,11 @@ export function Preloader() {
     const hasSeen = window.sessionStorage.getItem(key) === '1';
 
     if (hasSeen) {
-      window.dispatchEvent(new Event('preloader:done'));
       setVisible(false);
+      /** Kitaip `preloader:done` iššoka iki `useEffect` vaikams (hero ir pan.) — po refresh jie negauna įvykio. */
+      window.setTimeout(() => {
+        window.dispatchEvent(new Event('preloader:done'));
+      }, 0);
       return;
     }
 
@@ -38,6 +41,7 @@ export function Preloader() {
     const safetyId = window.setTimeout(() => {
       document.body.style.overflow = originalOverflow || '';
       setVisible(false);
+      window.dispatchEvent(new Event('preloader:done'));
     }, safetyMs);
 
     gsap.set(logo, { opacity: 0, scale: 0.95 });
