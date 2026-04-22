@@ -22,25 +22,6 @@ const LABEL: React.CSSProperties = {
 const INPUT_BASE_CLASS =
   'w-full appearance-none rounded-none border border-[rgba(239,232,219,0.16)] bg-[rgba(239,232,219,0.09)] px-4 py-3 text-base leading-6 font-normal text-[rgba(239,232,219,0.82)] placeholder:text-[rgba(239,232,219,0.56)] outline-none transition-[border-color,color] duration-200 focus:border-[rgba(239,232,219,0.52)] focus:text-[#EFE8DB] max-[767px]:text-sm max-[767px]:leading-5 max-[767px]:py-[10px] max-[767px]:px-3';
 
-function StarIcon({ className = '' }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      width="100%"
-      height="100%"
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden
-    >
-      <path
-        d="M9.69824 5.26074C9.84349 5.5561 10.1255 5.76082 10.4512 5.80859L14.2598 6.36719L11.502 9.06348C11.2674 9.293 11.1606 9.62275 11.2158 9.94629L11.8652 13.752L8.46387 11.957C8.17179 11.8029 7.82233 11.8029 7.53027 11.957L4.12891 13.752L4.7793 9.94629C4.8345 9.62285 4.72764 9.29298 4.49316 9.06348L1.73535 6.36719L5.54395 5.80859C5.86948 5.76081 6.15062 5.55594 6.2959 5.26074L7.99707 1.80078L9.69824 5.26074Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
 type FormValues = {
   fullName: string;
   email: string;
@@ -245,7 +226,7 @@ export function TapkitePartneriuHeroSection() {
           style={{ columnGap: '132px', rowGap: '132px' }}
         >
           {/* LEFT COLUMN */}
-          <div className="flex flex-col justify-between items-start gap-12 max-w-[564px] max-[991px]:flex-row max-[991px]:justify-between max-[991px]:items-end max-[991px]:max-w-none max-[767px]:flex-col max-[767px]:justify-between max-[767px]:items-start max-[767px]:gap-8">
+          <div className="flex flex-col items-start gap-8 max-w-[564px] max-[991px]:max-w-none max-[991px]:flex-row max-[991px]:items-end max-[991px]:justify-between max-[767px]:flex-col max-[767px]:items-stretch max-[767px]:gap-6">
             <div ref={topRef} style={topStyle} className="flex flex-col items-start gap-6 max-[767px]:gap-4 transition-all duration-700 ease-out max-[991px]:max-w-[448px] max-[479px]:max-w-[364px]">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 shrink-0 bg-[#3B443A]" style={{ borderRadius: '0px' }} aria-hidden />
@@ -291,28 +272,23 @@ export function TapkitePartneriuHeroSection() {
             <div
               ref={testimonialRef}
               style={testimonialStyle}
-              className={`flex flex-col gap-8 p-6 max-[991px]:p-6 max-[767px]:gap-6 max-[767px]:p-4`}
+              className="w-full transition-all duration-700 ease-out"
             >
-              <div className="flex flex-col gap-6 p-6" style={{ backgroundColor: '#EFE8DB', borderRadius: '0px', border: '1px solid rgba(26,16,16,0.1)' }}>
-                <div className="flex items-center gap-1">
-                  {[0, 1, 2, 3, 4].map((i) => (
-                    <span key={i} className="inline-flex h-4 w-4 items-center justify-center text-[#64151F]">
-                      <StarIcon className="h-full w-full" />
-                    </span>
-                  ))}
-                </div>
-
-                <div style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400, color: '#1A1010' }}>
+              <div
+                className="flex flex-col gap-5 border border-[#3B443A]/18 bg-[#E8EDE9] p-6 text-[#3B443A] max-[767px]:p-5"
+                style={{ borderRadius: '0px' }}
+              >
+                <div style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}>
                   {testimonial.quote}
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="flex-none w-8 h-8 overflow-hidden border-2 border-[#EFE8DB] bg-[#EFE8DB]" style={{ borderRadius: '0px' }}>
+                  <div className="flex-none h-8 w-8 overflow-hidden border border-[#3B443A]/20" style={{ borderRadius: '0px' }}>
                     <img src={testimonial.avatar} alt="" className="h-full w-full object-cover" loading="lazy" />
                   </div>
-                  <div style={{ ...BODY, fontSize: '16px', lineHeight: '24px', fontWeight: 500, color: '#1A1010' }}>
+                  <div style={{ ...BODY, fontSize: '15px', lineHeight: '22px', fontWeight: 500 }}>
                     {testimonial.authorName}
-                    <div style={{ ...BODY, fontSize: '14px', lineHeight: '20px', fontWeight: 400, color: 'rgba(26,16,16,0.64)' }}>
+                    <div style={{ ...BODY, fontSize: '13px', lineHeight: '20px', fontWeight: 400, color: 'rgba(59,68,58,0.72)' }}>
                       {testimonial.authorRole}
                     </div>
                   </div>
