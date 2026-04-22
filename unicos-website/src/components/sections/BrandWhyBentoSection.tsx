@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { SfActivity, SfAward, SfClock, SfLayers } from '@/components/icons/feather';
 import type { PrekiuZenklaiBrandTextCard } from '@/config/prekiuZenklaiBrandLanding';
+import { ParallaxImage } from '@/components/ui/ParallaxImage';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -39,7 +40,7 @@ function BentoFigure({
       className={`relative m-0 overflow-hidden border border-[#1A1010]/10 ${minHeightClass} ${className}`.trim()}
       style={{ borderRadius: '0px' }}
     >
-      <img src={src} alt={alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+      <ParallaxImage src={src} alt={alt} asImage loading="lazy" distance={32} />
       <div className="pointer-events-none absolute inset-0 bg-[rgba(26,16,16,0.08)]" aria-hidden />
     </figure>
   );
@@ -132,7 +133,7 @@ export function BrandWhyBentoSection({
               className="relative m-0 min-h-[280px] overflow-hidden border border-[#1A1010]/10 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:min-h-0"
               style={{ borderRadius: '0px' }}
             >
-              <img src={tallImageSrc} alt={tallImageAlt} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+              <ParallaxImage src={tallImageSrc} alt={tallImageAlt} asImage loading="lazy" distance={40} />
               <div className="pointer-events-none absolute inset-0 bg-[rgba(26,16,16,0.08)]" aria-hidden />
             </figure>
 

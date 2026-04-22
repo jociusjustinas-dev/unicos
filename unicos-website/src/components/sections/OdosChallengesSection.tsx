@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { SfChatScience, SfLayers, SfShield } from '@/components/icons/feather';
 import type { Challenges3 } from '@/config/sprendimaiSolutionLanding';
+import { ParallaxImage } from '@/components/ui/ParallaxImage';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -164,12 +165,7 @@ export function OdosChallengesSection({
           </div>
 
           <div className="relative min-h-[620px] overflow-hidden border border-[#EFE8DB]/14 max-[991px]:min-h-[420px] max-[767px]:min-h-[320px]" style={{ borderRadius: '0px' }}>
-            <img
-              src={imageSrc}
-              alt={imageAlt}
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
+            <ParallaxImage src={imageSrc} alt={imageAlt} asImage loading="lazy" distance={40} />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,16,0.08),rgba(26,16,16,0.22))]" aria-hidden />
           </div>
         </div>

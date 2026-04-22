@@ -6,6 +6,7 @@ import { FooterSection } from '@/components/sections/FooterSection';
 import { PAGE_SHELL_CLASS } from '@/config/pageShell';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { CtaButton } from '@/components/ui/CtaButton';
+import { ParallaxImage } from '@/components/ui/ParallaxImage';
 import {
   SfArrowDown,
   SfSearch,
@@ -142,12 +143,13 @@ export default function ResursaiPage() {
               className="relative w-full overflow-hidden border border-solid border-[#1A1010]/15 aspect-[4/5] min-[768px]:aspect-[4/3] min-[992px]:aspect-auto min-[992px]:min-h-[360px]"
               style={{ borderRadius: '0px' }}
             >
-              <img
+              <ParallaxImage
                 src="/Professional Woman Indoors.png"
                 alt=""
-                className="absolute inset-0 h-full w-full object-cover"
+                asImage
                 loading="eager"
-                sizes="(max-width: 991px) 100vw, 42vw"
+                objectPosition="center"
+                distance={40}
               />
             </div>
           </div>

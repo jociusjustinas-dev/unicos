@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { ParallaxImage } from '@/components/ui/ParallaxImage';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -131,11 +132,13 @@ export function OdosPartnerSpotlightSection({
               className="relative block w-full overflow-hidden aspect-[4/5] min-[768px]:aspect-[5/4] min-[992px]:aspect-auto min-[992px]:h-full min-[992px]:min-h-[440px]"
               style={{ borderRadius: '0px' }}
             >
-              <img
+              <ParallaxImage
                 src={portraitSrc}
                 alt={portraitAlt}
+                asImage
                 loading="lazy"
-                className="absolute inset-0 block h-full w-full object-cover object-[center_30%]"
+                objectPosition="center 30%"
+                distance={40}
               />
             </div>
             {footnote ? (

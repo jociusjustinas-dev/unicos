@@ -5,6 +5,7 @@ import { SfCheckboxCheck } from '@/components/icons/feather';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { useInViewOnce } from '@/hooks/useInViewOnce';
 import { HOME_PAGE_VALUE_FEATURE_IMAGES } from '@/config/homePageImages';
+import { ParallaxImage } from '@/components/ui/ParallaxImage';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -219,7 +220,7 @@ export function ValueFeaturesSection({
                   className="relative h-full w-full max-w-[472px] flex-1 overflow-hidden max-[991px]:h-[550px] max-[767px]:h-[400px] max-[767px]:max-w-none max-[767px]:flex-none"
                   style={{ borderRadius: '0px', ...tabImageTransitionStyle }}
                 >
-                  <img src={activeData.image} alt={activeData.heading} loading="lazy" className="absolute inset-0 z-[1] h-full w-full object-cover" />
+                  <ParallaxImage src={activeData.image} alt={activeData.heading} asImage loading="lazy" distance={40} className="z-[1]" />
                 </div>
 
                 <div className="flex flex-1 flex-col items-start justify-center gap-6 max-[767px]:gap-4" style={tabTextTransitionStyle}>

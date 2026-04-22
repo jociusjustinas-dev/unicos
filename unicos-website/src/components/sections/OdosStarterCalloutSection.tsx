@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { SfCheckboxCheck } from '@/components/icons/feather';
 import { CtaLink, type CtaVariant } from '@/components/ui/CtaLink';
+import { ParallaxImage } from '@/components/ui/ParallaxImage';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -200,10 +201,10 @@ export function OdosStarterCalloutSection({
             </div>
 
             <div
-              className="h-[628px] w-full overflow-hidden border border-[#3B443A]/14 max-[767px]:h-[320px]"
+              className="relative h-[628px] w-full overflow-hidden border border-[#3B443A]/14 max-[767px]:h-[320px]"
               style={{ borderRadius: '0px' }}
             >
-              <img src={imageSrc} alt={imageAlt} loading="lazy" className="h-full w-full object-cover" />
+              <ParallaxImage src={imageSrc} alt={imageAlt} asImage loading="lazy" distance={40} />
             </div>
           </div>
         </div>

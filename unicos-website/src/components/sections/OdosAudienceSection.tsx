@@ -3,6 +3,7 @@
 import * as React from 'react';
 import type { AudienceCards4 } from '@/config/sprendimaiSolutionLanding';
 import { CtaLink } from '@/components/ui/CtaLink';
+import { ParallaxImage } from '@/components/ui/ParallaxImage';
 
 const BODY: React.CSSProperties = {
   fontFamily: "'Helvetica Neue LT Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -56,33 +57,6 @@ function useInView(threshold = 0.1) {
   }, [threshold]);
 
   return { ref, visible };
-}
-
-function ParallaxImage({ src }: { src: string }) {
-  const ref = React.useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    const onScroll = () => {
-      if (!ref.current) return;
-      const parent = ref.current.parentElement;
-      if (!parent) return;
-      const rect = parent.getBoundingClientRect();
-      const progress = -rect.top / window.innerHeight;
-      ref.current.style.transform = `translateY(${progress * 40}px)`;
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      className="absolute inset-0 h-full w-full bg-cover bg-center"
-      style={{ backgroundImage: `url('${src}')`, willChange: 'transform' }}
-    />
-  );
 }
 
 export function OdosAudienceSection({
