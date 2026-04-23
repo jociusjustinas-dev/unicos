@@ -68,14 +68,15 @@ export function ParallaxImage({
 
   /**
    * Platus „overscan“ (3× distance į kiekvieną pusę) — sub-pikselio hairline'as po
-   * GPU transformacijos garantuotai lieka už konteinerio ribų.
+   * GPU transformacijos garantuotai lieka už konteinerio ribų. Svarbu aiškiai nurodyti
+   * `width` / `height` (ne tik `inset`), nes `<img>` kitaip renderintųsi intrinsic dydžiu.
    */
   const overhang = distance * 3;
   const overscanStyle: React.CSSProperties = {
     top: `-${overhang}px`,
-    right: `-${overhang}px`,
-    bottom: `-${overhang}px`,
     left: `-${overhang}px`,
+    width: `calc(100% + ${overhang * 2}px)`,
+    height: `calc(100% + ${overhang * 2}px)`,
     backfaceVisibility: 'hidden',
   };
 
