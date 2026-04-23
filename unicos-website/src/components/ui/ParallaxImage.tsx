@@ -6,19 +6,22 @@ type ParallaxImageProps = {
   src: string;
   alt?: string;
   className?: string;
-  /** Kiek pixelių translate'ui visame scroll'e — didesnis = ryškesnis parallax. */
+  /** Maksimalus pikselių judesys į abi puses (iš viso 2×distance). */
   distance?: number;
-  /** Kokia objekto pozicija (CSS `object-position` / background-position) — „center 30%“, etc. */
+  /** CSS `object-position` / background-position. */
   objectPosition?: string;
-  /** Jei `true`, renderina `<img>` (semantiškas alt tekstui). Kitaip — `background-image` div'as. */
+  /** `<img>` (semantiškas) arba `<div>` su background-image. */
   asImage?: boolean;
   loading?: 'eager' | 'lazy';
 };
 
+/** Fiksuotas paveikslėlio padidinimas, kad translate'as netrauktu tuščios tėvo erdvės. */
+const SCALE = 1.12;
+
 /**
- * Švelnus vertikalus parallax — vaizdas juda ~40px per scroll'o ilgį, sukeldamas
- * „gyvo“ puslapio įspūdį. Naudoti ant nuotraukų sekcijose (išskyrus prekių ženklų ir
- * akademijos korteles, kur veikia atskiros transform animacijos).
+ * Švelnus vertikalus parallax — vaizdas juda kartu su scroll'u, ~40px ribose, visada
+ * pilnai uždengia tėvo konteinerį. Naudoja fiksuotą `scale(1.12)`, tad net ir didelio
+ * shift'o atveju foto užpildo kraštus.
  */
 export function ParallaxImage({
   src,
@@ -29,10 +32,10 @@ export function ParallaxImage({
   asImage = false,
   loading = 'lazy',
 }: ParallaxImageProps) {
-  const ref = React.useRef<HTMLDivElement | HTMLImageElement | null>(null);
+  const ref = React.useRef<HTMLElement | null>(null);
 
   React.useEffect(() => {
-    const el = ref.current;
+    const el = ref.current as HTMLImageElement | HTMLDivElement | null;
     if (!el || !el.parentElement) return;
     const parent = el.parentElement;
 
@@ -40,12 +43,10 @@ export function ParallaxImage({
     const apply = () => {
       const rect = parent.getBoundingClientRect();
       const vh = window.innerHeight || 1;
-      /** Progress 0..1 — kada elementas keliauja per viewport'ą. Klampavimas neišpainioja ribų. */
       const raw = (vh - rect.top) / (vh + rect.height);
       const progress = Math.max(0, Math.min(1, raw));
-      /** Centruojame diapazoną ties 0, kad juda vienodai į abi puses nuo vidurio. */
       const shift = (progress - 0.5) * distance;
-      el.style.transform = `translate3d(0, ${shift}px, 0)`;
+      el.style.transform = `scale(${SCALE}) translate3d(0, ${shift}px, 0)`;
     };
 
     const onScrollOrResize = () => {
@@ -53,7 +54,10 @@ export function ParallaxImage({
       rafId = requestAnimationFrame(apply);
     };
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.style.transform = `scale(${SCALE})`;
+      return;
+    }
 
     window.addEventListener('scroll', onScrollOrResize, { passive: true });
     window.addEventListener('resize', onScrollOrResize);
@@ -66,31 +70,24 @@ export function ParallaxImage({
     };
   }, [distance]);
 
-  /**
-   * Platus „overscan“ (3× distance į kiekvieną pusę) — sub-pikselio hairline'as po
-   * GPU transformacijos garantuotai lieka už konteinerio ribų. Svarbu aiškiai nurodyti
-   * `width` / `height` (ne tik `inset`), nes `<img>` kitaip renderintųsi intrinsic dydžiu.
-   */
-  const overhang = distance * 3;
-  const overscanStyle: React.CSSProperties = {
-    top: `-${overhang}px`,
-    left: `-${overhang}px`,
-    width: `calc(100% + ${overhang * 2}px)`,
-    height: `calc(100% + ${overhang * 2}px)`,
+  const commonStyle: React.CSSProperties = {
+    transform: `scale(${SCALE})`,
+    transformOrigin: 'center',
     backfaceVisibility: 'hidden',
+    willChange: 'transform',
   };
 
   if (asImage) {
     return (
       <img
         ref={(node) => {
-          ref.current = node as HTMLImageElement | null;
+          ref.current = node as unknown as HTMLElement | null;
         }}
         src={src}
         alt={alt}
         loading={loading}
-        className={`absolute object-cover will-change-transform ${className}`.trim()}
-        style={{ ...overscanStyle, objectPosition }}
+        className={`absolute inset-0 h-full w-full object-cover ${className}`.trim()}
+        style={{ ...commonStyle, objectPosition }}
       />
     );
   }
@@ -98,12 +95,12 @@ export function ParallaxImage({
   return (
     <div
       ref={(node) => {
-        ref.current = node as HTMLDivElement | null;
+        ref.current = node as unknown as HTMLElement | null;
       }}
       role="img"
       aria-label={alt || undefined}
-      className={`absolute bg-cover will-change-transform ${className}`.trim()}
-      style={{ ...overscanStyle, backgroundImage: `url("${src}")`, backgroundPosition: objectPosition }}
+      className={`absolute inset-0 h-full w-full bg-cover ${className}`.trim()}
+      style={{ ...commonStyle, backgroundImage: `url("${src}")`, backgroundPosition: objectPosition }}
     />
   );
 }
