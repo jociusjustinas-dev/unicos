@@ -7,6 +7,7 @@ import { PAGE_SHELL_CLASS } from '@/config/pageShell';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { CtaButton } from '@/components/ui/CtaButton';
 import { ParallaxImage } from '@/components/ui/ParallaxImage';
+import { useAuth } from '@/lib/auth';
 import {
   SfArrowDown,
   SfSearch,
@@ -99,6 +100,7 @@ function Shell({ children }: { children: React.ReactNode }) {
 
 export default function ResursaiPage() {
   const [activeFilter, setActiveFilter] = React.useState<'tipas' | 'segmentas' | 'zenklas' | 'lygis' | null>(null);
+  const { isPartner } = useAuth();
 
   /** Visada renderinam visas korteles: pirma eilė — pilnai, antra — pusiau, likusios — po paywall gradient. */
   const resources = [...BASE_RESOURCES, ...EXTRA_PLACEHOLDERS];
@@ -269,71 +271,68 @@ export default function ResursaiPage() {
             })}
             </div>
 
-            {/**
-             * Paywall: pilno pločio (edge-to-edge) haze sluoksnis ant korteliu tinklelio,
-             * dengiantis kraštus ir blukinant viduryje. Centre — tvarkingas tamsus
-             * panelis su H2 ir CTA.
-             */}
-            {/**
-             * Paywall: pirma eilė korteliu matoma pilnai, antra — tik iki pusės, nuo ten
-             * prasideda kremo gradientas + blur, po juo — tolesnės eilės. Centre — tamsus
-             * panelis su antrašte ir CTA.
-             */}
-            <div
-              className="pointer-events-none absolute inset-0 z-[2]"
-              role="region"
-              aria-label="Pilna metodinė bazė skirta partneriams"
-            >
+            {!isPartner ? (
+              /**
+               * Paywall: pilno pločio haze + tamsus centrinis panelis.
+               * Matomas neautorizuotam arba self-registered vartotojui. Partneriui —
+               * paslėptas, jis mato visas korteles pilnai ir gali atsisiųsti.
+               */
               <div
-                aria-hidden
-                className="absolute top-0 bottom-0 left-1/2 w-screen -translate-x-1/2"
-                style={{
-                  backgroundImage:
-                    'linear-gradient(to bottom, rgba(239,232,219,0) 0%, rgba(239,232,219,0) 24%, rgba(239,232,219,0.35) 38%, rgba(239,232,219,0.78) 52%, rgba(239,232,219,0.96) 70%, rgba(239,232,219,1) 100%)',
-                }}
-              />
-              <div
-                aria-hidden
-                className="absolute top-0 bottom-0 left-1/2 w-screen -translate-x-1/2 backdrop-blur-xl backdrop-saturate-110"
-                style={{
-                  WebkitMaskImage:
-                    'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0.45) 38%, rgba(0,0,0,1) 55%, rgba(0,0,0,1) 100%)',
-                  maskImage:
-                    'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0.45) 38%, rgba(0,0,0,1) 55%, rgba(0,0,0,1) 100%)',
-                }}
-              />
+                className="pointer-events-none absolute inset-0 z-[2]"
+                role="region"
+                aria-label="Pilna metodinė bazė skirta partneriams"
+              >
+                <div
+                  aria-hidden
+                  className="absolute top-0 bottom-0 left-1/2 w-screen -translate-x-1/2"
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(to bottom, rgba(239,232,219,0) 0%, rgba(239,232,219,0) 24%, rgba(239,232,219,0.35) 38%, rgba(239,232,219,0.78) 52%, rgba(239,232,219,0.96) 70%, rgba(239,232,219,1) 100%)',
+                  }}
+                />
+                <div
+                  aria-hidden
+                  className="absolute top-0 bottom-0 left-1/2 w-screen -translate-x-1/2 backdrop-blur-xl backdrop-saturate-110"
+                  style={{
+                    WebkitMaskImage:
+                      'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0.45) 38%, rgba(0,0,0,1) 55%, rgba(0,0,0,1) 100%)',
+                    maskImage:
+                      'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0.45) 38%, rgba(0,0,0,1) 55%, rgba(0,0,0,1) 100%)',
+                  }}
+                />
 
-              <div className="absolute inset-x-0 top-[58%] flex -translate-y-1/2 justify-center px-6 max-[767px]:top-[62%] max-[767px]:px-4">
-                <div className="pointer-events-auto relative w-full max-w-[960px] border border-[#EFE8DB]/20 bg-[#64151F] px-10 py-12 text-center text-[#EFE8DB] shadow-[0_28px_72px_rgba(26,16,16,0.4)] max-[767px]:px-6 max-[767px]:py-10">
-                  <div
-                    className="mx-auto flex h-12 w-12 items-center justify-center border border-solid border-[#EFE8DB]/45 bg-[#1A1010]/25 text-[#EFE8DB]"
-                    style={{ ...BODY, fontSize: '18px', borderRadius: '999px' }}
-                  >
-                    <SfLock size={20} strokeWidth={2.5} className="-mt-0.5" />
-                  </div>
-                  <h2
-                    className="m-0 mt-5 text-balance text-[#EFE8DB]"
-                    style={{ ...HEADING, fontSize: 'clamp(1.75rem, 3.2vw, 2.75rem)', lineHeight: 1.1, fontWeight: 400 }}
-                  >
-                    Norite pilnos metodinės bazės?
-                  </h2>
-                  <p
-                    className="m-0 mx-auto mt-4 max-w-[58ch] text-[#EFE8DB]/88"
-                    style={{ ...BODY, fontSize: '16px', lineHeight: 1.6 }}
-                  >
-                    Partneriams suteikiame prieigą prie išplėstinių protokolų, video mokymų medžiagos ir praktinių darbo sistemų, kurios atnaujinamos kas ketvirtį.
-                  </p>
-                  <div className="mt-7 flex flex-wrap justify-center gap-4">
-                    <CtaLink href="/tapkite-partneriu" variant="lightFill" className="justify-center px-6">
-                      Tapti partneriu
-                    </CtaLink>
-                    <CtaLink href="/kontaktai#kontaktai-forma" variant="outlineLight" className="justify-center px-6">
-                      Gauti konsultaciją
-                    </CtaLink>
+                <div className="absolute inset-x-0 top-[58%] flex -translate-y-1/2 justify-center px-6 max-[767px]:top-[62%] max-[767px]:px-4">
+                  <div className="pointer-events-auto relative w-full max-w-[960px] border border-[#EFE8DB]/20 bg-[#64151F] px-10 py-12 text-center text-[#EFE8DB] shadow-[0_28px_72px_rgba(26,16,16,0.4)] max-[767px]:px-6 max-[767px]:py-10">
+                    <div
+                      className="mx-auto flex h-12 w-12 items-center justify-center border border-solid border-[#EFE8DB]/45 bg-[#1A1010]/25 text-[#EFE8DB]"
+                      style={{ ...BODY, fontSize: '18px', borderRadius: '999px' }}
+                    >
+                      <SfLock size={20} strokeWidth={2.5} className="-mt-0.5" />
+                    </div>
+                    <h2
+                      className="m-0 mt-5 text-balance text-[#EFE8DB]"
+                      style={{ ...HEADING, fontSize: 'clamp(1.75rem, 3.2vw, 2.75rem)', lineHeight: 1.1, fontWeight: 400 }}
+                    >
+                      Resursai skirti partneriams
+                    </h2>
+                    <p
+                      className="m-0 mx-auto mt-4 max-w-[58ch] text-[#EFE8DB]/88"
+                      style={{ ...BODY, fontSize: '16px', lineHeight: 1.6 }}
+                    >
+                      Patvirtintiems UNICOS partneriams suteikiame prieigą prie protokolų, video mokymų medžiagos ir praktinių darbo sistemų, kurios atnaujinamos kas ketvirtį.
+                    </p>
+                    <div className="mt-7 flex flex-wrap justify-center gap-4">
+                      <CtaLink href="/tapkite-partneriu" variant="lightFill" className="justify-center px-6">
+                        Tapti partneriu
+                      </CtaLink>
+                      <CtaLink href="/prisijungti?next=/resursai" variant="outlineLight" className="justify-center px-6">
+                        Prisijungti
+                      </CtaLink>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            ) : null}
           </div>
 
         </Shell>

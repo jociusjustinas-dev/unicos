@@ -1,9 +1,11 @@
 'use client';
 import * as React from 'react';
+import Link from 'next/link';
 import { SPRENDIMAI_NAV_SEGMENTS } from '@/config/sprendimaiSolutionLanding';
 import { SfMenu, SfX } from '@/components/icons/feather';
 import { CtaLink } from '@/components/ui/CtaLink';
 import { ChevronDownIcon } from '@/components/ui/ChevronArrows';
+import { useAuth } from '@/lib/auth';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -400,6 +402,7 @@ function MobileMenu({ open }: { open: boolean }) {
             {item.label}
           </a>
         ))}
+        <MobileAccountBlock />
         <div className="mt-6 flex flex-col gap-3">
           <CtaLink {...navAnchorAttrs('#')} variant="outline" className="self-start">
             B2B platforma
@@ -413,6 +416,187 @@ function MobileMenu({ open }: { open: boolean }) {
 // ---------------------------------------------------------------------------
 // Main component
 // ---------------------------------------------------------------------------
+
+function MobileAccountBlock() {
+  const { user, isAuthenticated, isHydrated, signOut } = useAuth();
+  if (!isHydrated) return null;
+  if (!isAuthenticated) {
+    return (
+      <div className="mt-2 flex flex-col gap-2 border-t border-[rgba(26,16,16,0.07)] pt-4">
+        <Link
+          href="/prisijungti"
+          className="no-underline text-[#1A1010]"
+          style={{ ...NAV_FONT, fontSize: '15px', fontWeight: 500 }}
+        >
+          Prisijungti
+        </Link>
+        <Link
+          href="/sukurti-paskyra"
+          className="no-underline text-[#1A1010]/65"
+          style={{ ...NAV_FONT, fontSize: '13px', fontWeight: 500 }}
+        >
+          Susikurti paskyrą
+        </Link>
+      </div>
+    );
+  }
+  return (
+    <div className="mt-2 flex flex-col gap-2 border-t border-[rgba(26,16,16,0.07)] pt-4">
+      <p className="m-0 text-[#1A1010]/65" style={{ ...NAV_FONT, fontSize: '12px' }}>
+        Prisijungę kaip
+      </p>
+      <p className="m-0 truncate text-[#1A1010]" style={{ ...NAV_FONT, fontSize: '14px', fontWeight: 500 }}>
+        {user?.fullName || user?.email}
+      </p>
+      <Link
+        href="/profilis"
+        className="mt-2 no-underline text-[#1A1010]"
+        style={{ ...NAV_FONT, fontSize: '14px', fontWeight: 500 }}
+      >
+        Mano paskyra
+      </Link>
+      <button
+        type="button"
+        onClick={signOut}
+        className="text-left text-[#64151F]"
+        style={{ ...NAV_FONT, fontSize: '14px', fontWeight: 500 }}
+      >
+        Atsijungti
+      </button>
+    </div>
+  );
+}
+
+function AccountMenu({ useLightNavSurface }: { useLightNavSurface: boolean }) {
+  const { user, isAuthenticated, isHydrated, signOut } = useAuth();
+  const [open, setOpen] = React.useState(false);
+  const wrapRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    if (!open) return;
+    const onClick = (e: MouseEvent) => {
+      if (!wrapRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    window.addEventListener('mousedown', onClick);
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('mousedown', onClick);
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [open]);
+
+  if (!isHydrated) return null;
+
+  if (!isAuthenticated) {
+    return (
+      <>
+        <Link
+          href="/prisijungti"
+          className={`no-underline transition-opacity duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:opacity-80 max-[767px]:hidden ${
+            useLightNavSurface ? 'text-[#1A1010]/78' : 'text-[#EFE8DB]/88'
+          }`}
+          style={{ ...NAV_FONT, fontSize: '14px', fontWeight: 500 }}
+        >
+          Prisijungti
+        </Link>
+        <CtaLink href="/tapkite-partneriu" variant="secondary" className="whitespace-nowrap">
+          Tapti partneriu
+        </CtaLink>
+      </>
+    );
+  }
+
+  const initials = (user?.fullName || user?.email || 'U').slice(0, 1).toUpperCase();
+
+  return (
+    <div ref={wrapRef} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-label="Mano paskyra"
+        className={`flex h-10 items-center gap-2 border px-3 transition-colors duration-200 ${
+          useLightNavSurface
+            ? 'border-[#1A1010]/15 bg-[#EFE8DB] text-[#1A1010] hover:border-[#64151F]/45'
+            : 'border-[#EFE8DB]/28 bg-[rgba(26,16,16,0.25)] text-[#EFE8DB] hover:border-[#EFE8DB]/55'
+        }`}
+        style={{ borderRadius: '0px', ...NAV_FONT, fontSize: '13px', fontWeight: 500 }}
+      >
+        <span
+          className={`grid h-7 w-7 place-items-center text-[12px] font-semibold ${
+            useLightNavSurface ? 'bg-[#64151F] text-[#EFE8DB]' : 'bg-[#EFE8DB] text-[#64151F]'
+          }`}
+          style={{ borderRadius: '999px' }}
+          aria-hidden
+        >
+          {initials}
+        </span>
+        <span className="hidden max-[479px]:block">Paskyra</span>
+        <span className="max-[479px]:hidden">{user?.fullName?.split(' ')[0] || 'Paskyra'}</span>
+      </button>
+
+      {open ? (
+        <div
+          role="menu"
+          className="absolute right-0 top-[calc(100%+8px)] z-[80] w-[240px] border border-[#1A1010]/10 bg-[#EFE8DB] p-2 text-[#1A1010] shadow-[0_20px_48px_rgba(26,16,16,0.18)]"
+          style={{ borderRadius: '0px' }}
+        >
+          <div className="border-b border-[#1A1010]/10 px-3 py-3">
+            <p className="m-0 truncate text-[#1A1010]" style={{ ...NAV_FONT, fontSize: '13px', fontWeight: 500 }}>
+              {user?.fullName}
+            </p>
+            <p className="m-0 truncate text-[#1A1010]/65" style={{ ...NAV_FONT, fontSize: '12px' }}>
+              {user?.email}
+            </p>
+          </div>
+          <Link
+            href="/profilis"
+            onClick={() => setOpen(false)}
+            className="block px-3 py-2 no-underline text-[#1A1010] transition-colors hover:bg-[#1A1010]/5"
+            style={{ ...NAV_FONT, fontSize: '13px', fontWeight: 500 }}
+            role="menuitem"
+          >
+            Mano paskyra
+          </Link>
+          <Link
+            href="/akademija"
+            onClick={() => setOpen(false)}
+            className="block px-3 py-2 no-underline text-[#1A1010] transition-colors hover:bg-[#1A1010]/5"
+            style={{ ...NAV_FONT, fontSize: '13px', fontWeight: 500 }}
+            role="menuitem"
+          >
+            Mokymai
+          </Link>
+          <Link
+            href="/resursai"
+            onClick={() => setOpen(false)}
+            className="block px-3 py-2 no-underline text-[#1A1010] transition-colors hover:bg-[#1A1010]/5"
+            style={{ ...NAV_FONT, fontSize: '13px', fontWeight: 500 }}
+            role="menuitem"
+          >
+            Resursai
+          </Link>
+          <button
+            type="button"
+            onClick={() => {
+              signOut();
+              setOpen(false);
+            }}
+            className="block w-full border-t border-[#1A1010]/10 px-3 py-2 text-left text-[#64151F] transition-colors hover:bg-[#1A1010]/5"
+            style={{ ...NAV_FONT, fontSize: '13px', fontWeight: 500 }}
+            role="menuitem"
+          >
+            Atsijungti
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
+}
 
 export function NavigationBarSection({
   forceLightSurface = false,
@@ -697,9 +881,7 @@ export function NavigationBarSection({
               B2B platforma
             </CtaLink>
 
-            <CtaLink {...navAnchorAttrs('/tapkite-partneriu')} variant="secondary" className="whitespace-nowrap">
-              Tapti partneriu
-            </CtaLink>
+            <AccountMenu useLightNavSurface={useLightNavSurface} />
             </div>
           )}
 

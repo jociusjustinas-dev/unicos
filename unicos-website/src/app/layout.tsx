@@ -5,6 +5,7 @@ import { Preloader } from "@/components/Preloader";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { PageTransition } from "@/components/PageTransition";
 import { CartProvider } from "@/lib/cart";
+import { AuthProvider } from "@/lib/auth";
 import { CheckoutCartDrawer } from "@/components/ui/CheckoutCartDrawer";
 import "./globals.css";
 
@@ -41,10 +42,12 @@ export default function RootLayout({
         />
         <SmoothScroll />
         <Preloader />
-        <CartProvider>
-          <PageTransition>{children}</PageTransition>
-          <CheckoutCartDrawer />
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <PageTransition>{children}</PageTransition>
+            <CheckoutCartDrawer />
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );
