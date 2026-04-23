@@ -6,7 +6,9 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@/components/ui/ChevronArrows
 import { useInViewOnce } from '@/hooks/useInViewOnce';
 import { AkademijaEyebrowLabel } from '@/components/sections/akademija/AkademijaEyebrowLabel';
 import { CtaLink } from '@/components/ui/CtaLink';
+import { CtaButton } from '@/components/ui/CtaButton';
 import type { PrekiuZenklaiBrandLandingConfig } from '@/config/prekiuZenklaiBrandLanding';
+import { useCart, parsePrice } from '@/lib/cart';
 
 export type CmsGridTrainingsCopy = PrekiuZenklaiBrandLandingConfig['trainings'];
 
@@ -114,6 +116,21 @@ const carouselNavBtnClass =
 
 function EventCard({ card, registerLabel }: { card: EventCardData; registerLabel: string }) {
   const LocIcon = card.onlineVenue ? SfMonitor : SfMapPin;
+  const { addItem, openDrawer } = useCart();
+
+  const handleRegister = React.useCallback(() => {
+    addItem({
+      id: card.id,
+      title: card.title,
+      speaker: card.speaker,
+      date: card.datetime,
+      priceLabel: card.price,
+      price: parsePrice(card.price),
+      imageSrc: card.image,
+      href: card.href,
+    });
+    openDrawer();
+  }, [addItem, openDrawer, card]);
 
   return (
     <article
@@ -241,9 +258,17 @@ function EventCard({ card, registerLabel }: { card: EventCardData; registerLabel
               {card.price}
             </p>
           </div>
-          <CtaLink href="/akademija/neostrata-pilingai" variant="primary" className="self-start sm:self-auto">
+          <CtaButton
+            type="button"
+            variant="primary"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleRegister();
+            }}
+            className="self-start sm:self-auto"
+          >
             {registerLabel}
-          </CtaLink>
+          </CtaButton>
         </div>
       </div>
     </article>

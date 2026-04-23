@@ -3,7 +3,8 @@
 import * as React from 'react';
 import { SfAward, SfClock, SfMapPin, SfMonitor } from '@/components/icons/feather';
 import { AkademijaEyebrowLabel } from '@/components/sections/akademija/AkademijaEyebrowLabel';
-import { CtaLink } from '@/components/ui/CtaLink';
+import { CtaButton } from '@/components/ui/CtaButton';
+import { useCart, parsePrice } from '@/lib/cart';
 import {
   AKADEMIJA_EVENTS,
   AKADEMIJA_FORMAT_FILTERS,
@@ -113,6 +114,22 @@ function FilterDropdown<T extends string>({
 
 export function AkademijaEventCard({ event }: { event: AkademijaEvent }) {
   const LocIcon = event.onlineVenue ? SfMonitor : SfMapPin;
+  const { addItem, openDrawer } = useCart();
+
+  const handleRegister = React.useCallback(() => {
+    addItem({
+      id: event.id,
+      title: event.title,
+      speaker: event.speaker,
+      date: event.datetime,
+      priceLabel: event.price,
+      price: parsePrice(event.price),
+      imageSrc: event.imageSrc,
+      href: event.href,
+    });
+    openDrawer();
+  }, [addItem, openDrawer, event]);
+
   const statusTone =
     event.statusTone === 'green'
       ? 'border-[#3B443A]/35 bg-[#3B443A]/92 text-[#EFE8DB]'
@@ -225,9 +242,17 @@ export function AkademijaEventCard({ event }: { event: AkademijaEvent }) {
               {event.price}
             </p>
           </div>
-          <CtaLink href={event.href} variant="primary" className="self-start sm:self-auto">
+          <CtaButton
+            type="button"
+            variant="primary"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleRegister();
+            }}
+            className="self-start sm:self-auto"
+          >
             Registruotis
-          </CtaLink>
+          </CtaButton>
         </div>
       </div>
     </article>

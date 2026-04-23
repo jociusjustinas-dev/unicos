@@ -4,6 +4,8 @@ import Script from "next/script";
 import { Preloader } from "@/components/Preloader";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { PageTransition } from "@/components/PageTransition";
+import { CartProvider } from "@/lib/cart";
+import { CheckoutCartDrawer } from "@/components/ui/CheckoutCartDrawer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -39,7 +41,10 @@ export default function RootLayout({
         />
         <SmoothScroll />
         <Preloader />
-        <PageTransition>{children}</PageTransition>
+        <CartProvider>
+          <PageTransition>{children}</PageTransition>
+          <CheckoutCartDrawer />
+        </CartProvider>
       </body>
     </html>
   );

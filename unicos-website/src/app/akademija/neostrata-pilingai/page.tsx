@@ -8,7 +8,9 @@ import { AkademijaDetailSection } from '@/components/sections/akademija/Akademij
 import { AkademijaMaroonEventCtaBand } from '@/components/sections/akademija/AkademijaMaroonEventCtaBand';
 import { AkademijaRelatedEventsSection } from '@/components/sections/akademija/AkademijaRelatedEventsSection';
 import { CtaLink } from '@/components/ui/CtaLink';
+import { CtaButton } from '@/components/ui/CtaButton';
 import { PAGE_SHELL_CLASS } from '@/config/pageShell';
+import { useCart, parsePrice } from '@/lib/cart';
 import {
   SfClock,
   SfMapPin,
@@ -59,6 +61,21 @@ function NeostrataHeroHeading({ title }: { title: string }) {
 
 export default function NeostrataPilingaiPage() {
   const event = NEOSTRATA_EVENT;
+  const { addItem, openDrawer } = useCart();
+
+  const handleRegister = () => {
+    addItem({
+      id: event.id,
+      title: event.title,
+      speaker: event.speaker,
+      date: event.datetime,
+      priceLabel: event.price,
+      price: parsePrice(event.price),
+      imageSrc: event.imageSrc,
+      href: event.href,
+    });
+    openDrawer();
+  };
 
   return (
     <main className="bg-[#EFE8DB] text-[#1A1010]">
@@ -176,15 +193,16 @@ export default function NeostrataPilingaiPage() {
                   <div className="border-t-[1px] border-solid border-[#1A1010]/10 pt-3">
                     <div className="flex w-full max-w-[640px] flex-col items-stretch justify-start gap-6 sm:flex-row sm:items-start sm:gap-8">
                       <div className="flex flex-col items-start gap-2.5 sm:items-start">
-                        <CtaLink
-                          href={event.href}
+                        <CtaButton
+                          type="button"
                           variant="primary"
                           labelMode="static"
+                          onClick={handleRegister}
                           className="min-h-[var(--btn-height)] min-w-[240px] justify-center rounded-none px-8"
                           style={{ ...BODY, ...R0 }}
                         >
                           Registruotis — {event.price}
-                        </CtaLink>
+                        </CtaButton>
                         <span
                           className="uppercase text-[#1A1010]/62"
                           style={{ fontSize: '10px', letterSpacing: '0.12em', ...BODY, fontWeight: 500, lineHeight: 1.45 }}
@@ -330,7 +348,7 @@ export default function NeostrataPilingaiPage() {
         ariaLabelledBy="neostrata-cta-heading"
         title="Užtikrinkite savo vietą"
         description="Dalyvių skaičius ribotas — registruokitės dabar ir gaukite tarptautinį sertifikatą."
-        registerHref={event.href}
+        onRegister={handleRegister}
         registerLabel={`Registruotis — ${event.price}`}
       />
 

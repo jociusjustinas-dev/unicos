@@ -1,7 +1,9 @@
 'use client';
 
+import * as React from 'react';
 import { PAGE_SHELL_CLASS } from '@/config/pageShell';
 import { CtaLink } from '@/components/ui/CtaLink';
+import { CtaButton } from '@/components/ui/CtaButton';
 import { AKADEMIJA_DETAIL_BODY, AKADEMIJA_DETAIL_HEADING } from '@/components/sections/akademija/akademijaDetailTypography';
 
 const R0 = { borderRadius: '0px' } as const;
@@ -10,7 +12,9 @@ type Props = {
   ariaLabelledBy: string;
   title: string;
   description: string;
-  registerHref: string;
+  /** Palikus nenurodytą `onRegister`, veikia kaip paprasta nuoroda `registerHref`. */
+  registerHref?: string;
+  onRegister?: () => void;
   /** Pilnas mygtuko tekstas, pvz. „Registruotis — 49 €“. */
   registerLabel: string;
   reminderHref?: string;
@@ -23,8 +27,9 @@ export function AkademijaMaroonEventCtaBand({
   title,
   description,
   registerHref,
+  onRegister,
   registerLabel,
-  reminderHref = '/kontaktai',
+  reminderHref = '/kontaktai#kontaktai-forma',
   reminderLabel = 'Gauti priminimą',
 }: Props) {
   return (
@@ -51,15 +56,28 @@ export function AkademijaMaroonEventCtaBand({
           </p>
 
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-            <CtaLink
-              href={registerHref}
-              variant="lightFill"
-              labelMode="static"
-              className="justify-center px-8"
-              style={{ ...AKADEMIJA_DETAIL_BODY, fontWeight: 600, ...R0 }}
-            >
-              {registerLabel}
-            </CtaLink>
+            {onRegister ? (
+              <CtaButton
+                type="button"
+                onClick={onRegister}
+                variant="lightFill"
+                labelMode="static"
+                className="justify-center px-8"
+                style={{ ...AKADEMIJA_DETAIL_BODY, fontWeight: 600, ...R0 }}
+              >
+                {registerLabel}
+              </CtaButton>
+            ) : (
+              <CtaLink
+                href={registerHref ?? '#'}
+                variant="lightFill"
+                labelMode="static"
+                className="justify-center px-8"
+                style={{ ...AKADEMIJA_DETAIL_BODY, fontWeight: 600, ...R0 }}
+              >
+                {registerLabel}
+              </CtaLink>
+            )}
             <CtaLink
               href={reminderHref}
               variant="outlineLight"
