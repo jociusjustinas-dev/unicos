@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UNICOS website
 
-## Getting Started
+Marketing and product frontend for UNICOS — Next.js (App Router), React 19, Tailwind CSS v4.
 
-First, run the development server:
+Design and component rules for contributors and AI agents: **`AGENTS.md`** (tokens, typography, CTAs).
+
+## Prerequisites
+
+- Node.js 20+ (recommended)
+- npm (or pnpm/yarn)
+
+## Scripts
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev    # http://localhost:3000
+npm run build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Repository layout
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Path | Purpose |
+|------|---------|
+| `src/app/` | Routes, layouts, `metadata` |
+| `src/components/sections/` | Page sections (heroes, grids, footer, nav) |
+| `src/components/ui/` | Reusable UI (CTAs, parallax image, drawers) |
+| `src/config/` | Static page data (Akademija events, brands, shells) |
+| `src/lib/` | Client context: auth (mock), academy cart |
+| `src/styles/` | Globals and design tokens (`tokens.css`) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## What is mock vs production-ready UI
 
-## Learn More
+Several flows are **front-end only** until WordPress / WooCommerce (or another backend) is wired in. See **`docs/engineering-notes.md`** for exact files and integration notes.
 
-To learn more about Next.js, take a look at the following resources:
+Rough split:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Production-quality UI:** layouts, sections, design system, most pages.
+- **Mock / temporary:** user session in `localStorage`, academy cart in `sessionStorage`, demo orders on `/profilis`, optional demo role toggle for “partner” previews, some config `href`s pointing at template pages.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## External systems (planned)
 
-## Deploy on Vercel
+- **B2B platform:** external product on another domain — header link is a placeholder (`#`) until the real URL is set.
+- **WordPress:** target for customers, partners, resources gating, and optionally WooCommerce orders — see `docs/engineering-notes.md`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Environment variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+No secrets are required for local dev with the current mocks. When integrating WP, add variables only in server-side code (e.g. Route Handlers) — do not expose application passwords to the browser.
+
+## License / ownership
+
+Private project — see repository owner.
